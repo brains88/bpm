@@ -3,6 +3,8 @@
 namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Sanctum\Token;
+use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             \URL::forceScheme('https');
         }
-    
+
+        Sanctum::usePersonalAccessTokenModel(Token::class);
         Schema::defaultStringLength(191);
     }
 }
