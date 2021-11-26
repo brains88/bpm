@@ -72,8 +72,8 @@
 					</div>
 					<div class="p-3 border-dark-500">
 						<h4 class="text-white mb-3 rounded">To send a message, <a href="{{ route('contact') }}" class="text-decoration-underline">Click Here</a>. To call us now, click the number below.</h4>
-						<a href="tel:{{ env('GEOHOMES_OFFICIAL_PHONE') }}" class="btn btn-lg bg-main-green d-block text-white mb-2">
-							{{ env('GEOHOMES_OFFICIAL_PHONE') }}
+						<a href="tel:{{ env('BEST_PROPERTY_MARKET_PHONE') }}" class="btn btn-lg bg-main-green d-block text-white mb-2">
+							{{ env('BEST_PROPERTY_MARKET_PHONE') }}
 						</a>
 					</div>
 				</div>
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="py-4 bg-main-dark">
+	<section class="py-4 bg-main-dark border-top-dark-500">
 		<div class="container">
 			<div class="text-white m-0">&copy Copyright Geohomes Services Limited {{ date('Y') === '2021' ? date('Y') : '2021 - '. date('Y') }}</div>
 		</div>

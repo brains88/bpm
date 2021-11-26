@@ -56,9 +56,13 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
         Route::get('/{country}/{id}/{slug}', [PropertiesController::class, 'country'])->name('property.country.id.slug');
     });
 
+    Route::prefix('news')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('news');
+        Route::get('/{id}/{slug}', [NewsController::class, 'read'])->name('news.read');
+    });
+
     Route::get('/services', [ServicesController::class, 'index'])->name('services');
     Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
-    Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/artisans', [ArtisansController::class, 'index'])->name('artisans');
 
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {

@@ -1,24 +1,27 @@
 <div class="card p-0 border-0">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <a href="" class="w-100" style="height: 180px;">
-                <img src="/images/news/1.jpg" class="img-fluid object-cover w-100 h-100" alt="{{ '' }}">
+    <div class="row align-items-center">
+        <div class="col-12 col-lg-4 mb-3">
+            <a href="{{ $news['link'] }}" target="_blank" class="w-100">
+                <div style="height: 180px !important;">
+                    <img src="{{ $news['media'] }}" class="img-fluid object-cover border w-100 h-100" alt="{{ $news['title'] }}">
+                </div>
             </a>
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-lg-8 mb-3">
             <div class="card-body py-md-4 py-lg-0 px-0">
                 <h4 class="mb-3">
-                    <a href="" class="text-main-dark">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a>
+                    <a href="{{ $news['link'] }}" target="_blank" class="text-main-dark text-underline">
+                        {{ \Str::limit($news['title'], 40) }}
+                    </a>
                 </h4>
-                <div class="d-flex align-items-center">
-                    <div class="rounded-circle mr-2 cursor-pointer text-center text-main-green bg-main-dark" style="width: 50px; height: 50px; line-height: 50px;">
-                        <i class="icofont-ui-user"></i>
-                    </div>
-                    <div class="">
-                        <div class="">By {{ 'Oliseh Johns' }}</div>
-                        <div class="text-muted">
-                            <small class="text-muted">Updated 24th May 2021</small>
-                        </div>
+                <div class="">
+                    @if(!empty($news['author']))
+                        <div class="">By {{ $news['author'] }}</div>
+                    @endif
+                    <div class="text-muted">
+                        <small class="text-muted">
+                            Published {{ date("F j, Y, g:i a", strtotime($news['published_date'])) }}
+                        </small>
                     </div>
                 </div>
             </div>

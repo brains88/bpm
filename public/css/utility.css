@@ -1,15 +1,13 @@
 :root {
-    --main-green: #06a656;
-    --green-500:  #10B981;
+    --theme-color: #06a656;
     --main-dark: #0a090b;
     --main-red: #ff003c;
-    --green-900: #07C566;
     --dark-500: #3D3743;
     --main-ash: #F0F2E3;
 }
 
-.bg-main-green {
-    background-color: var(--main-green);
+.bg-theme-color {
+    background-color: var(--theme-color);
 }
 
 .bg-main-red {
@@ -28,6 +26,10 @@
     border: 1px solid var(--main-dark);
 }
 
+.border-theme-color {
+    border: 1px solid var(--theme-color);
+}
+
 .border-dark-500 {
     border: 1px solid var(--dark-500);
 }
@@ -40,8 +42,8 @@
     border-top: 1px solid var(--dark-500);
 }
 
-.text-main-green {
-    color: var(--main-green);
+.text-theme-color {
+    color: var(--theme-color);
 }
 
 .text-underline {

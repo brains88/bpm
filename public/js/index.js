@@ -52,7 +52,10 @@
     // Change hash for page-reload
     $('.signup-tabs a').on('shown', function (e) {
         window.location.hash = e.target.hash;
-    })
+    });
+
+    var collapsible = $('#properties-form-home-search');
+    ($(window).width() <= 575.98) ? collapsible.collapse('hide') : collapsible.collapse('show');
 
 })(jQuery);
 

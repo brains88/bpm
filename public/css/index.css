@@ -206,6 +206,29 @@ ul {
     background-color: var(--main-dark);
 }
 
+.agent-realtor {
+    padding: 140px 0;
+    background-image: url('/images/banners/block.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.agent-realtor:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 70%;
+    z-index: -2;
+    background-color: var(--main-dark);
+}
+
 
 a:hover, button:hover {
     opacity: 0.9;
@@ -362,6 +385,7 @@ a:hover, button:hover {
     -webkit-transition: 0.8s;
     -o-transition: 0.8s;
     transition: 0.8s;
+    display: none !important;
 }
 
 .hanburger-icon .icon-lines {
@@ -422,8 +446,8 @@ a:hover, button:hover {
         width: 194px !important;
     }
 
-    .navbar-center {
-        display: none !important;
+    .hanburger-icon {
+        display: flex;
     }
 
     .navbar-menu {
@@ -435,6 +459,10 @@ a:hover, button:hover {
 @media (max-width: 1199.98px) {
     .navbar-menu {
         width: 30vw;
+    }
+
+    .navbar-center {
+        display: none !important;
     }
 }
 
