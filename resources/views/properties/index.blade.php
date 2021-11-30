@@ -53,6 +53,9 @@
 			                @endempty
 						</div>
 						<div class="mb-4">
+							<div class="p-3 mb-4 bg-main-ash shadow-sm rounded">
+								<h5 class="m-0">Mortgage Calculator</h5>
+							</div>
 							@include('mortgage.index')
 						</div>
 						<div class="">
