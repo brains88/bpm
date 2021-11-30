@@ -1,13 +1,13 @@
 @include('layouts.header')
     @include('layouts.navbar')
-    <div class="position-relative bg-main-ash border-bottom">
+    <div class="position-relative border-bottom">
     	<section class="properties-banner">
 			<div class="container">
 				<div class="row">
 					<div class="col-12 mb-4">
 						<div class="accordion cursor-pointer" id="properties-search">
-						  	<div class="card border-0 p-0">
-							    <div class="card-header d-flex justify-content-between border-0 rounded shadow-sm bg-white" id="search-accordion" data-toggle="collapse" data-target="#form-search" aria-expanded="false" aria-controls="form-search">
+						  	<div class="card border p-0">
+							    <div class="card-header d-flex justify-content-between border-0 rounded shadow-sm bg-main-ash" id="search-accordion" data-toggle="collapse" data-target="#form-search" aria-expanded="false" aria-controls="form-search">
 							      	<p class="text-main-green font-weight-bolder m-0">Find <span class="text-main-dark">Properties</span>
 							      	</p>
 							      	<span class="text-main-green">
@@ -41,7 +41,7 @@
 					</div>
 					<div class="col-12 col-md-5 col-lg-3">
 						<div class="mb-4">
-							<div class="p-3 mb-4 bg-white shadow-sm rounded">
+							<div class="p-3 mb-4 bg-main-ash shadow-sm rounded">
 								<h5 class="m-0">Property Categories</h5>
 							</div>
 							@empty($propertyCategories->count())
@@ -51,6 +51,9 @@
 			                        @include('properties.partials.categories')
 		                        @endforeach
 			                @endempty
+						</div>
+						<div class="mb-4">
+							@include('mortgage.index')
 						</div>
 						<div class="">
 							@empty($soldProperties)

@@ -1,6 +1,6 @@
 @include('layouts.header')
     @include('layouts.navbar')
-    <div class="position-relative bg-main-ash border-bottom">
+    <div class="position-relative border-bottom">
     	<section class="properties-banner">
 			<div class="container">
 				<div class="row">

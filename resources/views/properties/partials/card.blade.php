@@ -1,7 +1,7 @@
 <?php $propertytitle = property()->title($property); ?>
 <div class="card border bg-transparent position-relative m-0 rounded">
     <div class="position-relative" style="height: 225px;">
-        <small class="position-absolute border-bottom border-top {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-theme-color' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
+        <small class="position-absolute border-bottom border-top {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-tillgreen' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
             {{ ucwords($property->status) }}
         </small>
         <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? '-', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}">
@@ -44,17 +44,20 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 mb-4">
-                <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? '-', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="btn btn-block bg-theme-color">
+                <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="btn btn-block bg-tillgreen">
                     <small class="text-white">
                         NGN{{ number_format($property->price.'000') }}
                     </small>
                 </a>
             </div>
             <div class="col-12 col-md-6 mb-4">
-                <a href="tel:{{ $property->user->phone }}" class="btn btn-block border-theme-color">
+                <a href="tel:{{ $property->user->phone }}" class="btn btn-block border-tillgreen">
                     <small class="text-theme-color">{{ $property->user->phone }}</small>
                 </a>
             </div>
+        </div>
+        <div class="d-flex mb-4">
+            <div class="sharethis-inline-share-buttons d-flex justify-content-between"></div>
         </div>
     </div>
 </div>

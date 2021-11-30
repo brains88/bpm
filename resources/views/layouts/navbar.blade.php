@@ -4,12 +4,12 @@
 			<div class="d-flex justify-content-between">
 				<div class="d-flex align-items-center">
 					<a href="tel:{{ env('BEST_PROPERTY_MARKET_PHONE') }}" class="d-flex align-items-center text-decoration-none mr-3">
-						<span class="text-theme-color mr-2">Call</span>
+						<span class="text-tillgreen mr-2">Call</span>
 						<span class="text-white">{{ env('BEST_PROPERTY_MARKET_PHONE') }}</span>
 					</a>
 				</div>
 				<div class="d-flex align-items-center">
-					<div class="dropdown cursor-pointer text-theme-color position-relative">
+					<div class="dropdown cursor-pointer text-tillgreen position-relative">
 						<div id="website-user-icon" data-toggle="dropdown" aria-expanded="false">
 							En <i class="icofont-caret-down"></i>
 						</div>
@@ -36,52 +36,52 @@
 				<ul class="navbar-center d-flex align-items-center">
 					<?php $uri = str_replace('/', '', request()->route()->uri); ?>
 					<li class="mr-3">
-						<a href="{{ route('home') }}" class="{{ $uri === '' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Home</a>
+						<a href="{{ route('home') }}" class="{{ $uri === '' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Home</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('about') }}" class="{{ $uri === 'about' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">About</a>
+						<a href="{{ route('about') }}" class="{{ $uri === 'about' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">About</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('services') }}" class="{{ $uri === 'services' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Services</a>
+						<a href="{{ route('services') }}" class="{{ $uri === 'services' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Services</a>
 					</li>
 					<li class="mr-3 position-relative">
 						<small class="position-absolute bg-main-red rounded text-center text-white px-1" style="top: -5px; right: -7.5px; font-size: 8px;">New</small>
-						<a href="{{ route('properties') }}" class="{{ $uri === 'properties' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Properties</a>
+						<a href="{{ route('properties') }}" class="{{ $uri === 'properties' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Properties</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('agents') }}" class="{{ $uri === 'agents' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Agents</a>
+						<a href="{{ route('agents') }}" class="{{ $uri === 'agents' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Agents</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('news') }}" class="{{ $uri === 'news' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">News</a>
+						<a href="{{ route('news') }}" class="{{ $uri === 'news' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">News</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('artisans') }}" class="{{ $uri === 'artisans' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Artisans</a>
+						<a href="{{ route('artisans') }}" class="{{ $uri === 'artisans' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Artisans</a>
 					</li>
 					<li class="mr-3">
-						<a href="{{ route('contact') }}" class="{{ $uri === 'contact' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Contact</a>
+						<a href="{{ route('contact') }}" class="{{ $uri === 'contact' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Contact</a>
 					</li>
 				</ul>
 				<div class="d-flex align-items-center navbar-right">
 					<div class="d-flex align-items-center">
-						<a href="{{ route('login') }}" class="mr-3 px-3 text-theme-color btn border-theme-color bg-white">Login</a>
-						<a href="{{ route('signup') }}" class="px-3 text-white btn bg-theme-color">Signup</a>
+						<a href="{{ route('login') }}" class="mr-3 px-3 text-tillgreen btn border-tillgreen bg-white">Login</a>
+						<a href="{{ route('signup') }}" class="px-3 text-white btn bg-tillgreen">Signup</a>
 					</div>
 					{{-- <div class="mr-3">
-						<div class="dropdown cursor-pointer bg-main-dark text-theme-color rounded-icon rounded-circle position-relative">
+						<div class="dropdown cursor-pointer bg-main-dark text-tillgreen rounded-icon rounded-circle position-relative">
 							<div class="status-notify rounded-circle position-absolute border bg-main-red" style="width: 10px; height: 10px; top: 4px; right: -4px"></div>
 							<div id="website-user-icon" data-toggle="dropdown" aria-expanded="false">
 								<i class="icofont-ui-user"></i>
 							</div>
 							<div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="website-user-icon">
 							    <a class="dropdown-item" href="{{ route('login') }}">
-							    	<span class="text-theme-color mr-1">
+							    	<span class="text-tillgreen mr-1">
 							    		<i class="icofont-login"></i>
 							    	</span>
 							    	<span class="text-main-dark">Login</span>
 							    </a>
 							    <div class="dropdown-divider"></div>
 							    <a class="dropdown-item" href="{{ route('signup') }}">
-							    	<span class="text-theme-color mr-1">
+							    	<span class="text-tillgreen mr-1">
 							    		<i class="icofont-ui-play"></i>
 							    	</span>
 							    	<span class="text-main-dark">Signup</span>

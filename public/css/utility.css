@@ -1,29 +1,33 @@
 :root {
-    --theme-color: #06a656;
+    --theme-color: #ff0000;
     --main-dark: #0a090b;
-    --main-red: #ff003c;
     --dark-500: #3D3743;
     --main-ash: #F0F2E3;
+    --tillgreen: #2addc7
 }
 
 .bg-theme-color {
     background-color: var(--theme-color);
 }
 
-.bg-main-red {
-    background-color: var(--main-red);
-}
-
-.text-main-red {
-    color: var(--main-red);
-}
-
 .cursor-pointer {
     cursor: pointer;
 }
 
+.bg-tillgreen {
+    background-color: var(--tillgreen);
+}
+
+.text-tillgreen {
+    color: var(--tillgreen);
+}
+
 .border-main-dark {
     border: 1px solid var(--main-dark);
+}
+
+.border-tillgreen {
+    border: 1px solid var(--tillgreen);
 }
 
 .border-theme-color {
@@ -58,20 +62,12 @@
     color: var(--dark-500);
 }
 
-.border-raduis-sm {
-    border-radius: 12.5px;
-}
-
-.border-raduis-lg {
-    border-radius: 17.5px;
+.bg-dark-500 {
+    background-color: var(--dark-500);
 }
 
 .object-cover {
     object-fit: cover;
-}
-
-.bg-green-900 {
-    background-color: var(--green-900);
 }
 
 .tiny-font {

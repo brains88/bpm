@@ -31,5 +31,16 @@
                     
             }
         </script> --}}
+        {{-- Sagreit --}}
+        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script>
+        <script>
+          (function() { var qs,j,q,s,d=document, gi=d.getElementById,
+          ce=d.createElement, gt=d.getElementsByTagName,
+          id="calconic_", b="https://cdn.calconic.com/static/js/";
+          if(!gi.call(d,id)) { j=ce.call(d,"script"); j.id=id; j.type="text/javascript"; j.async=true;
+          j.dataset.calconic=true;
+          j.src=b+"calconic.min.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(j,q) }
+        })();
+        </script>
     </body>
 </html>

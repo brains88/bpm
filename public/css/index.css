@@ -47,7 +47,7 @@ p {
     padding: 140px 0;
 }
 
-.home-services:before {
+.home-property-categories:before {
     content: '';
     position: absolute;
     top: 0;
@@ -57,10 +57,10 @@ p {
     height: 100%;
     width: 100%;
     z-index: -2;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.home-services {
+.home-property-categories {
     padding: 140px 0;
     background-image: url('/images/banners/orb.jpg');
     background-repeat: no-repeat;
@@ -208,7 +208,7 @@ ul {
 
 .agent-realtor {
     padding: 140px 0;
-    background-image: url('/images/banners/block.jpg');
+    background-image: url('/images/banners/mothern.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
@@ -278,6 +278,10 @@ a:hover, button:hover {
     width: 100%;
     z-index: -2;
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.testimonial-section {
+    padding: 140px 0;
 }
 
 .contact-banner {
@@ -453,6 +457,13 @@ a:hover, button:hover {
     .navbar-menu {
         width: 40vw;
     }
+}
+
+@media (max-width:  767.98px) {
+    .agent-realtor:before {
+        width: 100%;
+    }
+
 }
 
 /*Large devices (desktops, less than 1200px)*/
