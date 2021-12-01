@@ -1,6 +1,6 @@
 <div class="card border-0 bg-transparent position-relative rounded-0">
     <div class="position-relative" style="height: 225px;">
-    	<small class="position-absolute bg-main-red rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
+    	<small class="position-absolute bg-theme-color rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
             {{ ucwords($property->status) }}
         </small>
         <img src="{{ $property->image }}" class="card-img-top img-fluid object-cover border rounded-0 w-100 h-100" alt="{{ ucwords($property->status) }}">

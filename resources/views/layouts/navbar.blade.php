@@ -45,7 +45,7 @@
 						<a href="{{ route('services') }}" class="{{ $uri === 'services' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Services</a>
 					</li>
 					<li class="mr-3 position-relative">
-						<small class="position-absolute bg-main-red rounded text-center text-white px-1" style="top: -5px; right: -7.5px; font-size: 8px;">New</small>
+						<small class="position-absolute bg-theme-color rounded text-center text-white px-1" style="top: -5px; right: -7.5px; font-size: 8px;">New</small>
 						<a href="{{ route('properties') }}" class="{{ $uri === 'properties' ? 'text-tillgreen' : 'text-main-dark' }} text-decoration-none font-weight-bolder">Properties</a>
 					</li>
 					<li class="mr-3">
@@ -62,13 +62,13 @@
 					</li>
 				</ul>
 				<div class="d-flex align-items-center navbar-right">
-					<div class="d-flex align-items-center">
+					{{-- <div class="d-flex align-items-center nav-auth">
 						<a href="{{ route('login') }}" class="mr-3 px-3 text-tillgreen btn border-tillgreen bg-white">Login</a>
 						<a href="{{ route('signup') }}" class="px-3 text-white btn bg-tillgreen">Signup</a>
-					</div>
-					{{-- <div class="mr-3">
+					</div> --}}
+					<div class="mr-3">
 						<div class="dropdown cursor-pointer bg-main-dark text-tillgreen rounded-icon rounded-circle position-relative">
-							<div class="status-notify rounded-circle position-absolute border bg-main-red" style="width: 10px; height: 10px; top: 4px; right: -4px"></div>
+							<div class="status-notify rounded-circle position-absolute border bg-theme-color" style="width: 10px; height: 10px; top: 4px; right: -4px"></div>
 							<div id="website-user-icon" data-toggle="dropdown" aria-expanded="false">
 								<i class="icofont-ui-user"></i>
 							</div>
@@ -88,9 +88,9 @@
 							    </a>
 							</div>
 						</div>
-					</div> --}}
+					</div>
 					<div class="">
-						<div class="hanburger-icon position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
+						<div class="hanburger-icon position-relative d-flex justify-content-center m-0 p-0 align-items-center cursor-pointer">
 							<div class="icon-lines"></div>
 						</div>
 				    </div>
@@ -100,35 +100,35 @@
 	</div>
 </div>
 <div class="navbar-menu shadow no-gutters bg-white position-fixed vh-100">
-	<div class="menu-content vh-100 px-3 mt-4 pb-5">
-		<a href="{{ url('/') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-			<p class="m-0">Home</p>
+	<div class="menu-content vh-100 px-3 mt-5 pb-5">
+		<a href="{{ url('/') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+			<div class="m-0">Home</div>
 		</a>
-		<a href="{{ url('/about') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-			<p class="m-0">About</p>
+		<a href="{{ url('/about') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+			<div class="m-0">About</div>
 		</a>
-		<a href="{{ url('/contact') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-			<p class="m-0">Contact</p>
+		<a href="{{ url('/contact') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+			<div class="m-0">Contact</div>
 		</a>
-		<a href="{{ url('/pricing') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-			<p class="m-0">Pricing</p>
+		<a href="{{ url('/properties') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+			<p class="m-0">Properties</div>
 		</a>
 		@if(auth()->check())
 			@if(auth()->user()->role === 'admin')
-				<a href="{{ route('admin.dashboard') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-					<p class="m-0">Dashboard</p>
+				<a href="{{ route('admin.dashboard') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+					<div class="m-0">Dashboard</div>
 				</a>
 			@else
-				<a href="{{ route('user.dashboard') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-					<p class="m-0">My Account</p>
+				<a href="{{ route('user.dashboard') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+					<div class="m-0">My Account</div>
 				</a>
 			@endif
 		@else
-			<a href="{{ url('/login') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-				<p class="m-0">Login</p>
+			<a href="{{ url('/login') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+				<div class="m-0">Login</div>
 			</a>
-			<a href="{{ url('/signup') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-				<p class="m-0">Signup</p>
+			<a href="{{ url('/signup') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+				<div class="m-0">Signup</div>
 			</a>
 		@endif
 	</div>
