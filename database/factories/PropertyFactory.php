@@ -23,6 +23,7 @@ class PropertyFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
             'condition' => $faker->randomElement(['Furnished', 'Unfurnished', 'Serviced', 'New']),
             'user_id' => $faker->numberBetween(1, 100),
@@ -34,7 +35,7 @@ class PropertyFactory extends Factory
             'bedrooms' => $faker->numberBetween(3, 5),
             'toilets' => $faker->numberBetween(4, 11),
             'bathrooms' => $faker->numberBetween(3, 15),
-            'image' => $faker->imageUrl($width = 960, $height = 1024, 'Real Estate', true, 'Property'),
+            'image' => $faker->imageUrl($width = 960, $height = 1024),
             'category_id' => $faker->numberBetween(1, 5),
             'house_id' => $faker->numberBetween(1, 7),
             'state_id' => $faker->numberBetween(1, 700),

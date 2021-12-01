@@ -51,8 +51,8 @@
                 </a>
             </div>
             <div class="col-12 col-md-6 mb-4">
-                <a href="tel:{{ $property->user->phone }}" class="btn btn-block border-tillgreen">
-                    <small class="text-theme-color">{{ $property->user->phone }}</small>
+                <a href="tel:{{ $property->user->phone ?? '+2348158212666' }}" class="btn btn-block border-tillgreen">
+                    <small class="text-theme-color">{{ $property->user->phone ?? '+2348158212666' }}</small>
                 </a>
             </div>
         </div>
