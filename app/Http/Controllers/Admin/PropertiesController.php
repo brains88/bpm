@@ -11,7 +11,15 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('admin.properties')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(33), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(6)]);
+        return view('admin.properties')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(21), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(6), 'allCountries' => Country::all()]);
+    }
+
+    /**
+     * Admin add Property
+     */
+    public function add()
+    {
+        return view('admin.properties.add')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(21), 'allCountries' => Country::all()]);
     }
 
 }

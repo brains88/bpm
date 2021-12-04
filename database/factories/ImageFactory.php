@@ -22,10 +22,11 @@ class ImageFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
             'type' => $faker->randomElement(['property', 'materials']),
-            'image' => $faker->imageUrl($width = 1260, $height = 960, 'city'),
-            'type_id' => $faker->numberBetween(1, 4300),
+            'link' => $faker->imageUrl($width = 1260, $height = 960),
+            'type_id' => $faker->numberBetween(1, 80),
         ];
     }
 }

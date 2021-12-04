@@ -28,10 +28,8 @@
 						@empty($allProperties->count())
 							<div class="alert alert-info">No Properties Listed</div>
 						@else
-							<?php $image = 1; ?>
 							<div class="row">
 								@foreach($allProperties as $property)
-									<?php $image++; ?>
 									<div class="col-12 col-lg-6 mb-4">
 										@include('properties.partials.card')
 									</div>

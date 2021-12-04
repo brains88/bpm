@@ -15,9 +15,10 @@ class Property extends Model
      * @var string[]
      */
     public static $actions = [
-        'rental' => 'For Rent', 
-        'sale' => 'For Sale', 
-        'lease' => 'For Lease'
+        'To Rent', 
+        'For Sale', 
+        'For Lease', 
+        'Sold off',
     ];
 
     /**
@@ -33,6 +34,32 @@ class Property extends Model
         'type',
         'status',
         'role'
+    ];
+
+    /**
+     * Property conditions.
+     *
+     * @var string[]
+     */
+    public static $conditions = [
+        'Furnished', 
+        'Unfurnished', 
+        'New',
+        'Serviced', 
+    ];
+
+    /**
+     * Property status.
+     *
+     * @var string[]
+     */
+    public static $status = [
+        'active', 
+        'inactive', 
+        'suspended',
+        'audit', 
+        'banned', 
+        'rejected', 
     ];
 
     /**
@@ -82,7 +109,7 @@ class Property extends Model
      */
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'type_id')->take(4);
     }
     
 }
