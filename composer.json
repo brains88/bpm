@@ -12,7 +12,10 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "wildbit/swiftmailer-postmark": "^3.3"
+        "wildbit/swiftmailer-postmark": "^3.3",
+
+        "fakerphp/faker": "^1.9.1",
+        "smknstd/fakerphp-picsum-images": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -36,10 +39,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
+        }
     },
     "scripts": {
         "post-autoload-dump": [

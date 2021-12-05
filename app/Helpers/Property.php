@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+use App\Models\Property;
 use \Exception;
 
 
@@ -9,11 +10,6 @@ use \Exception;
  */
 class Property
 {
-	/**
-	 * List of all property actions
-	 */
-	public static $actions = ['sale' => 'For Sale', 'rent' => 'For Rent', 'sold' => 'Sold', 'lease' => 'For Lease'];
-
 	/**
 	 * Generate title for respective properties
 	 * Based on category
@@ -42,20 +38,6 @@ class Property
 	            return ucfirst($category).' Building '. $status.' Located at '. $property->address ?? '';
 	            break;
 	    }
-	}
-
-	/**
-	 * Get property action for display
-	 */
-	public function action(string $action = '')
-	{
-		foreach (self::$actions as $key => $value) {
-			return array_key_exists($action, self::$actions) ? $value : 'Nill';
-			//return in_array($action, self::$actions) ? $value : 'Nill';
-		}
-		// return collect(self::$actions)->map(function ($key, $value) use($action) {
-	 //        return $actions[$action] = $value ? $value : 'Nill';
-	 //    });
 	}
 
 }

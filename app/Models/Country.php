@@ -13,9 +13,5 @@ class Country extends Model
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'code',
-        'flag',
-    ];
+    protected $fillable = [];
 }

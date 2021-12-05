@@ -80,6 +80,12 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
         Route::get('/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.properties.category');
         Route::get('/global/{country?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
     });
+
+    Route::prefix('property')->group(function () {
+        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
+        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.property.categories');
+        Route::get('/global/{country?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
+    });
 });
 
 Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {
