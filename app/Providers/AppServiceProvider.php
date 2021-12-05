@@ -15,9 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (config('app.env') !== 'production') {
-            $this->app->register('App\Providers\FakerServiceProvider');
-        }
+        if (!$this->app->environment('production')) {
+             $this->app->register('App\Providers\FakerServiceProvider');
+         }
     }
 
     /**

@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             ['name' => 'Washington Main', 'phone' => $faker->phoneNumber(), 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 1]
         ];
 
-        User::factory()->count(60)->create();
+        User::factory()->count(600)->create();
         foreach ($users as $user) {
             User::create([
                 'name' => $user['name'],
