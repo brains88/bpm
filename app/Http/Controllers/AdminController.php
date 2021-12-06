@@ -8,6 +8,6 @@ class AdminController extends Controller
     
     public function index()
     {
-        return view('admin.index')->with(['newsapi' => '']);
+        return view('admin.dashboard.index')->with([]);
     }
 }

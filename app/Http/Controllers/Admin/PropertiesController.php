@@ -11,7 +11,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('admin.properties')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(21), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(6), 'allCountries' => Country::all()]);
+        return view('admin.properties.index')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(21), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(6), 'allCountries' => Country::all()]);
     }
 
     /**
