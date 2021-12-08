@@ -1,10 +1,10 @@
-<div class="fixed-top bg-main-dark">
+<div class="fixed-top bg-dark">
 	<div class="py-3">
 		<div class="container d-flex justify-content-between align-items-center">
 			<ul class="d-flex">
 				<li class="mr-3 cursor-pointer bg-violet navbar-icon text-center">
 			    	<a href="{{ route('admin'); }}" class="text-white text-decoration-none">
-			    		Admin
+			    		<i class="icofont-home"></i>
 			    	</a>
 			    </li>
 			</ul>

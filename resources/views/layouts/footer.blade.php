@@ -8,39 +8,75 @@
         <script src="/js/index.js"></script>
         {{-- forms JS --}}
         <script src="/js/forms.js"></script>
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script> --}}
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=mapping" async></script>
-        <script type="text/javascript">
-            function mapping() {
-                // The location of Geohomes Services Limited
-                const location = { lat: -25.344, lng: 131.036 };
-                // The map, centered at Geohomes Services Limited
-                const contactmap = document.getElementById("contactmap");
-                if (contactmap) {
-                    const map = new google.maps.Map(contactmap, {
-                        zoom: 4,
-                        center: location,
-                    });
-
-                    // The marker, positioned at Geohomes Services Limited
-                    const marker = new google.maps.Marker({
-                        position: location,
-                        map: map,
-                    });
-                } 
-                    
-            }
-        </script> --}}
         {{-- Sagreit --}}
         <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script>
-        <script>
-          (function() { var qs,j,q,s,d=document, gi=d.getElementById,
-          ce=d.createElement, gt=d.getElementsByTagName,
-          id="calconic_", b="https://cdn.calconic.com/static/js/";
-          if(!gi.call(d,id)) { j=ce.call(d,"script"); j.id=id; j.type="text/javascript"; j.async=true;
-          j.dataset.calconic=true;
-          j.src=b+"calconic.min.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(j,q) }
-        })();
+        <!-- Summernote -->
+        <script src="/summernote/summernote-lite.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var blogDescription = $('#blogDescription');
+            if (blogDescription) {
+                blogDescription.summernote({
+                    tabsize: 4,
+                    height: 500
+                });
+            }
+
+            <?php if(!empty($allBlogs)): ?>
+                <?php foreach($allBlogs as $blog): ?>
+                    <?php $id = empty($blog->id) ? 0 : $blog->id; ?>
+                    var button = $('.add-blog-image-<?= $id; ?>');
+                    if (button) {
+                        button.click(function(event) {
+                            if (confirm('Change Image?')) {
+                                var id = $(this).attr('data-id');
+                                var input = $('.blog-image-input-'+id);
+                                var loader = $('.add-blog-image-loader-'+id);
+
+                                input.trigger('click');
+                                input.change(function(event) {
+                                    loader.removeClass('d-none').fadeIn();
+                                    var files = event.target.files
+                                    var formData = new FormData();
+                                    formData.append('image', files[0]);
+
+                                    var request = $.ajax({
+                                        method: 'post',
+                                        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                        url: input.attr('data-url'),
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        dataType: 'json'
+                                    });
+
+                                    request.done(function(response){
+                                        if (response.status === 1) {
+                                            var imagePreview = $('.blog-image-preview-'+id);
+                                            imagePreview.file = files[0];    
+                                            var reader = new FileReader();
+                                            reader.onload = (function(picture) { 
+                                                return (function(event) { 
+                                                    picture.attr('src', event.target.result);
+                                                    loader.addClass('d-none').fadeOut(); 
+                                                });
+                                            })(imagePreview);
+                                            reader.readAsDataURL(files[0]);
+                                        }else {
+                                            loader.addClass('d-none').fadeOut();
+                                            alert(response.info);
+                                        }
+                                    });
+
+                                    request.fail(function(response) {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('Network Error. Try Again');
+                                    });
+                                });
+                            }
+                        });
+                    }
+                <?php endforeach; ?>
+            <?php endif; ?>
         </script>
     </body>
 </html>

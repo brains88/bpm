@@ -77,15 +77,41 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
-        Route::get('/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.properties.category');
-        Route::get('/global/{country?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
+        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
     });
 
     Route::prefix('property')->group(function () {
         Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
-        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.property.categories');
-        Route::get('/global/{country?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
     });
+
+    Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
+    Route::prefix('category')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Admin\CategoriesController::class, 'add'])->name('admin.category.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
+    });
+
+    Route::prefix('subcategory')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'add'])->name('admin.subcategory.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'edit'])->name('admin.subcategory.edit');
+    });
+
+    Route::prefix('blogs')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
+        Route::get('/categories', [\App\Http\Controllers\Admin\BlogsController::class, 'categories'])->name('admin.blogs.categories');
+    });
+
+    Route::prefix('blog')->group(function () {
+        Route::post('/image/upload/{id}', [BlogsController::class, 'image'])->name('blog.image.upload');
+        Route::get('/add', [\App\Http\Controllers\Admin\BlogsController::class, 'add'])->name('admin.blog.add');
+        Route::post('/store', [\App\Http\Controllers\Admin\BlogsController::class, 'store'])->name('admin.blog.store');
+
+        Route::post('/status/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'status'])->name('blog.status');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'delete'])->name('blog.delete');
+
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'edit'])->name('blog.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'update'])->name('admin.blog.update');
+    });
+
 });
 
 Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {

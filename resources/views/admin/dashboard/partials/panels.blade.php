@@ -45,11 +45,11 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bold mb-1">
+                <a href="{{ route('admin.blogs') }}" class="d-block text-smoky font-weight-bold mb-1">
                     Blogs
                 </a>
                 <h6 class="text-muted m-0">
-                    0{{-- {{ \App\Models\Pricing::count() }} --}}
+                    {{ \App\Models\Blog::count() }}
                 </h6>
             </div>
         </div>
@@ -64,11 +64,11 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bolder mb-1">
+                <a href="{{ route('admin.categories') }}" class="d-block text-smoky font-weight-bolder mb-1">
                     Categories
                 </a>
                 <h6 class="text-muted m-0">
-                    0{{-- {{ number_format(\App\Models\Company::count()) }} --}}
+                    {{ number_format(\App\Models\Category::count()) }}
                 </h6>
             </div>
         </div>

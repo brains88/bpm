@@ -56,5 +56,7 @@
         <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css">
         <!-- fontawesome css -->
         <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
+        <!-- summernote CSS -->
+        <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
     </head>
     <body>

@@ -43,9 +43,9 @@ class Property extends Model
      */
     public static $conditions = [
         'Furnished', 
-        'Unfurnished', 
-        'New',
-        'Serviced', 
+        'Not furnished', 
+        'Newly Built',
+        'Partly Furnished', 
     ];
 
     /**
@@ -97,7 +97,7 @@ class Property extends Model
     }
 
     /**
-     * A residential building has a house type
+     * A residential property has a house type
      */
     public function house()
     {
