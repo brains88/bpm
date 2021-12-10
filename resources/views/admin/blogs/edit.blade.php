@@ -62,7 +62,7 @@
                             <div class="alert mb-3 add-blog-message d-none"></div>
                             <button type="submit" class="btn btn-lg bg-main-dark text-white add-blog-button btn-block mt-3">
                                 <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
-                                Edit Blog
+                                Edit blog
                             </button>
                         </form>
                     @endif

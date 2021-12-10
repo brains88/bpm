@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-img position-relative">
-        <div class="position-absolute d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
+        <div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
             <div class="text-white">(1260 x 960)</div>
             <div class="d-flex position-relative">
                 <small>
@@ -17,12 +17,12 @@
             <img src="/images/spinner.svg">
         </div>
         <div style="height: 210px;">
-            <img src="{{ empty($blog->image) ? 'https://picsum.photos/1260/960?random'.rand(25434, 90920) : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-fit-cover">
+            <img src="{{ empty($blog->image) ? 'https://picsum.photos/1260/960?random'.rand(25434, 90920) : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
         </div>
     </div>
     <div class="card-body">
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
-            <a href="{{ route('blog.edit', ['id' => $blog->id]) }}" class="text-muted">
+            <a href="javascript:;" class="text-muted text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
                 {{ \Str::limit(strip_tags($blog->description), 20) }}
             </a>
             <div class="text-muted">

@@ -101,7 +101,7 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     });
 
     Route::prefix('blog')->group(function () {
-        Route::post('/image/upload/{id}', [BlogsController::class, 'image'])->name('blog.image.upload');
+        Route::post('/image/upload/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'image'])->name('blog.image.upload');
         Route::get('/add', [\App\Http\Controllers\Admin\BlogsController::class, 'add'])->name('admin.blog.add');
         Route::post('/store', [\App\Http\Controllers\Admin\BlogsController::class, 'store'])->name('admin.blog.store');
 

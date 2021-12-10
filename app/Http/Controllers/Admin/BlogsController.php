@@ -12,14 +12,14 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(22)]);
+        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(12), 'blogCategories' => Category::where(['type' => 'blog'])->get(), 'latestBlogs' => Blog::orderBy('created_at', 'desc')->limit(3)->get()]);
     }
 
-    public function image($id, Request $request)
+    public function image($id)
     {
-        $image = $request->file('image');
-        $validator = Validator::make($image, [
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg|max:2048']
+        $image = request()->file('image');
+        $validator = Validator::make(['image' => $image], [
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg|max:10240']
         ]);
 
         if ($validator->fails()) {
@@ -30,21 +30,25 @@ class BlogsController extends Controller
         }
 
         $extension = $image->getClientOriginalExtension();
-        $filename = strtolower(Str::random(32)).'.'.$extension;
-        $path = 'images/articles';
+        $filename = md5($image.time()).'.'.$extension;
+        $path = 'images/blogs';
         $image->move($path, $filename);
 
-        $article = Blog::find($id);
-        $file = "{$path}/{$article->image}";
-        if (file_exists($file)) {
-            unlink($file);
+        $blog = Blog::find($id);
+        if (!empty($blog->image)) {
+            $prevfile = explode('/', $blog->image);
+            $previmage = end($prevfile);
+            $file = "{$path}/{$previmage}";
+            if (file_exists($file)) {
+                unlink($file);
+            }
         }
-
-        $article->image = $filename;
-        $article->update();
+            
+        $blog->image = env('APP_URL')."/images/blogs/{$filename}";
+        $blog->update();
         return response()->json([
             'status' => 1, 
-            'info' => 'Article image updated successfully'
+            'info' => 'Blog image updated successfully'
         ]);
 
     }

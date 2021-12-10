@@ -21,35 +21,43 @@ class Controller extends BaseController
      */
     public static function kudisms($sms = [])
     {
-        $mobiles = implode(',', $sms['mobiles']);
-        $data = ['username' => env('KUDISMS_API_USERNAME'), 'password' => env('KUDISMS_API_PASSWORD'), 'sender' => env('APP_NAME'), 'message' => $sms['message'], 'mobiles' => $mobiles];
-        $fields = http_build_query($data);
-        
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, env('KUDISMS_API_URL'));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
-        $result = json_decode(curl_exec($curl));
+        try {
+            $mobiles = implode(',', $sms['mobiles']);
+            $data = ['username' => env('KUDISMS_API_USERNAME'), 'password' => env('KUDISMS_API_PASSWORD'), 'sender' => env('APP_NAME'), 'message' => $sms['message'], 'mobiles' => $mobiles];
+            $fields = http_build_query($data);
+            
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, env('KUDISMS_API_URL'));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
+            $result = json_decode(curl_exec($curl));
 
-        dd($result);
+            dd($result);
 
-        if(isset($result->status) && strtoupper($result->status) == 'OK'){
-            return response()->json([
-                'status' => 1,
-                'info' => 'Message sent successfully',
-                'price' => $result->price
-            ]);
-        }else if(isset($result->error)){
+            if(isset($result->status) && strtoupper($result->status) == 'OK'){
+                return response()->json([
+                    'status' => 1,
+                    'info' => 'Message sent successfully',
+                    'price' => $result->price
+                ]);
+            }else if(isset($result->error)){
+                return response()->json([
+                    'status' => 0,
+                    'info' => $result->error,
+                ]);
+            }else{
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Unknown error. Try again later',
+                ]);
+            }
+        } catch (Exception $error) {
             return response()->json([
                 'status' => 0,
-                'info' => $result->error,
-            ]);
-        }else{
-            return response()->json([
-                'status' => 0,
-                'info' => 'Unknown error. Try again later',
+                'info' => 'Fatal error. Try again later',
             ]);
         }
+            
      }
 }

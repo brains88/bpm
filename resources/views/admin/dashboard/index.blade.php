@@ -17,15 +17,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-lg-9">
-                    <div class="card">
-                        <div class="card-body"></div>
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="card" style="height: 308px;">
+                        <div class="card-body">
+                            <img src="/images/line.png" class="img-fluid w-100 h-100">
+                        </div>
                         <div class="card-footer"></div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-3">
-                    <div class="card">
-                        <div class="card-body"></div>
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="card" style="height: 308px;">
+                        <div class="card-body">
+                            <img src="/images/his.png" class="img-fluid w-100 h-100">
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="card" style="height: 308px;">
+                        <div class="card-body">
+                            <img src="/images/sale.png" class="img-fluid w-100 h-100">
+                        </div>
                         <div class="card-footer"></div>
                     </div>
                 </div>

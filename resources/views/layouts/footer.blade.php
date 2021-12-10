@@ -63,13 +63,14 @@
                                             reader.readAsDataURL(files[0]);
                                         }else {
                                             loader.addClass('d-none').fadeOut();
-                                            alert(response.info);
+                                            alert('You must upload a valid image and the size must be 10MB or less.');
                                         }
                                     });
 
                                     request.fail(function(response) {
                                         loader.addClass('d-none').fadeOut();
-                                        alert('Network Error. Try Again');
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                        // window.location.reload()
                                     });
                                 });
                             }
