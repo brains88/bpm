@@ -5,28 +5,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <a class="btn btn-block border-main-dark bg-transparent rounded-0" href="{{ route('admin.property.add') }}">
+                    <a class="btn btn-block border-main-dark bg-transparent" href="{{ route('admin.property.add') }}">
                         <small class="text-main-dark">Add Property</small>
                     </a>
                     @include('admin.properties.create')
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <a class="btn btn-block border-main-dark bg-transparent rounded-0" href="{{ route('admin.property.add') }}">
+                    <a class="btn btn-block border-main-dark bg-transparent" href="{{ route('admin.property.add') }}">
                         <small class="text-main-dark">Filter Properties</small>
                     </a>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <a class="btn btn-block border-main-dark bg-transparent rounded-0" href="{{ route('admin.property.add') }}">
+                    <a class="btn btn-block border-main-dark bg-transparent" href="{{ route('admin.property.add') }}">
                         <small class="text-main-dark">Search Properties</small>
                     </a>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <a class="btn btn-block border-main-dark bg-transparent rounded-0" href="{{ route('admin.property.add') }}">
+                    <a class="btn btn-block border-main-dark bg-transparent" href="{{ route('admin.property.add') }}">
                         <small class="text-main-dark">Sort Properties</small>
                     </a>
                 </div>
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <a class="btn btn-block border-main-dark bg-transparent rounded-0" href="{{ route('admin.properties.categories') }}">
+                    <a class="btn btn-block border-main-dark bg-transparent" href="{{ route('admin.properties.categories') }}">
                         <small class="text-main-dark">Property Categories</small>
                     </a>
                 </div>

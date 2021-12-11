@@ -1,19 +1,20 @@
 <!-- Summernote -->
 <script src="/summernote/summernote-lite.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+    var description = $('.description');
+    console.log(description);
+    if (description) {
+        description.summernote({
+            tabsize: 4,
+            height: 400
+        });
+    }
     
     <?php if(!empty($allBlogs->count())): ?>
         <?php foreach($allBlogs as $blog): ?>
 
             <?php $id = empty($blog->id) ? 0 : $blog->id; ?>
-            var description = $('#blogDescription-<?= $id; ?>');
-            if (description) {
-                description.summernote({
-                    tabsize: 4,
-                    height: 500
-                });
-            }
-
             var button = $('.add-blog-image-<?= $id; ?>');
             if (button) {
                 button.click(function(event) {

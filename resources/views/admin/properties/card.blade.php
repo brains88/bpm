@@ -1,7 +1,7 @@
 <div class="card card-{{ $property->id }}">
 	<div class="position-relative">
 		<div class="position-relative" style="height: 220px; line-height: 220px;">
-			@if(!empty($property->image))
+			@if(empty($property->image))
 				<div class="w-100 bg-dark text-white text-center">
 					<i class="icofont-camera"></i>
 				</div>
@@ -47,7 +47,6 @@
 										<i class="icofont-camera"></i>
 									</small>
 								</div>
-									
 							</div>
 						</div>
 			       	@endfor

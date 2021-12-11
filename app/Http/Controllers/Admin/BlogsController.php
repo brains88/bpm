@@ -10,9 +10,9 @@ class BlogsController extends Controller
     /**
      * Admin Properties list view
      */
-    public function index()
+    public function index($limit = 12)
     {
-        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(12), 'blogCategories' => Category::where(['type' => 'blog'])->get(), 'latestBlogs' => Blog::orderBy('created_at', 'desc')->limit(3)->get()]);
+        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(8), 'blogCategories' => Category::where(['type' => 'blog'])->get()]);
     }
 
     public function image($id)

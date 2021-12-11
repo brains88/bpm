@@ -1,7 +1,9 @@
 <div class="card">
     <div class="card-img position-relative">
         <div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
-            <div class="text-white">(1260 x 960)</div>
+            <small class="text-white">
+                1280 X 960
+            </small>
             <div class="d-flex position-relative">
                 <small>
                     <i class="icofont-camera cursor-pointer text-white add-blog-image-{{ $blog->id }}" data-id="{{ $blog->id }}">
@@ -22,21 +24,23 @@
     </div>
     <div class="card-body">
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
-            <a href="javascript:;" class="text-muted text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
-                {{ \Str::limit(strip_tags($blog->description), 20) }}
+            <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
+                <small class="text-muted">
+                    {{ \Str::limit(strip_tags($blog->description), 20) }}
+                </small>
             </a>
-            <div class="text-muted">
-                {{ number_format($blog->views) }} Views
-            </div>
+            <small class="text-success">
+                {{ number_format($blog->views ?? 0) }} views
+            </small>
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <div class="text-muted">
-                {{ ucfirst($blog->category->name ?? 'Nill') }}
-            </div>
             <div class="custom-control custom-switch">
                 <input class="custom-control-input blog-status" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
             </div>
+            <small class="text-muted">
+                {{ ucfirst($blog->category->name ?? 'Nill') }}
+            </small>
         </div>
     </div>
     <div class="card-footer bg-main-dark d-flex justify-content-between">
