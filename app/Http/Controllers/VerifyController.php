@@ -7,7 +7,7 @@ class VerifyController extends Controller
 {
     public function index()
     {  
-        return view('verify.index');
+        return view('frontend.verify.index');
     }
 
     public static function activate($token = '')
@@ -38,7 +38,7 @@ class VerifyController extends Controller
 
     public function success()
     {
-        return view('signup.success');
+        return view('frontend.signup.success');
     }
 
     public static function resend()

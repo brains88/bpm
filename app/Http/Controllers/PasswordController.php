@@ -16,7 +16,7 @@ class PasswordController extends Controller
 {
     public function index()
     {
-        return view('password.index', [
+        return view('frontend.password.index', [
             'title' => 'Forgot Password | Subrefill'
         ]);
     }
@@ -67,7 +67,7 @@ class PasswordController extends Controller
     {   
         $verify = self::check($token);
         $expired = !Carbon::parse($verify['data']->created_at ?? null)->addMinutes($minutes = 1440)->gt(Carbon::now());
-        return view('password.verify', ['title' => 'Password Reset | Subrefill', 'token' => $verify['data']->token ?? null, 'expired' => $expired, 'user' => $verify['user'] ?? null]);
+        return view('frontend.password.verify', ['title' => 'Password Reset | Subrefill', 'token' => $verify['data']->token ?? null, 'expired' => $expired, 'user' => $verify['user'] ?? null]);
     }
 
     private static function check($token = '') {

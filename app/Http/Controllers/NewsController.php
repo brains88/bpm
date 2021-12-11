@@ -9,7 +9,7 @@ class NewsController extends Controller
     public function index()
     {
         $newsapi = \App\Helpers\News::api($limit = 6, $page = 1);
-        return view('news.index')->with(['newsapi' => $newsapi]);
+        return view('frontend.news.index')->with(['newsapi' => $newsapi]);
     }
 
     public function search()

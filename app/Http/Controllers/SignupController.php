@@ -25,7 +25,7 @@ class SignupController extends Controller
      */
     public function index()
     {
-        return view('signup.index')->with(['title' => 'Signup | Geohomes Services Limited']);
+        return view('frontend.signup.index')->with(['title' => 'Signup | Geohomes Services Limited']);
     }
 
     /**Individual Signup method

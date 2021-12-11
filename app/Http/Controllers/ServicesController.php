@@ -11,6 +11,6 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('services.index');
+        return view('frontend.services.index');
     }
 }

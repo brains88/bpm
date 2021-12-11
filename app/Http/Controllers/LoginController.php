@@ -14,7 +14,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login.index')->with(['title' => 'Login | Geohomes']);
+        return view('frontend.login.index')->with(['title' => 'Login | Geohomes']);
     }
 
     /**
