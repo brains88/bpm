@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <div class="position-relative">
     	<section class="services-banner">
 			<div class="container">
@@ -41,5 +41,5 @@
 			</div>
 		</section>
     </div>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')

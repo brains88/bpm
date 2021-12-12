@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <div class="position-relative bg-main-ash border-bottom">
     	<section class="properties-banner">
 			<div class="container">
@@ -11,7 +11,7 @@
 							@else
 								<div class="mb-4">
 									<h3 class="text-main-dark mb-3">
-										{{ property()->title($property) }}
+										{{ retitle($property) }}
 									</h3>
 									<div class="mb-4 position-relative">
 										<small class="position-absolute {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-main-green' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
@@ -54,12 +54,10 @@
 							@empty($relatedProperties->count())
 								<div class="alert alert-danger">No Related Properties</div>
 							@else
-								<?php $image = 1; ?>
 								<div class="row">
 									@foreach($relatedProperties as $property)
-										<?php $image++; ?>
 										<div class="col-12 col-lg-6 mb-4">
-											@include('properties.partials.card')
+											@include('frontend.properties.partials.card')
 										</div>
 									@endforeach
 								</div>
@@ -67,24 +65,22 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-4 col-lg-4">
-						<div class="mb-2">
+						{{-- <div class="mb-2">
 							@empty($soldProperties)
 								<div class="alert alert-info">No recently sold property</div>
 							@else
 								<div class="p-3 mb-4 bg-white shadow-sm rounded">
 									<h5 class="m-0">Recently Sold</h5>
 								</div>
-								<?php $image = 1; ?>
 								<div class="row">
 									@foreach($soldProperties as $property)
-										<?php $image++; ?>
 										<div class="col-12 mb-4">
-											@include('properties.partials.sold')
+											@include('frontend.properties.partials.sold')
 										</div>
 									@endforeach
 								</div>
 							@endempty
-						</div>
+						</div> --}}
 						<div class="mb-4">
 							<div class="p-3 mb-4 bg-white shadow-sm rounded">
 								<h5 class="m-0">Property Categories</h5>
@@ -94,8 +90,8 @@
 			                @else
 			                	<div class="row">
 			                        @foreach($propertyCategories as $category)
-				                        <div class="col-12 col-lg-6">
-				                        	@include('properties.partials.categories')
+				                        <div class="col-12">
+				                        	@include('frontend.properties.partials.categories')
 				                        </div>
 			                        @endforeach
 			                    </div>
@@ -106,5 +102,5 @@
 			</div>
 		</section>
     </div>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')

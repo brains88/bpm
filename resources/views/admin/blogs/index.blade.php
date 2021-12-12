@@ -3,7 +3,7 @@
         @include('admin.layouts.navbar')
         <div class="section-padding">
             <div class="container">
-                <div class="row flex-md-column-reverse">
+                <div class="row flex-md-column-reverse flex-lg-row">
                     <div class="col-12 col-lg-6">
                         @if(empty($allBlogs->count()))
                             <div class="alert-info alert">No blogs yet</div>

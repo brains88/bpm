@@ -26,25 +26,6 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bolder mb-1">
-                    Expenses
-                </a>
-                <h6 class="text-muted m-0">
-                    0{{-- {{ \App\Models\User::count() }} --}}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-3 mb-4">
-    <div class="card border-0 rounded bg-main-dark panel">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-0 text-center text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
                 <a href="{{ route('admin.blogs') }}" class="d-block text-smoky font-weight-bold mb-1">
                     Blogs
                 </a>
@@ -141,25 +122,6 @@
             </div>
             <div class="">
                 <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bolder mb-1">
-                    Houses
-                </a>
-                <h6 class="text-muted m-0">
-                    {{ number_format(\App\Models\House::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-3 mb-4">
-    <div class="card border-0 rounded bg-main-dark panel">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-0 text-center text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bolder mb-1">
                     Skills
                 </a>
                 <h6 class="text-muted m-0">
@@ -183,25 +145,6 @@
                 </a>
                 <h6 class="text-muted m-0">
                     {{ number_format(\App\Models\Payment::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-3 mb-4">
-    <div class="card border-0 rounded bg-main-dark panel">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-0 text-center text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-smoky font-weight-bolder mb-1">
-                    Visitors
-                </a>
-                <h6 class="text-muted m-0">
-                    0{{-- {{ number_format(\App\Models\Transaction::count()) }} --}}
                 </h6>
             </div>
         </div>

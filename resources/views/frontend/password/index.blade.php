@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
 	<section class="bg-violet py-5">
 		<div class="container my-5 pt-2">
 			<div class="row align-items-center my-5 pt-5">
@@ -24,5 +24,5 @@
 			</div>
 		</div>
 	</section>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')

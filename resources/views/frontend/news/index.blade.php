@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <div class="position-relative border-bottom">
     	<section class="news-banner">
 			<div class="container">
@@ -29,7 +29,7 @@
 									@else
 										@foreach($articles as $news)
 											<div class="col-12">
-												@include('news.partials.card')
+												@include('frontend.news.partials.card')
 											</div>
 										@endforeach
 									@endif
@@ -57,7 +57,7 @@
 									</div>
 								</div>
 								<div class="col-12 mb-4">
-									{{-- @include('news.partials.card') --}}
+									{{-- @include('frontend.news.partials.card') --}}
 									<div class="card p-0 border-0">
 									    <img src="/images/news/1.jpg" class="img-fluid rounded-0 card-img-top" alt="">
 									    <div class="card-body px-0">
@@ -115,5 +115,5 @@
 			</div>
 		</section>
     </div>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')

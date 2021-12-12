@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <section class="position-relative">
         <div class="home-banner">
             <div class="container">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div id="properties-form-home-search" class="collapse" aria-labelledby="search-accordion" data-parent="#properties-search">
                                     <div class="card-body">
-                                        @include('properties.partials.search')
+                                        @include('frontend.properties.partials.search')
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                         {{-- <div class="properties-home-search-form border-dark-500 position-relative p-4 rounded" style="background-color: rgba(0, 0, 0, 0.2);">
                             <h2 class="text-white mb-3">Find Properties </h2>
                             <div class="mb-4">
-                                @include('properties.partials.search')
+                                @include('frontend.properties.partials.search')
                             </div>
                         </div> --}}
                     </div>
@@ -64,12 +64,10 @@
                 @empty($allProperties->count())
                     <div class="alert alert-info">No Properties Listed</div>
                 @else
-                    <?php $image = 1; ?>
                     <div class="row">
                         @foreach($allProperties as $property)
-                            <?php $image++; ?>
                             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                                @include('properties.partials.card')
+                                @include('frontend.properties.partials.card')
                             </div>
                         @endforeach
                     </div>
@@ -86,9 +84,9 @@
                 <div class="col-12 col-md-7 mb-4">
                     <div class="d-flex flex-wrap">
                         <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Realtors</div>
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Surveyors</div>
+                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Artisans</div>
                         <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Agents</div>
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3">Engineers</div>
+                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3">Dealers</div>
                     </div>
                     <h1 class="font-weight-bolder mb-4 text-white">Are you an Agent, Realtor, or a business person? <span class="text-tillgreen">List</span> your properties for sale.</h1>
                     <div class="">
@@ -176,5 +174,5 @@
             </div>
         </div>
     </section>
-    @include('layouts.bottom')
+    @include('frontend.layouts.bottom')
 @include('layouts.footer')

@@ -1,6 +1,6 @@
 @include('layouts.header')
 <div class="bg-alabaster min-vh-100">
-    @include('user.partials.navbar')
+    @include('frontend.partials.navbar')
     <div class="position-relative">
         <div class="user-dashboard">
             <div class="container">

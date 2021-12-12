@@ -48,7 +48,7 @@
 											</small>
 											Create your personal account. It's free.
 										</div>
-										@include('signup.partials.individual')
+										@include('frontend.signup.partials.individual')
 									</div>
 									<div class="tab-pane fade" id="corporate" role="tabpanel" aria-labelledby="corporate-tab">
 										<div class="mb-4 alert alert-info">
@@ -57,7 +57,7 @@
 											</small>
 											Create a corporate account. It's free.
 										</div>
-										@include('signup.partials.corporate')
+										@include('frontend.signup.partials.corporate')
 									</div>
 								</div>
 							</div>

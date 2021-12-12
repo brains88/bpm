@@ -1,10 +1,10 @@
-<?php $propertytitle = property()->title($property); ?>
+<?php $propertytitle = retitle($property); ?>
 <div class="card border bg-transparent position-relative m-0 rounded">
     <div class="position-relative" style="height: 225px;">
         <small class="position-absolute border-bottom border-top {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-tillgreen' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
             {{ ucwords($property->status) }}
         </small>
-        <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}">
+        <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="d-block">
             <img src="{{ $property->image }}" class="card-img-top img-fluid object-cover rounded w-100 h-100 border" alt="{{ $propertytitle }}">
         </a>
         <div class="p-3 position-absolute d-flex align-items-center justify-content-between" style="background-color: rgba(0, 0, 0, 0.8); bottom: 0; left: 0; right: 0;">
@@ -26,21 +26,14 @@
     </div>
     <div class="card-body bg-transparent m-0 pb-1">
         <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? '-', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="d-block text-main-dark mb-3" style="text-decoration: underline;">
-        	<div class="position-relative">
-        		<h5 class="text-main-dark d-inline mb-0">
-	            	{{ \Str::limit($propertytitle, 50) }}
-	            </h5>
-        	</div>
+    		<small class="text-main-dark d-inline mb-0">
+               {{ \Str::limit($propertytitle, 50) }}
+            </small>
         </a>
         <div class="d-flex mb-3">
-            <div class="text-dark-500 mr-2">
+            <small class="text-dark-500 mr-2">
                 By {{ $property->user->name ?? env('APP_NAME') }} ({{ ucfirst($property->country->name ?? 'Nigeria') }})
-            </div>
-        </div>
-        <div class="d-flex mb-4">
-            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? '-', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-dark-500 mr-3 text-underline">
-                {{ \Str::limit(ucfirst($property->address), 35) }}
-            </a>
+            </small>
         </div>
         <div class="row">
             <div class="col-12 col-md-6 mb-4">

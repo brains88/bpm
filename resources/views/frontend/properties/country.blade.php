@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <div class="position-relative bg-main-ash border-bottom">
     	<section class="properties-banner">
 			<div class="container">
@@ -18,7 +18,7 @@
 								@foreach($countryProperties as $property)
 									<?php $image++; ?>
 									<div class="col-12 col-lg-6 mb-4">
-										@include('properties.partials.card')
+										@include('frontend.properties.partials.card')
 									</div>
 								@endforeach
 							</div>
@@ -33,7 +33,7 @@
 			                    <div class="alert alert-info">No Categories Yet</div>
 			                @else
 		                        @foreach($propertyCategories as $category)
-			                        @include('properties.partials.categories')
+			                        @include('frontend.properties.partials.categories')
 		                        @endforeach
 			                @endempty
 						</div>
@@ -49,7 +49,7 @@
 									@foreach($soldProperties as $property)
 										<?php $image++; ?>
 										<div class="col-12 mb-4">
-											@include('properties.partials.sold')
+											@include('frontend.properties.partials.sold')
 										</div>
 									@endforeach
 								</div>
@@ -60,5 +60,5 @@
 			</div>
 		</section>
     </div>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')

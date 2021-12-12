@@ -10,6 +10,6 @@ class ArtisansController extends Controller
      */
     public function index()
     {
-        return view('artisans.index');
+        return view('frontend.artisans.index');
     }
 }

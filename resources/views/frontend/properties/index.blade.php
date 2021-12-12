@@ -1,5 +1,5 @@
 @include('layouts.header')
-    @include('layouts.navbar')
+    @include('frontend.layouts.navbar')
     <div class="position-relative border-bottom">
     	<section class="properties-banner">
 			<div class="container">
@@ -16,7 +16,7 @@
 							    </div>
 							    <div id="form-search" class="collapse" aria-labelledby="search-accordion" data-parent="#properties-search">
 							      	<div class="card-body">
-							        	@include('properties.partials.search')
+							        	@include('frontend.properties.partials.search')
 							      	</div>
 							    </div>
 							</div>
@@ -31,7 +31,7 @@
 							<div class="row">
 								@foreach($allProperties as $property)
 									<div class="col-12 col-lg-6 mb-4">
-										@include('properties.partials.card')
+										@include('frontend.properties.partials.card')
 									</div>
 								@endforeach
 							</div>
@@ -46,7 +46,7 @@
 			                    <div class="alert alert-info">No Categories Yet</div>
 			                @else
 		                        @foreach($propertyCategories as $category)
-			                        @include('properties.partials.categories')
+			                        @include('frontend.properties.partials.categories')
 		                        @endforeach
 			                @endempty
 						</div>
@@ -54,7 +54,7 @@
 							<div class="p-3 mb-4 bg-main-ash shadow-sm rounded">
 								<h5 class="m-0">Mortgage Calculator</h5>
 							</div>
-							@include('mortgage.index')
+							@include('frontend.mortgage.index')
 						</div>
 						<div class="">
 							@empty($soldProperties)
@@ -68,7 +68,7 @@
 									@foreach($soldProperties as $property)
 										<?php $image++; ?>
 										<div class="col-12 mb-4">
-											@include('properties.partials.sold')
+											@include('frontend.properties.partials.sold')
 										</div>
 									@endforeach
 								</div>
@@ -79,5 +79,5 @@
 			</div>
 		</section>
     </div>
-	@include('layouts.bottom')
+	@include('frontend.layouts.bottom')
 @include('layouts.footer')
