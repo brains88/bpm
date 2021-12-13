@@ -2,7 +2,7 @@
     <div class="card-img position-relative">
         <div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
             <small class="text-white">
-                1280 X 960
+                (1280 X 960)
             </small>
             <div class="d-flex position-relative">
                 <small>
@@ -18,7 +18,7 @@
         <div class="add-blog-image-loader-{{ $blog->id }} d-none position-absolute p-3 rounded-circle text-center border" style="bottom: 50%; right: 50%; z-index: 4; transform: translate(50%, 50%); background-color: rgba(0, 0, 0, 0.75); width: 70px; height: 70px; line-height: 35px;" data-id="{{ $blog->id }}">
             <img src="/images/spinner.svg">
         </div>
-        <div style="height: 210px;">
+        <div style="height: 160px;">
             <img src="{{ empty($blog->image) ? 'https://picsum.photos/1260/960?random'.rand(25434, 90920) : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
         </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
             <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
                 <small class="text-muted">
-                    {{ \Str::limit(strip_tags($blog->description), 20) }}
+                    {{ \Str::limit(strip_tags($blog->title), 20) }}
                 </small>
             </a>
             <small class="text-success">
@@ -39,7 +39,7 @@
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
             </div>
             <small class="text-muted">
-                {{ ucfirst($blog->category->name ?? 'Nill') }}
+                {{ ucwords($blog->category->name ?? 'Nill') }}
             </small>
         </div>
     </div>
@@ -49,7 +49,7 @@
         </small>
         <div class="d-flex">
             <small class="mr-2">
-                <a href="{{ route('blog.edit', ['id' => $blog->id]) }}" class=" text-warning">
+                <a href="javascript:;" class=" text-warning" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
                     <i class="icofont-edit"></i>
                 </a>
             </small>

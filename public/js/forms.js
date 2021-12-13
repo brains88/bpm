@@ -32,4 +32,9 @@
         handleForm({form: $(this), button: 'add-blog-button', spinner: 'add-blog-spinner', message: 'add-blog-message'});
     });
 
+    $('.edit-blog-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-blog-button', spinner: 'edit-blog-spinner', message: 'edit-blog-message'});
+    });
+
 })(jQuery);

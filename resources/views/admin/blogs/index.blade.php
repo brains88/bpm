@@ -8,11 +8,8 @@
                         @if(empty($allBlogs->count()))
                             <div class="alert-info alert">No blogs yet</div>
                         @else
-                            <div class="alert alert-info d-flex align-items-center justify-content-between">
-                                <div>Latest blogs</div>
-                                <small>
-                                    {{ $allBlogs->links('vendor.pagination.links') }}
-                                </small>
+                            <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
+                                <small class="">All blogs ({{ \App\Models\Blog::count() }})</small>
                             </div>
                             <div class="row">
                                 @foreach($allBlogs as $blog)
@@ -28,64 +25,60 @@
                         @endif
                     </div>
                     <div class="col-12 col-lg-6">
-                        <div class="mb-4">
-                            <div class="alert alert-info d-flex justify-content-between align-items-center">
-                                <div class="text-muted mb-0">Add blog</div>
+                        <div class="mb-4 accordion" id="add-blog-accordion">
+                            <div class="alert alert-info d-flex justify-content-between align-items-center cursor-pointer" data-toggle="collapse" data-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
+                                <small class="">Add blog</small>
+                                <small class="">
+                                    <i class="icofont-caret-down"></i>
+                                </small>
                             </div>
-                            <form method="post" action="javascript:;" class="add-blog-form" data-action="{{ route('admin.blog.store'); }}" autocomplete="off">
-                                <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label class="form-label text-muted">Title</label>
-                                        <input type="text" name="title" class="form-control title" placeholder="e.g., How to buy a home">
-                                        <small class="invalid-feedback title-error"></small>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label class="form-label text-muted">Category (<a href="{{ url('/categories'); }}" target="_blank">Add category</a>)</label>
-                                        <select class="custom-select form-control category" name="category">
-                                            <option value="">Select Category</option>
-                                            @empty($blogCategories->count())
-                                                <option value="">No Categories</option>
-                                            @else
-                                                @foreach ($blogCategories as $category)
-                                                    <option value="{{ $category->id; }}">
-                                                        {{ ucwords($category->name) }}
-                                                    </option>
-                                                @endforeach
-                                            @endempty
-                                        </select>
-                                        <small class="invalid-feedback category-error"></small>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="form-label text-muted">Publish now?</label>
-                                        <select class="custom-select form-control status" name="status">
-                                            <?php $publishStatus = \App\Models\Blog::$publish; ?>
-                                            @empty($publishStatus)
-                                                <option value="">No Status</option>
-                                            @else
-                                                @foreach ($publishStatus as $key => $value)
-                                                    <option value="{{ (boolean)$value; }}">
-                                                        {{ ucfirst($key); }}
-                                                    </option>
-                                                @endforeach
-                                            @endempty
-                                        </select>
-                                        <small class="invalid-feedback status-error"></small>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-muted">Description</label>
-                                    <textarea class="form-control description" name="description" rows="4" placeholder="Add book description." id="blogDescription"></textarea>
-                                    <small class="invalid-feedback description-error"></small>
-                                </div>
-                                <div class="alert mb-3 add-blog-message d-none"></div>
-                                <button type="submit" class="btn btn-lg bg-main-dark text-white add-blog-button btn-block mt-3">
-                                    <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
-                                    Add blog
-                                </button>
-                            </form>
+                            <div id="collapse-one" class="collapse" aria-labelledby="heading-one" data-parent="#add-blog-accordion">
+                                @include('admin.blogs.partials.add')
+                            </div>
                         </div>
+                        <div class="">
+                            <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
+                                <small class="">Blog categories</small>
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-1" style="font-size: 8px;">
+                                        <i class="icofont-ui-add"></i>
+                                    </div>
+                                     <small class="">Add</small>
+                                 </div>
+                            </div>
+                            @if(empty($blogCategories->count()))
+                                <div class="alert alert-info">No blog categories</div>
+                            @else
+                                <div class="row">
+                                    @foreach($blogCategories as $category)
+                                        <div class="col-12 col-lg-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <a href="javascript:;" data-toggle="modal" data-target="#add-category">
+                                                        <small class="text-underline">
+                                                            {{ ucwords($category->name ?? '') }}
+                                                        </small>
+                                                    </a>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between bg-main-dark">
+                                                    <small class="text-white">
+                                                        {{ $category->created_at->diffForHumans() }}
+                                                    </small>
+                                                    <div class="d-flex">
+                                                        <small class="text-danger mr-2 cursor-pointer">
+                                                            <i class="icofont-trash"></i>
+                                                        </small>
+                                                        <small class="text-warning cursor-pointer">
+                                                            <i class="icofont-edit"></i>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div> 
                     </div>
                 </div>
             </div>

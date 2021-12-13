@@ -102,14 +102,12 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
     Route::prefix('blog')->group(function () {
         Route::post('/image/upload/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'image'])->name('blog.image.upload');
-        Route::get('/add', [\App\Http\Controllers\Admin\BlogsController::class, 'add'])->name('admin.blog.add');
         Route::post('/store', [\App\Http\Controllers\Admin\BlogsController::class, 'store'])->name('admin.blog.store');
 
         Route::post('/status/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'status'])->name('blog.status');
         Route::post('/delete/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'delete'])->name('blog.delete');
 
-        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'edit'])->name('blog.edit');
-        Route::post('/update/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'update'])->name('admin.blog.update');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'edit'])->name('admin.blog.edit');
     });
 
 });

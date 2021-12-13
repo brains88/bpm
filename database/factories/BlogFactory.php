@@ -32,6 +32,7 @@ class BlogFactory extends Factory
             'image' => $faker->imageUrl($width = 1260, $height = 960),
             'category_id' => $faker->numberBetween(1, 12),
             'description' => $faker->paragraph(25),
+            'reference' => \Str::random(32),
         ];
     }
 }

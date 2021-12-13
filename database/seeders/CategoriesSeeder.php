@@ -13,12 +13,23 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['lands', 'industrial', 'residential', 'commercial', 'vacation'];
+        $categories = [
+            ['name' => 'land', 'type' => 'property'], 
+            ['name' => 'industrial', 'type' => 'property'], 
+            ['name' => 'residential', 'type' => 'property'], 
+            ['name' => 'commercial', 'type' => 'property'], 
+            ['name' => 'vacation', 'type' => 'property'], 
+            ['name' => 'business', 'type' => 'blog'], 
+            ['name' => 'real estate', 'type' => 'blog'], 
+            ['name' => 'ecommerce', 'type' => 'blog'],
+            ['name' => 'construction', 'type' => 'blog'],
+            ['name' => 'politics', 'type' => 'news'],
+            ['name' => 'agency', 'type' => 'news'],
+            ['name' => 'marketing', 'type' => 'news'],
+        ];
+
         foreach ($categories as $category) {
-            Category::create([
-                'name' => $category,
-                'type' => 'property',
-            ]);
+            Category::create($category);
         }
     }
 }

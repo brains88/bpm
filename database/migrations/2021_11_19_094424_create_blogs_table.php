@@ -21,6 +21,7 @@ class CreateBlogsTable extends Migration
             $table->boolean('published')->nullable();
             $table->foreignId('category_id');
             $table->string('image')->nullable();
+            $table->string('reference')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

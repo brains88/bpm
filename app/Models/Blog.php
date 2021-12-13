@@ -23,7 +23,14 @@ class Blog extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'user_id', 'published', 'image', 'category_id', 'description', 'views'
+        'title', 
+        'user_id', 
+        'published', 
+        'image', 
+        'category_id', 
+        'description', 
+        'views',
+        'reference',
     ];
 
     /**

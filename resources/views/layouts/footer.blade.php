@@ -23,7 +23,16 @@
 
             <?php if(!empty($allBlogs)): ?>
                 <?php foreach($allBlogs as $blog): ?>
+
                     <?php $id = empty($blog->id) ? 0 : $blog->id; ?>
+                    var description = $('.blog-description-<?= $id; ?>');
+                    if (description) {
+                        description.summernote({
+                            tabsize: 4,
+                            height: 300
+                        });
+                    }
+
                     var button = $('.add-blog-image-<?= $id; ?>');
                     if (button) {
                         button.click(function(event) {
