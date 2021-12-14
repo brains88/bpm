@@ -12,14 +12,13 @@
             </div>
         </div>
         <form action="javascript:;">
-            @csrf
             <input type="file" name="image" accept="image/*" class="blog-image-input-{{ $blog->id }} d-none" data-url="{{ route('blog.image.upload', ['id' => $blog->id ]) }}">
         </form>
         <div class="add-blog-image-loader-{{ $blog->id }} upload-image-loader d-none position-absolute rounded-circle text-center border" data-id="{{ $blog->id }}">
             <img src="/images/spinner.svg">
         </div>
         <div style="height: 160px;">
-            <img src="{{ empty($blog->image) ? ''/images/banners/placeholder.png'' : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
+            <img src="{{ empty($blog->image) ? '/images/banners/holder.png' : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
         </div>
     </div>
     <div class="card-body">

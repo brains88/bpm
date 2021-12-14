@@ -1,7 +1,7 @@
 <div class="modal fade" id="add-property" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content border-0">
-            <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('admin.property.store') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('admin.property.add') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-smoky mb-0 font-weight-bold">Add property</div>
@@ -49,8 +49,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text">.00</span>
                                 </div>
-                            </div>
                             <small class="invalid-feedback price-error"></small>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -63,11 +63,10 @@
                             <label class="text-muted">Category</label>
                             <select class="form-control custom-select category" name="category">
                                 <option value="">-- Select category --</option>
-                                <?php $categories = \App\Models\Category::where(['type' => 'property']); ?>
-                                @if(empty($categories->count()))
+                                @if(empty($propertiesCategories->count()))
                                     <option>No Categories Listed</option>
                                 @else: ?>
-                                    @foreach ($categories as $category)
+                                    @foreach ($propertiesCategories as $category)
                                         <option value="{{ $category->id }}">
                                             {{ ucwords($category->name ?? 0) }}
                                         </option>

@@ -1,8 +1,17 @@
 <div class="card card-{{ $property->id }} border-top-0">
-	<div class="position-relative">
-		<div class="position-relative" style="height: 160px; line-height: 160px;">
-			<img src="/images/banners/holder.png" class="img-fluid card-img-top w-100 h-100 object-cover">
-		</div>
+	<div class="card-img-top position-relative" style="height: 160px; line-height: 160px;">
+		<img src="/images/banners/holder.png" class="img-fluid card-img-top w-100 h-100 object-cover">
+		<div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 40px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
+            <small class="text-white">
+                {{ $property->measurement ?? 'Nill' }}
+            </small>
+            <div class="d-flex position-relative">
+                <small>
+                    <i class="icofont-camera cursor-pointer text-white add-property-image-{{ $property->id }}" data-id="{{ $property->id }}">
+                    </i>
+                </small>
+            </div>
+        </div>
 	</div>
 	{{-- <div class="px-3 pt-3 bg-info" style="bottom: 0; right: 0; left: 0;">
 		<div class="row">
@@ -57,7 +66,7 @@
 			</small>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ '' }}" class="text-underline">
+			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'reference' => $property->reference]) }}" class="text-underline">
 				<small class="text-main-dark">
 					{{ \Str::limit($property->address, 18) }}
 				</small>

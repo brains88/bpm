@@ -27,13 +27,17 @@ class Property extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'type',
-        'status',
-        'role'
+        'country_id',
+        'state_id',
+        'address',
+        'city',
+        'action',
+        'category_id',
+        'measurement',
+        'user_id',
+        'additional',
+        'reference',
+        'price',
     ];
 
     /**

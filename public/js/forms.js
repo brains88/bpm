@@ -42,4 +42,9 @@
         handleForm({form: $(this), button: 'add-property-button', spinner: 'add-property-spinner', message: 'add-property-message'});
     });
 
+    $('.edit-property-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-property-button', spinner: 'edit-property-spinner', message: 'edit-property-message'});
+    });
+
 })(jQuery);

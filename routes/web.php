@@ -81,8 +81,12 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     });
 
     Route::prefix('property')->group(function () {
-        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
-        Route::post('/store', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.store');
+        Route::post('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
+        Route::get('/edit/{id}/{reference}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
+
+        Route::post('/update/{id}/{reference}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.update');
+
+        Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Admin\PropertiesController::class, 'image'])->name('admin.property.image.upload');
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
