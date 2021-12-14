@@ -82,6 +82,7 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
     Route::prefix('property')->group(function () {
         Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
+        Route::post('/store', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.store');
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');

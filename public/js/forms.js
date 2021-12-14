@@ -37,4 +37,9 @@
         handleForm({form: $(this), button: 'edit-blog-button', spinner: 'edit-blog-spinner', message: 'edit-blog-message'});
     });
 
+    $('.add-property-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-property-button', spinner: 'add-property-spinner', message: 'add-property-message'});
+    });
+
 })(jQuery);

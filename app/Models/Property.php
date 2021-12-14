@@ -43,9 +43,9 @@ class Property extends Model
      */
     public static $conditions = [
         'Furnished', 
-        'Not furnished', 
+        'Unfurnished', 
         'Newly Built',
-        'Partly Furnished', 
+        'Old', 
     ];
 
     /**

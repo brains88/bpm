@@ -2,6 +2,21 @@
 
     'use strict';
 
+    var plans = $('#data-plan');
+    var options = $(plans).children('option[class="options"]');
+    options.hide();
+    $('#data-list').on('change',function(){
+        options.hide();
+        options.prop("selected", false);
+        var id = $(this).find(':selected').val();
+        var childrens = $(plans).children("option[data-item='"+id+"']");
+        if (childrens.length == 0) {
+            alert('No list for the selected item');
+            return;
+        }
+        childrens.show();
+    });
+
     $('.hanburger-icon').on('click', function() {
         $('.navbar-menu').toggleClass('navbar-toggle');
         $('.hanburger-icon').toggleClass('slide');

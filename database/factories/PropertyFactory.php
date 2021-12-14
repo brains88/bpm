@@ -42,6 +42,7 @@ class PropertyFactory extends Factory
             'measurement' => $faker->numberBetween(500, 6500),
             'city' => $faker->city,
             'additionals' => $faker->paragraph(15),
+            'reference' => \Str::uuid(),
         ];
     }
 }
