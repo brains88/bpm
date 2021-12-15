@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.home.index')->with(['title' => 'Home | Geohomes Services Limited', 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('action', '!=', 'sold off')->paginate(9)]);
+        return view('frontend.home.index')->with(['title' => env('APP_NAME'), 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('action', '!=', 'sold off')->paginate(9)]);
     }
 }

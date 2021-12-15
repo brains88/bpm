@@ -1,82 +1,36 @@
 <div class="card card-{{ $property->id }} border-top-0">
+	<?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
 	<div class="card-img-top position-relative" style="height: 160px; line-height: 160px;">
-		<img src="/images/banners/holder.png" class="img-fluid card-img-top w-100 h-100 object-cover">
-		<div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 40px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
-            <small class="text-white">
-                {{ $property->measurement ?? 'Nill' }}
-            </small>
-            <div class="d-flex position-relative">
-                <small>
-                    <i class="icofont-camera cursor-pointer text-white add-property-image-{{ $property->id }}" data-id="{{ $property->id }}">
-                    </i>
-                </small>
-            </div>
-        </div>
-	</div>
-	{{-- <div class="px-3 pt-3 bg-info" style="bottom: 0; right: 0; left: 0;">
-		<div class="row">
-			<?php $total = 3; ?>
-			@if($property->images->count() >= 1)
-				@for($key = 0; $key <= $total; $key++)
-		            <div class="col-6 mb-3">
-						<div class="position-relative" style="height: 50px;">
-							@if(!isset($property->images[$key]->link) && ($property->images[$key]->type_id ?? 0 == $property->id))
-								<img src="{{ $property->images[$key]->link }}" class="img-fluid rounded-0 w-100 h-100 object-cover border">
-								<div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
-									<div class="rounded-circle bg-dark text-center" style="width: 32.5px; height: 32.5px; line-height: 30px;">
-										<small class="text-white">
-											<i class="icofont-camera"></i>
-										</small>
-									</div>	
-								</div>
-							@else
-								<div class="w-100 position-relative h-100 bg-dark cursor-pointer border" style="line-height: 50px;">
-									<div class="rounded-circle position-absolute text-center bg-white" style="width: 32.5px; height: 32.5px; line-height: 30px; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-										<small class="text-dark">
-											<i class="icofont-camera"></i>
-										</small>
-									</div>
-								</div>
-							@endif
-						</div>
-					</div>
-		       	@endfor
-	       	@else
-	       		@for($key = 0; $key <= $total; $key++)
-		            <div class="col-6 mb-3">
-						<div class="w-100 bg-dark position-relative text-white cursor-pointer text-center border" style="height: 50px; line-height: 50px;">
-							<div class="text-center position-absolute bg-white rounded-circle" style="width: 32.5px; height: 32.5px; line-height: 30px; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-								<small class="text-dark">
-									<i class="icofont-camera"></i>
-								</small>
-							</div>
-						</div>
-					</div>
-		       	@endfor
-		    @endif
+		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
+			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid card-img-top w-100 h-100 object-cover">
+		</a>
+		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center" style="height: 40px; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
+			<small class="text-white">
+				{{ ucwords($property->country->name ?? 'Nill') }}
+			</small>
 		</div>
-	</div> --}}
+	</div>
 	<div class="card-body">
 		<div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
 			<small class="text-main-dark">
-				{{ ucfirst($property->category->name) }}
+				{{ ucfirst($categoryname) }}
 			</small>
 			<small class="text-main-dark">
 				{{ ucwords($property->action ?? 'Nill') }}
 			</small>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'reference' => $property->reference]) }}" class="text-underline">
+			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline">
 				<small class="text-main-dark">
-					{{ \Str::limit($property->address, 18) }}
+					{{ \Str::limit($property->address, 16) }}
 				</small>
 			</a>
 			<div class="dropdown">
                 <a href="javascript:;" class="text-main-dark align-items-center df
                 " id="status-{{ $property->id }}" data-toggle="dropdown">
-                    <small>({{ ucwords($property->status ?? '') }})</small>
+                    {{-- <small>({{ ucwords($property->status ?? '') }})</small> --}}
                     <small>
-                    	<i class="icofont icofont-caret-down"></i>
+                    	(<i class="icofont icofont-caret-down"></i>)
                     </small>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $property->id }}">
@@ -93,17 +47,14 @@
             </div>
 		</div>
 	</div>
-	<div class="card-footer d-flex justify-content-between bg-main-dark">
+	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
 		<small class="text-white">
-			{{ $property->created_at->diffForHumans() }}
+			Posted {{ $property->created_at->diffForHumans() }}
 		</small>
-		<div class="d-flex">
-			<small class="text-danger mr-2">
-				<i class="icofont-trash"></i>
-			</small>
+		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
 			<small class="text-warning">
 				<i class="icofont-edit"></i>
 			</small>
-		</div>
+		</a>
 	</div>
 </div>

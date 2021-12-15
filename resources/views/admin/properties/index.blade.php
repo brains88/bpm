@@ -12,19 +12,19 @@
                                 Add property
                             </small>
                         </a>
-                        @include('admin.properties.partials.add')
-                        <a class="text-underline" href="javascript:;">
-                            <small class="">
-                                Filter
-                            </small>
-                        </a>
+                        @include('admin.properties.forms.add')
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
                         <a class="" href="javascript:;">
-                            <small class="">
+                            <small class="mr-2 font-weight-bold">
                                 <i class="icofont-search"></i>
+                            </small>
+                        </a>
+                        <a class="text-underline" href="javascript:;">
+                            <small class="">
+                                Date filter
                             </small>
                         </a>
                     </div>

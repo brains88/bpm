@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AboutController, LoginController, SignupController, ServicesController, VerifyController, ContactController, PropertiesController, AgentsController, NewsController, ArtisansController, AdminController, UserController, PasswordController};
+use App\Http\Controllers\{HomeController, AboutController, LoginController, SignupController, ServicesController, VerifyController, ContactController, PropertiesController, AgentsController, NewsController, ArtisansController, AdminController, UserController, PasswordController, CountriesController};
 
 /*
 |--------------------------------------------------------------------------
@@ -75,16 +75,19 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
 
 Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
         Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
+        Route::get('/country/{countryid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
     });
+
 
     Route::prefix('property')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
-        Route::get('/edit/{id}/{reference}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
+        Route::get('/edit/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
 
-        Route::post('/update/{id}/{reference}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.update');
+        Route::post('/update/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.update');
 
         Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Admin\PropertiesController::class, 'image'])->name('admin.property.image.upload');
     });

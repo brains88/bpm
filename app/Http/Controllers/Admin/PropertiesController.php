@@ -41,7 +41,6 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $reference = \Str::uuid();
         $property = Property::create([
             'country_id' => $data['country'],
             'state_id' => $data['state'],
@@ -52,26 +51,34 @@ class PropertiesController extends Controller
             'measurement' => $data['dimension'],
             'user_id' => auth()->user()->id ?? 0,
             'additional' => $data['additional'],
-            'reference' => $reference,
+            'reference' => \Str::uuid(),
             'price' => $data['price'],
         ]);
 
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => route('admin.property.edit', ['id' => $property->id, 'reference' => $reference])
-        ]);     
+        if ($property) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => route('admin.property.edit', ['id' => $property->id, 'category' => $property->category->name ?? 'any']),
+            ]); 
+        }else {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ]);   
+        }
+
     }
 
     /**
      * Admin edit Property
      */
-    public function edit($id = 0, $reference = '')
+    public function edit($id = 0, $category = '')
     {
         $method = strtolower(request()->method());
         switch ($method) {
             case 'get':
-                return view('admin.properties.edit')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get(), 'property' => Property::find($id), 'allCountries' => Country::all()]);
+                return view('admin.properties.edit')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get(), 'property' => Property::find($id), 'allCountries' => Country::all(), 'category' => $category]);
                 break;
             case 'post':
                 $data = request()->all();
@@ -109,7 +116,7 @@ class PropertiesController extends Controller
                 return response()->json([
                     'status' => 1, 
                     'info' => 'Operation successful',
-                    'redirect' => route('admin.property.edit', ['id' => $property->id, 'reference' => $reference])
+                    'redirect' => route('admin.property.edit', ['id' => $property->id, 'category' => $category])
                 ]);
             default:
                 throw new Exception('Invalid request method');
@@ -160,6 +167,10 @@ class PropertiesController extends Controller
 
             $image->move($path, $filename);
             $property->update();
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful'
+            ]);
         }else {
             $imageid = $role;
             $picture = Image::where(['type_id' => $id, 'id' => $imageid])->first();
@@ -203,6 +214,18 @@ class PropertiesController extends Controller
             }
                 
         }     
+    }
+
+    /**
+     * Admin get properties by country
+     */
+    public function country($countryid = 0)
+    {
+        $properties = Property::whereHas('country', function ($query) use ($countryid) {
+            $query->where(['id' => $countryid]);
+        })->cursorPaginate(10);
+        $categories = Category::where(['type' => 'property'])->get(); //Property categories only
+        return view('admin.properties.country')->with(['properties' => $properties, 'categories' => $categories]);
     }
 
 }

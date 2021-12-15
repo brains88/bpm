@@ -93,7 +93,7 @@
             <?php if(!empty($property)): ?>
                 <?php $total = 3; ?>
                 <?php for($key = 0; $key <= $total; $key++): ?>
-                    <?php $imageid = $property->images[$key]->id ?? $key; ?>
+                    <?php $imageid = $property->images[$key]->id ?? 'create-'.$key; ?>
                     var button = $('.add-other-property-image-<?= $imageid; ?>');
 
                     if (button) {
@@ -140,7 +140,7 @@
 
                                 request.fail(function(response) {
                                     loader.addClass('d-none').fadeOut();
-                                    alert('You must upload a valid image and the size must be 10MB or less.');
+                                    alert('Network error. Try again.');
                                     // window.location.reload()
                                 });
                             });
@@ -187,7 +187,6 @@
                                             });
                                         })(imagePreview);
                                         reader.readAsDataURL(files[0]);
-                                        alert(response.info);
                                     }else {
                                         loader.addClass('d-none').fadeOut();
                                         alert('You must upload a valid image and the size must be 10MB or less.');

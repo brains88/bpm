@@ -14,4 +14,13 @@ class Country extends Model
      * @var string[]
      */
     protected $fillable = [];
+
+    /**
+     * A country may have many properties
+     */
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'country_id');
+    }
+
 }
