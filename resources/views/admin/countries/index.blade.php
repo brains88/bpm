@@ -7,11 +7,6 @@
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
                         <small class="mr-2">All countries ({{ \App\Models\Country::count() }})</small>
-                        <a href="javascript:;" class="text-underline" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
-                            <small class="mr-2">
-                                Add property
-                            </small>
-                        </a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
@@ -39,6 +34,9 @@
                                 @include('admin.countries.partials.card')
                             </div>
                         @endforeach
+                    </div>
+                    <div class="mb-4 alert-info alert">
+                        {{ $countries->links('vendor.pagination.links') }}
                     </div>
                 @endif
             </div>

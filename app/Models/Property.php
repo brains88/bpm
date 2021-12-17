@@ -15,10 +15,11 @@ class Property extends Model
      * @var string[]
      */
     public static $actions = [
-        'rent' => 'To Rent', 
-        'sale' => 'For Sale', 
-        'lease' => 'For Lease', 
-        'sold' => 'Sold off',
+        'rent' => 'for rent', 
+        'auction' => 'auction',
+        'sale' => 'for sale', 
+        'lease' => 'for lease', 
+        'sold' => 'sold',
     ];
 
     /**
@@ -46,10 +47,10 @@ class Property extends Model
      * @var string[]
      */
     public static $conditions = [
-        'Furnished', 
-        'Unfurnished', 
-        'Newly Built',
-        'Old', 
+        'furnished', 
+        'unfurnished', 
+        'newly built',
+        'old', 
     ];
 
     /**

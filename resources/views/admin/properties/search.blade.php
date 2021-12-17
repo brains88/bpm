@@ -9,7 +9,7 @@
                         <small class="mr-2">All properties ({{ \App\Models\Property::count() }})</small>
                         <a href="javascript:;" class="text-underline" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
                             <small class="mr-2">
-                                Add
+                                Add property
                             </small>
                         </a>
                         @include('admin.properties.forms.add')
@@ -17,12 +17,11 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
-                        <a class="text-underline" href="javascript:;" data-target="#search-properties" data-toggle="modal">
-                            <small class="mr-2">
-                                Search
+                        <a class="" href="javascript:;">
+                            <small class="mr-2 font-weight-bold">
+                                <i class="icofont-search"></i>
                             </small>
                         </a>
-                        @include('admin.properties.forms.search')
                         <a class="text-underline" href="javascript:;">
                             <small class="">
                                 Date filter

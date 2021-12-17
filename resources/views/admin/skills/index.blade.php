@@ -6,44 +6,39 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
-                        <small class="mr-2">All properties ({{ \App\Models\Property::count() }})</small>
-                        <a href="javascript:;" class="text-underline" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                        <small class="mr-2">All skills ({{ \App\Models\Skill::count() }})</small>
+                        <a href="javascript:;" class="text-underline" data-url="{{ route('admin.skill.add') }}" data-target="#add-skill" data-toggle="modal">
                             <small class="mr-2">
-                                Add
+                                Add skill
                             </small>
                         </a>
-                        @include('admin.properties.forms.add')
+                        @include('admin.skills.forms.add')
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
-                        <a class="text-underline" href="javascript:;" data-target="#search-properties" data-toggle="modal">
-                            <small class="mr-2">
-                                Search
-                            </small>
-                        </a>
-                        @include('admin.properties.forms.search')
                         <a class="text-underline" href="javascript:;">
                             <small class="">
-                                Date filter
+                                Search skills
                             </small>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="">
-                @if(empty($properties->count()))
-                    <div class="alert-info alert">No properties yet</div>
+                @if(empty($skills->count()))
+                    <div class="alert-info alert">No skills listed</div>
                 @else
                     <div class="row">
-                        @foreach($properties as $property)
+                        @foreach($skills as $skill)
                             <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                @include('admin.properties.partials.card')
+                                @include('admin.skills.partials.card')
                             </div>
+                            @include('admin.skills.forms.edit')
                         @endforeach
                     </div>
                     <div class="mb-4 alert-info alert">
-                        {{ $properties->links('vendor.pagination.links') }}
+                        {{ $skills->links('vendor.pagination.links') }}
                     </div>
                 @endif
             </div>

@@ -76,18 +76,31 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
 Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
-    Route::prefix('properties')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
-        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
-        Route::get('/country/{countryid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
+
+    Route::get('/skills', [\App\Http\Controllers\Admin\SkillsController::class, 'index'])->name('admin.skills');
+    Route::prefix('skill')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Admin\SkillsController::class, 'add'])->name('admin.skill.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SkillsController::class, 'edit'])->name('admin.skill.edit');
     });
 
+    Route::prefix('properties')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
+        Route::get('/search/{query?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'search'])->name('admin.properties.search');
+
+        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
+
+        Route::get('/country/{countryid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
+
+        Route::get('/category/{categoryname}', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.properties.category');
+
+        Route::get('/user/{userid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'user'])->name('admin.properties.user');
+    });
 
     Route::prefix('property')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
         Route::get('/edit/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
 
-        Route::post('/update/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.update');
+        Route::post('/update/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'update'])->name('admin.property.update');
 
         Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Admin\PropertiesController::class, 'image'])->name('admin.property.image.upload');
     });
@@ -98,6 +111,18 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
     });
 
+    Route::prefix('users')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::post('/profile/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'profile'])->name('admin.user.profile');
+        Route::post('/properties/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'properties'])->name('admin.user.properties');
+    });
+
+    
+
     Route::prefix('subcategory')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'add'])->name('admin.subcategory.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'edit'])->name('admin.subcategory.edit');
@@ -105,7 +130,6 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
-        Route::get('/categories', [\App\Http\Controllers\Admin\BlogsController::class, 'categories'])->name('admin.blogs.categories');
     });
 
     Route::prefix('blog')->group(function () {

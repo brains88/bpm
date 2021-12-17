@@ -4,10 +4,10 @@
             <label class="text-muted">Country located</label>
             <select class="form-control custom-select country" name="country">
                 <option value="">-- Select country --</option>
-                @if(empty($allCountries->count()))
+                @if(empty($countries->count()))
                     <option>No Countries Listed</option>
                 @else: ?>
-                    @foreach ($allCountries as $country)
+                    @foreach ($countries as $country)
                         <option value="{{ $country->id }}" {{ $country->id == $property->country_id ? 'selected' : '' }}>
                             {{ ucwords($country->name ?? '') }}
                         </option>
@@ -34,7 +34,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input type="number" class="form-control price" name="price" placeholder="e.g., 20000000" value="{{ $property->price ?? '' }}">
+                <input type="number" class="form-control price" name="price" placeholder="e.g., 20000000" value="{{ $property->price ?? 0 }}">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -52,10 +52,10 @@
             <label class="text-muted">Category</label>
             <select class="form-control custom-select category" name="category">
                 <option value="">-- Select category --</option>
-                @if(empty($propertiesCategories->count()))
+                @if(empty($categories->count()))
                     <option>No Categories Listed</option>
                 @else: ?>
-                    @foreach ($propertiesCategories as $category)
+                    @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $category->id == $property->category_id ? 'selected' : '' }}>
                             {{ ucwords($category->name ?? 0) }}
                         </option>
@@ -74,12 +74,10 @@
                 @if(empty($actions))
                     <option>No Actions Listed</option>
                 @else: ?>
-                    @foreach ($actions as $action)
-                        @if(stripos($action, 'Sold') === false)
-                            <option value="{{ $action }}" {{ $action == $property->action ? 'selected' : '' }}>
-                                {{ ucwords($action ?? 0) }}
-                            </option>
-                        @endif
+                    @foreach ($actions as $key => $value)
+                        <option value="{{ $key }}" {{ stripos($property->action, $key) !== false ? 'selected' : '' }}>
+                            {{ ucwords($value ?? 'any') }}
+                        </option>
                     @endforeach
                 @endif
             </select>

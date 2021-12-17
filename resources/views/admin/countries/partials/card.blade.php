@@ -1,10 +1,9 @@
 <div class="card">
-	<?php $countrycode = $country->code ?? 'ng'; ?>
 	<div style="height: 120px;">
-		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ $countrycode }}.png" class="img-fluid object-cover h-100 w-100">
+		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ $country->code ?? 'ng' }}.png" class="img-fluid object-cover h-100 w-100">
 	</div>
 	<div class="card-body">
-		<div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom">
+		<div class="d-flex align-items-center justify-content-between">
 			<div class="dropdown">
                 <a href="javascript:;" class="text-main-dark d-flex align-items-center" data-toggle="dropdown">
                     <small>{{ ucwords($country->name ?? 'Nill') }}</small>
@@ -18,19 +17,11 @@
                 	</div>
                 </div>
             </div>
-            <small class="text-dark">
-            	({{ $country->currency_code ?? 'Nill' }})
-            </small>
-		</div>
-		<div class="d-flex align-items-center justify-content-between">
-			<a href="{{ route('admin.properties.country', ['countryid' => $country->id]) }}" class="text-underline">
-				<small class="text-dark">
+            <a href="{{ route('admin.properties.country', ['countryid' => $country->id]) }}" class="text-underline text-dark">
+				<small class="">
 	            	({{ $country->properties->count() ?? '0' }}) properties
 	            </small>
             </a>
-            <a href="{{ route('admin.properties.country', ['countryid' => $country->id]) }}">
-            	<small class="text-dark">View </small>
-            </a>  
 		</div>
 	</div>
 	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">

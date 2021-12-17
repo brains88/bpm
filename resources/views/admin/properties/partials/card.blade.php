@@ -4,24 +4,33 @@
 		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
 			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid card-img-top w-100 h-100 object-cover">
 		</a>
-		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center" style="height: 40px; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
-			<small class="text-white">
-				{{ ucwords($property->country->name ?? 'Nill') }}
-			</small>
+		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.75);">
+			<a href="{{ route('admin.properties.user', ['userid' => $property->user->id ?? 0]) }}" class="text-underline">
+				<small class="text-white">
+					By {{ \Str::limit(ucwords($property->user->name ?? 'Nill'), 16) }}
+				</small>
+			</a>
+			<a href="{{ route('admin.properties.country', ['countryid' => $property->country->id ?? 0]) }}" class="text-underline">
+				<small class="text-white">
+					{{ \Str::limit(ucwords($property->country->name ?? 'Nill'), 16) }}
+				</small>
+			</a>
 		</div>
 	</div>
 	<div class="card-body">
 		<div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+			<a href="{{ route('admin.properties.category', ['categoryname' => $categoryname]) }}" class="text-underline text-dark">
+				<small class="">
+					{{ ucfirst($categoryname) }}
+				</small>
+			</a>
 			<small class="text-main-dark">
-				{{ ucfirst($categoryname) }}
-			</small>
-			<small class="text-main-dark">
-				{{ ucwords($property->action ?? 'Nill') }}
+				{{ ucwords($property->action ?? 'any') }}
 			</small>
 		</div>
-		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline">
-				<small class="text-main-dark">
+		<div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline text-main-dark">
+				<small class="">
 					{{ \Str::limit($property->address, 16) }}
 				</small>
 			</a>
@@ -46,10 +55,13 @@
                 </div>
             </div>
 		</div>
+		<div class="d-flex justify-content-between align-items-center">
+			
+		</div>
 	</div>
 	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
 		<small class="text-white">
-			Posted {{ $property->created_at->diffForHumans() }}
+			Listed {{ $property->created_at->diffForHumans() }}
 		</small>
 		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
 			<small class="text-warning">

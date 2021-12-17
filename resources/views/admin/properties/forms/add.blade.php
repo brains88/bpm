@@ -14,7 +14,6 @@
                             <label class="text-muted">Country located</label>
                             <select class="form-control custom-select country" name="country">
                                 <option value="">-- Select country --</option>
-                                <?php $countries = \App\Models\Country::all(); ?>
                                 @if(empty($countries->count()))
                                     <option>No Countries Listed</option>
                                 @else: ?>
@@ -63,10 +62,10 @@
                             <label class="text-muted">Category</label>
                             <select class="form-control custom-select category" name="category">
                                 <option value="">-- Select category --</option>
-                                @if(empty($propertiesCategories->count()))
+                                @if(empty($categories->count()))
                                     <option>No Categories Listed</option>
                                 @else: ?>
-                                    @foreach ($propertiesCategories as $category)
+                                    @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">
                                             {{ ucwords($category->name ?? 0) }}
                                         </option>
@@ -85,10 +84,10 @@
                                 @if(empty($actions))
                                     <option>No Actions Listed</option>
                                 @else: ?>
-                                    @foreach ($actions as $action)
-                                        @if(stripos($action, 'Sold') === false)
-                                            <option value="{{ $action }}">
-                                                {{ ucwords($action ?? 0) }}
+                                    @foreach ($actions as $key => $value)
+                                        @if($key !== 'sold')
+                                            <option value="{{ $key }}">
+                                                {{ ucwords($value ?? 'any') }}
                                             </option>
                                         @endif
                                     @endforeach

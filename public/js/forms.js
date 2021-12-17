@@ -47,4 +47,19 @@
         handleForm({form: $(this), button: 'edit-property-button', spinner: 'edit-property-spinner', message: 'edit-property-message'});
     });
 
+    // $('.search-properties-form').submit(function(event){
+    //     event.preventDefault();
+    //     handleForm({form: $(this), button: 'search-properties-button', spinner: 'search-properties-spinner', message: 'search-properties-message'});
+    // });
+
+    $('.add-skill-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-skill-button', spinner: 'add-skill-spinner', message: 'add-skill-message'});
+    });
+
+    $('.edit-skill-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-skill-button', spinner: 'edit-skill-spinner', message: 'edit-skill-message'});
+    });
+
 })(jQuery);

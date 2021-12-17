@@ -7,15 +7,14 @@ use App\Http\ControllerS\Controller;
 
 class CountriesController extends Controller
 {
-    
     /**
-     * About page view
+     * Admin countries page view
      */
     public function index()
     {
-        $countries = Country::with('properties')->skip(0)->take(12)->get()->SortByDesc(function($country){
+        $countries = Country::with('properties')->get()->SortByDesc(function($country){
             return $country->properties->count();
-        });
+        })->paginate(16);
 
         return view('admin.countries.index')->with(['countries' => $countries]);
     }

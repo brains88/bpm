@@ -44,7 +44,7 @@ class News
         		'status' => 0,
         		'info' => 'Invalid request. Try again'
         	];
-        } catch (Exception $exception) {
+        } catch (Exception $error) {
             return [
         		'status' => 0,
         		'info' => 'An error occured. Try again later'

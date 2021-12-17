@@ -23,4 +23,12 @@ class Country extends Model
         return $this->hasMany(Property::class, 'country_id');
     }
 
+    /**
+     * A country belongs to a continent
+     */
+    public function continent()
+    {
+        return $this->belongsTo(Continent::class, 'continent_id');
+    }
+
 }

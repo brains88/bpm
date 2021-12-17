@@ -13,7 +13,8 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('admin.properties.index')->with(['allProperties' => Property::paginate(20), 'propertiesCategories' => Category::where(['type' => 'property'])->get()]);
+        $properties = Property::latest('created_at')->paginate(16);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
     /**
@@ -71,57 +72,66 @@ class PropertiesController extends Controller
     }
 
     /**
-     * Admin edit Property
+     * Admin edit Property view
      */
-    public function edit($id = 0, $category = '')
+    public function edit($id = 0, $category = 'any')
     {
-        $method = strtolower(request()->method());
-        switch ($method) {
-            case 'get':
-                return view('admin.properties.edit')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get(), 'property' => Property::find($id), 'allCountries' => Country::all(), 'category' => $category]);
-                break;
-            case 'post':
-                $data = request()->all();
-                $validator = Validator::make($data, [
-                    'country' => ['required', 'integer'],
-                    'state' => ['required', 'integer'],
-                    'category' => ['required', 'integer'],
-                    'address' => ['required', 'string'],
-                    'city' => ['required', 'string'],
-                    'action' => ['required', 'string'],
-                    'measurement' => ['required', 'string'],
-                    'additional' => ['required', 'string', 'max:500'],
-                    'price' => ['required', 'numeric'],
-                ]);
+        return view('admin.properties.edit')->with(['categories' => Category::where(['type' => 'property'])->get(), 'property' => Property::find($id), 'category' => $category, 'countries' => Country::all()]);
+    }
 
-                if ($validator->fails()) {
-                    return response()->json([
-                        'status' => 0, 
-                        'error' => $validator->errors()
-                    ]);
-                }
+    /**
+     * Admin [post] edit Property
+     */
+    public function update($id = 0, $category = 'any')
+    {
+        $data = request()->all();
+        $validator = Validator::make($data, [
+            'country' => ['required', 'integer'],
+            'state' => ['required', 'integer'],
+            'category' => ['required', 'integer'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'action' => ['required', 'string'],
+            'measurement' => ['required', 'string'],
+            'additional' => ['required', 'string', 'max:500'],
+            'price' => ['required', 'numeric'],
+        ]);
 
-                $property = Property::find($id);
-                $property->country_id = $data['country'];
-                $property->state_id = $data['state'];
-                $property->address = $data['address'];
-                $property->city = $data['city'];
-                $property->action = $data['action'];
-                $property->category_id = $data['category'];
-                $property->measurement = $data['measurement'];
-                $property->additional = $data['additional'];
-                $property->price = $data['price'];
-                $property->update();
-
-                return response()->json([
-                    'status' => 1, 
-                    'info' => 'Operation successful',
-                    'redirect' => route('admin.property.edit', ['id' => $property->id, 'category' => $category])
-                ]);
-            default:
-                throw new Exception('Invalid request method');
-                break;
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
         }
+
+        $property = Property::find($id);
+        $property->country_id = $data['country'];
+        $property->state_id = $data['state'];
+        $property->address = $data['address'];
+        $property->city = $data['city'];
+        $property->action = $data['action'];
+        $property->category_id = $data['category'];
+        $property->measurement = $data['measurement'];
+        $property->additional = $data['additional'];
+        $property->price = $data['price'];
+        $updated = $property->update();
+
+        if ($updated) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => route('admin.property.edit', [
+                    'id' => $property->id, 
+                    'category' => $category
+                ]),
+            ]);
+        }else {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ]);
+        }
+
             
     }
 
@@ -223,9 +233,45 @@ class PropertiesController extends Controller
     {
         $properties = Property::whereHas('country', function ($query) use ($countryid) {
             $query->where(['id' => $countryid]);
-        })->cursorPaginate(10);
-        $categories = Category::where(['type' => 'property'])->get(); //Property categories only
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
         return view('admin.properties.country')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin get properties by user
+     */
+    public function user($userid = 0)
+    {
+        $properties = Property::whereHas('user', function ($query) use ($userid) {
+            $query->where(['id' => $userid]);
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.user')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin get properties by category
+     */
+    public function category($categoryname = 'lands')
+    {
+        $properties = Property::whereHas('category', function ($query) use ($categoryname) {
+            $query->where(['name' => $categoryname]);
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.category')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin search Properties
+     */
+    public function search()
+    {
+        $properties = Property::search(request()->query)->paginate(16);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
     }
 
 }

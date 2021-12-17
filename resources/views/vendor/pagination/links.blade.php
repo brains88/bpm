@@ -1,31 +1,31 @@
 @if ($paginator->hasPages())
-    <nav>
+    <nav class="alert-info alert mb-4">
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="mr-3 disabled" aria-disabled="true">
-                    <span class="font-weight-bolder text-white d-block text-center rounded-circle bg-dark" style="width: 25px; height: 25px; line-height: 25px;">
-                        <small><i class="icofont-arrow-left"></i></small>
+                    <span class="font-weight-bolder d-block text-center">
+                        <i class="icofont-long-arrow-left"></i>
                     </span>
                 </li>
             @else
                 <li class="mr-3">
-                    <a class="text-decoration-none font-weight-bolder text-white d-block text-center rounded-circle bg-main-dark" style="width: 25px; height: 25px; line-height: 25px;" href="{{ $paginator->previousPageUrl() }}" rel="prev">
-                        <small><i class="icofont-arrow-left"></i></small>
+                    <a class="text-decoration-none font-weight-bolder d-block text-center" href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                        <i class="icofont-long-arrow-left"></i>
                     </a>
                 </li>
             @endif
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="">
-                    <a class="text-decoration-none font-weight-bolder text-white d-block text-center rounded-circle bg-main-dark" style="width: 25px; height: 25px; line-height: 25px;" href="{{ $paginator->nextPageUrl() }}" rel="next">
-                        <small><i class="icofont-arrow-right"></i></small>
+                    <a class="text-decoration-none font-weight-bolder d-block text-center" href="{{ $paginator->nextPageUrl() }}" rel="next">
+                        <i class="icofont-long-arrow-right"></i>
                     </a>
                 </li>
             @else
                 <li class="disabled" aria-disabled="true">
-                    <span class="font-weight-bolder text-white d-block text-center rounded-circle bg-dark" style="width: 25px; height: 25px; line-height: 25px;">
-                        <small><i class="icofont-arrow-right"></i></small>
+                    <span class="font-weight-bolder d-block text-center">
+                        <i class="icofont-long-arrow-right"></i>
                     </span>
                 </li>
             @endif
