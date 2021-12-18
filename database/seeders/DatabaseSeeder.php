@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     { 
+        $this->call(GlobesSeeder::class);
         $this->call(UsersSeeder::class);  
         $this->call(CategoriesSeeder::class);
         $this->call(HousesSeeder::class);
@@ -22,9 +23,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(NewsSeeder::class);
 
-        $this->call(ContinentsSeeder::class);
-        $this->call(CountriesSeeder::class);
-        $this->call(DivisionsSeeder::class);
+        // $this->call(ContinentsSeeder::class);
+        // $this->call(CountriesSeeder::class);
+        // $this->call(DivisionsSeeder::class);
+
         $this->call(LanguagesSeeder::class);
     }
 }

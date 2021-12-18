@@ -15,7 +15,7 @@
                             <select class="form-control custom-select country" name="country">
                                 <option value="">-- Select country --</option>
                                 @if(empty($countries->count()))
-                                    <option>No Countries Listed</option>
+                                    <option value="">No countries listed</option>
                                 @else: ?>
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}">
@@ -28,7 +28,18 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="text-muted">State, county or divison</label>
-                            <input type="text" class="form-control state" name="state" placeholder="e.g., Hampshire">
+                            <input type="text" list="statelist" class="form-control state" name="state" placeholder="e.g., Hampshire">
+                            <datalist id="statelist">
+                                @if(empty($divisions->count()))
+                                    <option value="">No data listed</option>
+                                @else: ?>
+                                    @foreach ($divisions as $state)
+                                        <option value="{{ $state->id }}">
+                                            {{ ucwords($state->name ?? '') }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </datalist>
                             <small class="invalid-feedback state-error"></small>
                         </div>
                     </div>

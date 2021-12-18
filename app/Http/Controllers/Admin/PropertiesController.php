@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\{Category, Property, Country, Image};
+use App\Models\{Category, Property, Country, Image, Division};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
@@ -13,8 +13,8 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $properties = Property::latest('created_at')->paginate(16);
-        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
+        $properties = Property::latest('created_at')->paginate(12);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'divisions' => Division::all()]);
     }
 
     /**

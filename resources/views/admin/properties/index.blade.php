@@ -42,9 +42,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="mb-4 alert-info alert">
-                        {{ $properties->links('vendor.pagination.links') }}
-                    </div>
+                    {{ $properties->links('vendor.pagination.default') }}
                 @endif
             </div>
         </div>

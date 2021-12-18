@@ -46,7 +46,7 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $users->onEachSide(5)->links('vendor.pagination.links') }}
+                    {{ $users->onEachSide(1)->links('vendor.pagination.boot') }}
                 @endif
             </div>
         </div>

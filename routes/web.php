@@ -76,6 +76,13 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
 Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
+    Route::get('/subscriptions', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.subscriptions');
+
+    Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
+    Route::prefix('plan')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Admin\PlansController::class, 'add'])->name('admin.plan.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
+    });
 
     Route::get('/skills', [\App\Http\Controllers\Admin\SkillsController::class, 'index'])->name('admin.skills');
     Route::prefix('skill')->group(function () {
