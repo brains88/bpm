@@ -28,25 +28,25 @@ class GlobesSeeder extends Seeder
                 'region' => $country->region, 
             ]);
 
-            if (isset($country->states)) {
-                foreach ($country->states as $state) {
-                    $division = State::create([
-                        'country_id' => $nation->id,
-                        'name' => $state->name,
-                    ]);
+            // if (isset($country->states)) {
+            //     foreach ($country->states as $state) {
+            //         $division = State::create([
+            //             'country_id' => $nation->id,
+            //             'name' => $state->name,
+            //         ]);
 
-                    if (isset($state->cities)) {
-                        foreach ($state->cities as $city) {
-                            $division = City::create([
-                                'country_id' => $nation->id,
-                                'name' => $city->name,
-                                'state_id' => $division->id,
-                            ]);
-                        }
+            //         if (isset($state->cities)) {
+            //             foreach ($state->cities as $city) {
+            //                 $division = City::create([
+            //                     'country_id' => $nation->id,
+            //                     'name' => $city->name,
+            //                     'state_id' => $division->id,
+            //                 ]);
+            //             }
                             
-                    }  
-                }
-            }    
+            //         }  
+            //     }
+            // }    
         }
     }
 }
