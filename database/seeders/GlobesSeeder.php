@@ -4,8 +4,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\{Country, State, City};
 use Storage;
-
-07054064568
    
 class GlobesSeeder extends Seeder
 {
