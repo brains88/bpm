@@ -12,7 +12,7 @@ class BlogsController extends Controller
      */
     public function index($limit = 12)
     {
-        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(8), 'blogCategories' => Category::where(['type' => 'blog'])->get()]);
+        return view('admin.blogs.index')->with(['allBlogs' => Blog::paginate(8), 'blogCategories' => Category::where(['type' => 'blog'])->get()]);
     }
 
     /**
