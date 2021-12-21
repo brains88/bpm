@@ -4,6 +4,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\{Country, State, City};
 use Storage;
+
+07054064568
    
 class GlobesSeeder extends Seeder
 {
@@ -14,7 +16,7 @@ class GlobesSeeder extends Seeder
      */
     public function run()
     {
-        $path = storage_path() . "/json/globe.json"; // ie: /var/www/laravel/app/storage/json/filename.json
+        $path = storage_path() . '/json/globe.json';
         $globes = json_decode(file_get_contents($path)); 
 
         foreach ($globes as $country) {

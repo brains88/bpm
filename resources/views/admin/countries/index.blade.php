@@ -35,9 +35,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="mb-4 alert-info alert">
-                        {{ $countries->links('vendor.pagination.links') }}
-                    </div>
+                    {{ $countries->onEachSide(1)->links('vendor.pagination.default') }}
                 @endif
             </div>
         </div>

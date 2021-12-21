@@ -159,6 +159,25 @@
                 </div>
             </div>
             <div class="">
+                <a href="{{ route('admin') }}" class="d-block text-dark font-weight-bold text-underline mb-1">
+                    Companies
+                </a>
+                <h6 class="text-muted m-0">
+                    {{ number_format(\App\Models\News::count()) }}
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 mb-4">
+    <div class="card border-dark rounded bg-light shadow panel">
+        <div class="card-body d-flex align-items-center">
+            <div class="mr-3">
+                <div class="panel-icon rounded-0 text-center text-white bg-dark-500">
+                    <i class="icofont-industries-5"></i>
+                </div>
+            </div>
+            <div class="">
                 <a href="{{ route('admin.skills') }}" class="d-block text-dark font-weight-bold text-underline mb-1">
                     Skills
                 </a>

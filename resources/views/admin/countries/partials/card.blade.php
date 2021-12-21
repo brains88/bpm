@@ -1,18 +1,18 @@
 <div class="card">
 	<div style="height: 120px;">
-		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ $country->code ?? 'ng' }}.png" class="img-fluid object-cover h-100 w-100">
+		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ strtolower($country->iso2 ?? 'ng') }}.png" class="img-fluid object-cover h-100 w-100">
 	</div>
 	<div class="card-body">
 		<div class="d-flex align-items-center justify-content-between">
 			<div class="dropdown">
                 <a href="javascript:;" class="text-main-dark d-flex align-items-center" data-toggle="dropdown">
-                    <small>{{ ucwords($country->name ?? 'Nill') }}</small>
+                    <small>{{ ucwords(\Str::limit($country->name, 16) ?? 'Nill') }}</small>
                     <i class="icofont icofont-caret-down"></i>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-left">
                 	<div class="dropdown-item">
                 		<small class="text-dark">
-                			{{ ucwords($country->full_name) ?? 'Nill' }}
+                			{{ ucwords($country->name) ?? 'Nill' }}
                 		</small>
                 	</div>
                 </div>

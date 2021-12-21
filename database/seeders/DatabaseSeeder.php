@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
+    {
         $this->call(GlobesSeeder::class);
         $this->call(UsersSeeder::class);  
         $this->call(CategoriesSeeder::class);
@@ -22,11 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ImagesSeeder::class);
 
         $this->call(NewsSeeder::class);
-
-        // $this->call(ContinentsSeeder::class);
-        // $this->call(CountriesSeeder::class);
-        // $this->call(DivisionsSeeder::class);
-
         $this->call(LanguagesSeeder::class);
     }
 }

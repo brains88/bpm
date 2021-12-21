@@ -37,9 +37,7 @@
                             @include('admin.skills.forms.edit')
                         @endforeach
                     </div>
-                    <div class="mb-4 alert-info alert">
-                        {{ $skills->links('vendor.pagination.links') }}
-                    </div>
+                    {{ $skills->links('vendor.pagination.links') }}
                 @endif
             </div>
         </div>
