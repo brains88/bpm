@@ -73,7 +73,7 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
+Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
     Route::get('/subscriptions', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.subscriptions');
