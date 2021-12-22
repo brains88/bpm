@@ -226,11 +226,11 @@
 		</li>
 
 
-	<li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
-	<a href="../news/index.htm">Agency</a>
+		<li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
+			<a href="../news/index.htm">Agency</a>
 	<ul class="sub-menu">
-	<li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="../about/index.htm">Agent Listing</a></li>
-	<li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="../contacts/index.htm">Agency Listing</a></li>
+		<li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="../about/index.htm">Agent Listing</a></li>
+		<li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="../contacts/index.htm">Agency Listing</a></li>
 	</ul>
 	</li>
 
