@@ -1,11 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\{HomeController, AboutController, LoginController, SignupController, ServicesController, VerifyController, ContactController, PropertiesController, AgentsController, NewsController, ArtisansController, AdminController, UserController, PasswordController, CountriesController};
-=======
-use App\Http\Controllers\{HomeController, AboutController, LoginController, SignupController, ServicesController, VerifyController, ContactController, PropertiesController, AgentsController, NewsController, ArtisansController, AdminController, UserController, PasswordController};
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 
 /*
 |--------------------------------------------------------------------------
@@ -68,12 +64,6 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     Route::get('/services', [ServicesController::class, 'index'])->name('services');
     Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
     Route::get('/artisans', [ArtisansController::class, 'index'])->name('artisans');
-<<<<<<< HEAD
-=======
-   //Route::get('/listing', [PagesController::class, 'listing'])->name('listing');
-    Route::get('/listing', 'PagesController@listing')->name('listing');
-    
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {
         Route::get('/', [PasswordController::class, 'index'])->name('forgot.password');
@@ -83,7 +73,6 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     });
 });
 
-<<<<<<< HEAD
 Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
@@ -121,17 +110,6 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
         Route::post('/update/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'update'])->name('admin.property.update');
 
         Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Admin\PropertiesController::class, 'image'])->name('admin.property.image.upload');
-=======
-Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::prefix('properties')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
-        Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
-    });
-
-    Route::prefix('property')->group(function () {
-        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
@@ -140,7 +118,6 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
     });
 
-<<<<<<< HEAD
     Route::prefix('users')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
@@ -153,8 +130,6 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
     
 
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     Route::prefix('subcategory')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'add'])->name('admin.subcategory.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'edit'])->name('admin.subcategory.edit');
@@ -162,10 +137,6 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
-<<<<<<< HEAD
-=======
-        Route::get('/categories', [\App\Http\Controllers\Admin\BlogsController::class, 'categories'])->name('admin.blogs.categories');
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     });
 
     Route::prefix('blog')->group(function () {
@@ -180,16 +151,9 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 
 });
 
-<<<<<<< HEAD
 Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('app');
 });
-=======
-// Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {
- 
-    Route::get('/', [HomeController::class, 'index'])->name('app');
-// });
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 
 
     

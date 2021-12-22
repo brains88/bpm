@@ -9,13 +9,9 @@
                             <div class="alert-info alert">No blogs yet</div>
                         @else
                             <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
-<<<<<<< HEAD
                                 <a href="{{ route('admin.blogs') }}" class="text-underline">
                                     <small class="">All blogs ({{ \App\Models\Blog::count() }})</small>
                                 </a>
-=======
-                                <small class="">All blogs ({{ \App\Models\Blog::count() }})</small>
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                             </div>
                             <div class="row">
                                 @foreach($allBlogs as $blog)

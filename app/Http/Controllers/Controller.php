@@ -16,12 +16,9 @@ class Controller extends BaseController
      */
     public static $timeout = 180;
 
-<<<<<<< HEAD
     public function __construct()
     {}
 
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     /**
      * Send SMS with Kudisms api
      */

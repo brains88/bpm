@@ -17,11 +17,7 @@
 										<small class="position-absolute {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-main-green' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
 								            {{ ucwords($property->status) }}
 								        </small>
-<<<<<<< HEAD
 										<img src="{{ $property->image ?? '/images/banners/holder.png' }}" class="img-fluid w-100 h-100 border">
-=======
-										<img src="{{ $property->image }}" class="img-fluid w-100 h-100 border">
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 									</div>
 									<div class="row">
 							            <div class="col-12 col-md-6 mb-4">
@@ -32,13 +28,8 @@
 							                </a>
 							            </div>
 							            <div class="col-12 col-md-6 mb-4">
-<<<<<<< HEAD
 							                <a href="tel:{{ $property->user->phone ?? 'Nill' }}" class="btn btn-block" style="border: 1px solid var(--main-green)">
 							                    <small class="text-main-green">{{ $property->user->phone ?? 'Nill' }}</small>
-=======
-							                <a href="tel:{{ $property->user->phone }}" class="btn btn-block" style="border: 1px solid var(--main-green)">
-							                    <small class="text-main-green">{{ $property->user->phone }}</small>
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 							                </a>
 							            </div>
 							        </div>
@@ -74,25 +65,6 @@
 						</div>
 					</div>
 					<div class="col-12 col-md-4 col-lg-4">
-<<<<<<< HEAD
-=======
-						{{-- <div class="mb-2">
-							@empty($soldProperties)
-								<div class="alert alert-info">No recently sold property</div>
-							@else
-								<div class="p-3 mb-4 bg-white shadow-sm rounded">
-									<h5 class="m-0">Recently Sold</h5>
-								</div>
-								<div class="row">
-									@foreach($soldProperties as $property)
-										<div class="col-12 mb-4">
-											@include('frontend.properties.partials.sold')
-										</div>
-									@endforeach
-								</div>
-							@endempty
-						</div> --}}
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 						<div class="mb-4">
 							<div class="p-3 mb-4 bg-white shadow-sm rounded">
 								<h5 class="m-0">Property Categories</h5>

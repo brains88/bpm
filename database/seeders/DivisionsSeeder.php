@@ -154,11 +154,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 16,
                 'country_id' => 87,
-<<<<<<< HEAD
                 'name' => 'Negeri Sembilan',
-=======
-                'name' => 'Negeri Sembilan',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'ns',
                 'has_city' => 1,
@@ -194,11 +190,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 20,
                 'country_id' => 87,
-<<<<<<< HEAD
                 'name' => 'Pulau Pinang',
-=======
-                'name' => 'Pulau Pinang',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'ph',
                 'has_city' => 1,
@@ -540,11 +532,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 58,
                 'country_id' => 148,
-<<<<<<< HEAD
                 'name' => 'Northern Ireland',
-=======
-                'name' => 'Northern Ireland',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nir',
                 'has_city' => 1,
@@ -643,11 +631,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 69,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'District of Columbia',
-=======
-                'name' => 'District of Columbia',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'dc',
                 'has_city' => 1,
@@ -836,11 +820,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 90,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'New Hampshire',
-=======
-                'name' => 'New Hampshire',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nh',
                 'has_city' => 1,
@@ -849,11 +829,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 91,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'New Jersey',
-=======
-                'name' => 'New Jersey',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nj',
                 'has_city' => 1,
@@ -862,11 +838,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 92,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'New Mexico',
-=======
-                'name' => 'New Mexico',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nm',
                 'has_city' => 1,
@@ -875,11 +847,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 93,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'New York',
-=======
-                'name' => 'New York',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'ny',
                 'has_city' => 1,
@@ -888,11 +856,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 94,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'North Carolina',
-=======
-                'name' => 'North Carolina',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nc',
                 'has_city' => 1,
@@ -901,11 +865,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 95,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'North Dakota',
-=======
-                'name' => 'North Dakota',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nd',
                 'has_city' => 1,
@@ -950,11 +910,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 100,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'Rhode Island',
-=======
-                'name' => 'Rhode Island',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'ri',
                 'has_city' => 1,
@@ -963,11 +919,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 101,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'South Carolina',
-=======
-                'name' => 'South Carolina',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'sc',
                 'has_city' => 1,
@@ -976,11 +928,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 102,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'South Dakota',
-=======
-                'name' => 'South Dakota',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'sd',
                 'has_city' => 1,
@@ -1043,11 +991,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 109,
                 'country_id' => 167,
-<<<<<<< HEAD
                 'name' => 'West Virginia',
-=======
-                'name' => 'West Virginia',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'wv',
                 'has_city' => 1,
@@ -1083,11 +1027,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 113,
                 'country_id' => 170,
-<<<<<<< HEAD
                 'name' => 'New South Wales',
-=======
-                'name' => 'New South Wales',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nsw',
                 'has_city' => 1,
@@ -1096,11 +1036,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 114,
                 'country_id' => 170,
-<<<<<<< HEAD
                 'name' => 'Northern Territory',
-=======
-                'name' => 'Northern Territory',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'nt',
                 'has_city' => 1,
@@ -1118,11 +1054,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 116,
                 'country_id' => 170,
-<<<<<<< HEAD
                 'name' => 'South Australia',
-=======
-                'name' => 'South Australia',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'sa',
                 'has_city' => 1,
@@ -1149,11 +1081,7 @@ class DivisionsSeeder extends Seeder
             array (
                 'id' => 119,
                 'country_id' => 170,
-<<<<<<< HEAD
                 'name' => 'Western Australia',
-=======
-                'name' => 'Western Australia',
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 'full_name' => NULL,
                 'code' => 'wa',
                 'has_city' => 1,

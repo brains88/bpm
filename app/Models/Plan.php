@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
 
     /**
      * Plans duration before expiry
@@ -32,6 +31,4 @@ class Plan extends Model
         'listing', 
         'details',
     ];
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 }

@@ -34,19 +34,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <div class="card" style="height: 308px;">
-                        <div class="card-body">
-                            <img src="/images/sale.png" class="img-fluid w-100 h-100">
-                        </div>
-                        <div class="card-footer"></div>
-                    </div>
-                </div>
-            </div>
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         </div>
     </div>
 </div>

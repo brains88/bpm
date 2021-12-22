@@ -37,7 +37,6 @@
         handleForm({form: $(this), button: 'edit-blog-button', spinner: 'edit-blog-spinner', message: 'edit-blog-message'});
     });
 
-<<<<<<< HEAD
     $('.add-property-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-property-button', spinner: 'add-property-spinner', message: 'add-property-message'});
@@ -63,6 +62,4 @@
         handleForm({form: $(this), button: 'edit-skill-button', spinner: 'edit-skill-spinner', message: 'edit-skill-message'});
     });
 
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 })(jQuery);

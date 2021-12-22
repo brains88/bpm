@@ -14,7 +14,6 @@ class Country extends Model
      * @var string[]
      */
     protected $fillable = [];
-<<<<<<< HEAD
 
     /**
      * A country may have many properties
@@ -32,6 +31,4 @@ class Country extends Model
         return $this->belongsTo(Continent::class, 'continent_id');
     }
 
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 }

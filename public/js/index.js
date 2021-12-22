@@ -2,7 +2,6 @@
 
     'use strict';
 
-<<<<<<< HEAD
     var plans = $('#data-plan');
     var options = $(plans).children('option[class="options"]');
     options.hide();
@@ -18,8 +17,6 @@
         childrens.show();
     });
 
-=======
->>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     $('.hanburger-icon').on('click', function() {
         $('.navbar-menu').toggleClass('navbar-toggle');
         $('.hanburger-icon').toggleClass('slide');
