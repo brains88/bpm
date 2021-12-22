@@ -15,6 +15,7 @@ class SkillsSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+<<<<<<< HEAD
         $status = $faker->boolean(40);
         $skills = [
             ['name' => 'Plumber', 'status' => $status],
@@ -34,6 +35,15 @@ class SkillsSeeder extends Seeder
 
         foreach ($skills as $skill) {
             Skill::create($skill);
+=======
+        $skills = ['Plumbing', 'Painting', 'Carpentry', 'Plumbing', 'Air Condition Technician'];
+
+        foreach ($skills as $skill) {
+            Skill::create([
+                'name' => $skill,
+                'status' => $faker->boolean(40)
+            ]);
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         }
     }
 }

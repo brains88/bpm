@@ -15,12 +15,15 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->bigInteger('price');
             $table->text('currency')->nullable();
             $table->string('name');
             $table->bigInteger('listing');
             $table->text('details')->nullable();
             $table->text('duration')->nullable();
+=======
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
             $table->timestamps();
         });
     }

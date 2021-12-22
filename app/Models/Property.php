@@ -15,11 +15,18 @@ class Property extends Model
      * @var string[]
      */
     public static $actions = [
+<<<<<<< HEAD
         'rent' => 'for rent', 
         'auction' => 'auction',
         'sale' => 'for sale', 
         'lease' => 'for lease', 
         'sold' => 'sold',
+=======
+        'To Rent', 
+        'For Sale', 
+        'For Lease', 
+        'Sold off',
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     ];
 
     /**
@@ -28,6 +35,7 @@ class Property extends Model
      * @var string[]
      */
     protected $fillable = [
+<<<<<<< HEAD
         'country_id',
         'state_id',
         'address',
@@ -39,6 +47,15 @@ class Property extends Model
         'additional',
         'reference',
         'price',
+=======
+        'name',
+        'email',
+        'password',
+        'phone',
+        'type',
+        'status',
+        'role'
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     ];
 
     /**
@@ -47,10 +64,17 @@ class Property extends Model
      * @var string[]
      */
     public static $conditions = [
+<<<<<<< HEAD
         'furnished', 
         'unfurnished', 
         'newly built',
         'old', 
+=======
+        'Furnished', 
+        'Not furnished', 
+        'Newly Built',
+        'Partly Furnished', 
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     ];
 
     /**

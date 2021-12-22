@@ -45,6 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+<<<<<<< HEAD
 
     /**
      * Any user may have many properties
@@ -61,4 +62,6 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class, 'user_id');
     }
+=======
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 }

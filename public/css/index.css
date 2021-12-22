@@ -8,6 +8,7 @@ body {
     pointer-events: none !important;
 }
 
+<<<<<<< HEAD
 .upload-image-loader {
     bottom: 50%; 
     right: 50%; 
@@ -19,6 +20,8 @@ body {
     line-height: 45px;
 }
 
+=======
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 p {
     font-size: 20px !important;
 }

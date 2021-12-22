@@ -12,6 +12,7 @@
             </div>
         </div>
         <form action="javascript:;">
+<<<<<<< HEAD
             <input type="file" name="image" accept="image/*" class="blog-image-input-{{ $blog->id }} d-none" data-url="{{ route('blog.image.upload', ['id' => $blog->id ]) }}">
         </form>
         <div class="add-blog-image-loader-{{ $blog->id }} upload-image-loader d-none position-absolute rounded-circle text-center border" data-id="{{ $blog->id }}">
@@ -19,6 +20,16 @@
         </div>
         <div style="height: 160px;">
             <img src="{{ empty($blog->image) ? '/images/banners/holder.png' : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
+=======
+            @csrf
+            <input type="file" name="image" accept="image/*" class="blog-image-input-{{ $blog->id }}" style='display: none;' data-url="{{ route('blog.image.upload', ['id' => $blog->id ]) }}">
+        </form>
+        <div class="add-blog-image-loader-{{ $blog->id }} d-none position-absolute p-3 rounded-circle text-center border" style="bottom: 50%; right: 50%; z-index: 4; transform: translate(50%, 50%); background-color: rgba(0, 0, 0, 0.75); width: 70px; height: 70px; line-height: 35px;" data-id="{{ $blog->id }}">
+            <img src="/images/spinner.svg">
+        </div>
+        <div style="height: 160px;">
+            <img src="{{ empty($blog->image) ? 'https://picsum.photos/1260/960?random'.rand(25434, 90920) : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         </div>
     </div>
     <div class="card-body">

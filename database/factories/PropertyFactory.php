@@ -24,18 +24,25 @@ class PropertyFactory extends Factory
     {
         $faker = Faker::create();
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
+<<<<<<< HEAD
 
         $actions = [];
         foreach(Property::$actions as $key => $value) {
             $actions[] = $key;
         }
 
+=======
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         return [
             'condition' => $faker->randomElement(Property::$conditions),
             'user_id' => $faker->numberBetween(1, 100),
             'address' => $faker->address(),
             'price' => $faker->numberBetween(2000, 11000),
+<<<<<<< HEAD
             'action' => $faker->randomElement($actions),
+=======
+            'action' => $faker->randomElement(Property::$actions),
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
             'country_id' => $faker->numberBetween(1, 7),
             'bedrooms' => $faker->numberBetween(3, 5),
             'status' => $faker->randomElement(Property::$status),
@@ -47,8 +54,12 @@ class PropertyFactory extends Factory
             'state_id' => $faker->numberBetween(1, 700),
             'measurement' => $faker->numberBetween(500, 6500),
             'city' => $faker->city,
+<<<<<<< HEAD
             'additional' => $faker->paragraph(15),
             'reference' => \Str::uuid(),
+=======
+            'additionals' => $faker->paragraph(15),
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         ];
     }
 }

@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+<<<<<<< HEAD
 use App\Models\{Category, Property, Country, Image, Division};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
+=======
+use App\Models\{Category, Property, Country};
+use App\Http\Controllers\Controller;
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 
 class PropertiesController extends Controller
 {
@@ -13,8 +18,12 @@ class PropertiesController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $properties = Property::latest('created_at')->paginate(12);
         return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'divisions' => Division::all()]);
+=======
+        return view('admin.properties.index')->with(['allProperties' => Property::paginate(21)]);
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     }
 
     /**
@@ -22,6 +31,7 @@ class PropertiesController extends Controller
      */
     public function add()
     {
+<<<<<<< HEAD
         $data = request()->all();
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
@@ -273,5 +283,18 @@ class PropertiesController extends Controller
         $properties = Property::search(request()->query)->paginate(16);
         return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
     }
+=======
+        return view('admin.properties.add')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get(), 'allCountries' => Country::all()]);
+    }
+
+    /**
+     * Admin Properties categories
+     */
+    public function categories()
+    {
+        return view('admin.properties.categories')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get()]);
+    }
+
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
 
 }

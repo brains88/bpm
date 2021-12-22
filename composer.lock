@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "85d2db5923d7f93109ddbd530c561a4b",
+=======
+    "content-hash": "fd476e9c1995650f78755df1ee3ce46e",
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1446,6 +1450,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v8.76.2",
             "source": {
                 "type": "git",
@@ -1456,6 +1461,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/c67acfdc968f487b6235435080eef62a7e2ed055",
                 "reference": "c67acfdc968f487b6235435080eef62a7e2ed055",
+=======
+            "version": "v8.75.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "0bb91d3176357da232da69762a64b0e0a0988637"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0bb91d3176357da232da69762a64b0e0a0988637",
+                "reference": "0bb91d3176357da232da69762a64b0e0a0988637",
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 "shasum": ""
             },
             "require": {
@@ -1614,6 +1631,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2021-12-15T14:02:14+00:00"
         },
         {
@@ -1628,6 +1646,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sanctum/zipball/b4c07d0014b78430a3c827064217f811f0708eaa",
                 "reference": "b4c07d0014b78430a3c827064217f811f0708eaa",
+=======
+            "time": "2021-12-07T14:55:46+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v2.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "76b2d552c00477d520338889160f80a0cfb5fc55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/76b2d552c00477d520338889160f80a0cfb5fc55",
+                "reference": "76b2d552c00477d520338889160f80a0cfb5fc55",
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 "shasum": ""
             },
             "require": {
@@ -1678,7 +1712,11 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
+<<<<<<< HEAD
             "time": "2021-12-14T17:49:47+00:00"
+=======
+            "time": "2021-11-16T16:57:07+00:00"
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         },
         {
             "name": "laravel/serializable-closure",
@@ -6404,6 +6442,7 @@
         },
         {
             "name": "laravel/sail",
+<<<<<<< HEAD
             "version": "v1.12.11",
             "source": {
                 "type": "git",
@@ -6414,6 +6453,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/236b1eb30c36c642b038dc1081036827310b6902",
                 "reference": "236b1eb30c36c642b038dc1081036827310b6902",
+=======
+            "version": "v1.12.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "9d5000703c7f811588a780b9aab91cca5c336319"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/9d5000703c7f811588a780b9aab91cca5c336319",
+                "reference": "9d5000703c7f811588a780b9aab91cca5c336319",
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
                 "shasum": ""
             },
             "require": {
@@ -6460,7 +6511,11 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
             "time": "2021-12-14T17:54:29+00:00"
+=======
+            "time": "2021-12-07T16:25:11+00:00"
+>>>>>>> b0e72cfb0b42dc80ca26a72be07e041bc89300f5
         },
         {
             "name": "mockery/mockery",
