@@ -8,6 +8,10 @@ body {
     pointer-events: none !important;
 }
 
+.container-fluid {
+    max-width: 1440px;
+}
+
 .upload-image-loader {
     bottom: 50%; 
     right: 50%; 
@@ -43,17 +47,6 @@ p {
     height: 35px;
     line-height: 35px;
     border-radius: 50%;
-}
-
-.panel-icon {
-    width: 48px; 
-    height: 48px; 
-    line-height: 48px;
-}
-
-.section-padding {
-    padding-top: 90px;
-    z-index: 2;
 }
 
 .home-banner:before {
