@@ -1,0 +1,99 @@
+:root {
+    --theme-color: #ff0000;
+    --main-dark: #0a090b;
+    --dark-500: #3D3743;
+    --main-ash: #F0F2E3;
+    --tillgreen: #2addc7
+}
+
+.bg-theme-color {
+    background-color: var(--theme-color);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.bg-tillgreen {
+    background-color: var(--tillgreen);
+}
+
+.text-tillgreen {
+    color: var(--tillgreen);
+}
+
+.border-main-dark {
+    border: 1px solid var(--main-dark);
+}
+
+.border-tillgreen {
+    border: 1px solid var(--tillgreen);
+}
+
+.border-theme-color {
+    border: 1px solid var(--theme-color);
+}
+
+.border-dark-500 {
+    border: 1px solid var(--dark-500);
+}
+
+.border-bottom-dark-500 {
+    border-bottom: 1px solid var(--dark-500);
+}
+
+.border-top-dark-500 {
+    border-top: 1px solid var(--dark-500);
+}
+
+.text-theme-color {
+    color: var(--theme-color);
+}
+
+.text-underline {
+    text-decoration: underline !important;
+}
+
+.text-main-dark {
+    color: var(--main-dark);
+}
+
+.text-dark-500 {
+    color: var(--dark-500);
+}
+
+.bg-dark-500 {
+    background-color: var(--dark-500);
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.tiny-font {
+    font-size: 8px !important;
+}
+
+.bg-main-dark {
+    background-color: var(--main-dark);
+}
+
+.bg-main-ash {
+    background-color: var(--main-ash);
+}
+
+.rounded-icon {
+    width: 37.5px;
+    height: 37.5px;
+    line-height: 37.5px;
+    text-align: center;
+}
+
+@media (max-width: 465px) {
+    
+    .rounded-icon {
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+    }
+}

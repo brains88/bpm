@@ -1,0 +1,59 @@
+.login-banner {
+	background-image: url('/images/banners/login.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: left;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.login-banner:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -2;
+	background-color: rgba(0, 0,0, 0.6);
+}
+
+.input-group-text {
+	background-color: var(--main-green);
+}
+
+.signup-banner {
+	background-image: url('/images/banners/signup.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: left;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.signup-banner:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -2;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.signup-tabs .nav-link.active {
+	background-color: var(--main-green) !important;
+	color: white !important;
+}
+
+.signup-tabs .nav-link {
+	background-color: var(--main-ash) !important;
+	color: var(--main-dark) !important;
+}
+
+
