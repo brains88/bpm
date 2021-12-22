@@ -64,6 +64,9 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     Route::get('/services', [ServicesController::class, 'index'])->name('services');
     Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
     Route::get('/artisans', [ArtisansController::class, 'index'])->name('artisans');
+   //Route::get('/listing', [PagesController::class, 'listing'])->name('listing');
+    Route::get('/listing', 'PagesController@listing')->name('listing');
+    
 
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {
         Route::get('/', [PasswordController::class, 'index'])->name('forgot.password');
@@ -113,6 +116,7 @@ Route::middleware('web')->domain('admin.'.env('APP_URL'))->group(function() {
 });
 
 // Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {
+ 
     Route::get('/', [HomeController::class, 'index'])->name('app');
 // });
 

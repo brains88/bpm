@@ -128,7 +128,7 @@
 <div class="inline-breadcrumbs-inner">
 <div class="container-inner flex-items-center jtf-space-between flw-wrap">
 <div class="breadcrumbs-list ">
-<a class="breadcrumb-link breadcrumb-home" href="../index-1.htm" title="Home">Home</a>
+<a class="breadcrumb-link breadcrumb-home" href="/" title="Home">Home</a>
 <span class="breadcrumb-current breadcrumb-item-page-6808" title="Home Best Property Market">Best Property Market</span>
 </div>
 </div>
@@ -178,7 +178,7 @@
 <div class="cthiso-sizer"></div> 
 <!-- listing-item -->
 <div class="cthiso-item listing-item listing-item-loop post-6355 listing type-listing status-publish has-post-thumbnail hentry listing_cat-home listing_location-03-moscow listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_tag-accessories listing_tag-bag listing_tag-clothing listing_tag-man listing_tag-shop listing_tag-woman" data-postid="6355">
-<article class="geodir-category-listing fl-wrap"><div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img"> <a href="../listing/luxury-family-home/index.htm" class="listing-thumb-link geodir-category-img_item"> 
+<article class="geodir-category-listing fl-wrap"><div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img"> <a href="{{route('listing')}}" class="listing-thumb-link geodir-category-img_item"> 
 <img width="424" height="280" src="bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
 <div class="overlay">
 </div> 
@@ -207,7 +207,7 @@
 <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div></div>
 <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
 <h3 class="title-sin_item dis-flex-wrap-center">
-<a href="../listing/luxury-family-home/index.htm">Luxury Family Home</a> 
+<a href="/listing">Luxury Family Home</a> 
 <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
 <i class="far fa-check"></i>
 </span></h3>
@@ -223,8 +223,8 @@
 </ul></div>
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between"> 
-<a href="../author/admin/index.htm" class="gcf-company">
-<img alt='CTH Themes' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
+<a href="/listing" class="gcf-company">
+<img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
 <span class="lcard-avatar">By Best Property Market</span>
 </a></div></div>
 </article></div>
@@ -233,7 +233,7 @@
 <div class="cthiso-item listing-item listing-item-loop post-6152 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-sale listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-restaurant-inside listing_tag-fitness listing_tag-gym listing_tag-indoor listing_tag-outdoor listing_tag-running listing_tag-tour" data-postid="6152">
 <article class="geodir-category-listing fl-wrap">
 <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-<a href="../listing/family-house-for-rent/index.htm" class="listing-thumb-link geodir-category-img_item">
+<a href="/listing" class="listing-thumb-link geodir-category-img_item">
 <img width="424" height="280" src="uploads/2021/03/5-424x280.jpg" class="respimg" alt="" loading="lazy"><div class="overlay"></div> 
 </a>
 <div class="geodir-category-location"> <a href="bpm-content/maps/search/index-1.htm?api=1&query=40.701594124269405,-73.88509092852472" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
@@ -241,7 +241,7 @@
 <span>75 Prince St, NY, USA</span></a>
 </div>
 <div class="list-single-opt_header_cat dis-flex-wrap">
-<a href="../listing_status/for-sale/index.htm" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="#" class="cat-opt flex-items-center">House</a>
+<a href="/listing" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="#" class="cat-opt flex-items-center">House</a>
 </div> 
 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
 <span><i class="fal fa-heart"></i></span></a> 
@@ -268,8 +268,8 @@
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between"> 
 <a href="../author/admin/index.htm" class="gcf-company">
-<img alt='CTH Themes' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
-<span class="lcard-avatar">By CTH Themes</span>
+<img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
+<span class="lcard-avatar">By BPM Agent</span>
 </a>
 <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.0">
 </div>
@@ -282,7 +282,7 @@
 <div class="cthiso-item listing-item listing-item-loop post-5126 listing type-listing status-publish has-post-thumbnail hentry listing_cat-apartment listing_location-01-new-york listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-elevator-in-building listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_feature-tv-inside listing_tag-hostel listing_tag-hotel listing_tag-parking listing_tag-restourant listing_tag-room listing_tag-spa" data-postid="5126">
 <article class="geodir-category-listing fl-wrap">
 <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img"> 
-<a href="#" class="listing-thumb-link geodir-category-img_item">
+<a href="/listing" class="listing-thumb-link geodir-category-img_item">
 <img width="424" height="280" src="uploads/2021/03/6-424x280.jpg" class="respimg" alt="" loading="lazy">
 <div class="overlay"></div>
 </a>
@@ -294,7 +294,7 @@
 </div>
 <div class="listing-featured">Featured</div>
 <div class="list-single-opt_header_cat dis-flex-wrap">
-<a href="../listing_status/for-sale/index.htm" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="../listing_cat/apartment/index.htm" class="cat-opt flex-items-center">Apartment</a>
+<a href="/listing" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="../listing_cat/apartment/index.htm" class="cat-opt flex-items-center">Apartment</a>
 </div>
 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span>
 </a>
@@ -306,7 +306,7 @@
 <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
 </div>
 <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content"><h3 class="title-sin_item dis-flex-wrap-center">
-<a href="../listing/contemporary-apartment/index.htm">Contemporary Apartment</a>
+<a href="/listing">Contemporary Apartment</a>
 <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
 <i class="far fa-check"></i>
 </span>
@@ -325,7 +325,7 @@
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
 <a href="#" class="gcf-company">
-<img alt='CTH Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By CTH Themes</span></a><div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.3"></div>
+<img alt='BPM Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By BPM Agents</span></a><div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.3"></div>
 </div>
 </div>
 </article>
@@ -348,14 +348,14 @@
 </div> 
 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
 <span><i class="fal fa-heart"></i></span></a>
-<a href="#" class="compare-btn tolt compare-btn-7439" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="7439" data-ltitle="Gorgeous House For Sale" data-lthumb="../public/uploads/2021/03/1-1-150x150.jpg" data-lprice="€581.35 / per month" data-laddress="34-42 Montgomery St , NY, USA"><span><i class="fal fa-random"></i></span></a><div class="geodir-category-listing_media-list">
+<a href="/listing" class="compare-btn tolt compare-btn-7439" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="7439" data-ltitle="Gorgeous House For Sale" data-lthumb="../public/uploads/2021/03/1-1-150x150.jpg" data-lprice="€581.35 / per month" data-laddress="34-42 Montgomery St , NY, USA"><span><i class="fal fa-random"></i></span></a><div class="geodir-category-listing_media-list">
 <span><i class="fas fa-camera"></i> 6</span>
 </div>
 <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
 </div>
 <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
 <h3 class="title-sin_item dis-flex-wrap-center">
-<a href="#">Gorgeous House For Sale</a></h3>
+<a href="/listing">Gorgeous House For Sale</a></h3>
 <div class="geodir-category-content_price">€581.35 / per month</div>
 <div class="geodir-card-text"><div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
 <div class="lcfields-wrap dis-flex-wrap-center"></div>
@@ -368,8 +368,8 @@
 </div>
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-<a href="#" class="gcf-company">
-<img alt='CTH Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
+<a href="/listing" class="gcf-company">
+<img alt='BPM Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
 <span class="lcard-avatar">By Best Property Market</span></a>
 <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.2"></div>
 </div>
@@ -393,7 +393,7 @@
 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
 <span>
 <i class="fal fa-heart"></i></span></a>
-<a href="#" class="compare-btn tolt compare-btn-1743" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1743" data-ltitle="Home In New York" data-lthumb="uploads/2021/03/7-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
+<a href="/listing" class="compare-btn tolt compare-btn-1743" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1743" data-ltitle="Home In New York" data-lthumb="uploads/2021/03/7-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
 <span><i class="fal fa-random"></i></span></a>
 <div class="geodir-category-listing_media-list">
 <span><i class="fas fa-camera"></i> 6</span>
@@ -402,7 +402,7 @@
 </div>
 <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
 <h3 class="title-sin_item dis-flex-wrap-center">
-<a href="#">Home In New York</a> 
+<a href="/listing">Home In New York</a> 
 <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
 <i class="far fa-check"></i>
 </span>
@@ -419,7 +419,7 @@
 </div>
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-<a href="#" class="gcf-company">
+<a href="/listing" class="gcf-company">
 <img alt='' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
 <span class="lcard-avatar">By Best Property Market</span>
 </a>
@@ -445,7 +445,7 @@
 </div>
 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
 <span><i class="fal fa-heart"></i></span></a> 
-<a href="#" class="compare-btn tolt compare-btn-1739" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1739" data-ltitle="Light And Modern House" data-lthumb="uploads/2021/03/11-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
+<a href="/listing" class="compare-btn tolt compare-btn-1739" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1739" data-ltitle="Light And Modern House" data-lthumb="uploads/2021/03/11-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
 <span><i class="fal fa-random"></i></span>
 </a>
 <div class="geodir-category-listing_media-list">
@@ -454,7 +454,7 @@
 </div>
 <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
 <h3 class="title-sin_item dis-flex-wrap-center">
-<a href="#">Light And Modern House</a>
+<a href="/listing">Light And Modern House</a>
 <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
 <i class="far fa-check"></i>
 </span></h3>
@@ -472,7 +472,7 @@
 </div>
 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
 <a href="#" class="gcf-company">
-<img alt='CTH Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By Best Property Market</span>
+<img alt='BPM Agent' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By Best Property Market</span>
 </a>
 <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Excellent" data-stars="5" data-rating="4.5"></div>
 </div></div>
