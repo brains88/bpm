@@ -30,5 +30,14 @@ class Plan extends Model
         'name', 
         'listing', 
         'details',
+        'currency',
     ];
+
+    /**
+     * A plan may have many subscriptions
+     */
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'plan_id');
+    }
 }

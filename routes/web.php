@@ -90,6 +90,12 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SkillsController::class, 'edit'])->name('admin.skill.edit');
     });
 
+    Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
+    Route::prefix('plan')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Admin\PlansController::class, 'add'])->name('admin.plan.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
+    });
+
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
         Route::get('/search/{query?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'search'])->name('admin.properties.search');

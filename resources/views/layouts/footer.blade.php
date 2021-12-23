@@ -15,9 +15,9 @@
         <!-- Summernote -->
         <script src="/summernote/summernote-lite.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            var blogDescription = $('#blogDescription');
-            if (blogDescription) {
-                blogDescription.summernote({
+            var description = $('#description');
+            if (description) {
+                description.summernote({
                     tabsize: 4,
                     height: 500
                 });

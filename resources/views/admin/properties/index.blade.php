@@ -1,8 +1,8 @@
 @include('layouts.header')
-<div class="bg-white min-vh-100">
+<div class="min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
-        <div class="container">
+    <div class="section-padding min-vh-100">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
@@ -37,7 +37,7 @@
                 @else
                     <div class="row">
                         @foreach($properties as $property)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-4 col-lg-2 mb-4">
                                 @include('admin.properties.partials.card')
                             </div>
                         @endforeach

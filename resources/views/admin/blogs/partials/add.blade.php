@@ -1,4 +1,4 @@
-<form method="post" action="javascript:;" class="add-blog-form" data-action="{{ route('admin.blog.store'); }}" autocomplete="off">
+<form method="post" action="javascript:;" class="add-blog-form rounded p-3 border-dark-500" data-action="{{ route('admin.blog.store'); }}" style="background-color: rgba(0, 0, 0, 0.5);" autocomplete="off">
     <div class="form-row">
         <div class="form-group col-12">
             <label class="form-label text-muted">Title</label>
@@ -11,10 +11,10 @@
             <label class="form-label text-muted">Category (<a href="{{ url('/categories'); }}" target="_blank">Add category</a>)</label>
             <select class="custom-select form-control category" name="category">
                 <option value="">Select Category</option>
-                @empty($blogCategories->count())
+                @empty($categories->count())
                     <option value="">No Categories</option>
                 @else
-                    @foreach ($blogCategories as $category)
+                    @foreach ($categories as $category)
                         <option value="{{ $category->id; }}">
                             {{ ucwords($category->name) }}
                         </option>
@@ -26,11 +26,11 @@
         <div class="form-group col-md-6">
             <label class="form-label text-muted">Publish now?</label>
             <select class="custom-select form-control status" name="status">
-                <?php $publishStatus = \App\Models\Blog::$publish; ?>
-                @empty($publishStatus)
+                <?php $status = \App\Models\Blog::$publish; ?>
+                @empty($status)
                     <option value="">No Status</option>
                 @else
-                    @foreach ($publishStatus as $key => $value)
+                    @foreach ($status as $key => $value)
                         <option value="{{ (boolean)$value; }}">
                             {{ ucfirst($key); }}
                         </option>
@@ -42,11 +42,13 @@
     </div>
     <div class="form-group mb-4">
         <label class="text-muted">Description</label>
-        <textarea class="form-control description" name="description" rows="4" placeholder="Add book description." id="blogDescription"></textarea>
+        <div class="bg-white">
+            <textarea class="form-control description" name="description" rows="4" placeholder="Add book description." id="description"></textarea>
+        </div>
         <small class="invalid-feedback description-error"></small>
     </div>
     <div class="alert mb-3 add-blog-message d-none"></div>
-    <button type="submit" class="btn btn-lg bg-main-dark text-white add-blog-button btn-block mt-3">
+    <button type="submit" class="btn btn-lg bg-dark-500 text-white add-blog-button btn-block mt-3">
         <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
         Add blog
     </button>

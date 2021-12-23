@@ -1,11 +1,11 @@
 @include('layouts.header')
-    <div class="bg-white min-vh-100">
+    <div class="min-vh-100">
         @include('admin.layouts.navbar')
         <div class="section-padding">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row flex-md-column-reverse flex-lg-row">
-                    <div class="col-12 col-lg-6">
-                        @if(empty($allBlogs->count()))
+                    <div class="col-12 col-lg-7">
+                        @if(empty($blogs->count()))
                             <div class="alert-info alert">No blogs yet</div>
                         @else
                             <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
@@ -14,27 +14,25 @@
                                 </a>
                             </div>
                             <div class="row">
-                                @foreach($allBlogs as $blog)
-                                    <div class="col-12 col-md-6 mb-4">
+                                @foreach($blogs as $blog)
+                                    <div class="col-12 col-md-6 col-lg-4 mb-4">
                                         @include('admin.blogs.partials.card')
                                     </div>
                                     @include('admin.blogs.partials.edit')
                                 @endforeach
                             </div>
-                            <div class="mb-4 alert-info alert">
-                                {{ $allBlogs->links('vendor.pagination.links') }}
-                            </div>
+                            {{ $blogs->onEachSide(1)->links('vendor.pagination.default') }}
                         @endif
                     </div>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-5">
                         <div class="mb-4 accordion" id="add-blog-accordion">
-                            <div class="alert alert-info d-flex justify-content-between align-items-center cursor-pointer" data-toggle="collapse" data-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
+                            <div class="bg-info p-3 rounded mb-4 d-flex justify-content-between align-items-center cursor-pointer" data-toggle="collapse" data-target="#collapse-one" aria-expanded="true" aria-controls="collapse-one">
                                 <small class="">Add blog</small>
                                 <small class="">
                                     <i class="icofont-caret-down"></i>
                                 </small>
                             </div>
-                            <div id="collapse-one" class="collapse" aria-labelledby="heading-one" data-parent="#add-blog-accordion">
+                            <div id="collapse-one" class="collapse show" aria-labelledby="heading-one" data-parent="#add-blog-accordion">
                                 @include('admin.blogs.partials.add')
                             </div>
                         </div>
@@ -48,13 +46,13 @@
                                      <small class="">Add</small>
                                  </div>
                             </div>
-                            @if(empty($blogCategories->count()))
+                            @if(empty($categories->count()))
                                 <div class="alert alert-info">No blog categories</div>
                             @else
                                 <div class="row">
-                                    @foreach($blogCategories as $category)
+                                    @foreach($categories as $category)
                                         <div class="col-12 col-lg-6 mb-4">
-                                            <div class="card">
+                                            <div class="card border-0">
                                                 <div class="card-body">
                                                     <a href="javascript:;" data-toggle="modal" data-target="#add-category">
                                                         <small class="text-underline">

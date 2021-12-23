@@ -1,4 +1,4 @@
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -13,7 +13,10 @@
             </div>
             <div class="">
                 <h4 class="text-dark">
-                    {{ number_format(\App\Models\User::count()) }}
+                    <span>{{ number_format(\App\Models\User::count()) }}</span>
+                    <small class="text-success">
+                        <i class="icofont-long-arrow-up"></i>
+                    </small>
                 </h4>
                 <a href="{{ route('admin.users') }}" class="d-flex justify-content-between align-items-center text-dark text-decoration-none rounded-pill bg-main-ash px-3 py-2">
                     <small>Users</small>
@@ -25,7 +28,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -42,7 +45,7 @@
                 <h4 class="text-dark">
                     {{ number_format(\App\Models\Property::count()) }}
                 </h4>
-                <a href="{{ route('admin.users') }}" class="d-flex justify-content-between align-items-center text-dark text-decoration-none rounded-pill bg-main-ash px-3 py-2">
+                <a href="{{ route('admin.properties') }}" class="d-flex justify-content-between align-items-center text-dark text-decoration-none rounded-pill bg-main-ash px-3 py-2">
                     <small>Properties</small>
                     <span>
                         <i class="icofont-long-arrow-right"></i>
@@ -52,7 +55,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -79,7 +82,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -94,7 +97,7 @@
             </div>
             <div class="">
                 <h4 class="text-dark">
-                    {{ number_format(\App\Models\Payment::count()) }}
+                    ${{ number_format(48578400) }}
                 </h4>
                 <a href="{{ route('admin.users') }}" class="d-flex justify-content-between align-items-center text-dark text-decoration-none rounded-pill bg-main-ash px-3 py-2">
                     <small>Payments</small>
@@ -106,7 +109,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -125,7 +128,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -144,7 +147,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -153,7 +156,7 @@
                 </div>
             </div>
             <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-dark text-underline mb-1">
+                <a href="{{ route('admin.plans') }}" class="d-block text-dark text-underline mb-1">
                     Plans
                 </a>
                 <h6 class="text-muted m-0">
@@ -163,45 +166,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card admin-panel-card border-0 shadow-sm">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-circle text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin.properties') }}" class="d-block text-dark text-underline mb-1">
-                    Properties
-                </a>
-                <h6 class="text-muted m-0">
-                    {{ number_format(\App\Models\Property::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card admin-panel-card border-0 shadow-sm">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-circle text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin.subscriptions') }}" class="d-block text-dark text-underline mb-1">
-                    Subscriptions
-                </a>
-                <h6 class="text-muted m-0">
-                    {{ number_format(\App\Models\Category::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -220,7 +185,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -239,7 +204,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card admin-panel-card border-0 shadow-sm">
         <div class="card-body d-flex align-items-center">
             <div class="mr-3">
@@ -253,44 +218,6 @@
                 </a>
                 <h6 class="text-muted m-0">
                     {{ number_format(\App\Models\Skill::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card admin-panel-card border-0 shadow-sm">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-circle text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-dark text-underline mb-1">
-                    Payments
-                </a>
-                <h6 class="text-muted m-0">
-                    {{ number_format(\App\Models\Payment::count()) }}
-                </h6>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card admin-panel-card border-0 shadow-sm">
-        <div class="card-body d-flex align-items-center">
-            <div class="mr-3">
-                <div class="panel-icon rounded-circle text-white bg-dark-500">
-                    <i class="icofont-industries-5"></i>
-                </div>
-            </div>
-            <div class="">
-                <a href="{{ route('admin') }}" class="d-block text-dark text-underline mb-1">
-                    Adverts
-                </a>
-                <h6 class="text-muted m-0">
-                    0{{-- {{ number_format(\App\Models\Transaction::count()) }} --}}
                 </h6>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card border-0">
     <div class="card-img position-relative">
         <div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
             <small class="text-white">

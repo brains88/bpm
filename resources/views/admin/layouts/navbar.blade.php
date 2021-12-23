@@ -10,13 +10,22 @@
 			</ul>
 			<ul class="d-flex align-items-center">
 				<div class="cursor-pointer position-relative mr-3">
-					<div class="rounded-circle position-absolute bg-danger text-center" style="height: 18.5px; line-height: 18.5px; width: 18.5px; top: -7.5px; right: -7.5px; z-index: 2;">
-						<small class="text-white" style="font-size: 10px;">56</small>
+					<small class="rounded-pill px-1 position-absolute bg-info text-center" style="top: -7.5px; right: -7.5px; z-index: 2;">
+						<small class="text-white">13</small>
+					</small>
+					<div>
+						<i class="icofont-ui-messaging"></i>
 					</div>
+				</div>
+				<div class="cursor-pointer position-relative mr-3">
+					<small class="rounded-pill px-1 position-absolute bg-danger text-center" style="top: -7.5px; right: -7.5px; z-index: 2;">
+						<small class="text-white">56</small>
+					</small>
 					<div style="transform: rotate(-20deg);">
 						<i class="icofont-notification"></i>
 					</div>
 				</div>
+				
 			    <div data-url="{{ route('logout'); }}" class="cursor-pointer text-center mr-3">
 			    	<i class="icofont-power text-danger"></i>
 			    </div>

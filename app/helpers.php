@@ -26,3 +26,11 @@ if (!function_exists('retitle')) {
         }
     }
 }
+
+if (!function_exists('randomcolor')) {
+    function randomcolor() {
+        $code = substr(md5(rand()), 0, 6);
+        return '#'.$code;
+    }
+}
+

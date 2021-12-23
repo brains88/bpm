@@ -1,4 +1,4 @@
-<div class="card card-{{ $property->id }} border-top-0">
+<div class="card card-{{ $property->id }} border-0">
 	<?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
 	<div class="card-img-top position-relative" style="height: 160px; line-height: 160px;">
 		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
