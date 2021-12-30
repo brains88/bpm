@@ -426,6 +426,7 @@
   var _bestpropertymarket = {"hheight":"80"};
   /* ]]> */
 </script>
+<script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyA5l7mjh_T5UCviwCoPTeRaUT-5tF_C7sU"  type="text/javascript"></script>
 <script defer src="bpm-content/uploads/new/siteground-optimizer-combined-js-a60f2b8eb4cca45cf4e4a809bea38bbe.js"></script>
 </body>
 </html>

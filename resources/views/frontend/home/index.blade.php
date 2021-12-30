@@ -64,7 +64,7 @@
                                 <div class="tab lfilter-tab-6379">
                                   <div id="lfilter-tab-6379" class="tab-content first-tab">
                                     <div class="main-search-input-wrap fl-wrap">
-                                      <form role="search"  action="{{route('AdvancedSearch')}}" class="list-search-hero-form list-search-form-js">
+                                      <form  action="{{route('AdvancedSearch')}}" class="list-search-hero-form list-search-form-js">
                                         <div class="azp_element filter_form_hero azp-element-azp-krjgkspo8rj">
                                           <div class="hero-inputs-wrap fl-wrap">
                                             <div class="azp_element filter_title azp-element-azp-w3dh4rx8g8n filter-gid-item filter-gid-wid-3">
@@ -121,7 +121,7 @@
                             <!-- main-search-input-tabs end-->
                           </div>
                           <div class="intro-item-after fl-wrap">
-                            <div class="hero-notifer fl-wrap">Need more search options? <a href="../listing/index.htm">Advanced Search</a>
+                            <div class="hero-notifer fl-wrap">Need more search options? <a href="{{route('AdvancedSearch')}}">Advanced Search</a>
                             </div>
                           </div>
                           <div class="scroll-down-wrap">
@@ -217,13 +217,13 @@
                                   <i class="fas fa-map-marker-alt"></i> 
                                   <span>75 Prince St, NY, USA</span></a>
                                 </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="#" class="cat-opt status-opt flex-items-center">For Sale</a> 
-                                  <a href="#" class="cat-opt flex-items-center">Home</a>
+                                <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> 
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Home</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span>
                                 <i class="fal fa-heart"></i></span>
                                 </a> 
-                                <a href="#" class="compare-btn tolt compare-btn-6355" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="6355" data-ltitle="Luxury Family Home" data-lthumb="../bpm-content/uploads/2021/03/3-1-150x150.jpg" data-lprice="€40.69" data-laddress="75 Prince St, NY, USA">
+                                <a href="#" class="compare-btn tolt compare-btn-6355" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="6355" data-ltitle="Luxury Family Home" data-lthumb="bpm-content/uploads/2021/03/3-1-150x150.jpg" data-lprice="€40.69" data-laddress="75 Prince St, NY, USA">
                                 <span>
                                 <i class="fal fa-random"></i>
                                 </span></a>
@@ -237,7 +237,7 @@
                               </div>
                               <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
                                 <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="/listing">Luxury Family Home</a> 
+                                  <a href="{{route('AdvancedSearch')}}">Luxury Family Home</a> 
                                   <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
                                   <i class="far fa-check"></i>
                                   </span>
@@ -255,7 +255,7 @@
                                   </div>
                                 </div>
                                 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between"> 
-                                  <a href="/listing" class="gcf-company">
+                                  <a href="{{route('author')}}" class="gcf-company">
                                   <img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
                                   <span class="lcard-avatar">By Best Property Market</span>
                                   </a>
@@ -268,7 +268,7 @@
                           <div class="cthiso-item listing-item listing-item-loop post-6152 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-sale listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-restaurant-inside listing_tag-fitness listing_tag-gym listing_tag-indoor listing_tag-outdoor listing_tag-running listing_tag-tour" data-postid="6152">
                             <article class="geodir-category-listing fl-wrap">
                               <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="/listing" class="listing-thumb-link geodir-category-img_item">
+                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                                   <img width="424" height="280" src="uploads/2021/03/5-424x280.jpg" class="respimg" alt="" loading="lazy">
                                   <div class="overlay"></div>
                                 </a>
@@ -277,7 +277,7 @@
                                   <span>75 Prince St, NY, USA</span></a>
                                 </div>
                                 <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="/listing" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="#" class="cat-opt flex-items-center">House</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
                                 <span><i class="fal fa-heart"></i></span></a> 
@@ -290,7 +290,7 @@
                               </div>
                               <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
                                 <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="#">Family House For Rent</a>
+                                  <a href="{{route('AdvancedSearch')}}">Family House For Rent</a>
                                 </h3>
                                 <div class="geodir-category-content_price">€415,249.50</div>
                                 <div class="geodir-card-text">
@@ -307,7 +307,7 @@
                                   </div>
                                 </div>
                                 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="../author/admin/index.htm" class="gcf-company">
+                                  <a href="#" class="gcf-company">
                                   <img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
                                   <span class="lcard-avatar">By BPM Agent</span>
                                   </a>
@@ -322,7 +322,7 @@
                           <div class="cthiso-item listing-item listing-item-loop post-5126 listing type-listing status-publish has-post-thumbnail hentry listing_cat-apartment listing_location-01-new-york listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-elevator-in-building listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_feature-tv-inside listing_tag-hostel listing_tag-hotel listing_tag-parking listing_tag-restourant listing_tag-room listing_tag-spa" data-postid="5126">
                             <article class="geodir-category-listing fl-wrap">
                               <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="/listing" class="listing-thumb-link geodir-category-img_item">
+                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                                   <img width="424" height="280" src="uploads/2021/03/6-424x280.jpg" class="respimg" alt="" loading="lazy">
                                   <div class="overlay"></div>
                                 </a>
@@ -334,11 +334,11 @@
                                 </div>
                                 <div class="listing-featured">Featured</div>
                                 <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="/listing" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="../listing_cat/apartment/index.htm" class="cat-opt flex-items-center">Apartment</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Apartment</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span>
                                 </a>
-                                <a href="#" class="compare-btn tolt compare-btn-5126" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="5126" data-ltitle="Contemporary Apartment" data-lthumb="../public/uploads/2021/03/6-150x150.jpg" data-lprice="€498,299.40" data-laddress="70 Bright St New York, USA"><span><i class="fal fa-random"></i></span></a>
+                                <a href="{{route('AdvancedSearch')}}" class="compare-btn tolt compare-btn-5126" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="5126" data-ltitle="Contemporary Apartment" data-lthumb="public/uploads/2021/03/6-150x150.jpg" data-lprice="€498,299.40" data-laddress="70 Bright St New York, USA"><span><i class="fal fa-random"></i></span></a>
                                 <div class="geodir-category-listing_media-list"> 
                                   <span><i class="fas fa-camera"></i> 6</span>
                                 </div>
@@ -349,7 +349,7 @@
                               </div>
                               <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
                                 <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="/listing">Contemporary Apartment</a>
+                                  <a href="{{route('AdvancedSearch')}}">Contemporary Apartment</a>
                                   <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
                                   <i class="far fa-check"></i>
                                   </span>
@@ -380,7 +380,7 @@
                           <div class="cthiso-item listing-item listing-item-loop post-7439 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-rent listing_feature-elevator-in-building-fr listing_feature-free-parking-fr listing_feature-free-wi-fi-fr listing_feature-mini-bar-fr listing_feature-pet-friendly-fr listing_tag-hostel listing_tag-hotel listing_tag-parking listing_tag-restourant listing_tag-room listing_tag-spa" data-postid="7439">
                             <article class="geodir-category-listing fl-wrap">
                               <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="#" class="listing-thumb-link geodir-category-img_item">
+                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                                   <img width="424" height="280" src="../bpm-content/uploads/2021/03/1-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                                   <div class="overlay"></div>
                                 </a>
@@ -391,8 +391,8 @@
                                 </div>
                                 <div class="listing-featured">Featured</div>
                                 <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="#" class="cat-opt status-opt flex-items-center">For Rent</a>
-                                  <a href="#" class="cat-opt flex-items-center">House</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
                                 <span><i class="fal fa-heart"></i></span></a>
@@ -419,7 +419,7 @@
                                   </div>
                                 </div>
                                 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="/listing" class="gcf-company">
+                                  <a href="{{route('author')}}" class="gcf-company">
                                   <img alt='BPM Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
                                   <span class="lcard-avatar">By Best Property Market</span></a>
                                   <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.2"></div>
@@ -432,7 +432,7 @@
                           <div class="cthiso-item listing-item listing-item-loop post-1743 listing type-listing status-publish has-post-thumbnail hentry listing_cat-home listing_location-01-new-york listing_status-for-rent listing_feature-airport-shuttle listing_feature-breakfast listing_feature-elevator-in-building listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-pet-friendly listing_feature-restaurant-inside listing_feature-tv-inside" data-postid="1743">
                             <article class="geodir-category-listing fl-wrap">
                               <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="#" class="listing-thumb-link geodir-category-img_item">
+                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                                   <img width="424" height="280" src="bpm-content/uploads/2021/03/7-424x280.jpg" class="respimg" alt="" loading="lazy">
                                   <div class="overlay"></div>
                                 </a>
@@ -442,7 +442,7 @@
                                   <span>68 Square St, Jersey City, NJ, USA</span></a>
                                 </div>
                                 <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="#" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="../listing_cat/home/index.htm" class="cat-opt flex-items-center">Home</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Home</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
                                 <span>
@@ -474,7 +474,7 @@
                                   </div>
                                 </div>
                                 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="/listing" class="gcf-company">
+                                  <a href="{{route('author')}}" class="gcf-company">
                                   <img alt='' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
                                   <span class="lcard-avatar">By Best Property Market</span>
                                   </a>
@@ -498,7 +498,7 @@
                                   <span>68 Square St, Jersey City, NJ, USA</span></a>
                                 </div>
                                 <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="#" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="#" class="cat-opt flex-items-center">House</a>
+                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
                                 <span><i class="fal fa-heart"></i></span></a> 
@@ -534,7 +534,7 @@
                                   </div>
                                 </div>
                                 <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="#" class="gcf-company">
+                                  <a href="{{route('author')}}" class="gcf-company">
                                   <img alt='BPM Agent' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By Best Property Market</span>
                                   </a>
                                   <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Excellent" data-stars="5" data-rating="4.5"></div>
@@ -545,7 +545,7 @@
                           <!-- listing-item end-->
                         </div>
                         <div class="view-all-listings">
-                          <a href="#" class="btn  dec_btn  color2-bg">Check Out All Listings</a>
+                          <a href="{{route('AdvancedSearch')}}" class="btn  dec_btn  color2-bg">Check Out All Listings</a>
                         </div>
                       </div>
                       <!-- list-main-wrap end-->
