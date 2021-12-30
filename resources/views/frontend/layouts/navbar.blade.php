@@ -1,254 +1,270 @@
 
-
 <!-- header-->
-<header id="masthead" class="bestpropertymarket-header main-header"> 
-<!--  logo  -->
-<div class="logo-holder"> 
-<a href="/" class="custom-logo-link" rel="home">
-<img width="376" height="69" src="uploads/2021/05/logo2x.png" class="custom-logo" alt="Best Property Market"></a>
-</div> 
-<!-- logo end  --> 
-
-<!-- nav-button-wrap-->
-<div class="nav-button-wrap color-bg nvminit">
+<header id="masthead" class="bestpropertymarket-header main-header">
+  <!--  logo  -->
+  <div class="logo-holder"> 
+    <a href="/" class="custom-logo-link" rel="home">
+    <img width="376" height="69" src="uploads/2021/05/logo2x.png" class="custom-logo" alt="Best Property Market"></a>
+  </div>
+  <!-- logo end  --> 
+  <!-- nav-button-wrap-->
+  <div class="nav-button-wrap color-bg nvminit">
     <div class="nav-button">
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-</div>
-<!-- nav-button-wrap end--> 
-<!-- header-search_btn--> 
-
-<!-- header-search button  -->
-<div class="header-search-button">
-	<i class="fal fa-search"></i> 
-	<span>Search...</span>
-</div> 
-<!-- header-search button end  -->
-<!-- header-search-wrapper -->
-	<div class="header-search-wrapper novis_search">
-	<div class="header-search-inner">
-	<form role="search" method="get" action="#" class="list-search-header-form list-search-form-js">
-	<div class="azp_element filter_form_header azp-element-azp-ax8l2dbeb7d">
-	<div class="head-inputs-wrap fl-wrap">
-	<div class="azp_element filter_status_btn azp-element-azp-0h8aqzff5ttc filter-gid-item filter-gid-wid-12">
-	<div class="filter-item-inner">
-	<div class="custom-switcher fl-wrap">
-	<div class="fieldset fl-wrap"> 
-	<input type="radio" name="status"  value="for-sale" class="tariff-toggle" checked='checked'>
-	<label for="61b4ae7aa9b0c">For Sale</label> 
-	<input type="radio" name="status"  value="for-rent" class="tariff-toggle"> 
-	<label for="61b4ae7aa9b17">For Rent</label> 
-	<span class="switch color-bg"></span>
-	</div>
-	</div>
-	</div>
-	</div>
-	<div class="azp_element filter_title azp-element-azp-2z7zvwi1qxr filter-gid-item filter-gid-wid-12">
-	<div class="filter-item-inner">
-	<div class="listsearch-input-title">
-	<label>Keywords</label>
-	</div>
-	<input type="text" name="search_term" placeholder="What are you looking for?" value="">
-	</div>
-	</div>
-	<div class="azp_element filter_cat azp-element-azp-hldsun6ublt filter-gid-item filter-gid-wid-12"><div class="filter-item-inner"><div class="listsearch-input-title">
-	<label>Categories</label>
-	</div>
-	<select data-placeholder="All Categories" class="chosen-select" name="lcats[]">
-	<option value="">All Categories</option>
-	<option value="626">Apartment</option>
-	<option value="629">Home</option>
-	<option value="195">Hotel</option>
-	<option value="627">House</option>
-	<option value="630">Office</option>
-	<option value="628">Villa</option> 
-	</select>
-	</div></div>
-	<div class="azp_element filter_price azp-element-azp-v9jf7pzx69 filter-gid-item filter-gid-wid-12"><div class="filter-item-inner">
-	<div class="price-rage-wrap fl-wrap">
-	<div class="price-rage-wrap-title"> Price Range</div>
-	<div class="price-rage-item fl-wrap"> 
-	<input class="price-slider" data-type="double" data-from="0" data-to="1660998" data-step="830.499" data-min="0" data-max="1660998" data-prefix="€" data-prettify-separator=",">
-	<input type="hidden" name="fprice" class="price_range_hidden" value="0;2000000"></div></div>
-	</div>
-	</div>
-	<div class="azp_element filter_submit azp-element-azp-1ejj1kr5y4v filter-gid-item filter-gid-wid-12"><div class="filter-item-inner">
-	<button class="btn color-bg fw-btn small-btn filter-submit-btn" type="submit">
-	<i class="fal fa-search"></i> <span>Search</span> </button>
-	</div>
-	</div>
-	</div>
-	</div>
-	</form>
-	</div></div> 
-	<!-- header-search-wrapper end  -->
-	<!--  add new  btn -->
-	<div class="add-list_wrap">
-	<a href="#" class="add-list color-bg logreg-modal-open" data-message="You must be logged in to add listings."><i class="fal fa-plus"></i> 
-	<span>Add Listing</span>
-	</a></div> 
-	<!--  add new  btn end -->
-	<!--  header-opt_btn -->
-	<div class="header-opt_btn tolt" data-microtip-position="bottom" data-tooltip="Language / Currency">
-	<span>
-	<i class="fal fa-globe"></i>
-	</span></div> 
-	<!--  header-opt_btn end -->
-	<!--header-opt-modal-->
-	<div class="header-opt-modal novis_header-mod">
-	<div class="header-opt-modal-container hopmc_init">
-	<div class="header-opt-modal-item lang-item fl-wrap"> 
-	<h4>Language: <span>EN</span></h4>
-	<div class="header-opt-modal-list fl-wrap">
-	<ul><li>
-	<a href="#" class="current-lan" data-lantext="EN">English</a></li>
-	<li><a href="#" data-lantext="FR">Franais</a></li>
-	<li><a href="#" data-lantext="ES">Espaol</a></li>
-	<li><a href="#" data-lantext="DE">Deutsch</a></li>
-	</ul>
-	</div> 
-	<div id="custom_html-12" class="widget_text bestpropertymarket-lang-curr-wrap widget_custom_html">
-	<div class="textwidget custom-html-widget">
-	<h4>Language: <span>EN</span></h4>
-	<div class="header-opt-modal-list fl-wrap">
-	<ul><li>
-	<a href="#" class="current-lan" data-lantext="EN">English</a>
-	</li>
-	<li><a href="#" data-lantext="FR">Franais</a></li><li><a href="#" data-lantext="ES">Espaol</a></li>
-	<li><a href="#" data-lantext="DE">Deutsch</a></li>
-	</ul>
-	</div>
-	</div>
-	</div></div>
-	<div class="header-opt-modal-item currency-item fl-wrap">
-	<h4>Currency: <span>EUR</span></h4>
-	<div class="header-opt-modal-list fl-wrap">
-	<ul>
-	<li><a href="gbp/.htm?currency=GBP" class="currency-item current-curr" data-lantext="GBP">GBP</a>
-	</li>
-	<li>
-	<a href="inr/.htm?currency=INR" class="currency-item current-curr" data-lantext="INR">INR</a>
-	</li>
-	<li><a href="usd/.htm?currency=USD" class="currency-item current-curr" data-lantext="USD">USD</a></li>
-	</ul>
-	</div>
-	</div>
-	</div></div>
-	<!--header-opt-modal end -->
-	<!--  cart-btn   -->
-	<div class="cart-btn  tolt show-header-modal" data-microtip-position="bottom" data-tooltip="Your Wishlist / Compare">
-	<i class="fal fa-bell"></i> <span class="cart-btn_counter color-bg bmcounter-head">0</span></div> 
-	<!--  cart-btn end -->
-	<!-- wishlist-wrap-->
-	<div class="header-modal novis_wishlist tabs-act tabs-wrapper">
-	<ul class="tabs-menu fl-wrap no-list-style">
-	<li class="current">
-	<a href="#tab-wish">Wishlist - <span class="bmcounter-tab">0</span></a>
-	</li>
-	<li>
-	<a href="#tab-compare">Compare - <span class="cpcounter-tab">0</span></a></li>
-	</ul> <!--tabs -->
-	<div class="tabs-container">
-	<div class="tab"> 
-	<!--tab -->
-	<div id="tab-wish" class="tab-content first-tab"> 
-	<!-- header-modal-container-->
-	<div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar=""> 
-	<!--widget-posts-->
-	<div class="widget-posts  fl-wrap">
-	<ul class="no-list-style wishlist-items-wrap">
-	<li class="wishlist-item no-bookmark-wrap"><p>You have no bookmark.</p></li>
-	</ul>
-	</div> 
-	<!-- widget-posts end-->
-	</div>
-	<!-- header-modal-container end-->
-	<div class="header-modal-top fl-wrap">
-	<div class="clear_wishlist color-bg clear-bookmark-btn">
-	<i class="fal fa-trash-alt"></i>Clear all</div>
-	</div></div> 
-	<!--tab end --> <!--tab -->
-	<div class="tab">
-	<div id="tab-compare" class="tab-content"> 
-	<!-- header-modal-container-->
-	<div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar=""> 
-		<!--widget-posts--><div class="widget-posts  fl-wrap">
-	<ul class="no-list-style compare-items-wrap">
-	<li class="wishlist-item no-compare-item">
-	<p>You have no item to compare.</p>
-	</li>
-	</ul>
-	</div> 
-	<!-- widget-posts end-->
-	</div> 
-	<!-- header-modal-container end-->
-	<div class="header-modal-top fl-wrap"> 
-	<a class="clear_wishlist color-bg" href="../compare/index.htm">
-	<i class="fal fa-random">
-	</i>Compare</a>
-	</div>
-	</div>
-	</div> 
-	<!--tab end -->
-	</div>
-	<!--tabs end -->
-	</div>
-	</div> 
-	<!--wishlist-wrap end -->
-	<!--  login btn -->
-	<a href="#" class="show-reg-form avatar-img logreg-modal-open">
-	<i class="fas fa-user"></i><span>Sign In</span></a>
-	<!--  login btn  end -->
-	<!--  navigation -->
-	<!--  .nav-holder -->
-	<div class="nav-holder main-menu">
-	<nav id="site-navigation" class="main-navigation" aria-label="Top Menu">
-	<ul id="top-menu" class="menu">
-
-		<li id="menu-item-1316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home ">
-			<a href="#" >Home</a>
-		</li>
-
-		<li id="menu-item-6798" class="menu-item menu-item-type-post_type menu-item-has-children menu-item-object-page">
-			<a href="#">About</a>
-			<ul class="sub-menu">
-				<li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="../about/index.htm">Who we are</a>
-				</li>
-				<li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="../about/index.htm">Our Services</a>
-				</li>
-			</ul>
-		</li>
-
-		<li id="menu-item-8038" class="menu-item menu-item-type-custom menu-item-object-custom ">
-			<a href="#">Properties</a>
-		</li>
-
-
-		<li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
-			<a href="../news/index.htm">Agency</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="../about/index.htm">Agent Listing</a></li>
-		<li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="../contacts/index.htm">Agency Listing</a></li>
-	</ul>
-	</li>
-
-	<li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
-	<a href="#">Artisans</a>
-	</li>
-	<li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
-	<a href="#">Contact</a>
-	</li>
-	</ul>
-	</nav>
-	<!-- #site-navigation -->
-	</div><!-- .nav-holder -->
-	<!-- navigation  end -->
-	<!-- header opt -->
-	<!-- header opt end-->
-	</header> 
-	<!--  header end --> 
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!-- nav-button-wrap end--> 
+  <!-- header-search_btn--> 
+  <!-- header-search button  -->
+  <div class="header-search-button">
+    <i class="fal fa-search"></i> 
+    <span>Search...</span>
+  </div>
+  <!-- header-search button end  -->
+  <!-- header-search-wrapper -->
+  <div class="header-search-wrapper novis_search">
+    <div class="header-search-inner">
+      <form role="search" method="get" action="#" class="list-search-header-form list-search-form-js">
+        <div class="azp_element filter_form_header azp-element-azp-ax8l2dbeb7d">
+          <div class="head-inputs-wrap fl-wrap">
+            <div class="azp_element filter_status_btn azp-element-azp-0h8aqzff5ttc filter-gid-item filter-gid-wid-12">
+              <div class="filter-item-inner">
+                <div class="custom-switcher fl-wrap">
+                  <div class="fieldset fl-wrap"> 
+                    <input type="radio" name="status"  value="for-sale" class="tariff-toggle" checked='checked'>
+                    <label for="61b4ae7aa9b0c">For Sale</label> 
+                    <input type="radio" name="status"  value="for-rent" class="tariff-toggle"> 
+                    <label for="61b4ae7aa9b17">For Rent</label> 
+                    <span class="switch color-bg"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="azp_element filter_title azp-element-azp-2z7zvwi1qxr filter-gid-item filter-gid-wid-12">
+              <div class="filter-item-inner">
+                <div class="listsearch-input-title">
+                  <label>Keywords</label>
+                </div>
+                <input type="text" name="search_term" placeholder="What are you looking for?" value="">
+              </div>
+            </div>
+            <div class="azp_element filter_cat azp-element-azp-hldsun6ublt filter-gid-item filter-gid-wid-12">
+              <div class="filter-item-inner">
+                <div class="listsearch-input-title">
+                  <label>Categories</label>
+                </div>
+                <select data-placeholder="All Categories" class="chosen-select" name="lcats[]">
+                  <option value="">All Categories</option>
+                  <option value="626">Apartment</option>
+                  <option value="629">Home</option>
+                  <option value="195">Hotel</option>
+                  <option value="627">House</option>
+                  <option value="630">Office</option>
+                  <option value="628">Villa</option>
+                </select>
+              </div>
+            </div>
+            <div class="azp_element filter_price azp-element-azp-v9jf7pzx69 filter-gid-item filter-gid-wid-12">
+              <div class="filter-item-inner">
+                <div class="price-rage-wrap fl-wrap">
+                  <div class="price-rage-wrap-title"> Price Range</div>
+                  <div class="price-rage-item fl-wrap"> 
+                    <input class="price-slider" data-type="double" data-from="0" data-to="1660998" data-step="830.499" data-min="0" data-max="1660998" data-prefix="€" data-prettify-separator=",">
+                    <input type="hidden" name="fprice" class="price_range_hidden" value="0;2000000">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="azp_element filter_submit azp-element-azp-1ejj1kr5y4v filter-gid-item filter-gid-wid-12">
+              <div class="filter-item-inner">
+                <button class="btn color-bg fw-btn small-btn filter-submit-btn" type="submit">
+                <i class="fal fa-search"></i> <span>Search</span> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- header-search-wrapper end  -->
+  <!--  add new  btn -->
+  <div class="add-list_wrap">
+    <a href="#" class="add-list color-bg logreg-modal-open" data-message="You must be logged in to add listings."><i class="fal fa-plus"></i> 
+    <span>Add Listing</span>
+    </a>
+  </div>
+  <!--  add new  btn end -->
+  <!--  header-opt_btn -->
+  <div class="header-opt_btn tolt" data-microtip-position="bottom" data-tooltip="Language / Currency">
+    <span>
+    <i class="fal fa-globe"></i>
+    </span>
+  </div>
+  <!--  header-opt_btn end -->
+  <!--header-opt-modal-->
+  <div class="header-opt-modal novis_header-mod">
+    <div class="header-opt-modal-container hopmc_init">
+      <div class="header-opt-modal-item lang-item fl-wrap">
+        <h4>Language: <span>EN</span></h4>
+        <div class="header-opt-modal-list fl-wrap">
+          <ul>
+            <li>
+              <a href="#" class="current-lan" data-lantext="EN">English</a>
+            </li>
+            <li><a href="#" data-lantext="FR">Franais</a></li>
+            <li><a href="#" data-lantext="ES">Espaol</a></li>
+            <li><a href="#" data-lantext="DE">Deutsch</a></li>
+          </ul>
+        </div>
+        <div id="custom_html-12" class="widget_text bestpropertymarket-lang-curr-wrap widget_custom_html">
+          <div class="textwidget custom-html-widget">
+            <h4>Language: <span>EN</span></h4>
+            <div class="header-opt-modal-list fl-wrap">
+              <ul>
+                <li>
+                  <a href="#" class="current-lan" data-lantext="EN">English</a>
+                </li>
+                <li><a href="#" data-lantext="FR">Franais</a></li>
+                <li><a href="#" data-lantext="ES">Espaol</a></li>
+                <li><a href="#" data-lantext="DE">Deutsch</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-opt-modal-item currency-item fl-wrap">
+        <h4>Currency: <span>EUR</span></h4>
+        <div class="header-opt-modal-list fl-wrap">
+          <ul>
+            <li><a href="gbp/.htm?currency=GBP" class="currency-item current-curr" data-lantext="GBP">GBP</a>
+            </li>
+            <li>
+              <a href="inr/.htm?currency=INR" class="currency-item current-curr" data-lantext="INR">INR</a>
+            </li>
+            <li><a href="usd/.htm?currency=USD" class="currency-item current-curr" data-lantext="USD">USD</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--header-opt-modal end -->
+  <!--  cart-btn   -->
+  <div class="cart-btn  tolt show-header-modal" data-microtip-position="bottom" data-tooltip="Your Wishlist / Compare">
+    <i class="fal fa-bell"></i> <span class="cart-btn_counter color-bg bmcounter-head">0</span>
+  </div>
+  <!--  cart-btn end -->
+  <!-- wishlist-wrap-->
+  <div class="header-modal novis_wishlist tabs-act tabs-wrapper">
+    <ul class="tabs-menu fl-wrap no-list-style">
+      <li class="current">
+        <a href="#tab-wish">Wishlist - <span class="bmcounter-tab">0</span></a>
+      </li>
+      <li>
+        <a href="#tab-compare">Compare - <span class="cpcounter-tab">0</span></a>
+      </li>
+    </ul>
+    <!--tabs -->
+    <div class="tabs-container">
+      <div class="tab">
+        <!--tab -->
+        <div id="tab-wish" class="tab-content first-tab">
+          <!-- header-modal-container-->
+          <div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar="">
+            <!--widget-posts-->
+            <div class="widget-posts  fl-wrap">
+              <ul class="no-list-style wishlist-items-wrap">
+                <li class="wishlist-item no-bookmark-wrap">
+                  <p>You have no bookmark.</p>
+                </li>
+              </ul>
+            </div>
+            <!-- widget-posts end-->
+          </div>
+          <!-- header-modal-container end-->
+          <div class="header-modal-top fl-wrap">
+            <div class="clear_wishlist color-bg clear-bookmark-btn">
+              <i class="fal fa-trash-alt"></i>Clear all
+            </div>
+          </div>
+        </div>
+        <!--tab end --> <!--tab -->
+        <div class="tab">
+          <div id="tab-compare" class="tab-content">
+            <!-- header-modal-container-->
+            <div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar="">
+              <!--widget-posts-->
+              <div class="widget-posts  fl-wrap">
+                <ul class="no-list-style compare-items-wrap">
+                  <li class="wishlist-item no-compare-item">
+                    <p>You have no item to compare.</p>
+                  </li>
+                </ul>
+              </div>
+              <!-- widget-posts end-->
+            </div>
+            <!-- header-modal-container end-->
+            <div class="header-modal-top fl-wrap"> 
+              <a class="clear_wishlist color-bg" href="../compare/index.htm">
+              <i class="fal fa-random">
+              </i>Compare</a>
+            </div>
+          </div>
+        </div>
+        <!--tab end -->
+      </div>
+      <!--tabs end -->
+    </div>
+  </div>
+  <!--wishlist-wrap end -->
+  <!--  login btn -->
+  <a href="#" class="show-reg-form avatar-img logreg-modal-open">
+  <i class="fas fa-user"></i><span>Sign In</span></a>
+  <!--  login btn  end -->
+  <!--  navigation -->
+  <!--  .nav-holder -->
+  <div class="nav-holder main-menu">
+    <nav id="site-navigation" class="main-navigation" aria-label="Top Menu">
+      <ul id="top-menu" class="menu">
+        <li id="menu-item-1316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home ">
+          <a href="{{route('home')}}">Home</a>
+        </li>
+        <li id="menu-item-6798" class="menu-item menu-item-type-post_type menu-item-has-children menu-item-object-page">
+          <a href="#">About</a>
+          <ul class="sub-menu">
+            <li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('about')}}">Who we are</a>
+            </li>
+            <li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('services')}}">Our Services</a>
+            </li>
+          </ul>
+        </li>
+        <li id="menu-item-8038" class="menu-item menu-item-type-custom menu-item-object-custom ">
+          <a href="#">Properties</a>
+        </li>
+        <li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
+          <a href="#">Agency</a>
+          <ul class="sub-menu">
+            <li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('agents')}}">Agent Listing</a></li>
+            <li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="{{route('agency')}}">Agency Listing</a></li>
+          </ul>
+        </li>
+        <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
+          <a href="{{route('artisans')}}">Artisans</a>
+        </li>
+        <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
+          <a href="{{route('contact')}}">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- #site-navigation -->
+  </div>
+  <!-- .nav-holder -->
+  <!-- navigation  end -->
+  <!-- header opt -->
+  <!-- header opt end-->
+</header>
+<!--  header end -->
 
 
 

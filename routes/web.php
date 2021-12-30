@@ -17,6 +17,7 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/agency', [AboutController::class, 'index'])->name('agency');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::group(['prefix' => 'login', 'middleware' => 'guest'], function () {
