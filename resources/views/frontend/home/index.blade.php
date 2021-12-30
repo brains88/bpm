@@ -64,7 +64,7 @@
                                 <div class="tab lfilter-tab-6379">
                                   <div id="lfilter-tab-6379" class="tab-content first-tab">
                                     <div class="main-search-input-wrap fl-wrap">
-                                      <form role="search" method="get" action="#" class="list-search-hero-form list-search-form-js">
+                                      <form role="search"  action="{{route('AdvancedSearch')}}" class="list-search-hero-form list-search-form-js">
                                         <div class="azp_element filter_form_hero azp-element-azp-krjgkspo8rj">
                                           <div class="hero-inputs-wrap fl-wrap">
                                             <div class="azp_element filter_title azp-element-azp-w3dh4rx8g8n filter-gid-item filter-gid-wid-3">
@@ -179,9 +179,9 @@
         </section>
         <section class="elementor-section elementor-top-section elementor-element elementor-element-517ba243 gray-bg small-padding elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="517ba243" data-element_type="section">
           <div class="elementor-container elementor-column-gap-default">
-            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-64120373" data-id="64120373" data-element_type="column">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-64120373" data-id="" data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-1b042ce1 elementor-widget elementor-widget-listings_grid_new" data-id="1b042ce1" data-element_type="widget" data-widget_type="listings_grid_new.default">
+                <div class="elementor-element elementor-element-1b042ce1 elementor-widget elementor-widget-listings_grid_new" data-id="" data-element_type="widget" data-widget_type="listings_grid_new.default">
                   <div class="elementor-widget-container">
                     <!-- carousel -->
                     <div class="listings-grid-wrap clearfix three-cols">
@@ -217,7 +217,7 @@
                                   <i class="fas fa-map-marker-alt"></i> 
                                   <span>75 Prince St, NY, USA</span></a>
                                 </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="../listing_status/for-sale/index.htm" class="cat-opt status-opt flex-items-center">For Sale</a> 
+                                <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="#" class="cat-opt status-opt flex-items-center">For Sale</a> 
                                   <a href="#" class="cat-opt flex-items-center">Home</a>
                                 </div>
                                 <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span>
