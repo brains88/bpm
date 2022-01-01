@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <div class="fixed-top bg-white border-bottom">
-=======
-
 <!-- header-->
 <header id="masthead" class="bestpropertymarket-header main-header">
   <!--  logo  -->
@@ -256,7 +253,7 @@
           <a href="{{route('artisans')}}">Artisans</a>
         </li>
         <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
-          <a href="{{route('contact')}}">Contact</a>
+          <a href="{{ route('contact') }}">Contact</a>
         </li>
       </ul>
     </nav>

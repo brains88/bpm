@@ -17,10 +17,7 @@
         <meta name="og:locale" content="en_US" />
         <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
-
-<<<<<<< HEAD
         <!--Facebook Open Graph-->
-=======
         <meta name="framework" content="Redux 4.3.3">
         <meta name='robots' content='max-image-preview:large'>
         <link rel='dns-prefetch' href='bpm-content/maps/index.htm'>
@@ -36,7 +33,6 @@
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
 
         <!-- Facebook Open Graph -->
->>>>>>> Dev
         <meta property="og:image" content="/images/logos/logo.png" />
         <meta property="og:url" content="https://geohomesgroup.com//" />
         <meta property="og:type" content="Real Estate" />

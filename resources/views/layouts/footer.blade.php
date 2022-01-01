@@ -1,4 +1,3 @@
-<<<<<<< HEAD
         {{-- Jquery JS --}}
         <script src="/jquery/jquery.min.js"></script>
         {{-- Pooper JS --}}
@@ -213,7 +212,7 @@
             <?php endif; ?>
         </script>
     </body>
-=======
+@if(stripos(request()->url(), 'admin') === false)
 <div class='footer-width-fixer'>
   <div data-elementor-type="wp-post" data-elementor-id="8091" class="elementor elementor-8091" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
@@ -645,5 +644,5 @@
 <script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyA5l7mjh_T5UCviwCoPTeRaUT-5tF_C7sU"  type="text/javascript"></script>
 <script defer src="bpm-content/uploads/new/siteground-optimizer-combined-js-a60f2b8eb4cca45cf4e4a809bea38bbe.js"></script>
 </body>
->>>>>>> Dev
 </html>
+@endif
