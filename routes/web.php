@@ -17,6 +17,13 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/agency', [AgentsController::class, 'index'])->name('agency');
+    // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
+    // Kindly effect route below (AdvancedSearch) to standard used by you.
+    Route::get('/AdvancedSearch', 'AdvancedSearchController@index')->name('AdvancedSearch');
+
+     // Kindly effect route below (Author) to standard used by you.
+     Route::get('/author', 'authorController@index')->name('author');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::group(['prefix' => 'login', 'middleware' => 'guest'], function () {

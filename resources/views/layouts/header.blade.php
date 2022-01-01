@@ -18,7 +18,25 @@
         <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
 
+<<<<<<< HEAD
         <!--Facebook Open Graph-->
+=======
+        <meta name="framework" content="Redux 4.3.3">
+        <meta name='robots' content='max-image-preview:large'>
+        <link rel='dns-prefetch' href='bpm-content/maps/index.htm'>
+        <link rel='dns-prefetch' href='//fonts.googleapis.com'>
+        <link href='https://fonts.gstatic.com' crossorigin="" rel='preconnect'>
+
+        <link rel="stylesheet" type="text/css" href="bpm-content/uploads/new/bpmStyle.css" id='bestpropertymarket-addons-inline-css'>
+        <link href="bpm-content/uploads/new/bpmsite.css" type="text/css" rel="stylesheet"/>
+
+        <script type='text/javascript' src='assets/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+        <link rel="https://api.w.org/" href="assets/json/index.htm.json">
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php.xml?rsd">
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
+
+        <!-- Facebook Open Graph -->
+>>>>>>> Dev
         <meta property="og:image" content="/images/logos/logo.png" />
         <meta property="og:url" content="https://geohomesgroup.com//" />
         <meta property="og:type" content="Real Estate" />
