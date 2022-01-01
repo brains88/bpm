@@ -1,40 +1,26 @@
 @include('layouts.header')
-<div class="bg-white min-vh-100">
+<div class="min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center">
-                        <small class="mr-2">All users ({{ \App\Models\User::count() }})</small>
+    <div class="section-padding pb-4">
+        <div class="container-fluid">
+            <div class="border-dark-500 py-2 px-3 mb-4 d-flex align-items-center rounded" style="background-color: rgba(0, 0, 0, 0.5);">
+                <small class="mr-2 text-white">All users ({{ \App\Models\User::count() }})</small>
+                <small class="mr-2 text-white">
+                    Search
+                </small>
+                <div class="dropdown cursor-pointer">
+                    <div data-toggle="dropdown">
+                        <small class="text-white">Date filter</small>
                     </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center">
-                        <a class="text-underline" href="javascript:;">
-                            <small class="mr-2">
-                                Search
-                            </small>
-                        </a>
-                        <div class="dropdown">
-                            <a href="javascript:;" class="text-underline">
-                                <div data-toggle="dropdown">
-                                    <small>Date filter</small>
-                                </div>
-                                <div class="dropdown-menu border-0 shadow dropdown-menu-left">
-                                    <form action="javascript:;" class="users-date-filter" data-url="{{ '' }}">
-                                        <div class="form-group">
-                                            <input type="date" name="date" class="form-control">
-                                        </div>
-                                    </form>
-                                    <div class="dropdown-divider"></div>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="dropdown-menu border-0 shadow dropdown-menu-left">
+                        <form action="javascript:;" class="users-date-filter p-3" data-url="{{ '' }}">
+                            <div class="form-group">
+                                <input type="date" name="date" class="form-control">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            @include('admin.users.partials.roles')
             <div class="">
                 @if(empty($users->count()))
                     <div class="alert-info alert">No users yet</div>
@@ -46,7 +32,7 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $users->onEachSide(1)->links('vendor.pagination.boot') }}
+                    {{ $users->onEachSide(1)->links('vendor.pagination.default') }}
                 @endif
             </div>
         </div>

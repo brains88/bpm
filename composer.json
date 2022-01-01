@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "smknstd/fakerphp-picsum-images": "^1.0",
+        "torann/geoip": "^3.0",
         "wildbit/swiftmailer-postmark": "^3.3"
     },
     "require-dev": {

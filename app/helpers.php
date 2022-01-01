@@ -27,10 +27,41 @@ if (!function_exists('retitle')) {
     }
 }
 
-if (!function_exists('randomcolor')) {
-    function randomcolor() {
+if (!function_exists('randomhex')) {
+    function randomhex() {
         $code = substr(md5(rand()), 0, 6);
         return '#'.$code;
     }
 }
 
+if (!function_exists('randomrgba')) {
+    function randomrgba($opacity = 0.5) {
+        return 'rgba('.rand(0, 255).','. rand(0, 255).','. rand(0, 255).','. $opacity.')';
+    }
+}
+
+
+if (!function_exists('firstname')) {
+    function firstname($fullname = '') {
+        return empty($fullname) ? '' : (explode(' ', $fullname)[0] ?? '');
+    }
+}
+
+if (!function_exists('months')) {
+    function months() {
+        return [
+            'January', 
+            'February', 
+            'March', 
+            'April', 
+            'May', 
+            'June', 
+            'July', 
+            'August', 
+            'September', 
+            'October', 
+            'November', 
+            'December'
+        ];
+    }
+}

@@ -1,13 +1,17 @@
-<div class="card">
-	<div style="height: 120px;">
-		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ strtolower($country->iso2 ?? 'ng') }}.png" class="img-fluid object-cover h-100 w-100">
+<div class="card border-0">
+	<div style="height: 100px;">
+		<img src="{{ env('COUNTRY_FLAG_URL') }}/h120/{{ strtolower($country->iso2 ?? 'ng') }}.png" class="img-fluid object-cover border h-100 w-100">
 	</div>
 	<div class="card-body">
 		<div class="d-flex align-items-center justify-content-between">
 			<div class="dropdown">
-                <a href="javascript:;" class="text-main-dark d-flex align-items-center" data-toggle="dropdown">
-                    <small>{{ ucwords(\Str::limit($country->name, 16) ?? 'Nill') }}</small>
-                    <i class="icofont icofont-caret-down"></i>
+                <a href="javascript:;" class="d-flex align-items-center" data-toggle="dropdown">
+                    <small class="text-dark">
+                    	{{ ucwords(\Str::limit($country->name, 12) ?? 'Nill') }}
+                    </small>
+                    <small class="text-muted">
+                    	<i class="icofont icofont-caret-down"></i>
+                    </small>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-left">
                 	<div class="dropdown-item">
@@ -17,21 +21,11 @@
                 	</div>
                 </div>
             </div>
-            <a href="{{ route('admin.properties.country', ['countryid' => $country->id]) }}" class="text-underline text-dark">
+            <a href="{{ route('admin.properties.country', ['countryid' => strtolower($country->iso3)]) }}" class="text-underline text-dark">
 				<small class="">
-	            	({{ $country->properties->count() ?? '0' }}) properties
+	            	({{ $country->properties->count() ?? '0' }}) listing
 	            </small>
             </a>
 		</div>
-	</div>
-	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
-		<small class="text-white">
-			{{ $country->created_at }}
-		</small>
-		<a href="{{ '' }}">
-			<small class="text-warning">
-				<i class="icofont-edit"></i>
-			</small>
-		</a>
 	</div>
 </div>

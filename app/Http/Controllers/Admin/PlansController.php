@@ -13,7 +13,7 @@ class PlansController extends Controller
      */
     public function index()
     {
-        return view('admin.plans.index')->with(['plans' => Plan::paginate(16)]);
+        return view('admin.plans.index')->with(['plans' => Plan::latest('created_at')->paginate(16)]);
     }
 
     public function add()
@@ -62,8 +62,11 @@ class PlansController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
+            'details' => ['required', 'string'],
             'name' => ['required', 'string'],
-            'type' => ['required', 'string'],
+            'price' => ['required', 'integer'],
+            'listing' => ['required', 'integer'],
+            'duration' => ['required', 'string'],
         ]);
 
         if (!$validator->passes()) {
@@ -73,19 +76,22 @@ class PlansController extends Controller
             ]);
         }
 
-        foreach(Plan::all()->toArray() as $Plan) {
-            if (($Plan['name'] == $data['name']) && ($Plan['type'] == $data['type']) && $Plan['id'] !== $id) {
+        foreach(Plan::all()->toArray() as $plan) {
+            if (($plan['name'] == $data['name']) && ($plan['duration'] == $data['duration']) && ($plan['id'] !== $id)) {
                 return response()->json([
                     'status' => 0,
-                    'info' => 'Plan name already exists for the selected type'
+                    'info' => 'Plan already exists for the selected duration'
                 ]);
             }
         }
 
-        $Plan = Plan::find($id);
-        $Plan->name = $data['name'];
-        $Plan->type = $data['type'];
-        $Plan->update();
+        $plan = Plan::find($id);
+        $plan->details = $data['details'];
+        $plan->name = $data['name'];
+        $plan->price = $data['price'];
+        $plan->listing = $data['listing'];
+        $plan->duration = $data['duration'];
+        $plan->update();
 
         return response()->json([
             'status' => 1,

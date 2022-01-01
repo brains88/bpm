@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'role' => 'user',
             'password' => \Hash::make('1234'),
             'remember_token' => \Str::random(32),
-            'status' => $faker->numberBetween(0, 1),
+            'status' => $faker->randomElement(User::$status),
             'type' => $faker->randomElement(['individual', 'company']),
         ];
     }

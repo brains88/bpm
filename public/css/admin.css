@@ -1,11 +1,20 @@
-.admin-panel-card {
-	border-radius: 18px;
+.admin-card {
+	border-radius: 24px;
+}
+
+.panel-card {
+    /*background-color: rgba(255, 255, 255, 0.4) !important;*/
 }
 
 .panel-icon {
     width: 48px; 
     height: 48px; 
     line-height: 48px;
+    background-color: rgba(40, 95,211, 0.5);
+}
+
+.panel-icon i {
+    color: #285fd3;
 }
 
 .section-padding {
@@ -17,3 +26,24 @@
     background-position: center;
     min-height: 100vh;
 }
+
+@media (min-width: 768px) {
+
+    #property-chart-wrapper {
+        height: 500px;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    #property-chart-wrapper {
+        height: 350px !important;
+    }
+}
+
+/*@media (max-width: 767.98px) {
+
+    #property-chart-wrapper {
+        height: auto !important;
+    }
+}*/

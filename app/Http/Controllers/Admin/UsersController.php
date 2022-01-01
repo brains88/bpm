@@ -19,21 +19,30 @@ class UsersController extends Controller
     }
 
     /**
-     * Admin see user properties
+     * Companies registered users
      */
-    public function properties($id = 0)
+    public function companies()
     {
         $properties = User::findOrFail($id)->properties()->paginate(16);
         return view('admin.users.properties')->with(['properties' => $properties]);
     }
 
     /**
-     * Admin filter users by role list view
+     * Individuals registered users
      */
-    public function role($role = 'user')
+    public function individuals()
     {
-        $users = User::where(['role' => $role])->paginate(16);
-        return view('admin.users.role')->with(['users' => $users, 'roles' => User::query()->distinct()->pluck('role')]);
+        $properties = User::findOrFail($id)->properties()->paginate(16);
+        return view('admin.users.properties')->with(['properties' => $properties]);
+    }
+
+    /**
+     * User profile (company or individual)
+     */
+    public function profile($id = 0)
+    {
+        $properties = User::findOrFail($id)->properties()->paginate(16);
+        return view('admin.users.properties')->with(['properties' => $properties]);
     }
 
 }

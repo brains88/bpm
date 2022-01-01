@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StateController extends Controller
+class MaterialsController extends Controller
 {
     //
 }

@@ -76,7 +76,12 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
 Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
-    Route::get('/subscriptions', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.subscriptions');
+
+    Route::get('/subscriptions', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.subscriptions');
+
+    Route::get('/adverts', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.adverts');
+
+    Route::get('/companies', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.companies');
 
     Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
     Route::prefix('plan')->group(function () {
@@ -96,8 +101,13 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
     });
 
+    Route::post('visitors/chart/timezone', [\App\Http\Controllers\Admin\Charts\VisitorsController::class, 'chart'])->name('admin.visitors.chart.timezones');
+
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\PropertiesController::class, 'index'])->name('admin.properties');
+
+        Route::post('/chart/{year}', [\App\Http\Controllers\Admin\Charts\PropertiesController::class, 'chart'])->name('admin.properties.chart');
+
         Route::get('/search/{query?}', [\App\Http\Controllers\Admin\PropertiesController::class, 'search'])->name('admin.properties.search');
 
         Route::get('/categories', [\App\Http\Controllers\Admin\PropertiesController::class, 'categories'])->name('admin.properties.categories');
@@ -124,8 +134,13 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
     });
 
+    Route::get('/individuals', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users.individuals');
+
+    Route::get('/companies', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users.companies');
+
     Route::prefix('users')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
     });
 

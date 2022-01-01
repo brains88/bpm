@@ -1,18 +1,18 @@
-<div class="card card-{{ $property->id }} border-0">
-	<?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
-	<div class="card-img-top position-relative" style="height: 160px; line-height: 160px;">
-		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
-			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid card-img-top w-100 h-100 object-cover">
+<?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
+<div class="card border-0 position-relative">
+	<div class="position-relative" style="height: 160px; line-height: 160px;">
+		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-decoration-none">
+			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border-0 w-100 h-100 object-cover">
 		</a>
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.75);">
 			<a href="{{ route('admin.properties.user', ['userid' => $property->user->id ?? 0]) }}" class="text-underline">
 				<small class="text-white">
-					By {{ \Str::limit(ucwords($property->user->name ?? 'Nill'), 16) }}
+					By {{ \Str::limit(ucwords(firstname($property->user->name ) ?? 'Nill'), 16) }}
 				</small>
 			</a>
 			<a href="{{ route('admin.properties.country', ['countryid' => $property->country->id ?? 0]) }}" class="text-underline">
 				<small class="text-white">
-					{{ \Str::limit(ucwords($property->country->name ?? 'Nill'), 16) }}
+					{{ \Str::limit(ucwords((explode(' ', $property->country->name)[0] ?? 'nill') ?? 'Nill'), 16) }}
 				</small>
 			</a>
 		</div>
@@ -24,11 +24,14 @@
 					{{ ucfirst($categoryname) }}
 				</small>
 			</a>
-			<small class="text-main-dark">
-				{{ ucwords($property->action ?? 'any') }}
+			<?php $action = strtolower($property->action ?? 'nill'); ?>
+			<small class="{{ $action === 'sold' ? 'bg-danger' : 'bg-info' }} px-2 rounded-pill">
+				<small class="text-white">
+					{{ ucwords($action) }}
+				</small>
 			</small>
 		</div>
-		<div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+		<div class="d-flex justify-content-between align-items-center">
 			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline text-main-dark">
 				<small class="">
 					{{ \Str::limit($property->address, 16) }}
@@ -37,9 +40,8 @@
 			<div class="dropdown">
                 <a href="javascript:;" class="text-main-dark align-items-center df
                 " id="status-{{ $property->id }}" data-toggle="dropdown">
-                    {{-- <small>({{ ucwords($property->status ?? '') }})</small> --}}
                     <small>
-                    	(<i class="icofont icofont-caret-down"></i>)
+                    	<i class="icofont icofont-caret-down"></i>
                     </small>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $property->id }}">
@@ -55,17 +57,16 @@
                 </div>
             </div>
 		</div>
-		<div class="d-flex justify-content-between align-items-center">
-			
-		</div>
 	</div>
 	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
 		<small class="text-white">
-			Listed {{ $property->created_at->diffForHumans() }}
+			<small>
+				{{ $property->created_at->diffForHumans() }}
+			</small>
 		</small>
 		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
 			<small class="text-warning">
-				<i class="icofont-edit"></i>
+				<small><i class="icofont-edit"></i></small>
 			</small>
 		</a>
 	</div>

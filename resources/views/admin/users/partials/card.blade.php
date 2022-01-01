@@ -1,53 +1,31 @@
-<div class="card">
-	<?php $role = $user->role ?? 'nill'; ?>
-	<div class="position-relative border-bottom {{ $role === 'admin' ? 'bg-success' : ($role === 'agent' ? 'bg-warning' : ($role === 'artisan' ? 'bg-primary' : 'bg-secondary')) }}" style="height: 40px;">
-		<?php $link = empty($user->profile->image) ? '/images/user.png' : $user->profile->image; ?>
-		<a href="{{ $link }}" class="position-absolute bg-transparent rounded-circle border" style="bottom: -10px; left: 20px; width: 40px; height: 40px;">
-			<img src="{{ $link }}" class="img-fluid object-cover w-100 h-100">
-		</a>
-	</div>
-	<div class="card-body">
-		<div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom">
-			<div class="dropdown">
-                <a href="javascript:;" class="text-dark text-underline">
-                	<div data-toggle="dropdown">
-                		<small>{{ ucwords(\Str::limit($user->name, 24)) }}</small>
-	                    <i class="icofont icofont-caret-down"></i>
-                	</div>
-	                <div class="dropdown-menu border-0 shadow dropdown-menu-left">
-	                	<div class="dropdown-item">
-	                		<small class="text-dark">
-	                			{{ ucwords($user->name) ?? 'Nill' }}
-	                		</small>
-	                	</div>
-	                </div>
-	            </a>
+<div class="card border-0">
+    <div class="card-body d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <div class="mr-3" style="height: 40px; width: 40px; line-height: 40px;">
+            	@if(empty($user->profile->image))
+            	    <div class="w-100 h-100 border rounded-circle text-center" style="background-color: {{ randomrgba() }};">
+            	    	{{ substr(strtoupper($user->name), 0, 1) }}
+            	    </div>
+            	@else
+                	<img src="{{ $user->profile->image }}" class="img-fluid object-cover rounded-circle w-100 h-100 border">
+                @endif
             </div>
-            <a href="tel:{{ $user->phone }}" class="d-flex align-items-center">
-                <small class="text-main-dark">
-                	<i class="icofont-phone-circle"></i>
+            <div class="">
+            	<a href="{{ '' }}" class="d-flex align-items-center">
+            		<small class="d-block text-dark mr-2">
+	                	{{ ucwords(\Str::limit(firstname($user->name), 12)) }}
+	                </small>
+            	</a>
+                <small class="d-block text-dark">
+                	{{ $user->created_at->diffForHumans() }}
                 </small>
-            </a>
-		</div>
-		<div class="d-flex align-items-center justify-content-between">
-            <small class="text-dark">
-            	{{ ucwords($role) }}
-            </small>
-            <a href="{{ route('admin.user.profile', ['id' => $user->id]) }}" class="text-underline text-dark">
-				<small class="">
-	            	({{ $user->properties->count() ?? '0' }}) properties
-	            </small>
-            </a>
-		</div>
-	</div>
-	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
-		<small class="text-white">
-			{{ $user->created_at->diffForHumans() }}
-		</small>
-		<a href="{{ '' }}">
-			<small class="text-warning">
-				<i class="icofont-edit"></i>
-			</small>
-		</a>
-	</div>
+            </div>
+        </div>
+        <small class="">
+        	<?php $status = strtolower($user->status ?? ''); ?>
+        	<small class="text-white px-2 py-1 rounded-pill bg-{{ $status == 'active' ? 'success' : ($status == 'suspended' ? 'warning' : 'danger') }}">
+        		{{ ucfirst($status) }}
+        	</small>
+        </small>
+    </div>
 </div>

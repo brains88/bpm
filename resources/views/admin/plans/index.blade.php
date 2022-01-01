@@ -3,7 +3,7 @@
         @include('admin.layouts.navbar')
         <div class="section-padding">
             <div class="container-fluid">
-                <div class="d-flex align-items-center flex-wrap justify-content-between mb-4">
+                <div class="d-flex align-items-center flex-wrap justify-content-between">
                     <div class="d-flex">
                         <div class="py-1 px-4 rounded-pill border-dark-500 mr-3 mb-3 text-muted cursor-pointer" data-toggle="modal" data-modal="#add-plan" style="background-color: rgba(0, 0, 0, 0.5);">
                             <small class="">
@@ -13,8 +13,8 @@
                                 {{ \App\Models\Plan::count() }} Plan(s)
                             </small>
                         </div>
-                        <div class="py-1 px-4 rounded-pill border-dark-500 mr-3 mb-3 text-muted cursor-pointer" data-toggle="modal" data-target="#add-plan" style="background-color: rgba(0, 0, 0, 0.5);">
-                            <small style="font-size: 8px;">
+                        <div class="py-1 px-4 rounded-pill border-dark-500 mr-3 mb-3 text-white cursor-pointer bg-info" data-toggle="modal" data-target="#add-plan">
+                            <small class="position-relative" style="font-size: 8px; top: -2px;">
                                 <i class="icofont-ui-add"></i>
                             </small>
                             <small class="">Add</small>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 mt-4">
                         @if(empty($plans->count()))
                             <div class="alert-info alert">No plans yet</div>
                         @else

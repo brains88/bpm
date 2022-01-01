@@ -1,8 +1,8 @@
 @include('layouts.header')
-<div class="bg-white min-vh-100">
+<div class="min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
-        <div class="container">
+    <div class="section-padding pb-4">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
@@ -30,7 +30,7 @@
                 @else
                     <div class="row">
                         @foreach($countries as $country)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-3 col-lg-2 mb-4">
                                 @include('admin.countries.partials.card')
                             </div>
                         @endforeach

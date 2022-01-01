@@ -30,9 +30,8 @@ class CreatePropertiesTable extends Migration
             $table->foreignId('house_id')->nullable();
             $table->string('city');
             $table->foreignId('state_id')->nullable();
-            $table->text('additional')->nullable();
+            $table->text('additionals')->nullable();
             $table->string('status')->nullable();
-            $table->uuid('reference')->nullable();
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-<form method="post" action="javascript:;" class="edit-property-form p-4 border" data-action="{{ route('admin.property.update', ['id' => $property->id, 'category' => $category]) }}" autocomplete="off">
+<form method="post" action="javascript:;" class="edit-property-form p-4 border-dark-500" data-action="{{ route('admin.property.update', ['id' => $property->id, 'category' => $category]) }}" autocomplete="off" style="background-color: rgba(0, 0, 0, 0.6);">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="text-muted">Country located</label>
@@ -32,11 +32,11 @@
             <label class="text-muted">Price</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
+                    <span class="input-group-text text-white">$</span>
                 </div>
                 <input type="number" class="form-control price" name="price" placeholder="e.g., 20000000" value="{{ $property->price ?? 0 }}">
                 <div class="input-group-append">
-                    <span class="input-group-text">.00</span>
+                    <span class="input-group-text text-white">.00</span>
                 </div>
             <small class="invalid-feedback price-error"></small>
             </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="alert mb-3 edit-property-message d-none"></div>
     <div class="d-flex justify-content-right mb-3 mt-1">
-        <button type="submit" class="btn bg-main-dark btn-block btn-lg text-white edit-property-button">
+        <button type="submit" class="btn btn-info px-4 btn-lg text-white edit-property-button">
             <img src="/images/spinner.svg" class="mr-2 d-none edit-property-spinner mb-1">
             Edit property
         </button>

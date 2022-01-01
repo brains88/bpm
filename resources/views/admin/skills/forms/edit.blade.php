@@ -16,7 +16,7 @@
                     </div>
                     <div class="alert mb-3 edit-skill-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">
-                        <button type="submit" class="btn bg-main-dark btn-lg btn-block text-white edit-skill-button px-4 font-weight-bold">
+                        <button type="submit" class="btn btn-info btn-lg text-white edit-skill-button btn-block">
                             <img src="/images/spinner.svg" class="mr-2 d-none edit-skill-spinner mb-1">
                             Save skill
                         </button>

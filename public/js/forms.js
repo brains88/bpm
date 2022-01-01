@@ -62,4 +62,9 @@
         handleForm({form: $(this), button: 'add-plan-button', spinner: 'add-plan-spinner', message: 'add-plan-message'});
     });
 
+    $('.edit-plan-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-plan-button', spinner: 'edit-plan-spinner', message: 'edit-plan-message'});
+    });
+
 })(jQuery);

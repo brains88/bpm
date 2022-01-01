@@ -8,8 +8,12 @@ body {
     pointer-events: none !important;
 }
 
+.tiny-font {
+    font-size: 8px;
+}
+
 .container-fluid {
-    max-width: 1440px;
+    max-width: 1240px;
 }
 
 .upload-image-loader {

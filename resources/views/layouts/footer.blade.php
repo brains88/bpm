@@ -11,9 +11,16 @@
         {{-- Uploader images --}}
         <script src="/js/upload.js"></script>
         {{-- Sagreit --}}
-        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script>
+        {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script> --}}
+        {{-- Chartjs --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {{-- Chart loading script --}}
+        <script src="js/charts.js"></script>
+        {{-- Visitors Chart loading script --}}
+        <script src="js/charts/visitors.js"></script>
         <!-- Summernote -->
         <script src="/summernote/summernote-lite.min.js" type="text/javascript"></script>
+
         <script type="text/javascript">
             var description = $('#description');
             if (description) {

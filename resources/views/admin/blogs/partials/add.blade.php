@@ -40,7 +40,7 @@
             <small class="invalid-feedback status-error"></small>
         </div>
     </div>
-    <div class="form-group mb-4">
+    <div class="form-group mb-3">
         <label class="text-muted">Description</label>
         <div class="bg-white">
             <textarea class="form-control description" name="description" rows="4" placeholder="Add book description." id="description"></textarea>
@@ -48,8 +48,8 @@
         <small class="invalid-feedback description-error"></small>
     </div>
     <div class="alert mb-3 add-blog-message d-none"></div>
-    <button type="submit" class="btn btn-lg bg-dark-500 text-white add-blog-button btn-block mt-3">
+    <button type="submit" class="btn btn-lg btn-info text-white add-blog-button mt-3">
         <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
-        Add blog
+        Post
     </button>
 </form>

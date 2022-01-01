@@ -1,7 +1,7 @@
 @include('layouts.header')
 <div class="min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding min-vh-100">
+    <div class="section-padding min-vh-100 pb-4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">

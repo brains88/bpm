@@ -1,10 +1,10 @@
 @include('layouts.header')
 <div class="bg-white min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
-        <div class="container">
+    <div class="section-padding pb-4">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="alert alert-info d-flex align-items-center">
                         <small class="mr-2">All skills ({{ \App\Models\Skill::count() }})</small>
                         <a href="javascript:;" class="text-underline" data-url="{{ route('admin.skill.add') }}" data-target="#add-skill" data-toggle="modal">
@@ -15,7 +15,7 @@
                         @include('admin.skills.forms.add')
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="alert alert-info d-flex align-items-center">
                         <a class="text-underline" href="javascript:;">
                             <small class="">
@@ -37,7 +37,7 @@
                             @include('admin.skills.forms.edit')
                         @endforeach
                     </div>
-                    {{ $skills->links('vendor.pagination.links') }}
+                    {{ $skills->links('vendor.pagination.default') }}
                 @endif
             </div>
         </div>

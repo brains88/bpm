@@ -13,10 +13,10 @@ class Plan extends Model
      * Plans duration before expiry
      */
     public static $durations = [
-        'weekly' => '7days', 
-        'daily' => '24hours', 
-        'monthly' => '30days', 
-        'yearly' => '360days',
+        'weekly' => 7, //7days
+        'daily' => 1, //1day
+        'monthly' => 30, //30days
+        'yearly' => 360, //360days
     ];
 
     /**

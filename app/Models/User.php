@@ -47,6 +47,19 @@ class User extends Authenticatable
     ];
 
     /**
+     * The users status
+     *
+     * @var array
+     */
+    public static $status = [
+        'active', 
+        'inactive', 
+        'banned', 
+        'suspended', 
+        'blocked',
+    ];
+
+    /**
      * Any user may have many properties
      */
     public function properties()

@@ -25,18 +25,18 @@
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
             <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
                 <small class="text-muted">
-                    {{ \Str::limit(strip_tags($blog->title), 20) }}
+                    {{ \Str::limit(strip_tags($blog->title), 16) }}
                 </small>
             </a>
-            <small class="text-success">
-                {{ number_format($blog->views ?? 0) }} views
-            </small>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
             <div class="custom-control custom-switch">
                 <input class="custom-control-input blog-status" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
             </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <small class="bg-info px-2 rounded-pill">
+                <small class="text-white">{{ number_format($blog->views ?? 0) }} views</small>
+            </small>
             <small class="text-muted">
                 {{ ucwords($blog->category->name ?? 'Nill') }}
             </small>

@@ -19,7 +19,7 @@
                             <label class="text-dark">Plan duration</label>
                             <select class="form-control custom-select duration" name="duration">
                                 <option value="">-- Select duration --</option>
-                                @foreach (array_keys(\App\Models\Plan::$durations) as $duration => $value)
+                                @foreach (array_keys(\App\Models\Plan::$durations) as $duration)
                                     <option value="{{ $duration }}">
                                         {{ ucfirst($duration) }}
                                     </option>

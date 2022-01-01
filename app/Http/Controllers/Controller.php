@@ -6,6 +6,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+use Stevebauman\Location\Facades\Location;
+use App\Helpers\Visitor;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -17,7 +20,11 @@ class Controller extends BaseController
     public static $timeout = 180;
 
     public function __construct()
-    {}
+    {
+        // $visitor = Visitor::lookup();
+        // dd($visitor);
+        //dd(geoip('8.8.4.4'));
+    }
 
     /**
      * Send SMS with Kudisms api

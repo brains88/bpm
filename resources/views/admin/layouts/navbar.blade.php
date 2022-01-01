@@ -8,7 +8,7 @@
 			    	</a>
 			    </li>
 			</ul>
-			<ul class="d-flex align-items-center">
+			<ul class="d-flex align-items-baseline">
 				<div class="cursor-pointer position-relative mr-3">
 					<small class="rounded-pill px-1 position-absolute bg-info text-center" style="top: -7.5px; right: -7.5px; z-index: 2;">
 						<small class="text-white">13</small>
