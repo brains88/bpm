@@ -40,7 +40,6 @@ if (!function_exists('randomrgba')) {
     }
 }
 
-
 if (!function_exists('firstname')) {
     function firstname($fullname = '') {
         return empty($fullname) ? '' : (explode(' ', $fullname)[0] ?? '');
