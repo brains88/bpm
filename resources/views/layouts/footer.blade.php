@@ -634,8 +634,8 @@
 </div>
 <!-- end reset password modal --> 
 <script type='text/javascript' src='assets/js/wp-polyfill.min.js' id='wp-polyfill-js'></script> 
-<script type='text/javascript' id='contact-form-7-js-extra' src="assets\js\bpm.js"> </script>
-<script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra' src="assets/js/bpm.js"> </script>
+{{-- <script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script> --}}
 <script type='text/javascript' > 
   /* <![CDATA[ */
   var _bestpropertymarket = {"hheight":"80"};
