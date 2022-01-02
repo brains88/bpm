@@ -12,8 +12,9 @@
 				</small>
 			</a>
 			<a href="{{ route('admin.properties.country', ['countryid' => $property->country->id ?? 0]) }}" class="text-underline">
+				<?php $countryname = empty($property->country->name) ? 'Nill' : ucwords($property->country->name); ?>
 				<small class="text-white">
-					{{ \Str::limit(ucwords((explode(' ', $property->country->name)[0] ?? 'nill') ?? 'Nill'), 16) }}
+					{{ \Str::limit(firstname($countryname), 16) }}
 				</small>
 			</a>
 		</div>
