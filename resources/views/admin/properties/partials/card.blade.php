@@ -7,7 +7,7 @@
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.75);">
 			<a href="{{ route('admin.properties.user', ['userid' => $property->user->id ?? 0]) }}" class="text-underline">
 				<small class="text-white">
-					By {{ \Str::limit(ucwords(firstname($property->user->name ) ?? 'Nill'), 16) }}
+					By {{ \Str::limit(ucwords(firstname($property->user->name ?? 'Nill')), 16) }}
 				</small>
 			</a>
 			<a href="{{ route('admin.properties.country', ['countryid' => $property->country->id ?? 0]) }}" class="text-underline">
