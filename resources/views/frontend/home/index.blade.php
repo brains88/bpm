@@ -1,6 +1,5 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-<<<<<<< HEAD
     <section class="position-relative">
         <div class="home-banner">
             <div class="container">
@@ -175,7 +174,6 @@
             </div>
         </div>
     </section>
-=======
    <!--  wrapper  -->
    <div id="wrapper">
   <!-- Content-->
@@ -383,7 +381,7 @@
                           <div class="cthiso-item listing-item listing-item-loop post-6355 listing type-listing status-publish has-post-thumbnail hentry listing_cat-home listing_location-03-moscow listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_tag-accessories listing_tag-bag listing_tag-clothing listing_tag-man listing_tag-shop listing_tag-woman" data-postid="6355">
                             <article class="geodir-category-listing fl-wrap">
                               <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('listing')}}" class="listing-thumb-link geodir-category-img_item">
+                                <a href="{{route('properties')}}" class="listing-thumb-link geodir-category-img_item">
                                   <img width="424" height="280" src="bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                                   <div class="overlay">
                                   </div>
@@ -1399,6 +1397,5 @@
 </div>
         <!-- wrapper end -->
         <div class="clearfix"></div>
->>>>>>> Dev
     @include('frontend.layouts.bottom')
 @include('layouts.footer')

@@ -1,7 +1,5 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-
-
     <div id="wrapper">
         <!-- Content-->
         <div class="content">
