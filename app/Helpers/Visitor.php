@@ -71,7 +71,7 @@ class Visitor
             }
 
             $result = (array)$response->json();
-            if (strtolower($result['status']) === 'ok') {
+            if (strtolower($result['status'] ?? '') === 'ok') {
                 return [
                     'status' => 1,
                     'info' => 'Request successfull',

@@ -74,5 +74,7 @@
         <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
         <!-- admin CSS -->
         <link rel="stylesheet" type="text/css" href="/css/admin.css">
+        <!-- app CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/app.css">
     </head>
     <body>

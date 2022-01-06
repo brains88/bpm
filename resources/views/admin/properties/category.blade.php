@@ -2,7 +2,7 @@
 <div class="bg-white min-vh-100">
     @include('admin.layouts.navbar')
     <div class="section-padding">
-        <div class="container">
+        <div class="container-fluid">
             @if(empty($properties->count()))
                 <div class="alert-warning alert">No properties found</div>
             @else
@@ -30,14 +30,12 @@
                 <div class="">
                     <div class="row">
                         @foreach($properties as $property)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-3 col-lg-2 mb-4">
                                 @include('admin.properties.partials.card')
                             </div>
                         @endforeach
                     </div>
-                    <div class="mb-4 alert-info alert">
-                        {{ $properties->links('vendor.pagination.links') }}
-                    </div>
+                    {{ $properties->links('vendor.pagination.default') }}
                 </div>
             @endif
         </div>

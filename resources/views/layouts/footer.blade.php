@@ -212,7 +212,7 @@
             <?php endif; ?>
         </script>
     </body>
-@if(stripos(request()->url(), 'admin') === false)
+@if(stripos(env('APP_URL'), 'admin') !== false && stripos(env('APP_URL'), 'app.b') !== false)
 <div class='footer-width-fixer'>
   <div data-elementor-type="wp-post" data-elementor-id="8091" class="elementor elementor-8091" data-elementor-settings="[]">
     <div class="elementor-section-wrap">

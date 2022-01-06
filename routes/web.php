@@ -156,8 +156,6 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
         Route::post('/properties/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'properties'])->name('admin.user.properties');
     });
 
-    
-
     Route::prefix('subcategory')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'add'])->name('admin.subcategory.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'edit'])->name('admin.subcategory.edit');
@@ -179,8 +177,11 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
 
 });
 
-Route::middleware('web')->domain('app.'.env('APP_URL'))->group(function() {
-    Route::get('/', [UserController::class, 'index'])->name('app');
+Route::middleware('web')->domain(env('USER_URL'))->group(function() {
+    Route::get('/', [\App\Http\Controllers\User\UserController::class, 'index'])->name('user');
+    Route::prefix('properties')->group(function () {
+        Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
+    });
 });
 
 
