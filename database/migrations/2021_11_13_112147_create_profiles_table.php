@@ -23,6 +23,7 @@ class CreateProfilesTable extends Migration
             $table->string('qualification')->nullable();
             $table->string('idnumber')->nullable();
             $table->string('status');
+            $table->json('roles')->nullable();
             $table->string('country');
             $table->timestamps();
         });

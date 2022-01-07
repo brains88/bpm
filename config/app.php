@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        \Torann\Currency\CurrencyServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Currency' => \Torann\Currency\Facades\Currency::class,
 
     ],
 

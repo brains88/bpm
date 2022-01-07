@@ -127,12 +127,8 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
     });
 
     Route::prefix('property')->group(function () {
-        Route::post('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
         Route::get('/edit/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
-
-        Route::post('/update/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'update'])->name('admin.property.update');
-
-        Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Admin\PropertiesController::class, 'image'])->name('admin.property.image.upload');
+        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
@@ -178,9 +174,14 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
 });
 
 Route::middleware('web')->domain(env('USER_URL'))->group(function() {
-    Route::get('/', [\App\Http\Controllers\User\UserController::class, 'index'])->name('user');
+    Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
+    });
+
+    Route::prefix('property')->group(function () {
+        Route::get('/edit/{id}/{category}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
+        Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
     });
 });
 

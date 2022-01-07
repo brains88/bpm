@@ -8,8 +8,56 @@ body {
     pointer-events: none !important;
 }
 
+.user-content {
+    padding-top: 60px;
+}
+
+.user-dashboard-banner:before, 
+.user-properties-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+    width: 100%;
+    z-index: -2;
+    background-color: var(--main-dark);
+    border-radius: 0 0 30px 30px;
+}
+
+.user-dashboard-banner:before {
+    height: 260px;
+}
+
+.user-properties-banner:before {
+    height: 210px;
+}
+
 .tiny-font {
     font-size: 8px;
+}
+
+.panel-icon {
+    width: 48px; 
+    height: 48px; 
+    line-height: 48px;
+    background-color: rgba(40, 95,211, 0.5);
+}
+
+.panel-icon i {
+    color: #285fd3;
+}
+
+.section-padding {
+    padding-top: 90px;
+    position: relative;
+    background-image: url('/images/banners/dim.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
 }
 
 .container-fluid {
@@ -488,11 +536,19 @@ a:hover, button:hover {
     .navbar-menu {
         width: 40vw;
     }
+
+    .user-properties-banner:before {
+        height: 260px;
+    }
 }
 
 @media (max-width:  767.98px) {
     .agent-realtor:before {
         width: 100%;
+    }
+
+    #property-chart-wrapper {
+        height: 350px !important;
     }
 
 }
@@ -506,12 +562,17 @@ a:hover, button:hover {
     .navbar-center {
         display: none !important;
     }
+
 }
 
 /*Medium devices (tablets, less than 992px)*/
 @media (max-width: 991.98px) and (min-width: 768.98px) {
     .navbar-menu {
         width: 32vw;
+    }
+
+    #property-chart-wrapper {
+        height: 500px;
     }
 }
 
@@ -527,6 +588,10 @@ a:hover, button:hover {
 
     .mission-vision:before {
         width: 100%;
+    }
+
+    .user-properties-banner:before {
+        height: 290px;
     }
 
     .home-banner h1 {

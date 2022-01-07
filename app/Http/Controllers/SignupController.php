@@ -68,7 +68,7 @@ class SignupController extends Controller
                 'name' => $name,
                 'email' => $email,
                 'phone' => $phone,
-                'status' => 0,
+                'status' => 'inactive',
                 'type' => 'individual',
                 'password' => Hash::make($data['password']),
                 'role' => 'user',
@@ -161,7 +161,7 @@ class SignupController extends Controller
             'email' => $email,
             'phone' => $data['phone'],
             'type' => 'corporate',
-            'active' => 0,
+            'active' => 'inactive',
             'password' => Hash::make($data['password']),
             'role' => 'user',
             'verify_token' => $token

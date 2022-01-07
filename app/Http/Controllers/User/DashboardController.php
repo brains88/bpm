@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\{Category, Blog, Country};
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     /**
      * About page view
