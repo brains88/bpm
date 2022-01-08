@@ -36,7 +36,7 @@
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php.xml?rsd">
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
 
-        Facebook Open Graph
+        <!-- Facebook Open Graph -->
         <meta property="og:image" content="/images/logos/logo.png" />
         <meta property="og:url" content="https://geohomesgroup.com//" />
         <meta property="og:type" content="Real Estate" />
