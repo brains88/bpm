@@ -20,9 +20,9 @@ class PropertiesController extends Controller
             'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            'currency' => ['required', 'integer'],
+            // 'currency' => ['required', 'integer'],
             'action' => ['required', 'string'],
-            'dimension' => ['required', 'string'],
+            'measurement' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
             'price' => ['required', 'numeric'],
         ]);
@@ -45,7 +45,7 @@ class PropertiesController extends Controller
             'user_id' => auth()->user()->id ?? 0,
             'additional' => $data['additional'],
             'reference' => \Str::uuid(),
-            'currency_id' => $data['currency'],
+            'currency_id' => $data['currency'] ?? 0,
             'price' => $data['price'],
         ]);
 
@@ -76,9 +76,9 @@ class PropertiesController extends Controller
             'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            'currency' => ['required', 'integer'],
+            // 'currency' => ['required', 'integer'],
             'action' => ['required', 'string'],
-            'dimension' => ['required', 'string'],
+            'measurement' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
             'price' => ['required', 'numeric'],
         ]);
@@ -100,17 +100,17 @@ class PropertiesController extends Controller
         $property->measurement = $data['measurement'];
         $property->additional = $data['additional'];
         $property->price = $data['price'];
-        $property->currency_id = $data['currency'];
+        $property->currency_id = $data['currency'] ?? 0;
         $updated = $property->update();
 
         if ($updated) {
-            $role = auth()->user()->role;
+            // $role = auth()->user()->role;
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$role}.property.edit", [
+                'redirect' => route("admin.property.edit", [
+                    'category' => $category,
                     'id' => $property->id, 
-                    'category' => $category
                 ]),
             ]);
         }else {

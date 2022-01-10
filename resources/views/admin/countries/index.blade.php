@@ -30,7 +30,7 @@
                 @else
                     <div class="row">
                         @foreach($countries as $country)
-                            <div class="col-12 col-md-3 col-lg-2 mb-4">
+                            <div class="col-12 col-md-4 col-lg-3 mb-4">
                                 @include('admin.countries.partials.card')
                             </div>
                         @endforeach

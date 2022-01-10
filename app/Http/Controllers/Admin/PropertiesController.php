@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\{Category, Property, Country, Image, Division};
+use App\Models\{Category, Property, Country, Image};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
@@ -14,7 +14,7 @@ class PropertiesController extends Controller
     public function index()
     {
         $properties = Property::latest('created_at')->paginate(12);
-        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'divisions' => Division::all()]);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
     /**
@@ -28,6 +28,16 @@ class PropertiesController extends Controller
 
         $categories = Category::where(['type' => 'property'])->get();
         return view('admin.properties.country')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin view to edit property
+     */
+    public function edit($category = '', $id = 0)
+    {
+        $property = Property::find($id);
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.edit')->with(['property' => $property, 'categories' => $categories, 'category' => $category, 'countries' => Country::all()]);
     }
 
     /**

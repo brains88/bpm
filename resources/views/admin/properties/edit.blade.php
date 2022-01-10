@@ -18,7 +18,7 @@
                             <div class="position-relative card mb-4">
                                 <small class="card-header bg-light">Main property view</small>
                                 <form action="javascript:;">
-                                    <input type="file" name="image" accept="image/*" class="main-property-image-input-{{ $property->id }}" data-url="{{ route('admin.property.image.upload', ['id' => $property->id, 'role' => 'main' ]) }}" style="display: none;">
+                                    <input type="file" name="image" accept="image/*" class="main-property-image-input-{{ $property->id }}" data-url="{{ route('api.property.image.upload', ['id' => $property->id, 'role' => 'main' ]) }}" style="display: none;">
                                 </form>
                                 <div class="main-property-image-loader-{{ $property->id }} upload-image-loader  position-absolute d-none rounded-circle text-center border" data-id="{{ $property->id}}">
                                     <img src="/images/spinner.svg">
@@ -45,7 +45,7 @@
                                         <div class="w-100 position-relative card">
                                             <small class="card-header bg-light">View ({{ $key + 1 }})</small>
                                             <form action="javascript:;">
-                                                <input type="file" name="image" accept="image/*" class="other-property-image-input-{{ $imageid }}" data-url="{{ route('admin.property.image.upload', ['id' => $property->id, 'role' => $imageid ]) }}" style="display: none;">
+                                                <input type="file" name="image" accept="image/*" class="other-property-image-input-{{ $imageid }}" data-url="{{ route('api.property.image.upload', ['id' => $property->id, 'role' => $imageid ]) }}" style="display: none;">
                                             </form>
                                             <div class="other-property-image-loader-{{ $imageid }} upload-image-loader  position-absolute d-none rounded-circle text-center border">
                                                 <img src="/images/spinner.svg">

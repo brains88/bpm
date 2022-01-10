@@ -1,4 +1,4 @@
-<form method="post" action="javascript:;" class="edit-property-form p-4 border-dark-500" data-action="{{ route('admin.property.update', ['id' => $property->id, 'category' => $category]) }}" autocomplete="off" style="background-color: rgba(0, 0, 0, 0.6);">
+<form method="post" action="javascript:;" class="edit-property-form p-4 border-dark-500" data-action="{{ route('api.property.update', ['id' => $property->id, 'category' => $category]) }}" autocomplete="off" style="background-color: rgba(0, 0, 0, 0.6);">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="text-muted">Country located</label>

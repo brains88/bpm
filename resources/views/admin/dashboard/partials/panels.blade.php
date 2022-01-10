@@ -1,5 +1,5 @@
 <div class="col-12 col-md-8 col-lg-6 mb-4">
-    <div class="card admin-card border-dark-500 shadow-sm" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="card card-raduis border-dark-500 shadow-sm" style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -33,7 +33,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -60,7 +60,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -85,7 +85,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -110,7 +110,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -132,7 +132,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
@@ -159,7 +159,7 @@
     </div>
 </div>
 <div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card admin-card panel-card shadow-sm" >
+    <div class="card card-raduis panel-card shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">

@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="col-12 mb-4">
-                    <div class="card admin-card border-dark-500 h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+                    <div class="card card-raduis border-dark-500 h-100" style="background-color: rgba(0, 0, 0, 0.8);">
                          <div class="card-body">
                              <div class="border-0 d-flex justify-content-between align-items-center">
                                 <div class="mb-3">
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-6 mb-4">
-                    <div class="card admin-card border-0 shadow-sm" style="background-color: rgba(31, 22, 131);">
+                    <div class="card card-raduis border-0 shadow-sm" style="background-color: rgba(31, 22, 131);">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div class="mr-3">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 mb-4">
-                    <div class="card admin-card border-0 shadow-sm" style="background-color: rgba(244, 91, 15, 1.0);">
+                    <div class="card card-raduis border-0 shadow-sm" style="background-color: rgba(244, 91, 15, 1.0);">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div class="mr-3">
@@ -97,7 +97,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="card admin-card border-0">
+                    <div class="card card-raduis border-0">
                          <div class="card-header bg-main-ash border-0 d-flex justify-content-between align-items-center">
                              <small class="text-dark">Payments</small>
                              <div class="text-dark">
@@ -109,7 +109,7 @@
                      </div>
                 </div>   
             </div>
-            <div class="card admin-card border-dark-500 shadow-sm mb-4" style="background-color: rgba(0, 0, 0, 0.7);">
+            <div class="card card-raduis border-dark-500 shadow-sm mb-4" style="background-color: rgba(0, 0, 0, 0.7);">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <small class="text-white">Property Listings</small>

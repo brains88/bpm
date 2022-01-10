@@ -28,10 +28,10 @@
                     {{ \Str::limit(strip_tags($blog->title), 16) }}
                 </small>
             </a>
-            <div class="custom-control custom-switch">
+            {{-- <div class="custom-control custom-switch">
                 <input class="custom-control-input blog-status" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
-            </div>
+            </div> --}}
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <small class="bg-info px-2 rounded-pill">

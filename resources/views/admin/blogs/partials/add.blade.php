@@ -8,14 +8,14 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label class="form-label text-muted">Category (<a href="{{ url('/categories'); }}" target="_blank">Add category</a>)</label>
+            <label class="form-label text-muted">Category</label>
             <select class="custom-select form-control category" name="category">
                 <option value="">Select Category</option>
                 @empty($categories->count())
                     <option value="">No Categories</option>
                 @else
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id; }}">
+                        <option value="{{ $category->id }}">
                             {{ ucwords($category->name) }}
                         </option>
                     @endforeach
@@ -25,14 +25,14 @@
         </div>
         <div class="form-group col-md-6">
             <label class="form-label text-muted">Publish now?</label>
-            <select class="custom-select form-control status" name="status">
+            <select class="custom-select form-control istatus" name="status">
                 <?php $status = \App\Models\Blog::$publish; ?>
                 @empty($status)
-                    <option value="">No Status</option>
+                    <option>No Status</option>
                 @else
                     @foreach ($status as $key => $value)
-                        <option value="{{ (boolean)$value; }}">
-                            {{ ucfirst($key); }}
+                        <option value="{{ (boolean)$value }}">
+                            {{ ucfirst($key) }}
                         </option>
                     @endforeach
                 @endempty

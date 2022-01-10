@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 use App\Models\{Category, Property, Country, Image, Division, State};
 use App\Http\Controllers\Controller;
-use \Exception;
-use Validator;
+
 
 class PropertiesController extends Controller
 {

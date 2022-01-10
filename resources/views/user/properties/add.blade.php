@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div class="min-vh-100">
+<div class="min-vh-100 bg-main-ash">
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="row">
@@ -78,7 +78,7 @@
                                             @endforeach
                                         @endif
                                     </select>
-                                    <small class="invalid-feedback price-error"></small>
+                                    <small class="invalid-feedback currency-error"></small>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="text-muted">Price</label>
@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-12 col-lg-5">
                     <div class="alert-info alert mb-4">Recent listed properties</div>
-                    @if(empty($properties))
+                    @if(empty($properties->count()))
                         <div class="alert-warning alert">No properties yet</div>
                     @else
                         <div class="row">

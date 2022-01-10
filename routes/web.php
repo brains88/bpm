@@ -127,7 +127,7 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
     });
 
     Route::prefix('property')->group(function () {
-        Route::get('/edit/{id}/{category}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
+        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
         Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
     });
 
@@ -180,6 +180,13 @@ Route::middleware('web')->domain(env('USER_URL'))->group(function() {
 
         Route::get('/edit/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
+    });
+
+    Route::prefix('materials')->group(function () {
+        Route::get('/', [\App\Http\Controllers\User\MaterialsController::class, 'index'])->name('user.materials');
+
+        Route::get('/edit/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
+        Route::get('/add', [\App\Http\Controllers\User\MaterialsController::class, 'add'])->name('user.material.add');
     });
 });
 

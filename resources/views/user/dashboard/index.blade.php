@@ -31,6 +31,20 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
+                    <div class="">
+                        <div class="alert alert-info">Recently listed properties</div>
+                        @if(empty($properties->count()))
+                            <div class="alert alert-warning">No properties listed yet</div>
+                        @else
+                        <div class="row">
+                            @foreach($properties as $property)
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    @include('user.properties.partials.card')
+                                </div>
+                            @endforeach
+                        </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="col-12 col-lg-5">
                     <div class="row">

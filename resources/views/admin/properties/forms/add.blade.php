@@ -29,17 +29,6 @@
                         <div class="form-group col-md-6">
                             <label class="text-muted">State, county or divison</label>
                             <input type="text" list="statelist" class="form-control state" name="state" placeholder="e.g., Hampshire">
-                            <datalist id="statelist">
-                                @if(empty($divisions->count()))
-                                    <option value="">No data listed</option>
-                                @else: ?>
-                                    @foreach ($divisions as $state)
-                                        <option value="{{ $state->id }}">
-                                            {{ ucwords($state->name ?? '') }}
-                                        </option>
-                                    @endforeach
-                                @endif
-                            </datalist>
                             <small class="invalid-feedback state-error"></small>
                         </div>
                     </div>

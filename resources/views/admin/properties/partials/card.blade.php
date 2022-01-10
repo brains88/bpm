@@ -34,7 +34,7 @@
 			</small>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline text-main-dark">
+			<a href="{{ route('admin.property.edit', ['category' => $categoryname, 'id' => $property->id]) }}" class="text-underline text-main-dark">
 				<small class="">
 					{{ \Str::limit($property->address, 16) }}
 				</small>
