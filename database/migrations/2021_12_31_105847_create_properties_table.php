@@ -22,6 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->bigInteger('price');
             $table->bigInteger('toilets')->nullable();
             $table->foreignId('user_id');
+            $table->string('state');
             $table->string('condition')->nullable();
             $table->string('image')->nullable();
             $table->string('address');
@@ -29,11 +30,11 @@ class CreatePropertiesTable extends Migration
             $table->string('measurement');
             $table->foreignId('house_id')->nullable();
             $table->string('city');
-            $table->foreignId('state_id')->nullable();
             $table->text('additional')->nullable();
             $table->string('status')->nullable();
             $table->uuid('reference')->nullable();
             $table->bigInteger('views');
+            $table->foreignId('currency_id');
             $table->timestamps();
         });
     }

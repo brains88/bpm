@@ -20,15 +20,21 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    
     width: 100%;
-    z-index: -2;
     background-color: var(--main-dark);
     border-radius: 0 0 30px 30px;
 }
 
+.user-panel-icon {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background-color: rgba(0, 0, 255, 0.4);
+    color: rgba(0, 0, 255, 0.6);
+}
+
 .user-dashboard-banner:before {
-    height: 260px;
+    height: 220px;
 }
 
 .user-properties-banner:before {
@@ -549,6 +555,10 @@ a:hover, button:hover {
 
     #property-chart-wrapper {
         height: 350px !important;
+    }
+
+    .user-dashboard-banner:before {
+        height: 260px;
     }
 
 }

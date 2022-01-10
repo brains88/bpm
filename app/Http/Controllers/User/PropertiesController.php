@@ -23,7 +23,7 @@ class PropertiesController extends Controller
     public function add()
     {
         $properties = Property::latest('created_at')->limit(4)->get();
-        return view('user.properties.add')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'states' => State::all()]);
+        return view('user.properties.add')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
     /**
@@ -32,7 +32,7 @@ class PropertiesController extends Controller
     public function edit()
     {
         $properties = Property::latest('created_at')->limit(12);
-        return view('user.properties.edit')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'divisions' => Division::all()]);
+        return view('user.properties.edit')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
 }

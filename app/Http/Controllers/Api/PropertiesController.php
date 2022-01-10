@@ -20,6 +20,7 @@ class PropertiesController extends Controller
             'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
+            'currency' => ['required', 'integer'],
             'action' => ['required', 'string'],
             'dimension' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
@@ -35,7 +36,7 @@ class PropertiesController extends Controller
 
         $property = Property::create([
             'country_id' => $data['country'],
-            'state_id' => $data['state'],
+            'state' => $data['state'],
             'address' => $data['address'],
             'city' => $data['city'],
             'action' => $data['action'],
@@ -44,6 +45,7 @@ class PropertiesController extends Controller
             'user_id' => auth()->user()->id ?? 0,
             'additional' => $data['additional'],
             'reference' => \Str::uuid(),
+            'currency_id' => $data['currency'],
             'price' => $data['price'],
         ]);
 
@@ -70,12 +72,13 @@ class PropertiesController extends Controller
         $data = request()->all();
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
-            'state' => ['required', 'integer'],
+            'state' => ['required', 'string'],
             'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
+            'currency' => ['required', 'integer'],
             'action' => ['required', 'string'],
-            'measurement' => ['required', 'string'],
+            'dimension' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
             'price' => ['required', 'numeric'],
         ]);
@@ -89,7 +92,7 @@ class PropertiesController extends Controller
 
         $property = Property::find($id);
         $property->country_id = $data['country'];
-        $property->state_id = $data['state'];
+        $property->state = $data['state'];
         $property->address = $data['address'];
         $property->city = $data['city'];
         $property->action = $data['action'];
@@ -97,13 +100,15 @@ class PropertiesController extends Controller
         $property->measurement = $data['measurement'];
         $property->additional = $data['additional'];
         $property->price = $data['price'];
+        $property->currency_id = $data['currency'];
         $updated = $property->update();
 
         if ($updated) {
+            $role = auth()->user()->role;
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route('admin.property.edit', [
+                'redirect' => route("{$role}.property.edit", [
                     'id' => $property->id, 
                     'category' => $category
                 ]),
@@ -156,8 +161,8 @@ class PropertiesController extends Controller
         if (is_string($role) && $role === 'main') {
             $imageurl = $property->image ?? '';
             if (!empty($imageurl)) $delete($imageurl);
-            $property->image = $link;
 
+            $property->image = $link;
             $image->move($path, $filename);
             $property->update();
             return response()->json([

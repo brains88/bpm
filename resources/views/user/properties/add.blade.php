@@ -4,19 +4,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-7 mb-4">
-                    <div class="alert-info alert mb-4">Add property</div>
+                    <div class="alert-info alert mb-4">List property</div>
                     <div class="bg-white p-4 border rounded">
                         <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('api.property.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="text-muted">Country located</label>
-                                    <select class="form-control custom-select country" name="country">
+                                    <select class="form-control custom-select country" name="country" id="countries">
                                         <option value="">-- Select country --</option>
                                         @if(empty($countries))
                                             <option value="">No countries listed</option>
                                         @else: ?>
+                                            <?php $geoip = geoip()->getLocation(request()->ip());  ?>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">
+                                                <option value="{{ $country->id }}" {{ strtolower($geoip->iso_code) == strtolower($country->iso2) ? 'selected' : '' }} id="{{ $country->state_id }}">
                                                     {{ ucwords($country->name ?? '') }}
                                                 </option>
                                             @endforeach
@@ -25,25 +26,14 @@
                                     <small class="invalid-feedback country-error"></small>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="text-muted">State, county or divison</label>
-                                    <select type="text" class="form-control state custom-select" name="state">
-                                        <option value="">-- Select state, county or divison --</option>
-                                        @if(empty($states))
-                                            <option>No data listed</option>
-                                        @else: ?>
-                                            @foreach ($states as $state)
-                                                <option value="{{ $state->id }}">
-                                                    {{ ucwords($state->name ?? '') }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                                    <label class="text-muted">State, county or division</label>
+                                    <input type="text" class="form-control state" name="state" placeholder="e.g., Texas">
                                     <small class="invalid-feedback state-error"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="text-muted">City</label>
+                                    <label class="text-muted">City, area or town</label>
                                     <input type="text" class="form-control city" name="city" placeholder="e.g., Plano">
                                     <small class="invalid-feedback city-error"></small>
                                 </div>
@@ -81,8 +71,9 @@
                                             <option>No currencies listed</option>
                                         @else: ?>
                                             @foreach ($currencies as $currency)
-                                                <option value="{{ $currency['id'] ?? 0 }}">
-                                                    {{ ucwords($currency['name'] ?? 'Nigerian Naira') }}
+                                                <?php $code = $currency['code']; ?>
+                                                <option value="{{ $currency['id'] }}" {{ strtolower($code) === strtolower(currency()->getUserCurrency()) ? 'selected' : '' }}>
+                                                    {{ ucwords($currency['name']) }}({{ strtoupper($code) }})
                                                 </option>
                                             @endforeach
                                         @endif
@@ -96,8 +87,8 @@
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
+                                        <small class="invalid-feedback price-error"></small>
                                     </div>
-                                    <small class="invalid-feedback price-error"></small>
                                 </div>
                             </div>
                             <div class="form-row">

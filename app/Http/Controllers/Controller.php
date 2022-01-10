@@ -23,7 +23,7 @@ class Controller extends BaseController
     {
         // $visitor = Visitor::lookup();
         // dd($visitor);
-        //dd(geoip('8.8.4.4'));
+        //echo gettype(geoip());
     }
 
     /**

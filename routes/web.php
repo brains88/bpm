@@ -177,10 +177,8 @@ Route::middleware('web')->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
-    });
 
-    Route::prefix('property')->group(function () {
-        Route::get('/edit/{id}/{category}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
+        Route::get('/edit/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
     });
 });

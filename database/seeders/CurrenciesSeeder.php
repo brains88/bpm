@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Models\Property;
-   
-class PropertiesSeeder extends Seeder
+
+class CurrenciesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,8 @@ class PropertiesSeeder extends Seeder
      */
     public function run()
     {
-        Property::truncate();
-        Property::factory()->count(360)->create();
+        $path = storage_path('currencies.sql');
+        $sql = file_get_contents($path);
+        \DB::unprepared($sql);
     }
 }
