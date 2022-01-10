@@ -206,7 +206,7 @@
             </div>
             <!-- header-modal-container end-->
             <div class="header-modal-top fl-wrap"> 
-              <a class="clear_wishlist color-bg" href="../compare/index.htm">
+              <a class="clear_wishlist color-bg" href="#">
               <i class="fal fa-random">
               </i>Compare</a>
             </div>
@@ -240,7 +240,7 @@
           </ul>
         </li>
         <li id="menu-item-8038" class="menu-item menu-item-type-custom menu-item-object-custom ">
-          <a href="#">Properties</a>
+          <a href="{{route('properties')}}">Properties</a>
         </li>
         <li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
           <a href="#">Agency</a>

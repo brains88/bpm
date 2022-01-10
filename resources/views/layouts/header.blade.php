@@ -28,6 +28,10 @@
         <link href="bpm-content/uploads/new/bpmsite.css" type="text/css" rel="stylesheet"/>
 
         <script type='text/javascript' src='assets/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+
+        <meta charset="utf-8" name="google-site-verification" content="=8kf5mgYQhvdaG83hokZpIDyISEeWEEa6Jib6s1pjZdM">
+        <meta name="msvalidate.01" content="E54BD83E87BAF1B6D2813C397CB5771D" />
+        
         <link rel="https://api.w.org/" href="assets/json/index.htm.json">
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php.xml?rsd">
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">

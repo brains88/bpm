@@ -267,7 +267,7 @@
                             <img width="424" height="280" src="../../bpm-content/uploads/2021/03/1-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
-                          <div class="geodir-category-location"> <a href="../../maps/search/index-3.htm?api=1&query=40.7130736,-73.9873037" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>34-42 Kagoru Street , Enugu State, Nigeria</span></a></div>
+                          <div class="geodir-category-location"> <a href="../../maps/search/index-3.htm?api=1&query=40.7130736,-73.9873037" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>34-42 Montgomery St , NY, USA</span></a></div>
                           <div class="listing-featured">Featured</div>
                           <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="@" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="#" class="cat-opt flex-items-center">House</a></div>
                           <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span></a> <a href="#" class="compare-btn tolt compare-btn-7439" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="7439" data-ltitle="Gorgeous House For Sale" data-lthumb="../../bpm-content/uploads/2021/03/1-1-150x150.jpg" data-lprice="$&nbsp;700 / per month" data-laddress="34-42 Montgomery St , NY, USA"><span><i class="fal fa-random"></i></span></a>
@@ -276,9 +276,9 @@
                         </div>
                         <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Gorgeous House For Sale</a></h3>
-                          <div class="geodir-category-content_price">₦&nbsp;500M</div>
+                          <div class="geodir-category-content_price">$&nbsp;700 / per month</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the heart of Nigeria Enugu State. For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
@@ -303,9 +303,9 @@
                             <img width="424" height="280" src="../../bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
-                          <div class="geodir-category-location"> <a href="../../maps/search/index.htm?api=1&query=40.81986777037329,-74.00715942677003" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span> 23 Parakou Crescent, Wuse2 , Abuja</span></a></div>
+                          <div class="geodir-category-location"> <a href="../../maps/search/index.htm?api=1&query=40.81986777037329,-74.00715942677003" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>75 Prince St, NY, USA</span></a></div>
                           <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="#" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="#" class="cat-opt flex-items-center">Home</a></div>
-                          <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span></a> <a href="#" class="compare-btn tolt compare-btn-6355" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="" data-ltitle="Luxury Family Home" data-lthumb="../../bpm-content/uploads/2021/03/3-1-150x150.jpg" data-lprice="$&nbsp;49" data-laddress="23 Parakou Crescent, Wuse2 , Abuja"><span><i class="fal fa-random"></i></span></a>
+                          <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span></a> <a href="#" class="compare-btn tolt compare-btn-6355" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="6355" data-ltitle="Luxury Family Home" data-lthumb="../../bpm-content/uploads/2021/03/3-1-150x150.jpg" data-lprice="$&nbsp;49" data-laddress="75 Prince St, NY, USA"><span><i class="fal fa-random"></i></span></a>
                           <div class="geodir-category-listing_media-list"> <span>
                           	<i class="fas fa-camera"></i> 6</span></div>
                           <div class="lcard-saleoff">
@@ -315,9 +315,9 @@
                         </div>
                         <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Luxury Family Home</a> <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified"><i class="far fa-check"></i></span></h3>
-                          <div class="geodir-category-content_price">₦&nbsp;490M</div>
+                          <div class="geodir-category-content_price">$&nbsp;49</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the heart of Nigeria (FCT). For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
@@ -349,7 +349,7 @@
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Family House For Rent</a></h3>
                           <div class="geodir-category-content_price">$&nbsp;500,000</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the heart of Nigeria (FCT). For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
@@ -388,7 +388,7 @@
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Contemporary Apartment</a> <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified"><i class="far fa-check"></i></span></h3>
                           <div class="geodir-category-content_price">$&nbsp;600,000</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the Geogia. For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
@@ -424,7 +424,7 @@
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Kayak Point House</a> <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified"><i class="far fa-check"></i></span></h3>
                           <div class="geodir-category-content_price">$&nbsp;320,000</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the heart of Nigeria (FCT). For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
@@ -460,7 +460,7 @@
                           <h3 class="title-sin_item dis-flex-wrap-center"> <a href="#">Urban House</a> <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified"><i class="far fa-check"></i></span></h3>
                           <div class="geodir-category-content_price">$&nbsp;500,000</div>
                           <div class="geodir-card-text">
-                            <div class="geodir-card-excerpt">A clean house built fresh ready for sale in the heart of Nigeria (FCT). For this property ensure to contact Best Property Market. You can click on this peoperty to get further Details About it.</div>
+                            <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
                             <div class="lcfields-wrap dis-flex-wrap-center"></div>
                             <div class="geodir-category-content-details">
                               <ul class="no-list-style dis-flex-wrap">
