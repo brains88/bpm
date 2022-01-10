@@ -22,6 +22,8 @@ Route::group(['middleware' => [], 'prefix' => ''], function () {
     Route::prefix('property')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('api.property.add');
 
+        Route::post('/action/change/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('api.property.action.change');
+
         Route::post('/update/{id}/{category}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.update');
 
         Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Api\PropertiesController::class, 'image'])->name('api.property.image.upload');

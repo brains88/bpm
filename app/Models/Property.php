@@ -19,7 +19,7 @@ class Property extends Model
         'auction' => 'auction',
         'sale' => 'for sale', 
         'lease' => 'for lease', 
-        'sold' => 'sold',
+        'sold' => 'sold off',
     ];
 
     /**
@@ -94,11 +94,11 @@ class Property extends Model
     }
 
     /**
-     * A property is listed in a perticular state in a country
+     * A property is listed in a particular currency
      */
-    public function state()
+    public function currency()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(Currency::class);
     }
 
     /**

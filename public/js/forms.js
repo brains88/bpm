@@ -67,4 +67,9 @@
         handleForm({form: $(this), button: 'edit-plan-button', spinner: 'edit-plan-spinner', message: 'edit-plan-message'});
     });
 
+    $('.change-property-action-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'change-property-action-button', spinner: 'change-property-action-spinner', message: 'change-property-action-message'});
+    });
+
 })(jQuery);

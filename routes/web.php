@@ -185,7 +185,7 @@ Route::middleware('web')->domain(env('USER_URL'))->group(function() {
     Route::prefix('materials')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\MaterialsController::class, 'index'])->name('user.materials');
 
-        Route::get('/edit/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
+        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
         Route::get('/add', [\App\Http\Controllers\User\MaterialsController::class, 'add'])->name('user.material.add');
     });
 });

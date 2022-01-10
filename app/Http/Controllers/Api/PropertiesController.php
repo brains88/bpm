@@ -213,4 +213,34 @@ class PropertiesController extends Controller
                 
         }     
     }
+
+    /**
+     * Api [post] edit Property
+     */
+    public function action($id = 0)
+    {
+        $data = request()->all();
+        $validator = Validator::make($data, [
+            'action' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $property = Property::find($id);
+        $property->action = $data['action'];
+        $updated = $property->update();
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => '',
+        ]);
+
+            
+    }
 }
