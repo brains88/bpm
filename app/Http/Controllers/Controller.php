@@ -14,6 +14,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
+     * Get subdomain value
+     * e.g., admin or user
+     */
+    protected $subdomain = '';
+
+    /**
      * API Request timeout
      * 180 seconds or 3Minutes
      */
@@ -21,6 +27,8 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        $host = request()->getHost();
+        $this->subdomain = explode('.', $host)[0] ?? '';
         // $visitor = Visitor::lookup();
         // dd($visitor);
         //echo gettype(geoip());

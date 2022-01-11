@@ -178,14 +178,14 @@ Route::middleware('web')->domain(env('USER_URL'))->group(function() {
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
 
-        Route::get('/edit/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
+        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
     });
 
     Route::prefix('materials')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\MaterialsController::class, 'index'])->name('user.materials');
 
-        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
+        Route::get('/edit/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
         Route::get('/add', [\App\Http\Controllers\User\MaterialsController::class, 'add'])->name('user.material.add');
     });
 });

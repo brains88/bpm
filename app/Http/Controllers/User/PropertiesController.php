@@ -28,10 +28,10 @@ class PropertiesController extends Controller
     /**
      * User edit property view
      */
-    public function edit()
+    public function edit($category = 'any', $id = 0)
     {
-        $properties = Property::latest('created_at')->limit(12);
-        return view('user.properties.edit')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
+        $property = Property::findOrFail($id);
+        return view('user.properties.edit')->with(['categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'property' => $property, 'category' => $category]);
     }
 
 }

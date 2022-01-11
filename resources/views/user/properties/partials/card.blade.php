@@ -24,8 +24,8 @@
 			</small>
 			<?php $action = strtolower($property->action ?? 'nill'); $actions = \App\Models\Property::$actions; ?>
 			<div class="dropdown">
-                <small id="change-action-{{ $property->id }}" data-toggle="dropdown" class="{{ $action === 'sold' ? 'bg-danger' : 'bg-info' }} cursor-pointer px-2 rounded-pill">
-					<small class="text-white">
+                <small id="change-action-{{ $property->id }}" data-toggle="dropdown" class="{{ $action === 'sold' ? 'text-danger' : 'text-info' }} cursor-pointer">
+					<small class="">
 						{{ ucwords($actions[$action] ?? 'nill') }} <i class="icofont icofont-caret-down"></i>
 					</small>
 				</small>
@@ -60,42 +60,16 @@
             </div>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('user.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-underline text-main-dark">
+			<a href="{{ route('user.property.edit', ['category' => $categoryname, 'id' => $property->id]) }}" class="text-underline text-main-dark">
 				<small class="">
-					{{ \Str::limit($property->address, 16) }}
+					<small>{{ \Str::limit($property->address, 18) }}</small>
 				</small>
 			</a>
-			{{-- <div class="dropdown">
-                <a href="javascript:;" class="text-main-dark align-items-center df
-                " id="status-{{ $property->id }}" data-toggle="dropdown">
-                    <small>
-                    	<i class="icofont icofont-caret-down"></i>
-                    </small>
-                </a>
-                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $property->id }}">
-                	<form class="p-4 w-100" action="javascript:;" style="width: 210px !important;">
-					    <div class="form-group">
-					      	<label for="exampleDropdownFormEmail1">Change status</label>
-					      	<select class="custom-select change-status">
-					      		<option value="">Change status</option>
-					      	</select>
-					    </div>
-					    <button type="submit" class="btn btn-lg text-white btn-block bg-main-dark">Change status</button>
-					</form>
-                </div>
-            </div> --}}
+			<a href="{{ route('user.property.edit', ['category' => $categoryname, 'id' => $property->id]) }}">
+				<small class="text-warning">
+					<i class="icofont-edit"></i>
+				</small>
+			</a>
 		</div>
-	</div>
-	<div class="card-footer d-flex justify-content-between align-items-center bg-main-dark">
-		<small class="text-white">
-			<small>
-				{{ $property->created_at->diffForHumans() }}
-			</small>
-		</small>
-		<a href="{{ route('user.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}">
-			<small class="text-warning">
-				<i class="icofont-edit"></i>
-			</small>
-		</a>
 	</div>
 </div>

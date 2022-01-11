@@ -72,4 +72,14 @@
         handleForm({form: $(this), button: 'change-property-action-button', spinner: 'change-property-action-spinner', message: 'change-property-action-message'});
     });
 
+    $('.add-material-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-material-button', spinner: 'add-material-spinner', message: 'add-material-message'});
+    });
+
+    $('.edit-material-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-material-button', spinner: 'edit-material-spinner', message: 'edit-material-message'});
+    });
+
 })(jQuery);

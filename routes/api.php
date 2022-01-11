@@ -24,9 +24,17 @@ Route::group(['middleware' => [], 'prefix' => ''], function () {
 
         Route::post('/action/change/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('api.property.action.change');
 
-        Route::post('/update/{id}/{category}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.update');
+        Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.update');
 
         Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Api\PropertiesController::class, 'image'])->name('api.property.image.upload');
+    });
+
+    Route::prefix('material')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('api.material.add');
+
+        Route::post('/update/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'update'])->name('api.material.update');
+
+        Route::post('/image/upload/{id}/{role}', [\App\Http\Controllers\Api\MaterialsController::class, 'image'])->name('api.material.image.upload');
     });
 
     Route::post('/password/email', [PasswordController::class, 'email'])->name('password.email')->name('api.');

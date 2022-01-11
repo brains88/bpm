@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div class="min-vh-100">
+<div class="min-vh-100 bg-main-ash">
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap">

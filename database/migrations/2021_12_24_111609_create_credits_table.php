@@ -20,8 +20,6 @@ class CreateCreditsTable extends Migration
             $table->string('reference')->nullable();
             $table->string('status');
             $table->foreignId('user_id');
-            $table->dateTime('expiry');
-            $table->integer('renewals')->default(0);
             $table->timestamps();
         });
     }

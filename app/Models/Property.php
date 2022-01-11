@@ -31,6 +31,7 @@ class Property extends Model
         'country_id',
         'state_id',
         'address',
+        'currency_id',
         'city',
         'action',
         'category_id',

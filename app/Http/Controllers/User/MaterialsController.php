@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-use App\Models\{Category, Material};
+use App\Models\{Category, Material, Country};
 use App\Http\Controllers\Controller;
 
 
@@ -13,7 +13,7 @@ class MaterialsController extends Controller
     public function index()
     {
         $materials = Material::latest('created_at')->paginate(12);
-        return view('user.materials.index')->with(['materials' => $materials, 'categories' => Category::where(['type' => 'material'])->get()]);
+        return view('user.materials.index')->with(['materials' => $materials]);
     }
 
     /**
@@ -28,10 +28,10 @@ class MaterialsController extends Controller
     /**
      * User edit material view
      */
-    public function edit()
+    public function edit($id = 0)
     {
-        $materials = Material::latest('created_at')->limit(12);
-        return view('user.materials.edit')->with(['materials' => $materials, 'categories' => Category::where(['type' => 'material'])->get(), 'countries' => Country::all()]);
+        $material = Material::findOrFail($id);
+        return view('user.materials.edit')->with(['material' => $material, 'countries' => Country::all()]);
     }
 
 }

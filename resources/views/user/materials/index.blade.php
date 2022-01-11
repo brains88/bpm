@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div class="min-vh-100">
+<div class="min-vh-100 bg-main-ash">
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
                     <div class="d-flex align-items-center">
-                        <a href="{{ route('user.property.add') }}" class="user-icon bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
+                        <a href="{{ route('user.material.add') }}" class="user-icon bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>
@@ -31,7 +31,7 @@
                     <div class="alert-info alert">No materials yet</div>
                 @else
                     <div class="row">
-                        @foreach($materials as $property)
+                        @foreach($materials as $material)
                             <div class="col-12 col-md-4 col-lg-3 mb-4">
                                 @include('user.materials.partials.card')
                             </div>

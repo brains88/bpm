@@ -49,13 +49,13 @@
         <div class="card-body py-0 position-relative" style="top: -16px;">
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                    <div class="alert alert-warning rounded p-4">
+                    <div class="alert alert-warning m-0 rounded p-4">
                         <h5>Adverts</h5>
                         <h2>$905</h2>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 mb-3">
-                    <div class="alert alert-warning rounded p-4">
+                    <div class="alert alert-warning m-0 rounded p-4">
                         <h5>Subscriptions</h5>
                         <h2>$125</h2>
                     </div>

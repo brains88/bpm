@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Category, Property, Country, Image, Division};
+use App\Models\{Category, Material, Country, Image, Division};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
 
-class PropertiesController extends Controller
+class MaterialsController extends Controller
 {
 	/**
-     * Api add Property
+     * Api add Material
      */
     public function add()
     {
@@ -17,14 +17,10 @@ class PropertiesController extends Controller
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
-            'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            // 'currency' => ['required', 'integer'],
-            'action' => ['required', 'string'],
-            'measurement' => ['required', 'string'],
+            'currency' => ['required', 'integer'],
             'additional' => ['required', 'string', 'max:500'],
-            'price' => ['required', 'numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -34,14 +30,12 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $property = Property::create([
+        $material = Material::create([
             'country_id' => $data['country'],
             'state' => $data['state'],
             'address' => $data['address'],
             'city' => $data['city'],
-            'action' => $data['action'],
-            'category_id' => $data['category'],
-            'measurement' => $data['dimension'],
+            'quantity' => $data['quantity'],
             'user_id' => auth()->user()->id ?? 0,
             'additional' => $data['additional'],
             'reference' => \Str::uuid(),
@@ -49,11 +43,13 @@ class PropertiesController extends Controller
             'price' => $data['price'],
         ]);
 
-        if ($property) {
+        if ($material) {
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.property.edit", ['id' => $property->id, 'category' => $property->category->name ?? 'any']),
+                'redirect' => route("{$this->subdomain}.material.edit", [
+                    'id' => $material->id, 
+                ]),
             ]); 
         }else {
             return response()->json([
@@ -65,22 +61,18 @@ class PropertiesController extends Controller
     }
 
     /**
-     * Api [post] edit Property
+     * Api [post] edit Material
      */
-    public function update($id = 0, $category = 'any')
+    public function update($id = 0)
     {
         $data = request()->all();
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
-            'category' => ['required', 'integer'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            // 'currency' => ['required', 'integer'],
-            'action' => ['required', 'string'],
-            'measurement' => ['required', 'string'],
+            'currency' => ['required', 'integer'],
             'additional' => ['required', 'string', 'max:500'],
-            'price' => ['required', 'numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -90,26 +82,23 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $property = Property::find($id);
-        $property->country_id = $data['country'];
-        $property->state = $data['state'];
-        $property->address = $data['address'];
-        $property->city = $data['city'];
-        $property->action = $data['action'];
-        $property->category_id = $data['category'];
-        $property->measurement = $data['measurement'];
-        $property->additional = $data['additional'];
-        $property->price = $data['price'];
-        $property->currency_id = $data['currency'] ?? 0;
-        $updated = $property->update();
+        $material = Material::find($id);
+        $material->country_id = $data['country'];
+        $material->state = $data['state'];
+        $material->address = $data['address'];
+        $material->city = $data['city'];
+        $material->quantity = $data['quantity'];
+        $material->additional = $data['additional'];
+        $material->price = $data['price'];
+        $material->currency_id = $data['currency'] ?? 0;
+        $updated = $material->update();
 
         if ($updated) {
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.property.edit", [
-                    'category' => $category,
-                    'id' => $property->id, 
+                'redirect' => route("{$this->subdomain}.material.edit", [
+                    'id' => $material->id, 
                 ]),
             ]);
         }else {
@@ -123,7 +112,7 @@ class PropertiesController extends Controller
     }
 
     /**
-     * Property api for image upload
+     * Material api for image upload
      */
     public function image($id = 0, $role = 'main')
     {
@@ -141,8 +130,8 @@ class PropertiesController extends Controller
 
         $extension = $image->getClientOriginalExtension();
         $filename = \Str::uuid().'.'.$extension;
-        $path = 'images/properties';
-        $link = env('APP_URL')."/images/properties/{$filename}";
+        $path = 'images/materials';
+        $link = env('APP_URL')."/images/materials/{$filename}";
 
         /**
          * Delete previous image file if any
@@ -156,14 +145,14 @@ class PropertiesController extends Controller
             }
         };
 
-        $property = Property::find($id);
+        $material = Material::find($id);
         if (is_string($role) && $role === 'main') {
-            $imageurl = $property->image ?? '';
+            $imageurl = $material->image ?? '';
             if (!empty($imageurl)) $delete($imageurl);
 
-            $property->image = $link;
+            $material->image = $link;
             $image->move($path, $filename);
-            $property->update();
+            $material->update();
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful'
@@ -175,7 +164,7 @@ class PropertiesController extends Controller
                 $lastid = Image::create([
                     'type_id' => $id,
                     'link' => $link,
-                    'type' => 'property',
+                    'type' => 'material',
                 ])->id;
 
                 if($lastid) {
@@ -213,33 +202,4 @@ class PropertiesController extends Controller
         }     
     }
 
-    /**
-     * Api [post] edit Property
-     */
-    public function action($id = 0)
-    {
-        $data = request()->all();
-        $validator = Validator::make($data, [
-            'action' => ['required', 'string'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0, 
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $property = Property::find($id);
-        $property->action = $data['action'];
-        $updated = $property->update();
-
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => '',
-        ]);
-
-            
-    }
 }
