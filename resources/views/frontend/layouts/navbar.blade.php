@@ -245,8 +245,8 @@
         <li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
           <a href="#">Agency</a>
           <ul class="sub-menu">
-            <li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('agents')}}">Agent Listing</a></li>
-            <li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="{{route('agency')}}">Agency Listing</a></li>
+            <li id="" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('agents')}}">Agent Listing</a></li>
+            <li id="" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="{{route('agency')}}">Agency Listing</a></li>
           </ul>
         </li>
         <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
