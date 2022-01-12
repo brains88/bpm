@@ -263,8 +263,8 @@
                     <div class="listing-item listing-item-loop" data-postid="7439" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Fgorgeous-house-for-sale%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EHouse%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Gorgeous%20House%20For%20Sale%22%2C%22ID%22%3A7439%2C%22price%22%3A%22%24%26nbsp%3B700%20%5C%2F%20per%20month%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F1-1-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Rent%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%2240.7130736%22%2C%22longitude%22%3A%22-73.9873037%22%2C%22address%22%3A%2234-42%20Montgomery%20St%20%2C%20NY%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
-                            <img width="424" height="280" src="../../bpm-content/uploads/2021/03/1-1-424x280.jpg" class="respimg" alt="" loading="lazy">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
+                            <img width="424" height="280" src="bpm-content/uploads/2021/03/1-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
                           <div class="geodir-category-location"> <a href="../../maps/search/index-3.htm?api=1&query=40.7130736,-73.9873037" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>34-42 Kagoru Street , Enugu State, Nigeria</span></a></div>
@@ -299,8 +299,8 @@
                     <div class="listing-item listing-item-loop" data-postid="6355" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Fluxury-family-home%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EHome%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Luxury%20Family%20Home%22%2C%22ID%22%3A6355%2C%22price%22%3A%22%24%26nbsp%3B49%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F3-1-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Sale%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%2240.81986777037329%22%2C%22longitude%22%3A%22-74.00715942677003%22%2C%22address%22%3A%2275%20Prince%20St%2C%20NY%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
-                            <img width="424" height="280" src="../../bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
+                            <img width="424" height="280" src="bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
                           <div class="geodir-category-location"> <a href="../../maps/search/index.htm?api=1&query=40.81986777037329,-74.00715942677003" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span> 23 Parakou Crescent, Wuse2 , Abuja</span></a></div>
@@ -335,7 +335,7 @@
                     <div class="listing-item listing-item-loop" data-postid="6152" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Ffamily-house-for-rent%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EHouse%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Family%20House%20For%20Rent%22%2C%22ID%22%3A6152%2C%22price%22%3A%22%24%26nbsp%3B500%2C000%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F5-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Sale%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%2240.701594124269405%22%2C%22longitude%22%3A%22-73.88509092852472%22%2C%22address%22%3A%2275%20Prince%20St%2C%20NY%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                             <img width="424" height="280" src="../../bpm-content/uploads/2021/03/5-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
@@ -370,7 +370,7 @@
                     <div class="listing-item listing-item-loop" data-postid="5126" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Fcontemporary-apartment%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EApartment%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Contemporary%20Apartment%22%2C%22ID%22%3A5126%2C%22price%22%3A%22%24%26nbsp%3B600%2C000%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F6-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Sale%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%2240.78708237136644%22%2C%22longitude%22%3A%22-73.97548763779922%22%2C%22address%22%3A%2270%20Bright%20St%20New%20York%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
                             <img width="424" height="280" src="../../bpm-content/uploads/2021/03/6-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
@@ -409,8 +409,8 @@
                     <div class="listing-item listing-item-loop" data-postid="5115" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Fkayak-point-house%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EHouse%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Kayak%20Point%20House%22%2C%22ID%22%3A5115%2C%22price%22%3A%22%24%26nbsp%3B320%2C000%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F8-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Sale%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%227.539988999999998%22%2C%22longitude%22%3A%22-5.547079999999999%22%2C%22address%22%3A%2240%20Journal%20Square%20%2C%20NJ%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
-                            <img width="424" height="280" src="../../bpm-content/uploads/2021/03/8-424x280.jpg" class="respimg" alt="" loading="lazy">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
+                            <img width="424" height="280" src="bpm-content/uploads/2021/03/8-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
                           <div class="geodir-category-location"> <a href="../../maps/search/index-6.htm?api=1&query=7.539988999999998,-5.547079999999999" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>40 Journal Square , NJ, USA</span></a></div>
@@ -445,8 +445,8 @@
                     <div class="listing-item listing-item-loop" data-postid="1744" data-lmap="%7B%22url%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Flisting%5C%2Furban-house%5C%2F%22%2C%22cat%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-category%20mp-cat%20color-bg%5C%22%3EHouse%3C%5C%2Fdiv%3E%22%2C%22title%22%3A%22Urban%20House%22%2C%22ID%22%3A1744%2C%22price%22%3A%22%24%26nbsp%3B500%2C000%22%2C%22gmap_marker%22%3A%22%22%2C%22thumbnail%22%3A%22https%3A%5C%2F%5C%2Fbestpropertymarket.%5C%2Fbpm-content%5C%2Fuploads%5C%2F2021%5C%2F03%5C%2F9-424x280.jpg%22%2C%22lstatus%22%3A%22%3Cdiv%20class%3D%5C%22map-popup-status%20mp-cat%20color-bg%5C%22%3EFor%20Sale%3C%5C%2Fdiv%3E%22%2C%22latitude%22%3A%2240.7172387%22%2C%22longitude%22%3A%22-74.04772960000003%22%2C%22address%22%3A%2275%20Prince%20St%2C%20NY%2C%20USA%22%7D">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                          <a href="#" class="listing-thumb-link geodir-category-img_item">
-                            <img width="424" height="280" src="../../bpm-content/uploads/2021/03/9-424x280.jpg" class="respimg" alt="" loading="lazy">
+                          <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
+                            <img width="424" height="280" src="bpm-content/uploads/2021/03/9-424x280.jpg" class="respimg" alt="" loading="lazy">
                             <div class="overlay"></div>
                           </a>
                           <div class="geodir-category-location"> <a href="../../maps/search/index-7.htm?api=1&query=40.7172387,-74.04772960000003" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> <i class="fas fa-map-marker-alt"></i> <span>75 Prince St, NY, USA</span></a></div>
