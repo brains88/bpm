@@ -18,6 +18,7 @@ class Material extends Model
         'country_id',
         'state',
         'address',
+        'name',
         'city',
         'currency_id',
         'amount',
@@ -25,6 +26,20 @@ class Material extends Model
         'additional',
         'reference',
         'price',
+    ];
+
+    /**
+     * Material status.
+     *
+     * @var string[]
+     */
+    public static $status = [
+        'active', 
+        'inactive', 
+        'suspended',
+        'audit', 
+        'banned', 
+        'rejected', 
     ];
 
     /**

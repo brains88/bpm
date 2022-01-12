@@ -15,6 +15,7 @@ class MaterialsController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
+            'name' => ['required', 'string', 'max:300'],
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
             'address' => ['required', 'string'],
@@ -31,6 +32,7 @@ class MaterialsController extends Controller
         }
 
         $material = Material::create([
+            'name' => $data['name'],
             'country_id' => $data['country'],
             'state' => $data['state'],
             'address' => $data['address'],
@@ -67,6 +69,7 @@ class MaterialsController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
+            'name' => ['required', 'string', 'max:300'],
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
             'address' => ['required', 'string'],
@@ -83,6 +86,7 @@ class MaterialsController extends Controller
         }
 
         $material = Material::find($id);
+        $material->name = $data['name'];
         $material->country_id = $data['country'];
         $material->state = $data['state'];
         $material->address = $data['address'];

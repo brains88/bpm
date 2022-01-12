@@ -30,7 +30,7 @@
 					</small>
 				</small>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="change-action-{{ $property->id }}">
-                	<form method="post" class="p-4 w-100 change-property-action-form" action="javascript:;" style="width: 210px !important;" data-action={{ route('api.property.action.change', ['id' => $property->id]) }}>
+                	<form method="post" class="p-4 w-100 change-property-action-form" action="javascript:;" style="width: 210px !important;" data-action="{{ route('api.property.action.change', ['id' => $property->id]) }}">
 					    <div class="form-group">
 					      	<label class="text-muted">Change status</label>
 					      	<select class="custom-select action" name="action">

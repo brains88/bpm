@@ -6,7 +6,7 @@
                 <div class="col-12 mb-4">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="mb-3">
-                            <h4 class="text-white">Building Materials</h4>
+                            <h4 class="text-white">List Building Material</h4>
                             <div class="text-muted">Welcome Melim Homes. List your properties and building materials.</div>
                         </div>
                         <div class="d-flex align-items-center flex-wrap">
@@ -24,6 +24,13 @@
                     </div>
                     <div class="bg-white p-4 border rounded">
                         <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('api.material.add') }}" autocomplete="off">
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label class="text-muted">Building material name or title</label>
+                                    <textarea class="form-control name" name="name" placeholder="e.g., Dangote cement" rows="2"></textarea>
+                                    <small class="invalid-feedback name-error"></small>
+                                </div>
+                            </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="text-muted">Country</label>
@@ -89,7 +96,7 @@
                                 <div class="form-group col-md-6">
                                     <label class="text-muted">Price per unit</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control price" name="price" placeholder="e.g., 20000000">
+                                        <input type="number" class="form-control price" name="price" placeholder="e.g., 200">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>

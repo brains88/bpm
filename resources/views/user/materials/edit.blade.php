@@ -74,6 +74,13 @@
                         <div class="p-4 bg-white">
                             <form method="post" action="javascript:;" class="edit-material-form" data-action="{{ route('api.material.update', ['id' => $material->id]) }}" autocomplete="off">
                                 <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label class="text-muted">Building material name or title</label>
+                                        <textarea class="form-control name" name="name" placeholder="e.g., Dangote cement" rows="2">{{ $material->name }}</textarea>
+                                        <small class="invalid-feedback name-error"></small>
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="text-muted">Country located</label>
                                         <select class="form-control custom-select country" name="country" id="countries">
@@ -105,7 +112,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="text-muted">Available quantity or amount</label>
-                                        <input type="text" class="form-control quantity" name="quantity" placeholder="e.g., 10bags">
+                                        <input type="text" class="form-control quantity" name="quantity" placeholder="e.g., 10bags" value="{{ $material->quantity }}"> 
                                         <small class="invalid-feedback quantity-error"></small>
                                     </div>
                                 </div>

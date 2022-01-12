@@ -8,12 +8,9 @@ body {
     pointer-events: none !important;
 }
 
-.user-content {
-    padding-top: 60px;
-}
-
 .user-dashboard-banner:before, 
-.user-properties-banner:before {
+.user-properties-banner:before,
+.user-profile-banner:before {
     content: '';
     position: absolute;
     top: 0;
@@ -25,6 +22,10 @@ body {
     border-radius: 0 0 30px 30px;
 }
 
+.user-content {
+    padding-top: 100px;
+}
+
 .user-panel-icon {
     width: 45px;
     height: 45px;
@@ -34,11 +35,21 @@ body {
 }
 
 .user-dashboard-banner:before {
-    height: 170px;
+    height: 150px;
+}
+
+.user-profile-banner:before {
+    height: 130px;
 }
 
 .user-properties-banner:before {
     height: 210px;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
 }
 
 .tiny-font {
