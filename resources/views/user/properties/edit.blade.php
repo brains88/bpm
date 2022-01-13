@@ -1,5 +1,6 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
+    @include('user.layouts.navbar')
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             @if(empty($property))

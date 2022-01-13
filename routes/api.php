@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [ApiController::class, 'login'])->name('api.login');
-Route::post('/signup', [SignupController::class, 'signup'])->name('api.signup');
+Route::post('/signup', [\App\Http\Controllers\SignupController::class, 'signup'])->name('api.signup');
 
 Route::group(['middleware' => [], 'prefix' => ''], function () {
+
+    Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('api.login');
+
+    Route::post('/password', [PasswordController::class, 'update'])->name('api.password.update');
 
     Route::prefix('property')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('api.property.add');

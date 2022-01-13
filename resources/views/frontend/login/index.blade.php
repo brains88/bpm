@@ -18,19 +18,19 @@
 								<span class="text-white">Login</span> 
 								<span class="text-main-green">Here</span>
 							</h1>
-							<form action="javascript:;" method="post" class="login-form mb-4" data-action="{{ route('login.signin') }}" autocomplete="off">
+							<form action="javascript:;" method="post" class="login-form mb-4" data-action="{{ route('auth.login') }}">
 							    <div class="form-row">
 							        <div class="form-group col-12">
-							            <label class="text-white">Email or Phone</label>
+							            <label class="text-white">Email</label>
 							            <div class="input-group">
 							            	<div class="input-group-prepend">
 											    <span class="input-group-text text-white">
 											    	<i class="icofont-ui-message"></i>
 											    </span>
 											  </div>
-								            <input type="text" name="login" class="form-control login" placeholder="Enter email or phone">
+								            <input type="text" name="email" class="form-control email" placeholder="Enter email or phone">
 							            </div>
-							            <small class="error login-error text-danger"></small>
+							            <small class="error email-error text-danger"></small>
 							        </div>
 							        <div class="form-group col-12">
 							            <label class="text-white">Password</label>

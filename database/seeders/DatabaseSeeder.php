@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VisitorsSeeder::class);
         $this->call(ContinentsSeeder::class);
         $this->call(SubscriptionsSeeder::class);
+        $this->call(MaterialsSeeder::class);
 
         $this->call(NewsSeeder::class);
         $this->call(LanguagesSeeder::class);

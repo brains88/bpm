@@ -114,6 +114,7 @@ function handleForm(info = {}) {
                 handleButton(button, spinner);
                 message.removeClass('d-none alert-danger').addClass('alert-success');
                 message.html(response.info).fadeIn();
+                console.log(response.redirect);
                 return window.location.href = response.redirect;
 
             }else {

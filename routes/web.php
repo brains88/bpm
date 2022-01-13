@@ -14,7 +14,7 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 |
 */
 
-Route::middleware('web')->domain(env('APP_URL'))->group(function() {
+Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
@@ -30,9 +30,10 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
      Route::get('/agencylisting', 'AgencyController@index')->name('agencylisting');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/auth', [LoginController::class, 'auth'])->name('auth.login');
+    
     Route::group(['prefix' => 'login', 'middleware' => 'guest'], function () {
         Route::get('/', [LoginController::class, 'index'])->name('login');
-        Route::post('/signin', [LoginController::class, 'authenticate'])->name('login.signin');
     });
 
     Route::group(['prefix' => 'signup', 'middleware' => 'guest'], function () {
@@ -84,7 +85,7 @@ Route::middleware('web')->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
 
@@ -177,7 +178,7 @@ Route::middleware('web')->domain(env('ADMIN_URL'))->group(function() {
 
 });
 
-Route::middleware('web')->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
 

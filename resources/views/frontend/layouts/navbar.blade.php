@@ -405,7 +405,7 @@
 					<div class="m-0">Dashboard</div>
 				</a>
 			@else
-				<a href="{{ route('user.dashboard') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+				<a href="{{ route('user') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
 					<div class="m-0">My Account</div>
 				</a>
 			@endif

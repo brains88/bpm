@@ -18,9 +18,9 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12 col-md-7">
-                                    <h4>Profile details</h4>
-                                    <div class="">
+                                <div class="col-12 col-md-6">
+                                    <h4 class="alert alert-info m-0">Profile details</h4>
+                                    <div class="p-4 border">
                                         <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('api.property.add') }}" autocomplete="off">
                                             <div class="form-row">
                                                 <div class="form-group col-12">
@@ -88,8 +88,47 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-5">
-                                    <h4>Update password</h4>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-4">
+                                        <h4 class="alert alert-info m-0">Update password</h4>
+                                        <div class="p-4 border">
+                                            <form class="update-password-form" method="post" action="javascript:;" data-action="{{ route('api.password.update') }}">
+                                                <div class="form-row">
+                                                    <div class="form-group col-12">
+                                                        <label class="text-muted">Current password</label>
+                                                        <input type="text" class="form-control cpassword" name="cpassword" placeholder="e.g., Plano">
+                                                        <small class="invalid-feedback cpassword-error"></small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label class="text-muted">New password</label>
+                                                        <input type="number" class="form-control phone" name="phone" placeholder="e.g., +443240989">
+                                                        <small class="invalid-feedback phone-error"></small>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label class="text-muted">Confirm new password</label>
+                                                        <input type="number" class="form-control phone" name="phone" placeholder="e.g., +443240989">
+                                                        <small class="invalid-feedback phone-error"></small>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <h4 class="alert alert-info m-0">Update Email</h4>
+                                        <div class="p-4 border">
+                                            <form class="update-password-form" method="post" action="javascript:;" data-action="{{ route('api.password.update') }}">
+                                                <div class="form-row">
+                                                    <div class="form-group col-12">
+                                                        <label class="text-muted">Current password</label>
+                                                        <input type="text" class="form-control cpassword" name="cpassword" placeholder="e.g., Plano">
+                                                        <small class="invalid-feedback cpassword-error"></small>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                                 

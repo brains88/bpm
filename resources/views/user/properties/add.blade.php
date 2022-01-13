@@ -1,5 +1,6 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
+    @include('user.layouts.navbar')
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="row">
@@ -112,9 +113,9 @@
                                     <small class="invalid-feedback action-error"></small>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="text-muted">Property dimension</label>
-                                    <input type="text" class="form-control dimension" name="dimension" placeholder="e.g., 500Sqft">
-                                    <small class="invalid-feedback dimension-error"></small>
+                                    <label class="text-muted">Property measurement</label>
+                                    <input type="text" class="form-control measurement" name="measurement" placeholder="e.g., 500Sqft">
+                                    <small class="invalid-feedback measurement-error"></small>
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -126,7 +127,7 @@
                             <div class="d-flex justify-content-right mb-3 mt-1">
                                 <button type="submit" class="btn btn-info px-4 btn-lg text-white add-property-button">
                                     <img src="/images/spinner.svg" class="mr-2 d-none add-property-spinner mb-1">
-                                    Add property
+                                    Submit
                                 </button>
                             </div>
                         </form>

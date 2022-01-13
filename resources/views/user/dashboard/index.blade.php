@@ -20,12 +20,12 @@
                                         <h2 class="">907units</h2>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12 col-md-6 mb-3">
-                                            <button class="btn-dark btn btn-block">Buy credits</button>
-                                        </div>
-                                        <div class="col-12 col-md-6 mb-3">
+                                        {{-- <div class="col-12 col-md-6 mb-3"> --}}
+                                        <button class="btn-dark btn">Buy credits</button>
+                                        {{-- </div> --}}
+                                        {{-- <div class="col-12 col-md-6 mb-3"> --}}
                                             {{-- <button class="btn-dark btn btn-block">Buy credits</button> --}}
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>

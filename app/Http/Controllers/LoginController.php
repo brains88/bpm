@@ -21,7 +21,7 @@ class LoginController extends Controller
      * Ajax Login
      * 
      */
-    public function authenticate()
+    public function auth()
     {
         $data = request()->only('email', 'password');
         $validator = Validator::make($data, [
@@ -29,17 +29,14 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 0,
                 'error' => $validator->errors()
             ]);
         }
 
-        $user = User::where([
-            'email' => $data['email']
-        ])->first();
-        
+        $user = User::where(['email' => $data['email']])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
@@ -47,16 +44,16 @@ class LoginController extends Controller
             ]);
         }
 
-        if ((int)$user->active !== 1) {
+        if (strtolower($user->status) !== 'active') {
             return response()->json([
                 'status' => 0,
                 'info' => 'Please verify your account. A verification link was sent to your email after signup.'
             ]);
         }
 
-        if (auth()->attempt($data, true)) {
+        if (auth()->attempt($data)) {
             request()->session()->regenerate();
-            $redirect = auth()->user()->role === 'admin' ? route('admin') : route('agent');
+            $redirect = auth()->user()->role === 'admin' ? route('admin') : route('user');
 
             return response()->json([
                 'status' => 1,

@@ -1,5 +1,6 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
+    @include('user.layouts.navbar')
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -7,22 +8,14 @@
                     <h4 class="text-white">Building Materials</h4>
                     <div class="text-muted">Welcome Melim Homes. List your properties and building materials.</div>
                 </div>
-                <div class="d-flex align-items-center flex-wrap">
+                <div class="">
                     <div class="d-flex align-items-center">
-                        <a href="{{ route('user.material.add') }}" class="user-icon bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
+                        <a href="{{ route('user.material.add') }}" class="bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>
-                            <div class="d-inline">List Building Materials</div>
+                            <div class="d-inline">List Building Material</div>
                         </a>
-                        <div class="user-icon bg-info text-white mr-3 mb-4 px-3 py-2 icon-raduis">
-                            <i class="icofont-ui-user"></i>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="user-icon bg-dark text-white mb-4 px-3 py-2 icon-raduis">
-                            <i class="icofont-navigation-menu"></i>
-                        </div>
                     </div>
                 </div>
             </div>

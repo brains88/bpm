@@ -1,6 +1,6 @@
 <div class="fixed-top bg-main-dark">
-	<div class="container border-bottom-dark-500 py-3">
-        <div class="d-flex align-items-center justify-content-between">
+	<div class="container">
+        <div class="d-flex border-bottom-dark-500 py-3 align-items-center justify-content-between">
             <div class="">
                 <h5 class="m-0">
                 	<a href="{{ route('user') }}" class="text-white text-decoration-none">Dashboard</a>
@@ -9,7 +9,7 @@
         	<div class="d-flex align-items-center">
         		<div class="d-flex align-items-center">
                     <small class="user-icon text-center bg-dark text-white mr-3 icon-raduis">
-                        <small>
+                        <small class="">
                         	<i class="icofont-settings"></i>
                         </small>
                     </small>

@@ -82,4 +82,9 @@
         handleForm({form: $(this), button: 'edit-material-button', spinner: 'edit-material-spinner', message: 'edit-material-message'});
     });
 
+    $('.login-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'login-button', spinner: 'login-spinner', message: 'login-message'});
+    });
+
 })(jQuery);

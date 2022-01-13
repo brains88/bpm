@@ -29,7 +29,7 @@ class Property extends Model
      */
     protected $fillable = [
         'country_id',
-        'state_id',
+        'state',
         'address',
         'currency_id',
         'city',

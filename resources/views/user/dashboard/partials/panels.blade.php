@@ -9,7 +9,7 @@
             <div class="">
                 <div class="text-dark">
                     <span>
-                        {{ number_format($properties->count()) }}
+                        {{ number_format(\App\Models\Property::count()) }}
                     </span>
                 </div>
                 <a href="{{ route('user.properties') }}" class="text-main-dark">
