@@ -15,9 +15,9 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 */
 
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
+    Route::post('/initialize', [App\Http\Controllers\SubscriptionController::class, 'initialize'])->name('subscription.payment.initialize');
 
-    Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'index'])->name('pay');
-    Route::post('/stripe', [App\Http\Controllers\PaymentController::class, 'stripe'])->name('stripe.pay');
+    Route::get('/payment/verify', [App\Http\Controllers\SubscriptionController::class, 'verify'])->name('subscription.payment.verify');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');

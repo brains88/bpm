@@ -30,7 +30,7 @@ class Plan extends Model
         'name', 
         'listing', 
         'details',
-        'currency',
+        'currency_id',
     ];
 
     /**
@@ -39,5 +39,13 @@ class Plan extends Model
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class, 'plan_id');
+    }
+
+    /**
+     * A plan is listed in a particular currency
+     */
+    public function currency()
+    {
+        return $this->hasOne(Currency::class, 'id');
     }
 }

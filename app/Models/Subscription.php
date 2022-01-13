@@ -10,6 +10,24 @@ class Subscription extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'plan_id',
+        'reference',
+        'status',
+        'subscribed',
+        'duration',
+        'user_id',
+        'expiry',
+        'renewals',
+        'amount',
+        'currency_id'
+    ];
+
+    /**
      * All Subscription status
      *
      * @var string[]
@@ -22,6 +40,7 @@ class Subscription extends Model
         'error',
         'expired',
         'renewed',
+        'initialized'
     ];
 
     /**

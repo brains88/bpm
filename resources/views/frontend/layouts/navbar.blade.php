@@ -3,10 +3,9 @@
 <!-- header-->
 <header id="masthead" class="bestpropertymarket-header main-header">
   @if(auth()->check())
-  {{ auth()->user() }}
-    <small class="bg-success d-block text-center text-white">You're logged in.</small>
+    <small class="bg-success d-block text-center text-white py-1"></small>
   @else
-    <small class="bg-danger d-block text-center text-white">You're not logged in.</small>
+    <small class="bg-danger d-block text-center text-white py-1"></small>
   @endif
   <!--  logo  -->
   <div class="logo-holder"> 

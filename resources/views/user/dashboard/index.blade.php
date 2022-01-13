@@ -8,17 +8,23 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class="alert alert-success card-radus">
-                        <div class="">
-                            <h4 class="mb-3">Current Subscription</h4>
-                            <div>
+                    <div class="alert alert-success card-radus p-3 mb-4">
+                        <div class="pb-3">
+                            <div class="">
                                 @if(empty($subscription))
                                     <div class="alert alert-danger mb-3">Subscribe to list more properties and build materials.</div>
                                     <a href="{{ route('pricing') }}" class="btn btn-dark px-4">Get Started</a>
                                 @else
+                                <div class="">
+                                    <div class="d-flex align-items-center justify-content-between"></div>
                                     <div class="">
-                                        {{ $subscription->duration }}
+                                        <?php $end = \Carbon\Carbon::parse($subscription->expiry); $fraction = (($end->diffInDays(\Carbon\Carbon::now()))/$subscription->duration); $percent = $fraction * 100;  ?>
+                                        <div class="">Progress ( {{ ($percent == 0) ? 2 : $percent }}% )</div>
+                                        <div class="bg-main-ash border w-100">
+                                            <div class="bg-success py-1 rounded-pill bg-main-ash" style="width: {{ ($percent == 0) ? 2 : $percent }}%"></div>
+                                        </div>
                                     </div>
+                                </div>
                                 @endif
                             </div>
                         </div>
@@ -33,7 +39,7 @@
                                         <h4 class="">Available Credits</h4>
                                         <h2 class="">907units</h2>
                                     </div>
-                                    <div class="row">
+                                    <div class="">
                                         {{-- <div class="col-12 col-md-6 mb-3"> --}}
                                         <button class="btn-dark btn">Buy credits</button>
                                         {{-- </div> --}}

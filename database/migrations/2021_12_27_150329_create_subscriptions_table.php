@@ -18,11 +18,12 @@ class CreateSubscriptionsTable extends Migration
             $table->string('amount');
             $table->string('plan_id');
             $table->string('reference')->nullable();
-            $table->string('status');
-            $table->dateTime('subscribed')->useCurrent();
+            $table->string('status')->define('initialized');
+            $table->dateTime('subscribed')->nullable();
+            $table->foreignId('currency_id')->nullable();
             $table->string('duration');
             $table->foreignId('user_id');
-            $table->dateTime('expiry');
+            $table->dateTime('expiry')->nullable();
             $table->integer('renewals')->default(0);
             $table->timestamps();
         });

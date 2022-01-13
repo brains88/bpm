@@ -1,25 +1,25 @@
         {{-- Jquery JS --}}
-        {{-- <script src="{{ env('APP_URL') }}/jquery/jquery.min.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/jquery/jquery.min.js"></script>
         {{-- Pooper JS --}}
-        {{-- <script src="{{ env('APP_URL') }}/bootstrap/popper.min.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/bootstrap/popper.min.js"></script>
         {{-- bootstrap JS --}}
-        {{-- <script src="{{ env('APP_URL') }}/bootstrap/bootstrap.min.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/bootstrap/bootstrap.min.js"></script>
         {{-- index JS --}}
-        {{-- <script src="{{ env('APP_URL') }}/js/index.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/js/index.js"></script>
         {{-- forms JS --}}
-        {{-- <script src="{{ env('APP_URL') }}/js/forms.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/js/forms.js"></script>
         {{-- Uploader images --}}
-        {{-- <script src="{{ env('APP_URL') }}/js/upload.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/js/upload.js"></script>
         {{-- Sagreit --}}
         {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script> --}}
         {{-- Chartjs --}}
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         {{-- Chart loading script --}}
-        {{-- <script src="{{ env('APP_URL') }}/js/charts.js"></script> --}}
+        <script src="{{ env('APP_URL') }}/js/charts.js"></script>
         <!-- Summernote -->
-        {{-- <script src="{{ env('APP_URL') }}/summernote/summernote-lite.min.js" type="text/javascript"></script> --}}
+        <script src="{{ env('APP_URL') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
 
-        {{-- <script type="text/javascript">
+        <script type="text/javascript">
             var description = $('#description');
             if (description) {
                 description.summernote({
@@ -27,6 +27,17 @@
                     height: 500
                 });
             }
+
+            @if(!empty($plans))
+                @if($plans->count() > 0)
+                    @foreach($plans as $plan)
+                        $('.subscription-payment-initialization-form-{{ $plan->id }}').submit(function(event){
+                            event.preventDefault();
+                            handleForm({form: $(this), button: 'subscription-payment-initialization-button-{{ $plan->id }}', spinner: 'subscription-payment-initialization-spinner-{{ $plan->id }}', message: 'subscription-payment-initialization-message-{{ $plan->id }}'});
+                        });
+                    @endforeach
+                @endif
+            @endif
 
             <?php if(!empty($allBlogs)): ?>
                 <?php foreach($allBlogs as $blog): ?>
@@ -319,9 +330,9 @@
                     });
                 }
             <?php endif; ?>
-        </script> --}}
+        </script>
     </body>
-{{-- @if(stripos(env('APP_URL'), 'admin') !== false && stripos(env('APP_URL'), 'app.b') !== false) --}}
+@if(stripos(env('APP_URL'), 'admin') !== false && stripos(env('APP_URL'), 'app.b') !== false)
 <div class='footer-width-fixer'>
   <div data-elementor-type="wp-post" data-elementor-id="8091" class="elementor elementor-8091" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
@@ -742,16 +753,16 @@
   </div>
 </div>
 <!-- end reset password modal --> 
-<script type='text/javascript' src='assets/js/wp-polyfill.min.js' id='wp-polyfill-js'></script> 
-<script type='text/javascript' id='contact-form-7-js-extra' src="assets\js\bpm.js"> </script>
-<script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script>
-<script type='text/javascript'> 
+<script type='text/javascript' src='{{ env('APP_URL') }}/assets/js/wp-polyfill.min.js' id='wp-polyfill-js'></script> 
+<script type='text/javascript' id='contact-form-7-js-extra' src="{{ env('APP_URL') }}/assets/js/bpm.js"> </script>
+{{-- <script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script> --}}
+<script type='text/javascript' > 
   /* <![CDATA[ */
   var _bestpropertymarket = {"hheight":"80"};
   /* ]]> */
 </script>
 <script  defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyA5l7mjh_T5UCviwCoPTeRaUT-5tF_C7sU"  type="text/javascript"></script>
-<script defer src="bpm-content/uploads/new/siteground-optimizer-combined-js-a60f2b8eb4cca45cf4e4a809bea38bbe.js"></script>
+<script defer src="{{ env('APP_URL') }}/bpm-content/uploads/new/siteground-optimizer-combined-js-a60f2b8eb4cca45cf4e4a809bea38bbe.js"></script>
 </body>
 </html>
-{{-- @endif --}}
+@endif

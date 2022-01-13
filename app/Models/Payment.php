@@ -14,13 +14,13 @@ class Payment extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
+        'transaction_id',
+        'amount',
+        'reference',
         'type',
         'status',
-        'role'
+        'user_id',
+        'currency_id'
     ];
 
     /**
@@ -35,4 +35,22 @@ class Payment extends Model
         'cancelled', 
         'error'
     ];
+
+    /**
+     * All payment types
+     *
+     * @var string[]
+     */
+    public static $types = [
+        'advert', 
+        'subscription',
+    ];
+
+    /**
+     * A payment is made in a particular currency
+     */
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class, 'currency_id');
+    }
 }

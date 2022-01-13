@@ -16,7 +16,7 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('price');
-            $table->text('currency')->nullable();
+            $table->foreignId('currency_id')->nullable();
             $table->string('name');
             $table->bigInteger('listing');
             $table->text('details')->nullable();
