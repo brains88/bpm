@@ -8,7 +8,21 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class=""></div>
+                    <div class="alert alert-success card-radus">
+                        <div class="">
+                            <h4 class="mb-3">Current Subscription</h4>
+                            <div>
+                                @if(empty($subscription))
+                                    <div class="alert alert-danger mb-3">Subscribe to list more properties and build materials.</div>
+                                    <a href="{{ route('pricing') }}" class="btn btn-dark px-4">Get Started</a>
+                                @else
+                                    <div class="">
+                                        {{ $subscription->duration }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">

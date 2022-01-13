@@ -15,10 +15,16 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 */
 
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
+
+    Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'index'])->name('pay');
+    Route::post('/stripe', [App\Http\Controllers\PaymentController::class, 'stripe'])->name('stripe.pay');
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
     Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
+
+    Route::get('/pricing', [App\Http\Controllers\PricingController::class, 'index'])->name('pricing');
 
     // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
     // Kindly effect route below (AdvancedSearch) to standard used by you.

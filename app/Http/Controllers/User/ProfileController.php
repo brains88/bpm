@@ -13,8 +13,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $limit = 4;
-        $properties = Property::latest('created_at')->paginate($limit);
-        return view('user.profile.index')->with(['properties' => $properties, 'limit' => $limit]);
+        return view('user.profile.index')->with([]);
     }
 }

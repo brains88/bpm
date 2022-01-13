@@ -44,7 +44,7 @@
     <div class="card position-relative shadow-sm border-0" >
         <div class="card-header icon-raduis py-5" style="background-color: #f1416c">
             <h4 class="text-white">Total Payments</h4>
-            <h2 class="m-0">$24500</h2>
+            <h2 class="m-0">${{ number_format(\App\Models\Payment::where(['id' => auth()->user()->id])->sum('amount')) }}</h2>
         </div>
         <div class="card-body py-0 position-relative" style="top: -16px;">
             <div class="row">

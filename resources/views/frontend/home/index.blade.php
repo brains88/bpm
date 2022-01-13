@@ -1397,5 +1397,5 @@
 </div>
         <!-- wrapper end -->
 <div class="clearfix"></div>
-    @include('frontend.layouts.bottom')
+    {{-- @include('frontend.layouts.bottom') --}}
 @include('layouts.footer')
