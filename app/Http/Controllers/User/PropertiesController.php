@@ -12,7 +12,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $properties = Property::latest('created_at')->paginate(12);
+        $properties = Property::latest('created_at')->where(['user_id' => auth()->user()->id])->paginate(12);
         return view('user.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
     }
 
@@ -21,8 +21,7 @@ class PropertiesController extends Controller
      */
     public function add()
     {
-        $properties = Property::latest('created_at')->limit(4)->get();
-        return view('user.properties.add')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
+        return view('user.properties.add')->with(['categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
     /**
@@ -30,7 +29,7 @@ class PropertiesController extends Controller
      */
     public function edit($category = 'any', $id = 0)
     {
-        $property = Property::findOrFail($id);
+        $property = Property::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
         return view('user.properties.edit')->with(['categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all(), 'property' => $property, 'category' => $category]);
     }
 

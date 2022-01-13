@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
         $users = [
             ['name' => 'Jesmine Alfred', 'phone' => $faker->phoneNumber(), 'email' => 'admin@bpm.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
             ['name' => 'Lome Presh', 'phone' => $faker->phoneNumber(), 'email' => $faker->unique()->safeEmail(), 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'inactive'],
-            ['name' => 'Washington Main', 'phone' => $faker->phoneNumber(), 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],
+            ['name' => 'Washington Main', 'phone' => '08158212666', 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],
         ];
 
         foreach ($users as $user) {

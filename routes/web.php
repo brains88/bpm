@@ -85,7 +85,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'admin'])->domain('admin.'.env('APP_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
 
@@ -178,7 +178,7 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user'])->domain('user.'.env('APP_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
 

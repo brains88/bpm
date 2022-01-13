@@ -23,9 +23,9 @@ class LoginController extends Controller
      */
     public function auth()
     {
-        $data = request()->only('email', 'password');
+        $data = request()->only('login', 'password');
         $validator = Validator::make($data, [
-            'email' => ['required', 'email'], 
+            'login' => ['required'], 
             'password' => ['required']
         ]);
 
@@ -36,7 +36,7 @@ class LoginController extends Controller
             ]);
         }
 
-        $user = User::where(['email' => $data['email']])->first();
+        $user = User::where(['email' => $data['login']])->whereOr(['phone' => $data['login']])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
@@ -51,7 +51,7 @@ class LoginController extends Controller
             ]);
         }
 
-        if (auth()->attempt($data)) {
+        if (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
             request()->session()->regenerate();
             $redirect = auth()->user()->role === 'admin' ? route('admin') : route('user');
 

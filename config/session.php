@@ -126,7 +126,7 @@ return [
     |
     */
 
-    'cookie' => env('LOCAL_COOKIE', Str::slug(env('APP_NAME', 'subrefill'), '_').'_session'),
+    'cookie' => env('LOCAL_COOKIE', Str::slug(env('APP_NAME', 'bestpropertymarket'), '_').'_session'),
 
     /*
     |--------------------------------------------------------------------------
@@ -152,7 +152,7 @@ return [
     |
     */
 
-    'domain' => null,
+    'domain' => env('SESSION_DOMAIN', '.bestpropertymarket.com'),
 
     /*
     |--------------------------------------------------------------------------

@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function index()
     {
         $limit = 4;
-        $properties = Property::latest('created_at')->paginate($limit);
+        $properties = Property::latest('created_at')->where(['user_id' => auth()->user()->id])->paginate($limit);
         return view('user.dashboard.index')->with(['properties' => $properties, 'limit' => $limit]);
     }
 }

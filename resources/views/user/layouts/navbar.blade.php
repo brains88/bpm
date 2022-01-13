@@ -1,4 +1,9 @@
 <div class="fixed-top bg-main-dark">
+    @if(auth()->check())
+        <small class="bg-success d-block text-center text-white">You're logged in as {{ auth()->user()->name }}.</small>
+    @else
+        <small class="bg-danger d-block text-center text-white">You're not logged in.</small>
+    @endif
 	<div class="container">
         <div class="d-flex border-bottom-dark-500 py-3 align-items-center justify-content-between">
             <div class="">

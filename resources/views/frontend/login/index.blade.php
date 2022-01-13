@@ -21,16 +21,16 @@
 							<form action="javascript:;" method="post" class="login-form mb-4" data-action="{{ route('auth.login') }}">
 							    <div class="form-row">
 							        <div class="form-group col-12">
-							            <label class="text-white">Email</label>
+							            <label class="text-white">Email or phone</label>
 							            <div class="input-group">
 							            	<div class="input-group-prepend">
 											    <span class="input-group-text text-white">
 											    	<i class="icofont-ui-message"></i>
 											    </span>
 											  </div>
-								            <input type="text" name="email" class="form-control email" placeholder="Enter email or phone">
+								            <input type="text" name="login" class="form-control login" placeholder="Enter email or phone">
 							            </div>
-							            <small class="error email-error text-danger"></small>
+							            <small class="error login-error text-danger"></small>
 							        </div>
 							        <div class="form-group col-12">
 							            <label class="text-white">Password</label>
@@ -54,7 +54,7 @@
 								    	<a href="{{ route('forgot.password') }}" class="text-white">Forgot Password?</a>
 								    </div>
 							    </div>
-							    <button type="submit" class="btn btn-lg bg-main-green btn-block text-white login-button mb-4">
+							    <button type="submit" class="btn btn-lg btn-info btn-block text-white login-button mb-4">
 							        <img src="/images/spinner.svg" class="mr-2 d-none login-spinner mb-1">
 							        Login
 							    </button>

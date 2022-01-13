@@ -12,7 +12,7 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        $materials = Material::latest('created_at')->paginate(12);
+        $materials = Material::latest('created_at')->where(['user_id' => auth()->user()->id])->paginate(12);
         return view('user.materials.index')->with(['materials' => $materials]);
     }
 
@@ -21,7 +21,7 @@ class MaterialsController extends Controller
      */
     public function add()
     {
-        $materials = Material::latest('created_at')->limit(4)->get();
+        $materials = Material::latest('created_at')->where(['user_id' => auth()->user()->id])->limit(4)->get();
         return view('user.materials.add')->with(['materials' => $materials, 'categories' => Category::where(['type' => 'material'])->get(), 'countries' => Country::all()]);
     }
 
@@ -30,7 +30,7 @@ class MaterialsController extends Controller
      */
     public function edit($id = 0)
     {
-        $material = Material::findOrFail($id);
+        $material = Material::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
         return view('user.materials.edit')->with(['material' => $material, 'countries' => Country::all()]);
     }
 

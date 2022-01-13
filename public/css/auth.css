@@ -1,4 +1,4 @@
-.login-banner {
+/*.login-banner {
 	background-image: url('/images/banners/login.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -18,7 +18,7 @@
 	width: 100%;
 	z-index: -2;
 	background-color: rgba(0, 0,0, 0.6);
-}
+}*/
 
 .input-group-text {
 	background-color: var(--main-green);

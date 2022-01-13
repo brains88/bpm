@@ -9,7 +9,7 @@
             <div class="">
                 <div class="text-dark">
                     <span>
-                        {{ number_format(\App\Models\Property::count()) }}
+                        {{ number_format(\App\Models\Property::where(['user_id' => auth()->user()->id])->get()->count()) }}
                     </span>
                 </div>
                 <a href="{{ route('user.properties') }}" class="text-main-dark">
@@ -30,7 +30,7 @@
             <div class="">
                 <div class="text-dark">
                     <span>
-                        {{ number_format(\App\Models\Material::count()) }}
+                        {{ number_format(\App\Models\Material::where(['user_id' => auth()->user()->id])->get()->count()) }}
                     </span>
                 </div>
                 <a href="{{ route('user.materials') }}" class="text-main-dark">

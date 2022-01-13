@@ -1,6 +1,13 @@
+
 <div class="fixed-top bg-white border-bottom">
 <!-- header-->
 <header id="masthead" class="bestpropertymarket-header main-header">
+  @if(auth()->check())
+  {{ auth()->user() }}
+    <small class="bg-success d-block text-center text-white">You're logged in.</small>
+  @else
+    <small class="bg-danger d-block text-center text-white">You're not logged in.</small>
+  @endif
   <!--  logo  -->
   <div class="logo-holder"> 
     <a href="/" class="custom-logo-link" rel="home">
