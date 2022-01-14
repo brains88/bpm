@@ -65,7 +65,7 @@
 
         {{-- <?php dd(request()->getHost()); ?> --}}
 
-        @if(\Str::contains(request()->getHost(), 'user.') || \Str::contains(request()->getHost(), 'admin.'))
+        @if(\Str::contains(request()->getHost(), 'user.') || \Str::contains(request()->getHost(), 'admin.') || \Str::contains(request()->getHost(), 'pricing'))
             <!-- Bootstrap CSS CDN -->
             <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
         @endif
