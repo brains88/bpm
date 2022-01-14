@@ -63,7 +63,9 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
         @endif
 
-        @if(stripos(request()->getHost(), 'user.') || stripos(request()->getHost(), 'admin.'))
+        {{-- <?php dd(request()->getHost()); ?> --}}
+
+        @if(\Str::contains(request()->getHost(), 'user.') || \Str::contains(request()->getHost(), 'admin.'))
             <!-- Bootstrap CSS CDN -->
             <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
         @endif
