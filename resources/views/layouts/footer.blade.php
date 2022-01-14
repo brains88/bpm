@@ -1,3 +1,327 @@
+        {{-- Jquery JS --}}
+        {{-- <script src="{{ env('APP_URL') }}/jquery/jquery.min.js"></script> --}}
+        {{-- Pooper JS --}}
+        {{-- <script src="{{ env('APP_URL') }}/bootstrap/popper.min.js"></script> --}}
+        {{-- bootstrap JS --}}
+        {{-- <script src="{{ env('APP_URL') }}/bootstrap/bootstrap.min.js"></script> --}}
+        {{-- index JS --}}
+        {{-- <script src="{{ env('APP_URL') }}/js/index.js"></script> --}}
+        {{-- forms JS --}}
+        {{-- <script src="{{ env('APP_URL') }}/js/forms.js"></script> --}}
+        {{-- Uploader images --}}
+        {{-- <script src="{{ env('APP_URL') }}/js/upload.js"></script> --}}
+        {{-- Sagreit --}}
+        {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script> --}}
+        {{-- Chartjs --}}
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        {{-- Chart loading script --}}
+        {{-- <script src="{{ env('APP_URL') }}/js/charts.js"></script> --}}
+        <!-- Summernote -->
+        {{-- <script src="{{ env('APP_URL') }}/summernote/summernote-lite.min.js" type="text/javascript"></script> --}}
+
+        {{-- <script type="text/javascript">
+            var description = $('#description');
+            if (description) {
+                description.summernote({
+                    tabsize: 4,
+                    height: 500
+                });
+            }
+
+            <?php if(!empty($allBlogs)): ?>
+                <?php foreach($allBlogs as $blog): ?>
+
+                    <?php $id = empty($blog->id) ? 0 : $blog->id; ?>
+                    var description = $('.blog-description-<?= $id; ?>');
+                    if (description) {
+                        description.summernote({
+                            tabsize: 4,
+                            height: 300
+                        });
+                    }
+
+                    var button = $('.add-blog-image-<?= $id; ?>');
+                    if (button) {
+                        button.click(function(event) {
+                            if (confirm('Change Image?')) {
+                                var id = $(this).attr('data-id');
+                                var input = $('.blog-image-input-'+id);
+                                var loader = $('.add-blog-image-loader-'+id);
+
+                                input.trigger('click');
+                                input.change(function(event) {
+                                    loader.removeClass('d-none').fadeIn();
+                                    var files = event.target.files
+                                    var formData = new FormData();
+                                    formData.append('image', files[0]);
+
+                                    var request = $.ajax({
+                                        method: 'post',
+                                        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                        url: input.attr('data-url'),
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        dataType: 'json'
+                                    });
+
+                                    request.done(function(response){
+                                        if (response.status === 1) {
+                                            var imagePreview = $('.blog-image-preview-'+id);
+                                            imagePreview.file = files[0];    
+                                            var reader = new FileReader();
+                                            reader.onload = (function(picture) { 
+                                                return (function(event) { 
+                                                    picture.attr('src', event.target.result);
+                                                    loader.addClass('d-none').fadeOut(); 
+                                                });
+                                            })(imagePreview);
+                                            reader.readAsDataURL(files[0]);
+                                        }else {
+                                            loader.addClass('d-none').fadeOut();
+                                            alert('You must upload a valid image and the size must be 10MB or less.');
+                                        }
+                                    });
+
+                                    request.fail(function(response) {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                        // window.location.reload()
+                                    });
+                                });
+                            }
+                        });
+                    }
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if(!empty($property)): ?>
+                <?php $total = 3; ?>
+                <?php for($key = 0; $key <= $total; $key++): ?>
+                    <?php $imageid = $property->images[$key]->id ?? 'create-'.$key; ?>
+                    var button = $('.add-other-property-image-<?= $imageid; ?>');
+
+                    if (button) {
+                    button.click(function(event) {
+                        if (confirm('Change Image?')) {
+                            var id = $(this).attr('data-id');
+                            var input = $('.other-property-image-input-'+id);
+                            var loader = $('.other-property-image-loader-'+id);
+
+                            input.trigger('click');
+                            input.change(function(event) {
+                                loader.removeClass('d-none').fadeIn();
+                                var files = event.target.files;
+                                var formData = new FormData();
+                                formData.append('image', files[0]);
+
+                                var request = $.ajax({
+                                    method: 'post',
+                                    headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                    url: input.attr('data-url'),
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    dataType: 'json'
+                                });
+
+                                request.done(function(response){
+                                    if (response.status === 1) {
+                                        var imagePreview = $('.other-property-image-preview-'+id);
+                                        imagePreview.file = files[0];    
+                                        var reader = new FileReader();
+                                        reader.onload = (function(picture) { 
+                                            return (function(event) { 
+                                                picture.attr('src', event.target.result);
+                                                loader.addClass('d-none').fadeOut(); 
+                                            });
+                                        })(imagePreview);
+                                        reader.readAsDataURL(files[0]);
+                                    }else {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                    }
+                                });
+
+                                request.fail(function(response) {
+                                    loader.addClass('d-none').fadeOut();
+                                    alert('Network error. Try again.');
+                                    // window.location.reload()
+                                });
+                            });
+                        }
+                    });
+                }
+                <?php endfor; ?>
+
+                var button = $('.add-main-property-image-<?= $property->id; ?>');
+                if (button) {
+                    button.click(function(event) {
+                        if (confirm('Change Image?')) {
+                            var id = $(this).attr('data-id');
+                            var input = $('.main-property-image-input-'+id);
+                            var loader = $('.main-property-image-loader-'+id);
+
+                            input.trigger('click');
+                            input.change(function(event) {
+                                loader.removeClass('d-none').fadeIn();
+                                var files = event.target.files;
+                                var formData = new FormData();
+                                formData.append('image', files[0]);
+
+                                var request = $.ajax({
+                                    method: 'post',
+                                    headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                    url: input.attr('data-url'),
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    dataType: 'json'
+                                });
+
+                                request.done(function(response){
+                                    if (response.status === 1) {
+                                        var imagePreview = $('.main-property-image-preview-'+id);
+                                        imagePreview.file = files[0];    
+                                        var reader = new FileReader();
+                                        reader.onload = (function(picture) { 
+                                            return (function(event) { 
+                                                picture.attr('src', event.target.result);
+                                                loader.addClass('d-none').fadeOut(); 
+                                            });
+                                        })(imagePreview);
+                                        reader.readAsDataURL(files[0]);
+                                    }else {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                    }
+                                });
+
+                                request.fail(function(response) {
+                                    loader.addClass('d-none').fadeOut();
+                                    alert('You must upload a valid image and the size must be 10MB or less.');
+                                    // window.location.reload()
+                                });
+                            });
+                        }
+                    });
+                }
+            <?php endif; ?>
+
+            <?php if(!empty($material)): ?>
+                <?php for($key = 1; $key <= 2; $key++): ?>
+                    <?php $imageid = $material->images[$key]->id ?? 'create-'.$key; ?>
+                    var button = $('.add-other-material-image-<?= $imageid; ?>');
+
+                    if (button) {
+                    button.click(function(event) {
+                        if (confirm('Change Image?')) {
+                            var id = $(this).attr('data-id');
+                            var input = $('.other-material-image-input-'+id);
+                            var loader = $('.other-material-image-loader-'+id);
+
+                            input.trigger('click');
+                            input.change(function(event) {
+                                loader.removeClass('d-none').fadeIn();
+                                var files = event.target.files;
+                                var formData = new FormData();
+                                formData.append('image', files[0]);
+
+                                var request = $.ajax({
+                                    method: 'post',
+                                    headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                    url: input.attr('data-url'),
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    dataType: 'json'
+                                });
+
+                                request.done(function(response){
+                                    if (response.status === 1) {
+                                        var imagePreview = $('.other-material-image-preview-'+id);
+                                        imagePreview.file = files[0];    
+                                        var reader = new FileReader();
+                                        reader.onload = (function(picture) { 
+                                            return (function(event) { 
+                                                picture.attr('src', event.target.result);
+                                                loader.addClass('d-none').fadeOut(); 
+                                            });
+                                        })(imagePreview);
+                                        reader.readAsDataURL(files[0]);
+                                    }else {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                    }
+                                });
+
+                                request.fail(function(response) {
+                                    loader.addClass('d-none').fadeOut();
+                                    alert('Network error. Try again.');
+                                    // window.location.reload()
+                                });
+                            });
+                        }
+                    });
+                }
+                <?php endfor; ?>
+
+                var button = $('.add-main-material-image-<?= $material->id; ?>');
+                if (button) {
+                    button.click(function(event) {
+                        if (confirm('Change Image?')) {
+                            var id = $(this).attr('data-id');
+                            var input = $('.main-material-image-input-'+id);
+                            var loader = $('.main-material-image-loader-'+id);
+
+                            input.trigger('click');
+                            input.change(function(event) {
+                                loader.removeClass('d-none').fadeIn();
+                                var files = event.target.files;
+                                var formData = new FormData();
+                                formData.append('image', files[0]);
+
+                                var request = $.ajax({
+                                    method: 'post',
+                                    headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                                    url: input.attr('data-url'),
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    dataType: 'json'
+                                });
+
+                                request.done(function(response){
+                                    if (response.status === 1) {
+                                        var imagePreview = $('.main-material-image-preview-'+id);
+                                        imagePreview.file = files[0];    
+                                        var reader = new FileReader();
+                                        reader.onload = (function(picture) { 
+                                            return (function(event) { 
+                                                picture.attr('src', event.target.result);
+                                                loader.addClass('d-none').fadeOut(); 
+                                            });
+                                        })(imagePreview);
+                                        reader.readAsDataURL(files[0]);
+                                    }else {
+                                        loader.addClass('d-none').fadeOut();
+                                        alert('You must upload a valid image and the size must be 10MB or less.');
+                                    }
+                                });
+
+                                request.fail(function(response) {
+                                    loader.addClass('d-none').fadeOut();
+                                    alert('You must upload a valid image and the size must be 10MB or less.');
+                                    // window.location.reload()
+                                });
+                            });
+                        }
+                    });
+                }
+            <?php endif; ?>
+        </script> --}}
+    </body>
+{{-- @if(stripos(env('APP_URL'), 'admin') !== false && stripos(env('APP_URL'), 'app.b') !== false) --}}
 <div class='footer-width-fixer'>
   <div data-elementor-type="wp-post" data-elementor-id="8091" class="elementor elementor-8091" data-elementor-settings="[]">
     <div class="elementor-section-wrap">
@@ -419,8 +743,8 @@
 </div>
 <!-- end reset password modal --> 
 <script type='text/javascript' src='assets/js/wp-polyfill.min.js' id='wp-polyfill-js'></script> 
-<script type='text/javascript' id='contact-form-7-js-extra' src="assets\js\bpm.js"> </script>
-<script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra' src="assets/js/bpm.js"> </script>
+{{-- <script defer type='text/javascript' src='bpm-content/maps/api/js?key=AIzaSyDvGgnCpYGcF_pXjJIO-AjzryeZWXXt3tA#038;libraries=places&#038;siteground-async=1&#038;ver=5.8.2' id='googleapis-js'></script> --}}
 <script type='text/javascript' > 
   /* <![CDATA[ */
   var _bestpropertymarket = {"hheight":"80"};
@@ -430,3 +754,4 @@
 <script defer src="bpm-content/uploads/new/siteground-optimizer-combined-js-a60f2b8eb4cca45cf4e4a809bea38bbe.js"></script>
 </body>
 </html>
+{{-- @endif --}}

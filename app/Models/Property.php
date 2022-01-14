@@ -15,10 +15,11 @@ class Property extends Model
      * @var string[]
      */
     public static $actions = [
-        'To Rent', 
-        'For Sale', 
-        'For Lease', 
-        'Sold off',
+        'rent' => 'for rent', 
+        'auction' => 'auction',
+        'sale' => 'for sale', 
+        'lease' => 'for lease', 
+        'sold' => 'sold off',
     ];
 
     /**
@@ -27,13 +28,18 @@ class Property extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'type',
-        'status',
-        'role'
+        'country_id',
+        'state',
+        'address',
+        'currency_id',
+        'city',
+        'action',
+        'category_id',
+        'measurement',
+        'user_id',
+        'additional',
+        'reference',
+        'price',
     ];
 
     /**
@@ -42,10 +48,10 @@ class Property extends Model
      * @var string[]
      */
     public static $conditions = [
-        'Furnished', 
-        'Not furnished', 
-        'Newly Built',
-        'Partly Furnished', 
+        'furnished', 
+        'unfurnished', 
+        'newly built',
+        'old', 
     ];
 
     /**
@@ -89,11 +95,11 @@ class Property extends Model
     }
 
     /**
-     * A property is listed in a perticular state in a country
+     * A property is listed in a particular currency
      */
-    public function state()
+    public function currency()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(Currency::class);
     }
 
     /**

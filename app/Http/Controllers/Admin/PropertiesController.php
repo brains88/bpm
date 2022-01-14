@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\{Category, Property, Country};
+use App\Models\{Category, Property, Country, Image};
 use App\Http\Controllers\Controller;
+use \Exception;
+use Validator;
 
 class PropertiesController extends Controller
 {
@@ -11,24 +13,66 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('admin.properties.index')->with(['allProperties' => Property::paginate(21)]);
+        $properties = Property::latest('created_at')->paginate(12);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
     /**
-     * Admin add Property
+     * Admin get properties by country
      */
-    public function add()
+    public function country($countryid = 0)
     {
-        return view('admin.properties.add')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get(), 'allCountries' => Country::all()]);
+        $properties = Property::whereHas('country', function ($query) use ($countryid) {
+            $query->where(['id' => $countryid]);
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.country')->with(['properties' => $properties, 'categories' => $categories]);
     }
 
     /**
-     * Admin Properties categories
+     * Admin view to edit property
      */
-    public function categories()
+    public function edit($category = '', $id = 0)
     {
-        return view('admin.properties.categories')->with(['propertiesCategories' => Category::where(['type' => 'property'])->get()]);
+        $property = Property::find($id);
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.edit')->with(['property' => $property, 'categories' => $categories, 'category' => $category, 'countries' => Country::all()]);
     }
 
+    /**
+     * Admin get properties by user
+     */
+    public function user($userid = 0)
+    {
+        $properties = Property::whereHas('user', function ($query) use ($userid) {
+            $query->where(['id' => $userid]);
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.user')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin get properties by category
+     */
+    public function category($categoryname = 'lands')
+    {
+        $properties = Property::whereHas('category', function ($query) use ($categoryname) {
+            $query->where(['name' => $categoryname]);
+        })->paginate(12);
+
+        $categories = Category::where(['type' => 'property'])->get();
+        return view('admin.properties.category')->with(['properties' => $properties, 'categories' => $categories]);
+    }
+
+    /**
+     * Admin search Properties
+     */
+    public function search()
+    {
+        $properties = Property::search(request()->query)->paginate(16);
+        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
+    }
 
 }

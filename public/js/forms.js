@@ -37,4 +37,54 @@
         handleForm({form: $(this), button: 'edit-blog-button', spinner: 'edit-blog-spinner', message: 'edit-blog-message'});
     });
 
+    $('.add-property-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-property-button', spinner: 'add-property-spinner', message: 'add-property-message'});
+    });
+
+    $('.edit-property-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-property-button', spinner: 'edit-property-spinner', message: 'edit-property-message'});
+    });
+
+    $('.add-skill-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-skill-button', spinner: 'add-skill-spinner', message: 'add-skill-message'});
+    });
+
+    $('.edit-skill-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-skill-button', spinner: 'edit-skill-spinner', message: 'edit-skill-message'});
+    });
+
+    $('.add-plan-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-plan-button', spinner: 'add-plan-spinner', message: 'add-plan-message'});
+    });
+
+    $('.edit-plan-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-plan-button', spinner: 'edit-plan-spinner', message: 'edit-plan-message'});
+    });
+
+    $('.change-property-action-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'change-property-action-button', spinner: 'change-property-action-spinner', message: 'change-property-action-message'});
+    });
+
+    $('.add-material-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-material-button', spinner: 'add-material-spinner', message: 'add-material-message'});
+    });
+
+    $('.edit-material-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-material-button', spinner: 'edit-material-spinner', message: 'edit-material-message'});
+    });
+
+    $('.login-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'login-button', spinner: 'login-spinner', message: 'login-message'});
+    });
+
 })(jQuery);

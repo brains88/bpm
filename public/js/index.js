@@ -24,6 +24,14 @@
         }
     }
 
+    function getRandomRgba(a = 1) {
+        var nummber = Math.round(0xffffff * Math.random());
+        var r = nummber >> 16;
+        var g = nummber >> 8 & 255;
+        var b = nummber & 255;
+        return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + a ? a : 1 + ')';
+    }
+
     var logoutLink = document.querySelector('.logout-link');
     if(logoutLink) {
         const timeout = (900000/3);// 900000 ms = 15minutes : Logout @ 5minutes of inactivity
@@ -106,6 +114,7 @@ function handleForm(info = {}) {
                 handleButton(button, spinner);
                 message.removeClass('d-none alert-danger').addClass('alert-success');
                 message.html(response.info).fadeIn();
+                console.log(response.redirect);
                 return window.location.href = response.redirect;
 
             }else {

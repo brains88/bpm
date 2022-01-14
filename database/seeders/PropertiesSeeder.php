@@ -13,6 +13,7 @@ class PropertiesSeeder extends Seeder
      */
     public function run()
     {
-        Property::factory()->count(80)->create();
+        Property::truncate();
+        Property::factory()->count(360)->create();
     }
 }

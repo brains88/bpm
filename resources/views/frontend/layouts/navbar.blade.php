@@ -1,6 +1,13 @@
 
+<div class="fixed-top bg-white border-bottom">
 <!-- header-->
 <header id="masthead" class="bestpropertymarket-header main-header">
+  @if(auth()->check())
+  {{ auth()->user() }}
+    <small class="bg-success d-block text-center text-white">You're logged in.</small>
+  @else
+    <small class="bg-danger d-block text-center text-white">You're not logged in.</small>
+  @endif
   <!--  logo  -->
   <div class="logo-holder"> 
     <a href="/" class="custom-logo-link" rel="home">
@@ -206,7 +213,7 @@
             </div>
             <!-- header-modal-container end-->
             <div class="header-modal-top fl-wrap"> 
-              <a class="clear_wishlist color-bg" href="../compare/index.htm">
+              <a class="clear_wishlist color-bg" href="#">
               <i class="fal fa-random">
               </i>Compare</a>
             </div>
@@ -240,20 +247,20 @@
           </ul>
         </li>
         <li id="menu-item-8038" class="menu-item menu-item-type-custom menu-item-object-custom ">
-          <a href="#">Properties</a>
+          <a href="{{route('properties')}}">Properties</a>
         </li>
         <li id="menu-item-1930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1930">
           <a href="#">Agency</a>
           <ul class="sub-menu">
-            <li id="menu-item-1321" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('agents')}}">Agent Listing</a></li>
-            <li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="{{route('agency')}}">Agency Listing</a></li>
+            <li id="" class="ajax menu-item menu-item-type-post_type menu-item-object-page menu-item-1321"><a href="{{route('agents')}}">Agent Listing</a></li>
+            <li id="" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1314"><a href="{{route('agency')}}">Agency Listing</a></li>
           </ul>
         </li>
         <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
           <a href="{{route('artisans')}}">Artisans</a>
         </li>
         <li id="menu-item-1572" class="menu-item menu-item-type-custom menu-item-object-custom">
-          <a href="{{route('contact')}}">Contact</a>
+          <a href="{{ route('contact') }}">Contact</a>
         </li>
       </ul>
     </nav>
@@ -284,6 +291,7 @@
 
 
 <!-- <div class="fixed-top bg-white border-bottom">
+>>>>>>> Dev
 	<div class="topbar bg-main-dark py-2">
 		<div class="container">
 			<div class="d-flex justify-content-between">
@@ -404,7 +412,7 @@
 					<div class="m-0">Dashboard</div>
 				</a>
 			@else
-				<a href="{{ route('user.dashboard') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+				<a href="{{ route('user') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
 					<div class="m-0">My Account</div>
 				</a>
 			@endif
@@ -417,4 +425,4 @@
 			</a>
 		@endif
 	</div>
-</div> -->
+</div>

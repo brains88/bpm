@@ -1,11 +1,13 @@
 <?php $propertytitle = retitle($property); ?>
 <div class="card border bg-transparent position-relative m-0 rounded">
-    <div class="position-relative" style="height: 225px;">
+    <div class="position-relative">
         <small class="position-absolute border-bottom border-top {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-tillgreen' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
             {{ ucwords($property->status) }}
         </small>
         <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="d-block">
-            <img src="{{ $property->image }}" class="card-img-top img-fluid object-cover rounded w-100 h-100 border" alt="{{ $propertytitle }}">
+            <div style="height: 225px !important;">
+                <img src="{{ $property->image }}" class="img-fluid object-cover rounded w-100 h-100 border" alt="{{ $propertytitle }}">
+            </div>
         </a>
         <div class="p-3 position-absolute d-flex align-items-center justify-content-between" style="background-color: rgba(0, 0, 0, 0.8); bottom: 0; left: 0; right: 0;">
             <div class="d-flex align-items-center justify-content-between">

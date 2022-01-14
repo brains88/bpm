@@ -8,6 +8,90 @@ body {
     pointer-events: none !important;
 }
 
+.user-dashboard-banner:before, 
+.user-properties-banner:before,
+.user-profile-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--main-dark);
+    border-radius: 0 0 30px 30px;
+}
+
+.user-content {
+    padding-top: 100px;
+}
+
+.user-panel-icon {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background-color: rgba(0, 0, 255, 0.4);
+    color: rgba(0, 0, 255, 0.6);
+}
+
+.user-dashboard-banner:before {
+    height: 150px;
+}
+
+.user-profile-banner:before {
+    height: 130px;
+}
+
+.user-properties-banner:before {
+    height: 210px;
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.tiny-font {
+    font-size: 8px;
+}
+
+.panel-icon {
+    width: 48px; 
+    height: 48px; 
+    line-height: 48px;
+    background-color: rgba(40, 95,211, 0.5);
+}
+
+.panel-icon i {
+    color: #285fd3;
+}
+
+.section-padding {
+    padding-top: 90px;
+    position: relative;
+    background-image: url('/images/banners/dim.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.container-fluid {
+    max-width: 1240px;
+}
+
+.upload-image-loader {
+    bottom: 50%; 
+    right: 50%; 
+    z-index: 4; 
+    transform: translate(50%, 50%); 
+    background-color: rgba(0, 0, 0, 0.9); 
+    width: 50px; 
+    height: 50px; 
+    line-height: 45px;
+}
+
 p {
     font-size: 20px !important;
 }
@@ -32,17 +116,6 @@ p {
     height: 35px;
     line-height: 35px;
     border-radius: 50%;
-}
-
-.panel-icon {
-    width: 48px; 
-    height: 48px; 
-    line-height: 48px;
-}
-
-.section-padding {
-    padding-top: 90px;
-    z-index: 2;
 }
 
 .home-banner:before {
@@ -480,11 +553,23 @@ a:hover, button:hover {
     .navbar-menu {
         width: 40vw;
     }
+
+    .user-properties-banner:before {
+        height: 260px;
+    }
 }
 
 @media (max-width:  767.98px) {
     .agent-realtor:before {
         width: 100%;
+    }
+
+    #property-chart-wrapper {
+        height: 350px !important;
+    }
+
+    .user-dashboard-banner:before {
+        height: 260px;
     }
 
 }
@@ -498,12 +583,17 @@ a:hover, button:hover {
     .navbar-center {
         display: none !important;
     }
+
 }
 
 /*Medium devices (tablets, less than 992px)*/
 @media (max-width: 991.98px) and (min-width: 768.98px) {
     .navbar-menu {
         width: 32vw;
+    }
+
+    #property-chart-wrapper {
+        height: 500px;
     }
 }
 
@@ -519,6 +609,10 @@ a:hover, button:hover {
 
     .mission-vision:before {
         width: 100%;
+    }
+
+    .user-properties-banner:before {
+        height: 290px;
     }
 
     .home-banner h1 {

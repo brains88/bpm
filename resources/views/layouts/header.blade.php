@@ -17,7 +17,7 @@
         <meta name="og:locale" content="en_US" />
         <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
-
+        <!--Facebook Open Graph-->
         <meta name="framework" content="Redux 4.3.3">
         <meta name='robots' content='max-image-preview:large'>
         <link rel='dns-prefetch' href='bpm-content/maps/index.htm'>
@@ -28,6 +28,10 @@
         <link href="bpm-content/uploads/new/bpmsite.css" type="text/css" rel="stylesheet"/>
 
         <script type='text/javascript' src='assets/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+
+        <meta charset="utf-8" name="google-site-verification" content="=8kf5mgYQhvdaG83hokZpIDyISEeWEEa6Jib6s1pjZdM">
+        <meta name="msvalidate.01" content="E54BD83E87BAF1B6D2813C397CB5771D" />
+        
         <link rel="https://api.w.org/" href="assets/json/index.htm.json">
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php.xml?rsd">
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
@@ -59,34 +63,18 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
         @endif
         <!-- Bootstrap CSS CDN -->
-        <!-- <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
         <!-- utility CSS -->
-        <!-- <link rel="stylesheet" type="text/css" href="/css/utility.css"> -->
+        <link rel="stylesheet" type="text/css" href="/css/utility.css">
         <!-- index CSS -->
-        <!-- <link rel="stylesheet" type="text/css" href="/css/index.css"> -->
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
         <!-- Auth processing CSS -->
-        <!-- <link rel="stylesheet" type="text/css" href="/css/auth.css"> -->
+        <link rel="stylesheet" type="text/css" href="/css/auth.css">
         <!-- ico font css -->
-        <!-- <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css">
         <!-- fontawesome css -->
-        <!-- <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
         <!-- summernote CSS -->
-        <!-- <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
     </head>
-    <body class="page-template page-template-home-page page-template-home-page-php page page-id-6808 wp-custom-logo bestpropertymarket-has-addons ehf-footer ehf-template-bestpropertymarket ehf-stylesheet-bestpropertymarket body-bestpropertymarket folio-archive- elementor-default elementor-kit-7175 elementor-page elementor-page-6808">
-    <!--loader-->
-    <div class="loader-wrap">
-    <div class="loader-inner"> 
-    <svg> 
-    <defs> 
-    <filter id="goo">
-    <fegaussianblur in="SourceGraphic" stddeviation="2" result="blur"></fegaussianblur>
-    <fecolormatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -2" result="gooey"></fecolormatrix>
-    <fecomposite in="SourceGraphic" in2="gooey" operator="atop"></fecomposite> 
-    </filter>
-    </defs>
-    </svg>
-    </div>
-    </div> 
-    <!--loader end-->
-    <div id="main-theme">
+    <body>

@@ -12,7 +12,7 @@ class BlogsController extends Controller
      */
     public function index($limit = 12)
     {
-        return view('admin.blogs.index')->with(['allBlogs' => Blog::cursorPaginate(8), 'blogCategories' => Category::where(['type' => 'blog'])->get()]);
+        return view('admin.blogs.index')->with(['blogs' => Blog::paginate(8), 'categories' => Category::where(['type' => 'blog'])->get()]);
     }
 
     /**
@@ -33,7 +33,7 @@ class BlogsController extends Controller
         }
 
         $extension = $image->getClientOriginalExtension();
-        $filename = md5($image.time()).'.'.$extension;
+        $filename = \Str::uuid().'.'.$extension;
         $path = 'images/blogs';
         $image->move($path, $filename);
 

@@ -15,16 +15,18 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        User::truncate();
         $faker = Faker::create();
         $users = [
-            ['name' => 'Jesmine Alfred', 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 1],
-            ['name' => 'Washington Main', 'phone' => $faker->phoneNumber(), 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 1]
+            ['name' => 'Jesmine Alfred', 'phone' => $faker->phoneNumber(), 'email' => 'admin@bpm.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
+            ['name' => 'Lome Presh', 'phone' => $faker->phoneNumber(), 'email' => $faker->unique()->safeEmail(), 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'inactive'],
+            ['name' => 'Washington Main', 'phone' => '08158212666', 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],
         ];
 
-        User::factory()->count(1045)->create();
         foreach ($users as $user) {
             User::create($user);
         }
 
+        User::factory()->count(1940)->create();
     }
 }

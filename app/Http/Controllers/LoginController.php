@@ -21,25 +21,22 @@ class LoginController extends Controller
      * Ajax Login
      * 
      */
-    public function authenticate()
+    public function auth()
     {
-        $data = request()->only('email', 'password');
+        $data = request()->only('login', 'password');
         $validator = Validator::make($data, [
-            'email' => ['required', 'email'], 
+            'login' => ['required'], 
             'password' => ['required']
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 0,
                 'error' => $validator->errors()
             ]);
         }
 
-        $user = User::where([
-            'email' => $data['email']
-        ])->first();
-        
+        $user = User::where(['email' => $data['login']])->whereOr(['phone' => $data['login']])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
@@ -47,16 +44,16 @@ class LoginController extends Controller
             ]);
         }
 
-        if ((int)$user->active !== 1) {
+        if (strtolower($user->status) !== 'active') {
             return response()->json([
                 'status' => 0,
                 'info' => 'Please verify your account. A verification link was sent to your email after signup.'
             ]);
         }
 
-        if (auth()->attempt($data, true)) {
+        if (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
             request()->session()->regenerate();
-            $redirect = auth()->user()->role === 'admin' ? route('admin') : route('agent');
+            $redirect = auth()->user()->role === 'admin' ? route('admin') : route('user');
 
             return response()->json([
                 'status' => 1,

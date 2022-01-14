@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card border-0">
     <div class="card-img position-relative">
         <div class="position-absolute border-top d-flex justify-content-between px-3 align-items-center" style="left: 0; bottom: 0; right: 0; z-index: 3; height: 50px; line-height: 50px; background-color: rgba(0, 0, 0, 0.4);">
             <small class="text-white">
@@ -12,32 +12,31 @@
             </div>
         </div>
         <form action="javascript:;">
-            @csrf
-            <input type="file" name="image" accept="image/*" class="blog-image-input-{{ $blog->id }}" style='display: none;' data-url="{{ route('blog.image.upload', ['id' => $blog->id ]) }}">
+            <input type="file" name="image" accept="image/*" class="blog-image-input-{{ $blog->id }} d-none" data-url="{{ route('blog.image.upload', ['id' => $blog->id ]) }}">
         </form>
-        <div class="add-blog-image-loader-{{ $blog->id }} d-none position-absolute p-3 rounded-circle text-center border" style="bottom: 50%; right: 50%; z-index: 4; transform: translate(50%, 50%); background-color: rgba(0, 0, 0, 0.75); width: 70px; height: 70px; line-height: 35px;" data-id="{{ $blog->id }}">
+        <div class="add-blog-image-loader-{{ $blog->id }} upload-image-loader d-none position-absolute rounded-circle text-center border" data-id="{{ $blog->id }}">
             <img src="/images/spinner.svg">
         </div>
         <div style="height: 160px;">
-            <img src="{{ empty($blog->image) ? 'https://picsum.photos/1260/960?random'.rand(25434, 90920) : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
+            <img src="{{ empty($blog->image) ? '/images/banners/holder.png' : $blog->image }}" class="img-fluid blog-image-preview-{{ $blog->id }} h-100 w-100 object-cover">
         </div>
     </div>
     <div class="card-body">
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
             <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
                 <small class="text-muted">
-                    {{ \Str::limit(strip_tags($blog->title), 20) }}
+                    {{ \Str::limit(strip_tags($blog->title), 16) }}
                 </small>
             </a>
-            <small class="text-success">
-                {{ number_format($blog->views ?? 0) }} views
-            </small>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="custom-control custom-switch">
+            {{-- <div class="custom-control custom-switch">
                 <input class="custom-control-input blog-status" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
-            </div>
+            </div> --}}
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <small class="bg-info px-2 rounded-pill">
+                <small class="text-white">{{ number_format($blog->views ?? 0) }} views</small>
+            </small>
             <small class="text-muted">
                 {{ ucwords($blog->category->name ?? 'Nill') }}
             </small>

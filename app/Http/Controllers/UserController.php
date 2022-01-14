@@ -10,7 +10,7 @@ class UserController extends Controller
     
     public function index() 
     {   
-        return view('frontend.home.index')->with([]);
+        return view('app.user.index')->with([]);
     }
 
 }

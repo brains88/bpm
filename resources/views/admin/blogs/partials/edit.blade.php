@@ -26,10 +26,10 @@
                             </label>
                             <select class="custom-select form-control category" name="category">
                                 <option value="">Select Category</option>
-                                @empty($blogCategories->count())
+                                @empty($categories->count())
                                     <option value="">No Categories</option>
                                 @else
-                                    @foreach ($blogCategories as $category)
+                                    @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{ $category->id == $blog->category_id ? 'selected' : 'nill' }}>
                                             {{ ucwords($category->name) }}
                                         </option>

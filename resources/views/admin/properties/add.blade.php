@@ -2,7 +2,7 @@
 <div class="bg-alabaster min-vh-100">
     @include('admin.layouts.navbar')
     <div class="section-padding">
-        <div class="container">
+        <div class="container-fluid">
             <div class="alert alert-info mb-4">Add Property Below. Please in all applicable fields.</div>
             @if(empty($propertiesCategories))
                 <div class="alert alert-danger">No Property Categoies. Please <a href="{{ route('admin.properties.categories') }}">Click Here</a> to Add a Category</div>

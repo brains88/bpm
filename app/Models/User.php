@@ -45,4 +45,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The users status
+     *
+     * @var array
+     */
+    public static $status = [
+        'active', 
+        'inactive', 
+        'banned', 
+        'suspended', 
+        'blocked',
+    ];
+
+    /**
+     * Any user may have many properties
+     */
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'user_id');
+    }
+
+    /**
+     * A user may have a profile
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
+    }
 }
