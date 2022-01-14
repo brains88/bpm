@@ -15,42 +15,7 @@ class VisitorFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
-        $timestamps = [
-            Carbon::now(), 
-            Carbon::now()->addMonths(1), 
-            Carbon::now()->addMonths(2), 
-            Carbon::now()->addMonths(3), 
-            Carbon::now()->addMonths(5), 
-            Carbon::now()->addMonths(6), 
-            Carbon::now()->addMonths(7), 
-            Carbon::now()->addMonths(8), 
-            Carbon::now()->addMonths(9), 
-            Carbon::now()->addMonths(10), 
-            Carbon::now()->addMonths(11), 
-            Carbon::now()->addMonths(12), 
-            Carbon::now()->addMonths(13), 
-            Carbon::now()->addMonths(14), 
-            Carbon::now()->addMonths(15), 
-            Carbon::now()->addMonths(16), 
-            Carbon::now()->addMonths(17), 
-            Carbon::now()->addMonths(18), 
-            Carbon::now()->subMonths(1), 
-            Carbon::now()->subMonths(2),
-            Carbon::now()->subMonths(3), 
-            Carbon::now()->subMonths(4), 
-            Carbon::now()->subMonths(5), 
-            Carbon::now()->subMonths(6), 
-            Carbon::now()->subMonths(7), 
-            Carbon::now()->subMonths(9),
-            Carbon::now()->subMonths(10),
-            Carbon::now()->subMonths(11),
-            Carbon::now()->subMonths(13),
-            Carbon::now()->subMonths(14),
-            Carbon::now()->subMonths(15),
-            Carbon::now()->subMonths(16),
-            Carbon::now()->subMonths(17),
-            Carbon::now()->subMonths(18),
-        ];
+        $timestamps = [Carbon::now(), Carbon::now()->subMonths(1), Carbon::now()->subMonths(2), Carbon::now()->subMonths(3), Carbon::now()->subMonths(4), Carbon::now()->subMonths(5), Carbon::now()->subMonths(6), Carbon::now()->subMonths(7), Carbon::now()->subMonths(9), Carbon::now()->subMonths(10),Carbon::now()->subMonths(11), Carbon::now()->subMonths(12), Carbon::now()->subMonths(13), Carbon::now()->subMonths(14), Carbon::now()->subMonths(15), Carbon::now()->subMonths(16), Carbon::now()->subMonths(17), Carbon::now()->subMonths(18)];
 
         return [
             'useragent' => $faker->userAgent(),

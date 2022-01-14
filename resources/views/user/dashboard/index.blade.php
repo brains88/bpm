@@ -8,12 +8,11 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class="alert alert-success card-raduis p-3 mb-4">
-                        <div class="pb-3">
+                    <div class="alert alert-success card-raduis p-3 pb-0 mb-4">
+                        <div class="pb-2">
                             <div class="">
                                 @if(empty($subscription))
-                                    <div class="alert alert-danger">Subscribe to list more properties and build materials.</div>
-                                    <a href="{{ route('pricing') }}" class="btn btn-dark px-4">Get Started</a>
+                                    <div class="alert alert-danger m-0">Subscribe to list more properties. <a href="{{ route('pricing') }}">Click here</a> to get started.</div>
                                 @else
                                     <?php $end = \Carbon\Carbon::parse($subscription->expiry); $fraction = (($end->diffInDays(\Carbon\Carbon::now()))/$subscription->duration); $percent = $fraction * 100;  ?>
                                     <div class="">
@@ -50,12 +49,13 @@
                             <div class="card card-raduis alert alert-primary py-4 m-0 position-relative shadow-sm border-0" >
                                 <div class="card-body pb-0 position-relative">
                                     <div class="mb-3">
-                                        <h4 class="">Available Credits</h4>
-                                        <h2 class="">907units</h2>
+                                        <h4 class="">Total Credits</h4>
+                                        <h2 class="">907</h2>
                                     </div>
                                     <div class="">
                                         {{-- <div class="col-12 col-md-6 mb-3"> --}}
-                                        <button class="btn-dark btn">Buy credits</button>
+                                        <button class="btn-dark btn" data-toggle="modal" data-target="#buy-credit">Buy credits</button>
+                                        @include('user.credits.partials.buy')
                                         {{-- </div> --}}
                                         {{-- <div class="col-12 col-md-6 mb-3"> --}}
                                             {{-- <button class="btn-dark btn btn-block">Buy credits</button> --}}

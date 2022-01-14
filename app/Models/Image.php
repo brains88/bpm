@@ -15,8 +15,26 @@ class Image extends Model
      * @var string[]
      */
     protected $fillable = [
-        'type_id',
+        'material_id',
+        'property_id',
         'link',
         'type',
+        'reference'
     ];
+
+    /**
+     * An image belongs to a property
+     */
+    public function property()
+    {
+        return $this->belongsTo(Property::class)->take(4);
+    }
+
+    /**
+     * An image belongs to a material
+     */
+    public function material()
+    {
+        return $this->belongsTo(Material::class)->take(2);
+    }
 }

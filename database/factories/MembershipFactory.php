@@ -2,17 +2,11 @@
 
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Plan;
+use App\Models\{Membership, Currency};
 use Faker\Factory as Faker;
 
-class PlanFactory extends Factory
+class MembershipFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Plan::class;
 
     /**
      * Define the model's default state.
@@ -25,9 +19,10 @@ class PlanFactory extends Factory
         return [
             'name' => $faker->randomElement(['gold', 'diamond', 'silver', 'saphire', 'bronde']),
             'price' => $faker->numberBetween(43, 965),
-            'duration' => $faker->randomElement(array_keys(Plan::$durations)),
+            'duration' => $faker->randomElement(array_keys(Membership::$durations)),
             'listing' => $faker->numberBetween(10, 1200),
             'details' => $faker->text(25),
+            'currency_id' => rand(1, Currency::count())
         ];
 
     }

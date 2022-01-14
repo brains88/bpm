@@ -7,6 +7,11 @@
         handleForm({form: $(this), button: 'individual-signup-button', spinner: 'individual-signup-spinner', message: 'individual-signup-message'});
     });
 
+    $('.buy-credit-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'buy-credit-button', spinner: 'buy-credit-spinner', message: 'buy-credit-message'});
+    });
+
     $('.add-category-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-category-button', spinner: 'add-category-spinner', message: 'add-category-message'});

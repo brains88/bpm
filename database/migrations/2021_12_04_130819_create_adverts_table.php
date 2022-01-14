@@ -15,12 +15,13 @@ class CreateAdvertsTable extends Migration
     {
         Schema::create('adverts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id');
-            $table->string('banner');
+            $table->foreignId('user_id');
+            $table->string('banner')->nullable();
             $table->bigInteger('duration')->nullable();
             $table->dateTime('started')->nullable();
-            $table->bigInteger('expiry')->nullable();
-            $table->string('status');
+            $table->dateTime('expiry')->nullable();
+            $table->string('status')->default('inactive');
+            $table->string('reference');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlansTable extends Migration
+class CreateMembershipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('price');
             $table->foreignId('currency_id')->nullable();
             $table->string('name');
-            $table->bigInteger('listing');
+            $table->bigInteger('listing'); // Max listing for a perticular plan
             $table->text('details')->nullable();
-            $table->text('duration')->nullable();
+            $table->text('duration');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('memberships');
     }
 }

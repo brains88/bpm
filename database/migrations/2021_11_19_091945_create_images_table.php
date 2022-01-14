@@ -16,8 +16,10 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('link')->nullable();
-            $table->string('type')->nullable();
-            $table->foreignId('type_id')->nullable();
+            $table->foreignId('property_id');
+            $table->string('type');
+            $table->foreignId('material_id');
+            $table->string('reference');
             $table->timestamps();
         });
     }

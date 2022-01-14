@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\Material;
+use App\Models\{Material, User, Currency, Country};
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
@@ -17,17 +17,16 @@ class MaterialFactory extends Factory
     {
         $faker = Faker::create();
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
-
         return [
-            'user_id' => $faker->numberBetween(1, 4560),
+            'user_id' => rand(1, User::count()),
             'address' => $faker->address(),
             'name' => $faker->sentence(),
             'price' => $faker->numberBetween(2000, 11000),
-            'country_id' => $faker->numberBetween(1, 240),
+            'country_id' => rand(1, Country::count()),
             'status' => $faker->randomElement(Material::$status),
             'state' => $faker->state(),
             'image' => $faker->imageUrl($width = 960, $height = 1024),
-            'currency_id' => $faker->numberBetween(1, 8),
+            'currency_id' => rand(1, Currency::count()),
             'quantity' => $faker->numberBetween(25, 89),
             'reference' => \Str::uuid(),
             'city' => $faker->city(),

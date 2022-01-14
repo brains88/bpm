@@ -24,7 +24,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
     Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
 
-    Route::get('/pricing', [App\Http\Controllers\PricingController::class, 'index'])->name('pricing');
+    Route::get('/memberships', [App\Http\Controllers\MembershipsController::class, 'index'])->name('pricing');
 
     // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
     // Kindly effect route below (AdvancedSearch) to standard used by you.
@@ -187,6 +187,8 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
+
+    Route::post('/buy', [\App\Http\Controllers\Api\CreditController::class, 'buy'])->name('credit.buy');
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');

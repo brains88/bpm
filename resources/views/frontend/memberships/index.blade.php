@@ -1,11 +1,11 @@
 @include('layouts.header')
 <div class="py-4">
 	<div class="container">
-		@if(empty($plans->count()))
-			<div class="alert alert-danger">No Plans Listed</div>
+		@if(empty($memberships->count()))
+			<div class="alert alert-danger">No membership plans listed</div>
 		@else
 			<div class="row">
-				@foreach($plans as $plan)
+				@foreach($memberships as $plan)
 					<div class="col-12 col-md-4 col-lg-3 mb-2">
 						<div class="alert alert-info">
 							<h5 class="mb-3">{{ ucwords($plan->name) }} ({{ ucwords($plan->duration) }})</h5>

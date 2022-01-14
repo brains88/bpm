@@ -23,11 +23,11 @@ class CreateMaterialsTable extends Migration
             $table->foreignId('user_id');
             $table->string('state');
             $table->string('image')->nullable();
-            $table->string('address');;
+            $table->string('address');
             $table->string('city');
             $table->text('additional')->nullable();
-            $table->string('status')->nullable();
-            $table->uuid('reference')->nullable();
+            $table->string('status')->default('active');
+            $table->uuid('reference');
             $table->bigInteger('views')->nullable();
             $table->foreignId('currency_id');
             $table->timestamps();

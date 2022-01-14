@@ -20,11 +20,12 @@ class CreateProfilesTable extends Migration
             $table->string('description');
             $table->string('skills')->nullable();
             $table->string('address');
+            $table->foreignId('country_id');
             $table->string('qualification')->nullable();
             $table->string('idnumber')->nullable();
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('roles')->nullable();
-            $table->string('country');
+            $table->string('reference');
             $table->timestamps();
         });
     }

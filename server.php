@@ -12,6 +12,9 @@ Delete Third party sold property after one month
 Delete Posted property after 6months of dormancy
 Username: administrator
 Pass: email@admin
+
+Featured ads shows more than others
+Credit $1 costs 10units for 1week
 */
 
 /**

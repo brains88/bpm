@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Plan;
+use App\Models\Unit;
 
-class PlansSeeder extends Seeder
+class UnitsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class PlansSeeder extends Seeder
      */
     public function run()
     {
-        Plan::truncate();
-        Plan::factory()->count(13)->create();
+        Unit::truncate();
+        Unit::factory()->count(11)->create();
     }
 }

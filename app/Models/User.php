@@ -64,7 +64,7 @@ class User extends Authenticatable
      */
     public function properties()
     {
-        return $this->hasMany(Property::class, 'user_id');
+        return $this->hasMany(Property::class);
     }
 
     /**
@@ -72,6 +72,6 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'user_id');
+        return $this->hasOne(Profile::class);
     }
 }

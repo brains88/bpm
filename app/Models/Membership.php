@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Membership extends Model
 {
     use HasFactory;
 
@@ -34,18 +34,10 @@ class Plan extends Model
     ];
 
     /**
-     * A plan may have many subscriptions
-     */
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class, 'plan_id');
-    }
-
-    /**
-     * A plan is listed in a particular currency
+     * A membership is listed in a particular currency
      */
     public function currency()
     {
-        return $this->hasOne(Currency::class, 'id');
+        return $this->hasOne(Currency::class);
     }
 }

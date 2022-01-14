@@ -16,10 +16,9 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
-            $table->string('transaction_id')->nullable();
             $table->string('reference');
             $table->string('status')->default('initialized');
-            $table->string('type')->nullable();
+            $table->string('type');
             $table->foreignId('currency_id')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

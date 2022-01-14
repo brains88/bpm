@@ -16,13 +16,14 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
-            $table->string('plan_id');
-            $table->string('reference')->nullable();
+            $table->string('membership_id');
+            $table->string('reference');
             $table->string('status')->define('initialized');
-            $table->dateTime('subscribed')->nullable();
+            $table->dateTime('started')->nullable();
             $table->foreignId('currency_id')->nullable();
             $table->string('duration');
             $table->foreignId('user_id');
+            $table->foreignId('payment_id');
             $table->dateTime('expiry')->nullable();
             $table->integer('renewals')->default(0);
             $table->timestamps();

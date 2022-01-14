@@ -8,7 +8,7 @@
             </div>
             <div class="">
                 <div class="text-dark">
-                    <span>
+                    <span class="">
                         {{ number_format(\App\Models\Property::where(['user_id' => auth()->user()->id])->get()->count()) }}
                     </span>
                 </div>

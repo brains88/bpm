@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Helpers\Paystack;
-use App\Models\{Subscription, Plan, Payment};
+use App\Models\{Subscription, Pricing, Payment};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
         }
 
         try {
-            $plan = Plan::find($data['plan']);
+            $plan = Pricing::find($data['plan']);
             if (empty($plan)) {
                 return response()->json([
                     'status' => 0, 
@@ -48,7 +48,7 @@ class SubscriptionController extends Controller
 
             DB::beginTransaction();
             Subscription::create([
-                'duration' => Plan::$durations[$plan->duration],
+                'duration' => Pricing::$durations[$plan->duration],
                 'user_id' => auth()->user()->id,
                 'reference' => $reference,
                 'plan_id' => $plan->id ?? 0,
