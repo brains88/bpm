@@ -62,8 +62,12 @@
         @if(env('APP_ENV') === 'production')
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
         @endif
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
+
+        @if(stripos(request()->getHost(), 'user.') || stripos(request()->getHost(), 'admin.'))
+            <!-- Bootstrap CSS CDN -->
+            <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
+        @endif
+
         <!-- utility CSS -->
         <link rel="stylesheet" type="text/css" href="/css/utility.css">
         <!-- index CSS -->
