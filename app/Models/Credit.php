@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Credit extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'price',
+        'payment_id',
+        'reference',
+        'unit_id',
+        'status',
+        'units',
+        'duration',
+        'user_id',
+    ];
 }

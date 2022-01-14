@@ -19,6 +19,8 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::get('/payment/verify', [App\Http\Controllers\SubscriptionController::class, 'verify'])->name('subscription.payment.verify');
 
+    Route::get('/credit/buy/verify', [App\Http\Controllers\Api\CreditController::class, 'verify'])->name('credit.buy.verify');
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
@@ -188,7 +190,9 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
 
-    Route::post('/buy', [\App\Http\Controllers\Api\CreditController::class, 'buy'])->name('credit.buy');
+    Route::post('/credit/buy', [\App\Http\Controllers\Api\CreditController::class, 'buy'])->name('credit.buy');
+
+    Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');

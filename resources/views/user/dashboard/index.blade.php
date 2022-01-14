@@ -18,7 +18,7 @@
                                     <div class="">
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <small class="">
-                                                {{ ucwords($subscription->plan->name) }} ({{ ucwords($subscription->plan->duration) }})
+                                                {{ ucwords($subscription->membership->name) }} ({{ ucwords($subscription->membership->duration) }})
                                             </small>
                                             <small class="">
                                                 Progress ({{ ($percent == 0) ? 2 : ($percent > 100 ? 98.5 : $percent) }}%)
@@ -50,16 +50,24 @@
                                 <div class="card-body pb-0 position-relative">
                                     <div class="mb-3">
                                         <h4 class="">Total Credits</h4>
-                                        <h2 class="">907</h2>
+                                        <h6 class="">
+                                            {{ number_format(auth()->user()->credits->sum('units')) }} Units
+                                        </h6>
                                     </div>
-                                    <div class="">
-                                        {{-- <div class="col-12 col-md-6 mb-3"> --}}
-                                        <button class="btn-dark btn" data-toggle="modal" data-target="#buy-credit">Buy credits</button>
+                                    <div class="d-flex">
+                                        <a href="javascript:;" class="bg-info text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none" data-toggle="modal" data-target="#buy-credit">
+                                            <small class="mr-1">
+                                                <i class="icofont-plus"></i>
+                                            </small>
+                                            <div class="d-inline">Buy credits</div>
+                                        </a>
                                         @include('user.credits.partials.buy')
-                                        {{-- </div> --}}
-                                        {{-- <div class="col-12 col-md-6 mb-3"> --}}
-                                            {{-- <button class="btn-dark btn btn-block">Buy credits</button> --}}
-                                        {{-- </div> --}}
+                                        <a href="{{ route('user.credits') }}" class="bg-info text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
+                                            <div class="d-inline">View all</div>
+                                            <span class="mr-1">
+                                                <i class="icofont-long-arrow-right"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

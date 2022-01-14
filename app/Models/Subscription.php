@@ -16,9 +16,10 @@ class Subscription extends Model
      */
     protected $fillable = [
         'plan_id',
+        'payment_id',
         'reference',
         'status',
-        'subscribed',
+        'started',
         'duration',
         'user_id',
         'expiry',
@@ -49,15 +50,15 @@ class Subscription extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
      * A subscription belongs to a user.
      * An agent, realtor, company etc
      */
-    public function plan()
+    public function membership()
     {
-        return $this->belongsTo(Plan::class, 'plan_id');
+        return $this->belongsTo(Membership::class);
     }
 }

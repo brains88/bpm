@@ -17,7 +17,7 @@ class PaymentFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'amount' => $faker->numberBetween(1000, 95000),
+            'amount' => $faker->numberBetween(1000, 9500),
             'status' => $faker->randomElement(Payment::$status),
             'type' => $faker->randomElement(Payment::$types),
             'user_id' => rand(1, User::count()),

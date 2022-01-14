@@ -9,7 +9,7 @@
             <div class="">
                 <div class="text-dark">
                     <span class="">
-                        {{ number_format(\App\Models\Property::where(['user_id' => auth()->user()->id])->get()->count()) }}
+                        {{ number_format(auth()->user()->properties->count()) }}
                     </span>
                 </div>
                 <a href="{{ route('user.properties') }}" class="text-main-dark">
@@ -30,7 +30,7 @@
             <div class="">
                 <div class="text-dark">
                     <span>
-                        {{ number_format(\App\Models\Material::where(['user_id' => auth()->user()->id])->get()->count()) }}
+                        {{ number_format(auth()->user()->materials->count()) }}
                     </span>
                 </div>
                 <a href="{{ route('user.materials') }}" class="text-main-dark">
@@ -45,7 +45,7 @@
         <div class="card-header icon-raduis py-5" style="background-color: #f1416c">
             <h4 class="text-white">Total Payments</h4>
             <h4 class="m-0">
-                ${{ number_format(\App\Models\Payment::where(['id' => auth()->user()->id])->sum('amount')) }}
+                ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id])->sum('amount')) }}
             </h4>
         </div>
         <div class="card-body py-0 position-relative" style="top: -16px;">
@@ -53,17 +53,17 @@
                 <div class="col-12 col-md-6 mb-3">
                     <div class="alert alert-warning m-0 rounded p-4">
                         <h5>Adverts</h5>
-                        <h4>
-                            ${{ number_format(\App\Models\Payment::where(['id' => auth()->user()->id, 'type' => 'advert'])->sum('amount')) }}
-                        </h4>
+                        <div>
+                            ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'advert'])->sum('amount')) }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                     <div class="alert alert-warning m-0 rounded p-4">
                         <h5>Subscriptions</h5>
-                        <h4>
-                            ${{ number_format(\App\Models\Payment::where(['id' => auth()->user()->id, 'type' => 'subscription'])->sum('amount')) }}
-                        </h4>
+                        <div>
+                            ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'subscription'])->sum('amount')) }}
+                        </div>
                     </div>
                 </div>
             </div>

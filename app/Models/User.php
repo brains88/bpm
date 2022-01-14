@@ -74,4 +74,28 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * A user may have many building materials listed
+     */
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
+
+    /**
+     * A user may have many credits purchased
+     */
+    public function credits()
+    {
+        return $this->hasMany(Credit::class);
+    }
+
+    /**
+     * A user may have many payments made
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

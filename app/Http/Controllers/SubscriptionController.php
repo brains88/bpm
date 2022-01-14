@@ -139,7 +139,7 @@ class SubscriptionController extends Controller
                 $payment->status = 'paid';
                 $payment->update();
                 $subscription = Subscription::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
-                $subscription->subscribed = Carbon::now();
+                $subscription->started = Carbon::now();
                 $subscription->expiry = Carbon::now()->addDays($subscription->duration);
                 $subscription->update();
                 DB::commit();
@@ -162,9 +162,7 @@ class SubscriptionController extends Controller
                 'status' => 0,
                 'info' => 'Unknown error. Try again.'
             ];
-        }
-
-            
+        }    
             
     }
 }

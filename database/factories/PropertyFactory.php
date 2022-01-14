@@ -22,7 +22,7 @@ class PropertyFactory extends Factory
 
         return [
             'condition' => $faker->randomElement(Property::$conditions),
-            'user_id' => rand(1, User::count()),
+            'user_id' => rand(1, User::count() + 20),
             'address' => $faker->address(),
             'price' => $faker->numberBetween(2000, 11000),
             'action' => $faker->randomElement(array_keys(Property::$actions)),

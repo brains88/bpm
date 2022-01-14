@@ -14,6 +14,6 @@ class MaterialsSeeder extends Seeder
     public function run()
     {
         Material::truncate();
-        Material::factory()->count(73)->create();
+        Material::factory()->count(240)->create();
     }
 }
