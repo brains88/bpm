@@ -8,23 +8,37 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class="alert alert-success card-radus p-3 mb-4">
+                    <div class="alert alert-success card-raduis p-3 mb-4">
                         <div class="pb-3">
                             <div class="">
                                 @if(empty($subscription))
-                                    <div class="alert alert-danger mb-3">Subscribe to list more properties and build materials.</div>
+                                    <div class="alert alert-danger">Subscribe to list more properties and build materials.</div>
                                     <a href="{{ route('pricing') }}" class="btn btn-dark px-4">Get Started</a>
                                 @else
-                                <div class="">
-                                    <div class="d-flex align-items-center justify-content-between"></div>
+                                    <?php $end = \Carbon\Carbon::parse($subscription->expiry); $fraction = (($end->diffInDays(\Carbon\Carbon::now()))/$subscription->duration); $percent = $fraction * 100;  ?>
                                     <div class="">
-                                        <?php $end = \Carbon\Carbon::parse($subscription->expiry); $fraction = (($end->diffInDays(\Carbon\Carbon::now()))/$subscription->duration); $percent = $fraction * 100;  ?>
-                                        <div class="">Progress ( {{ ($percent == 0) ? 2 : $percent }}% )</div>
-                                        <div class="bg-main-ash border w-100">
-                                            <div class="bg-success py-1 rounded-pill bg-main-ash" style="width: {{ ($percent == 0) ? 2 : $percent }}%"></div>
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <small class="">
+                                                {{ ucwords($subscription->plan->name) }} ({{ ucwords($subscription->plan->duration) }})
+                                            </small>
+                                            <small class="">
+                                                Progress ({{ ($percent == 0) ? 2 : ($percent > 100 ? 98.5 : $percent) }}%)
+                                            </small>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="bg-light border-info p-1 rounded-pill w-100">
+                                                <div class="{{ $percent >= 70 ? 'bg-danger' : ($percent <= 49.5 ? 'bg-success' : 'bg-warning') }} py-1 rounded-pill" style="width: {{ ($percent == 0) ? 2 : ($percent > 100 ? 98.5 : $percent) }}%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <small class="">
+                                                {{ $subscription->updated_at->diffForHumans() }}
+                                            </small>
+                                            <small class="">
+                                                NGN{{ number_format($subscription->amount) }}
+                                            </small>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
                             </div>
                         </div>

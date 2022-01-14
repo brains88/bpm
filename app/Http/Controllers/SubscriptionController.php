@@ -54,7 +54,6 @@ class SubscriptionController extends Controller
                 'plan_id' => $plan->id ?? 0,
                 'status' => 'initialized',
                 'amount' => $amount,
-                'currency_id' => $plan->currency->id
             ]);
 
             Payment::create([
@@ -62,7 +61,6 @@ class SubscriptionController extends Controller
                 'amount' => $amount,
                 'type' => 'subscription',
                 'status' => 'initialized',
-                'currency_id' => $plan->currency->id,
                 'user_id' => auth()->user()->id,
             ]);
 
@@ -106,7 +104,7 @@ class SubscriptionController extends Controller
      */
     public function verify() {
         $reference = request('reference');
-        if(!$reference) {
+        if(empty($reference)) {
             return [
                 'status' => 0,
                 'info' => 'Invalid payment verification'
@@ -129,24 +127,31 @@ class SubscriptionController extends Controller
 
         try {
             $verify = (new Paystack())->verify($reference);
-            if ($verify) {
-                if ('success' === $verify->data->status && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === (int)$payment->amount) {
-
-                    $payment->status = 'paid';
-                    $payment->update();
-                    $subscription = Subscription::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
-                    $subscription->subscribed = Carbon::now();
-                    $subscription->expiry = Carbon::now()->addDays($subscription->duration);
-                    $subscription->update();
-                    DB::commit();
-
-                    return [
-                        'status' => 1,
-                        'info' => 'Transaction successfull.'
-                    ];
-                }
+            if (empty($verify) || $verify === false) {
+                return [
+                    'status' => 1,
+                    'info' => 'Verification successfull.'
+                ];
             }
 
+            if ('success' === $verify->data->status && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === (int)$payment->amount) {
+
+                $payment->status = 'paid';
+                $payment->update();
+                $subscription = Subscription::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
+                $subscription->subscribed = Carbon::now();
+                $subscription->expiry = Carbon::now()->addDays($subscription->duration);
+                $subscription->update();
+                DB::commit();
+
+                return [
+                    'status' => 1,
+                    'info' => 'Transaction successfull.'
+                ];
+            }
+
+            $payment->status = 'failed';
+            $payment->update();
             return [
                 'status' => 0,
                 'info' => 'Payment verification failed. Refresh you page.'
