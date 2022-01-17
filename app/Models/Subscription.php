@@ -15,7 +15,6 @@ class Subscription extends Model
      * @var string[]
      */
     protected $fillable = [
-        'plan_id',
         'payment_id',
         'reference',
         'status',
@@ -23,6 +22,7 @@ class Subscription extends Model
         'duration',
         'user_id',
         'expiry',
+        'membership_id',
         'renewals',
         'amount',
         'currency_id'

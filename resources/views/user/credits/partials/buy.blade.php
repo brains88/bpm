@@ -1,7 +1,7 @@
 <div class="modal fade" id="buy-credit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content border-0">
-            <form method="post" action="javascript:;" class="buy-credit-form" data-action="{{ route('credit.buy') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="buy-credit-form" data-action="{{ route('user.credit.buy') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-smoky mb-0 font-weight-bold">Buy Credit</div>
@@ -11,7 +11,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <label class="text-smoky">Avilable units</label>
+                            <label class="text-smoky">Available units</label>
                             <select class="form-control custom-select rounded-0 unit" name="unit">
                                 <option value="">-- Select unit --</option>
                                 @if(empty($units->count()))
@@ -29,7 +29,7 @@
                     </div>
                     <div class="alert mb-3 buy-credit-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">
-                        <button type="submit" class="btn btn-block btn-info btn-lg text-white buy-credit-button px-4">
+                        <button type="submit" class="btn icon-raduis btn-block btn-info btn-lg text-white buy-credit-button px-4">
                             <img src="/images/spinner.svg" class="mr-2 d-none buy-credit-spinner mb-1">
                             Pay
                         </button>

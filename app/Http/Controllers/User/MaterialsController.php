@@ -21,8 +21,7 @@ class MaterialsController extends Controller
      */
     public function add()
     {
-        $materials = Material::latest('created_at')->where(['user_id' => auth()->user()->id])->limit(4)->get();
-        return view('user.materials.add')->with(['materials' => $materials, 'categories' => Category::where(['type' => 'material'])->get(), 'countries' => Country::all()]);
+        return view('user.materials.add')->with(['countries' => Country::all()]);
     }
 
     /**

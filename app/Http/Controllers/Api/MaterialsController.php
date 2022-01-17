@@ -38,7 +38,7 @@ class MaterialsController extends Controller
             'address' => $data['address'],
             'city' => $data['city'],
             'quantity' => $data['quantity'],
-            'user_id' => auth()->user()->id ?? 0,
+            'user_id' => auth()->user()->id,
             'additional' => $data['additional'],
             'reference' => \Str::uuid(),
             'currency_id' => $data['currency'] ?? 0,
@@ -163,12 +163,13 @@ class MaterialsController extends Controller
             ]);
         }else {
             $imageid = $role;
-            $picture = Image::where(['type_id' => $id, 'id' => $imageid])->first();
+            $picture = Image::where(['material_id' => $id, 'id' => $imageid])->first();
             if (empty($picture)) {
                 $lastid = Image::create([
-                    'type_id' => $id,
+                    'material_id' => $id,
                     'link' => $link,
                     'type' => 'material',
+                    'reference' => \Str::uuid(),
                 ])->id;
 
                 if($lastid) {

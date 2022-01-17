@@ -16,8 +16,10 @@
 			<small class="text-dark">
 				<small>{{ $credit->created_at->diffForHumans() }}</small>
 			</small>
-			<small class="text-warning">
-				<i class="icofont-edit"></i>
+			<small class="">
+				<small class="text-success">
+					{{ $credit->duration ?? 1 }}day(s)
+				</small>
 			</small>
 		</div>
 	</div>

@@ -28,9 +28,9 @@
                 });
             }
 
-            @if(!empty($plans))
-                @if($plans->count() > 0)
-                    @foreach($plans as $plan)
+            @if(!empty($memberships))
+                @if($memberships->count() > 0)
+                    @foreach($memberships as $plan)
                         $('.subscription-payment-initialization-form-{{ $plan->id }}').submit(function(event){
                             event.preventDefault();
                             handleForm({form: $(this), button: 'subscription-payment-initialization-button-{{ $plan->id }}', spinner: 'subscription-payment-initialization-spinner-{{ $plan->id }}', message: 'subscription-payment-initialization-message-{{ $plan->id }}'});

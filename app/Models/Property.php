@@ -109,5 +109,13 @@ class Property extends Model
     {
         return $this->belongsTo(House::class);
     }
+
+    /**
+     * A property may have many images
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
     
 }

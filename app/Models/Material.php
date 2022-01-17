@@ -69,10 +69,11 @@ class Material extends Model
     }
 
     /**
-     * A material has many images
+     * A material may have many images images
      */
     public function images()
     {
-        return $this->hasMany(Image::class, 'type_id')->take(4);
+        return $this->hasMany(Image::class)->take(2);
     }
+
 }

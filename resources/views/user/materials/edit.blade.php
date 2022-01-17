@@ -1,14 +1,15 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
+    @include('user.layouts.navbar')
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             @if(empty($material))
-                <div class="alert alert-danger">material not found. May have been deleted.</div>
+                <div class="alert alert-danger">Material not found. May have been deleted.</div>
             @else
                 <div class="row">
                     <div class="col-12 col-md-5">
                         <div class="alert alert-info mb-4 d-flex align-items-center">
-                            <a href="{{ url()->previous() }}" class="mr-2">
+                            <a href="{{ route('user.materials') }}" class="mr-2">
                                 <i class="icofont-long-arrow-left"></i>
                             </a>
                             <small>Manage material images</small>
@@ -50,7 +51,7 @@
                                                 <img src="/images/spinner.svg">
                                             </div>
                                             <div class="bg-dark" style="height: 140px;">
-                                                <?php $imagelink = isset($material->images[$key]->link) ? $material->images[$key]->link  : '/images/banners/holder.png'; ?>
+                                                <?php $imagelink = !empty($material->images[$key]->link) ? $material->images[$key]->link  : '/images/banners/holder.png'; ?>
                                                 <a href="{{ $imagelink }}" class="text-main-dark">
                                                     <img src="{{ $imagelink }}" class="img-fluid other-material-image-preview-{{ $imageid }} h-100 w-100 object-cover">
                                                 </a>
@@ -160,7 +161,7 @@
                                 </div>
                                 <div class="alert mb-3 edit-material-message d-none"></div>
                                 <div class="d-flex justify-content-right mb-3 mt-1">
-                                    <button type="submit" class="btn btn-info px-4 btn-lg text-white edit-material-button">
+                                    <button type="submit" class="btn icon-raduis btn-info px-4 btn-lg text-white edit-material-button">
                                         <img src="/images/spinner.svg" class="mr-2 d-none edit-material-spinner mb-1">
                                         Save
                                     </button>

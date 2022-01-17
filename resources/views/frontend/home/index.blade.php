@@ -1,179 +1,5 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-    <section class="position-relative">
-        <div class="home-banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-7 mb-4">
-                        <div class="mb-4">
-                            <h1 class="text-white font-weight-bolder shadow-sm">Buy, Rent <span class="text-tillgreen">or</span> Sell <span class="text-tillgreen">Real Estate</span> Properties<span class="text-tillgreen font-weight-bolder">.</span></h1>
-                            <div class="text-white m-0">We're a leading real estate company in Nigeria that has been building prosperity for our clients by executing innovative real estate solutions.</div>
-                        </div>
-                        <div class="row flex-wrap">
-                            <div class="col-12 col-md-8 col-lg-9">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a href="{{ route('signup') }}" class="btn border btn-lg bg-transparent text-tillgreen mb-3 W-100 d-block">
-                                            <small class="text-tillgreen">Get Started</small>
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="{{ route('about') }}" class="btn btn-lg bg-theme-color mb-3 W-100 d-block">
-                                            <small class="text-white">Learn More</small>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>             
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-5">
-
-                        <div class="accordion cursor-pointer" id="properties-search">
-                            <div class="card border-dark-500 p-0" style="background-color: rgba(0, 0, 0, 0.2);">
-                                <div class="card-header d-flex justify-content-between align-items-center rounded-0 shadow-sm border-bottom-dark-500" id="search-accordion" data-toggle="collapse" data-target="#properties-form-home-search" aria-expanded="false" aria-controls="properties-form-home-search">
-                                    <p class="text-tillgreen font-weight-bolder m-0">Find Properties</p>
-                                    <span class="text-tillgreen">
-                                        <i class="icofont-caret-down"></i>
-                                    </span>
-                                </div>
-                                <div id="properties-form-home-search" class="collapse" aria-labelledby="search-accordion" data-parent="#properties-search">
-                                    <div class="card-body">
-                                        @include('frontend.properties.partials.search')
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- <div class="properties-home-search-form border-dark-500 position-relative p-4 rounded" style="background-color: rgba(0, 0, 0, 0.2);">
-                            <h2 class="text-white mb-3">Find Properties </h2>
-                            <div class="mb-4">
-                                @include('frontend.properties.partials.search')
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="position-relative">
-        <div class="home-properties">
-            <div class="container">
-                <div class="">
-                    <h1 class="text-tillgreen mb-4">Popular Properties</h1>
-                </div>
-                @empty($allProperties->count())
-                    <div class="alert alert-info">No Properties Listed</div>
-                @else
-                    <div class="row">
-                        @foreach($allProperties as $property)
-                            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                                @include('frontend.properties.partials.card')
-                            </div>
-                        @endforeach
-                    </div>
-                @endempty
-                <div class="">
-                    <h1 class="text-main-dark">More Properties? <a href="{{ route('properties') }}" class="text-tillgreen">Click Here</a></h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="agent-realtor position-relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-7 mb-4">
-                    <div class="d-flex flex-wrap">
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Realtors</div>
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Artisans</div>
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3 mr-2">Agents</div>
-                        <div class="bg-dark-500 rounded-pill text-white py-1 px-3 mb-3">Dealers</div>
-                    </div>
-                    <h1 class="font-weight-bolder mb-4 text-white">Are you an Agent, Realtor, or a business person? <span class="text-tillgreen">List</span> your properties for sale.</h1>
-                    <div class="">
-                        <a href="{{ route('signup') }}" class="btn btn-lg bg-theme-color text-white px-4">Get Started</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="position-relative">
-        <div class="home-property-categories">
-            <div class="container">
-                <h1 class="text-tillgreen mb-3">Explore Property Categories</h1>
-                @empty($propertyCategories->count()):
-                    <div class="alert alert-info">No Categories Yet</div>
-                @else
-                    <div class="row">
-                        @foreach($propertyCategories as $category)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                <a href="{{ route('properties.category', ['category' => strtolower($category->name)]) }}" class="bg-main-ash p-4 d-flex justify-content-between text-decoration-none" style="border-left: 5px solid var(--theme-color);">
-                                    <div class="text-main-dark">
-                                        {{ ucfirst($category->name) }}
-                                    </div>
-                                    <div class="text-tillgreen">
-                                        <i class="icofont-long-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                @endempty
-            </div>
-        </div> 
-    </section>
-    <section class="position-relative">
-        <div class="partners-section"> 
-            <div class="container">
-                <h1 class="text-tillgreen mb-4">Our Global Partners</h1>
-                <div class="row align-items-center">
-                    <div class="col-6 col-md-3 col-lg-2 mb-4">
-                        <div class="partners-image bg-main-ash shadow-sm object-cover border-main-dark">
-                            <img src="/images/partners/gtb.png" class="img-fluid w-100 h-100">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2 mb-4">
-                        <div class="partners-image bg-main-ash shadow-sm object-cover border-main-dark">
-                            <img src="/images/partners/paystack.png" class="img-fluid w-100 h-100">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2 mb-4">
-                        <div class="partners-image bg-main-ash shadow-sm object-cover border-main-dark">
-                            <img src="/images/partners/redan.jpg" class="img-fluid w-100 h-100">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2 mb-4">
-                        <div class="partners-image bg-main-ash shadow-sm object-cover border-main-dark">
-                            <img src="/images/partners/isp.jpg" class="img-fluid w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="position-relative bg-main-ash">
-        <div class="testimonial-section"> 
-            <div class="container">
-                <h1 class="text-tillgreen mb-4">Our Latest Articles</h1>
-                <div class="row align-items-center">
-                    <?php for($i = 1; $i < 7; $i++): ?>
-                        <div class="col-12 col-md-6 col-lg-4 mb-4">
-                            <div class="card border-0 bg-transparent">
-                                <div style="height: 220px">
-                                    <a></a>
-                                    <img src="/images/testimonials/{{ $i }}.jpg" class="img-fluid object-cover w-100 h-100">
-                                </div>
-                                <div class="card-body px-0">
-                                    <div class="text-main-dark mb-3">Love the design and customization of InstaShow. We have used various Instagram apps for Shopify in the past but they would always mess up our theme. I love how we can completely customize InstaShow to how we want the feed to come out.</div>
-                                    <p class="font-weight-bolder mb-2">Maria Carey</p>
-                                    <div class="text-muted">Business Analyst</div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        </div>
-    </section>
    <!--  wrapper  -->
    <div id="wrapper">
   <!-- Content-->
@@ -250,8 +76,13 @@
                                               <div class="filter-item-inner">
                                                 <select data-placeholder="All Type" class="chosen-select" name="status">
                                                   <option value="">All Type</option>
-                                                  <option value="for-sale">For Sale</option>
-                                                  <option value="for-rent">For Rent</option>
+                                                  @foreach(\App\Models\Property::$actions as $key => $value)
+                                                    @if($key !== 'sold')
+                                                        <option value="{{ $key }}">
+                                                            {{ ucwords($value) }}
+                                                        </option>
+                                                    @endif
+                                                  @endforeach
                                                 </select>
                                               </div>
                                             </div>
@@ -259,25 +90,33 @@
                                               <div class="filter-item-inner">
                                                 <select data-placeholder="All Cities" class="chosen-select" name="llocs">
                                                   <option value="">All Countries</option>
-                                                  <option value="05-london">Nigeria</option>
-                                                  <option value="03-moscow">Agentina</option>
-                                                  <option value="01-new-york">USA</option>
-                                                  <option value="02-paris">Germany</option>
-                                                  <option value="04-rome">India</option>
-                                                  <option value="us">Japan</option>
+                                                    <?php $countries = \App\Models\Country::all(); ?>
+                                                    @if(empty($countries))
+                                                        <option>No countries listed</option>
+                                                    @else
+                                                        @foreach($countries as $country)
+                                                            <option value="{{ $country->iso2 }}">
+                                                                {{ ucwords($country->name) }}
+                                                            </option>
+                                                        @endforeach
+                                                  @endif
                                                 </select>
                                               </div>
                                             </div>
+                                            <?php $cities = \DB::table('properties')->distinct('city')->pluck('city'); ?>
                                             <div class="azp_element filter_loc azp-element-azp-mo80hru1jrf filter-gid-item filter-gid-wid-3">
                                               <div class="filter-item-inner">
                                                 <select data-placeholder="All Cities" class="chosen-select" name="llocs">
-                                                  <option value="">All Cities</option>
-                                                  <option value="05-london">London</option>
-                                                  <option value="03-moscow">Moscow</option>
-                                                  <option value="01-new-york">New York</option>
-                                                  <option value="02-paris">Paris</option>
-                                                  <option value="04-rome">Rome</option>
-                                                  <option value="us">United States</option>
+                                                    <option value="">All Cities</option>
+                                                    @if(empty($cities->count()))
+                                                        <option>No cities listed</option>
+                                                    @else
+                                                        @foreach($cities as $city)
+                                                            <option value="{{ $city }}">
+                                                                {{ ucwords($city) }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                               </div>
                                             </div>
@@ -369,357 +208,31 @@
                           <!-- filter  -->
                           <div class="cthiso-filters jtf-flex-end"> 
                             <a href="#" class="cthiso-filter cthiso-filter-active" data-filter="*">All Types</a>
-                            <a href="#" class="cthiso-filter" data-filter=".listing_status-for-sale">For Sale</a>
-                            <a href="#" class="cthiso-filter" data-filter=".listing_status-for-rent">For Rent</a>
+                            @foreach(\App\Models\Property::$actions as $key => $value)
+                                @if($key !== 'sold')
+                                    <a href="{{ route('properties.action', ['action' => $key]) }}" class="cthiso-filter" data-filter=".listing_status-for-sale">
+                                        {{ ucwords($value) }}
+                                    </a>
+                                @endif
+                              @endforeach
                           </div>
                           <!-- filter end -->
                         </div>
                         <!-- cthiso-top -->
                         <div class="cthiso-items cthiso-xm-pad cthiso-three-cols clearfix cthiso-flex">
                           <div class="cthiso-sizer"></div>
+                            @if(empty($properties->count()))
+                             <div></div>
+                            @else
                           <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-6355 listing type-listing status-publish has-post-thumbnail hentry listing_cat-home listing_location-03-moscow listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_tag-accessories listing_tag-bag listing_tag-clothing listing_tag-man listing_tag-shop listing_tag-woman" data-postid="6355">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('properties')}}" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="bpm-content/uploads/2021/03/3-1-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay">
-                                  </div>
-                                </a>
-                                <div class="geodir-category-location">
-                                  <a href="bpm-content/maps/search/index.htm?api=1&query=40.81986777037329,-74.00715942677003" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
-                                  <i class="fas fa-map-marker-alt"></i> 
-                                  <span>75 Prince St, NY, USA</span></a>
-                                </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap"> <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> 
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Home</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span>
-                                <i class="fal fa-heart"></i></span>
-                                </a> 
-                                <a href="#" class="compare-btn tolt compare-btn-6355" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="6355" data-ltitle="Luxury Family Home" data-lthumb="bpm-content/uploads/2021/03/3-1-150x150.jpg" data-lprice="€40.69" data-laddress="75 Prince St, NY, USA">
-                                <span>
-                                <i class="fal fa-random"></i>
-                                </span></a>
-                                <div class="geodir-category-listing_media-list">
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcard-saleoff">
-                                  <div class="saleoff-inner">Sale 20%</div>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="{{route('AdvancedSearch')}}">Luxury Family Home</a> 
-                                  <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
-                                  <i class="far fa-check"></i>
-                                  </span>
-                                </h3>
-                                <div class="geodir-category-content_price">€40.69</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i><span>4</span></li>
-                                      <li><i class="fal fa-bath"></i><span>3</span></li>
-                                      <li><i class="fal fa-cube"></i><span> 510 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between"> 
-                                  <a href="{{route('author')}}" class="gcf-company">
-                                  <img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
-                                  <span class="lcard-avatar">By Best Property Market</span>
-                                  </a>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                          <!-- listing-item end-->
-                          <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-6152 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-sale listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-restaurant-inside listing_tag-fitness listing_tag-gym listing_tag-indoor listing_tag-outdoor listing_tag-running listing_tag-tour" data-postid="6152">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="uploads/2021/03/5-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay"></div>
-                                </a>
-                                <div class="geodir-category-location"> <a href="bpm-content/maps/search/index-1.htm?api=1&query=40.701594124269405,-73.88509092852472" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
-                                  <i class="fas fa-map-marker-alt"></i> 
-                                  <span>75 Prince St, NY, USA</span></a>
-                                </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
-                                <span><i class="fal fa-heart"></i></span></a> 
-                                <a href="#" class="compare-btn tolt compare-btn-6152" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="6152" data-ltitle="Family House For Rent" data-lthumb="uploads/2021/03/5-150x150.jpg" data-lprice="€415,249.50" data-laddress="75 Prince St, NY, USA">
-                                <span><i class="fal fa-random"></i></span></a>
-                                <div class="geodir-category-listing_media-list"> 
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="{{route('AdvancedSearch')}}">Family House For Rent</a>
-                                </h3>
-                                <div class="geodir-category-content_price">€415,249.50</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i><span>4</span></li>
-                                      <li><i class="fal fa-bath"></i>
-                                        <span>3</span>
-                                      </li>
-                                      <li><i class="fal fa-cube"></i><span> 510 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="#" class="gcf-company">
-                                  <img alt='BPM Agent' src='assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
-                                  <span class="lcard-avatar">By BPM Agent</span>
-                                  </a>
-                                  <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.0">
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                          <!-- listing-item end--> 
-                          <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-5126 listing type-listing status-publish has-post-thumbnail hentry listing_cat-apartment listing_location-01-new-york listing_status-for-sale listing_feature-air-conditioned listing_feature-airport-shuttle listing_feature-breakfast listing_feature-elevator-in-building listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-restaurant-inside listing_feature-tv-inside listing_tag-hostel listing_tag-hotel listing_tag-parking listing_tag-restourant listing_tag-room listing_tag-spa" data-postid="5126">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="uploads/2021/03/6-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay"></div>
-                                </a>
-                                <div class="geodir-category-location">
-                                  <a href="bpm-content/maps/search/index-2.htm?api=1&query=40.78708237136644,-73.97548763779922" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
-                                  <i class="fas fa-map-marker-alt"></i>
-                                  <span>70 Bright St New York, USA</span>
-                                  </a>
-                                </div>
-                                <div class="listing-featured">Featured</div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Sale</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Apartment</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login"><span><i class="fal fa-heart"></i></span>
-                                </a>
-                                <a href="{{route('AdvancedSearch')}}" class="compare-btn tolt compare-btn-5126" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="5126" data-ltitle="Contemporary Apartment" data-lthumb="public/uploads/2021/03/6-150x150.jpg" data-lprice="€498,299.40" data-laddress="70 Bright St New York, USA"><span><i class="fal fa-random"></i></span></a>
-                                <div class="geodir-category-listing_media-list"> 
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcard-saleoff">
-                                  <div class="saleoff-inner">Sale 20%</div>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="{{route('AdvancedSearch')}}">Contemporary Apartment</a>
-                                  <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
-                                  <i class="far fa-check"></i>
-                                  </span>
-                                </h3>
-                                <div class="geodir-category-content_price">€498,299.40</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i><span>3</span>
-                                      </li>
-                                      <li><i class="fal fa-bath"></i><span>2</span></li>
-                                      <li><i class="fal fa-cube"></i><span> 450 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="#" class="gcf-company">
-                                  <img alt='BPM Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By BPM Agents</span></a>
-                                  <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.3"></div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                          <!-- listing-item end-->
-                          <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-7439 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-rent listing_feature-elevator-in-building-fr listing_feature-free-parking-fr listing_feature-free-wi-fi-fr listing_feature-mini-bar-fr listing_feature-pet-friendly-fr listing_tag-hostel listing_tag-hotel listing_tag-parking listing_tag-restourant listing_tag-room listing_tag-spa" data-postid="7439">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="../bpm-content/uploads/2021/03/1-1-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay"></div>
-                                </a>
-                                <div class="geodir-category-location">
-                                  <a href="bpm-content/maps/search/index-3.htm?api=1&query=40.7130736,-73.9873037" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map">
-                                  <i class="fas fa-map-marker-alt"></i>
-                                  <span>34-42 Montgomery St , NY, USA</span></a>
-                                </div>
-                                <div class="listing-featured">Featured</div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a>
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
-                                <span><i class="fal fa-heart"></i></span></a>
-                                <a href="/listing" class="compare-btn tolt compare-btn-7439" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="7439" data-ltitle="Gorgeous House For Sale" data-lthumb="../public/uploads/2021/03/1-1-150x150.jpg" data-lprice="€581.35 / per month" data-laddress="34-42 Montgomery St , NY, USA"><span><i class="fal fa-random"></i></span></a>
-                                <div class="geodir-category-listing_media-list">
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="/listing">Gorgeous House For Sale</a>
-                                </h3>
-                                <div class="geodir-category-content_price">€581.35 / per month</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i><span>2</span></li>
-                                      <li><i class="fal fa-bath"></i><span>1</span></li>
-                                      <li><i class="fal fa-cube"></i><span> 220 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="{{route('author')}}" class="gcf-company">
-                                  <img alt='BPM Themes' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
-                                  <span class="lcard-avatar">By Best Property Market</span></a>
-                                  <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.2"></div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                          <!-- listing-item end-->
-                          <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-1743 listing type-listing status-publish has-post-thumbnail hentry listing_cat-home listing_location-01-new-york listing_status-for-rent listing_feature-airport-shuttle listing_feature-breakfast listing_feature-elevator-in-building listing_feature-free-parking listing_feature-free-wi-fi listing_feature-mini-bar listing_feature-pet-friendly listing_feature-restaurant-inside listing_feature-tv-inside" data-postid="1743">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="bpm-content/uploads/2021/03/7-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay"></div>
-                                </a>
-                                <div class="geodir-category-location">
-                                  <a href="bpm-content/maps/search/index-4.htm?api=1&query=40.7397371,-73.93461289999999" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
-                                  <i class="fas fa-map-marker-alt"></i>
-                                  <span>68 Square St, Jersey City, NJ, USA</span></a>
-                                </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">Home</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
-                                <span>
-                                <i class="fal fa-heart"></i></span></a>
-                                <a href="/listing" class="compare-btn tolt compare-btn-1743" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1743" data-ltitle="Home In New York" data-lthumb="uploads/2021/03/7-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
-                                <span><i class="fal fa-random"></i></span></a>
-                                <div class="geodir-category-listing_media-list">
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="/listing">Home In New York</a> 
-                                  <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
-                                  <i class="far fa-check"></i>
-                                  </span>
-                                </h3>
-                                <div class="geodir-category-content_price">€1,245.75 / per month</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i><span>6</span></li>
-                                      <li><i class="fal fa-bath"></i><span>5</span></li>
-                                      <li><i class="fal fa-cube"></i><span> 1210 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="{{route('author')}}" class="gcf-company">
-                                  <img alt='' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'>
-                                  <span class="lcard-avatar">By Best Property Market</span>
-                                  </a>
-                                  <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="3.5"></div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                          <!-- listing-item end-->
-                          <!-- listing-item -->
-                          <div class="cthiso-item listing-item listing-item-loop post-1739 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-03-moscow listing_status-for-rent listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-restaurant-inside listing_tag-fitness listing_tag-gym listing_tag-indoor listing_tag-outdoor listing_tag-running" data-postid="1739">
-                            <article class="geodir-category-listing fl-wrap">
-                              <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-                                <a href="#" class="listing-thumb-link geodir-category-img_item">
-                                  <img width="424" height="280" src="bpm-content/uploads/2021/03/11-424x280.jpg" class="respimg" alt="" loading="lazy">
-                                  <div class="overlay">
-                                  </div>
-                                </a>
-                                <div class="geodir-category-location"> <a href="bpm-content/maps/search/index-5.htm?api=1&query=20.655340080167633,105.38254886337978" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map">
-                                  <i class="fas fa-map-marker-alt"></i> 
-                                  <span>68 Square St, Jersey City, NJ, USA</span></a>
-                                </div>
-                                <div class="list-single-opt_header_cat dis-flex-wrap">
-                                  <a href="{{route('AdvancedSearch')}}" class="cat-opt status-opt flex-items-center">For Rent</a> <a href="{{route('AdvancedSearch')}}" class="cat-opt flex-items-center">House</a>
-                                </div>
-                                <a href="#" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
-                                <span><i class="fal fa-heart"></i></span></a> 
-                                <a href="/listing" class="compare-btn tolt compare-btn-1739" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="1739" data-ltitle="Light And Modern House" data-lthumb="uploads/2021/03/11-150x150.jpg" data-lprice="€1,245.75 / per month" data-laddress="68 Square St, Jersey City, NJ, USA">
-                                <span><i class="fal fa-random"></i></span>
-                                </a>
-                                <div class="geodir-category-listing_media-list">
-                                  <span><i class="fas fa-camera"></i> 6</span>
-                                </div>
-                                <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-                              </div>
-                              <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-                                <h3 class="title-sin_item dis-flex-wrap-center">
-                                  <a href="/listing">Light And Modern House</a>
-                                  <span class="verified-badge tolt" data-microtip-position="top" data-tooltip="Verified">
-                                  <i class="far fa-check"></i>
-                                  </span>
-                                </h3>
-                                <div class="geodir-category-content_price">€1,245.75 / per month</div>
-                                <div class="geodir-card-text">
-                                  <div class="geodir-card-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla.</div>
-                                  <div class="lcfields-wrap dis-flex-wrap-center"></div>
-                                  <div class="geodir-category-content-details">
-                                    <ul class="no-list-style dis-flex-wrap">
-                                      <li><i class="fal fa-bed"></i>
-                                        <span>6</span>
-                                      </li>
-                                      <li>
-                                        <i class="fal fa-bath"></i><span>5</span>
-                                      </li>
-                                      <li><i class="fal fa-cube"></i><span> 1210 ft2</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-                                  <a href="{{route('author')}}" class="gcf-company">
-                                  <img alt='BPM Agent' src='bpm-content/plugins/bestpropertymarket-add-ons/assets/images/avatar.jpg' class='avatar avatar-80 photo' height='80' width='80'><span class="lcard-avatar">By Best Property Market</span>
-                                  </a>
-                                  <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Excellent" data-stars="5" data-rating="4.5"></div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
+                                @foreach($properties as $property)
+                                    @include('frontend.properties.partials.card')
+                                @endforeach
+                            @endif
                           <!-- listing-item end-->
                         </div>
                         <div class="view-all-listings">
-                          <a href="{{route('AdvancedSearch')}}" class="btn  dec_btn  color2-bg">Check Out All Listings</a>
+                          <a href="{{ route('properties') }}" class="btn  dec_btn  color2-bg">Check Out All Listings</a>
                         </div>
                       </div>
                       <!-- list-main-wrap end-->

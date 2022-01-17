@@ -1,78 +1,74 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Helpers\Paystack;
-use App\Models\{Subscription, Pricing, Payment};
+namespace App\Http\Controllers\Api;
+use App\Models\{Unit, Payment, Credit};
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use \Exception;
-use \Carbon\Carbon;
+use Validator;
 
-
-class SubscriptionController extends Controller
+class CreditsController extends Controller
 {
-    /**
-     * initialize and Redirect the User to Paystack Payment Page
-     * @return Url
-     */
-    public function initialize()
-    {
-        $data = request()->only(['amount', 'plan']);
-        $amount = $data['amount'] ?? 0;
-        $plan = $data['plan'] ?? 0;
 
-        if (empty($plan) || empty($amount)) {
+    /**
+     * Buy ads credit
+     */
+    public function buy()
+    {
+        $data = request()->only(['unit']);
+        $validator = Validator::make($data, [
+            'unit' => ['required', 'integer'],
+        ]);
+
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid Payment request'
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $unit = Unit::find($data['unit']);
+        if (empty($unit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid ads unit'
             ]);
         }
 
         try {
-            $plan = Pricing::find($data['plan']);
-            if (empty($plan)) {
-                return response()->json([
-                    'status' => 0, 
-                    'info' => 'Invalid Payment request'
-                ]);
-            }
-
-            /**
-             * This method generates a unique super secure cryptographic hash token to use as transaction reference
-             * @returns string
-             */
+            $amount = $unit->price ?? 0;
             $reference = \Str::uuid();
 
             DB::beginTransaction();
-            Subscription::create([
-                'duration' => Pricing::$durations[$plan->duration],
-                'user_id' => auth()->user()->id,
+            $payment = Payment::create([
                 'reference' => $reference,
-                'plan_id' => $plan->id ?? 0,
-                'status' => 'initialized',
                 'amount' => $amount,
+                'type' => 'advert',
+                'status' => 'initialized',
+                'user_id' => auth()->user()->id,
             ]);
 
-            Payment::create([
+            Credit::create([
+                'price' => $amount,
+                'payment_id' => $payment->id,
+                'duration' => $unit->duration,
+                'unit_id' => $unit->id,
+                'units' => $unit->units,
                 'reference' => $reference,
-                'amount' => $amount,
-                'type' => 'subscription',
                 'status' => 'initialized',
                 'user_id' => auth()->user()->id,
             ]);
 
             DB::commit();
-            $paystack = (new Paystack())->initialize([
+            $role = auth()->user()->role;
+            $paystack = (new \App\Helpers\Paystack())->initialize([
                 'amount' => $amount * 100, //in kobo
                 'email' => auth()->user()->email, 
                 'reference' => $reference,
                 'currency' => 'NGN',
+                'callback_url' => route("{$role}.credit.buy.verify")
             ]);
-
-            //dd($paystack);
 
             if ($paystack) {
                 return response()->json([
@@ -81,20 +77,18 @@ class SubscriptionController extends Controller
                     'redirect' => $paystack->data->authorization_url,
                 ]);
             }
-
             
             return response()->json([
                 'status' => 0, 
                 'info' => 'Payment initialization failed. Try again.',
             ]);
-            
-        }catch(Exception $error) {
+        } catch (Exception $error) {
             DB::rollback();
             return response()->json([
                 'status' => 0, 
                 'info' => 'An error occured. Refresh the page and try again.'
             ]);
-        }        
+        }         
     }
 
     /**
@@ -105,64 +99,64 @@ class SubscriptionController extends Controller
     public function verify() {
         $reference = request('reference');
         if(empty($reference)) {
-            return [
+            return response()->json([
                 'status' => 0,
                 'info' => 'Invalid payment verification'
-            ];
+            ]);
         }
 
         DB::beginTransaction();
         $payment = Payment::where(['reference' => $reference])->first();
         if (empty($payment)) {
-            return [
+            return response()->json([
                 'status' => 0,
                 'info' => 'Invalid payment transaction'
-            ];
+            ]);
         }elseif (strtolower($payment->status) === 'paid') {
-            return [
+            return response()->json([
                 'status' => 1,
                 'info' => 'Payment already verified.'
-            ];
+            ]);
         }
 
         try {
-            $verify = (new Paystack())->verify($reference);
+            $verify = (new \App\Helpers\Paystack())->verify($reference);
             if (empty($verify) || $verify === false) {
-                return [
-                    'status' => 1,
-                    'info' => 'Verification successfull.'
-                ];
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Verification failed.'
+                ]);
             }
 
-            if ('success' === $verify->data->status && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === (int)$payment->amount) {
+            if ('success' === strtolower($verify->data->status) && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === (int)$payment->amount) {
 
                 $payment->status = 'paid';
                 $payment->update();
-                $subscription = Subscription::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
-                $subscription->started = Carbon::now();
-                $subscription->expiry = Carbon::now()->addDays($subscription->duration);
-                $subscription->update();
+                $credit = Credit::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
+                $credit->status = 'paused';
+                $credit->update();
                 DB::commit();
 
-                return [
+                return response()->json([
                     'status' => 1,
                     'info' => 'Transaction successfull.'
-                ];
+                ]);
             }
 
             $payment->status = 'failed';
             $payment->update();
-            return [
+            return response()->json([
                 'status' => 0,
                 'info' => 'Payment verification failed. Refresh you page.'
-            ];
+            ]);
         } catch (Exception $error) {
             DB::rollback();
-            return [
+            return response()->json([
                 'status' => 0,
                 'info' => 'Unknown error. Try again.'
-            ];
+            ]);
         }    
             
     }
+
 }

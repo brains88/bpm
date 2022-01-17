@@ -15,18 +15,13 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 */
 
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
-    Route::post('/initialize', [App\Http\Controllers\SubscriptionController::class, 'initialize'])->name('subscription.payment.initialize');
-
-    Route::get('/payment/verify', [App\Http\Controllers\SubscriptionController::class, 'verify'])->name('subscription.payment.verify');
-
-    Route::get('/credit/buy/verify', [App\Http\Controllers\Api\CreditController::class, 'verify'])->name('credit.buy.verify');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
     Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
 
-    Route::get('/memberships', [App\Http\Controllers\MembershipsController::class, 'index'])->name('pricing');
+    Route::get('/memberships', [App\Http\Controllers\MembershipsController::class, 'index'])->name('memberships');
 
     // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
     // Kindly effect route below (AdvancedSearch) to standard used by you.
@@ -68,6 +63,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::prefix('properties')->group(function () {
         Route::get('/', [PropertiesController::class, 'index'])->name('properties');
         Route::get('/{category}', [PropertiesController::class, 'category'])->name('properties.category');
+        Route::get('/{action}', [PropertiesController::class, 'action'])->name('properties.action');
         Route::get('/global/{country?}', [PropertiesController::class, 'country'])->name('properties.country');
     });
 
@@ -91,6 +87,20 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/reset/{token}', [PasswordController::class, 'verify'])->name('reset.verify');
         Route::post('/reset', [PasswordController::class, 'reset'])->name('password.reset');
     });
+});
+
+Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {
+    Route::prefix('materials')->group(function () {
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('material.edit');
+        Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('material.add');
+    });
+
+    Route::post('/initialize', [App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('user.subscription.payment.initialize');
+
+    Route::get('/payment/verify', [App\Http\Controllers\User\SubscriptionController::class, 'verify'])->name('user.subscription.payment.verify');
+
+    Route::post('/credit/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('credit.buy');
+    // Route::get('/credit/buy/verify', [App\Http\Controllers\Api\CreditsController::class, 'verify'])->name('credit.buy.verify');
 });
 
 Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
@@ -190,9 +200,11 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
 
-    Route::post('/credit/buy', [\App\Http\Controllers\Api\CreditController::class, 'buy'])->name('credit.buy');
-
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
+
+    Route::post('/credit/buy', [\App\Http\Controllers\User\CreditsController::class, 'buy'])->name('user.credit.buy');
+
+    Route::get('/credit/buy/verify', [App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.buy.verify');
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');

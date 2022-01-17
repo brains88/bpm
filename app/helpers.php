@@ -7,7 +7,7 @@ if (!function_exists('retitle')) {
         }
 
         $category = $property->category->name ?? '';
-        $action = $property->action ? ucwords($property->action) : '';
+        $action = $property->action ? ucwords(\App\Models\Property::$actions[$property->action]) : '';
         $bedrooms = $property->bedrooms ?? '';
         $condition = $property->condition ?? '';
         switch ($category) {
@@ -64,3 +64,4 @@ if (!function_exists('months')) {
         ];
     }
 }
+

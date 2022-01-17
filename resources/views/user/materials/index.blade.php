@@ -6,7 +6,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-3">
                     <h4 class="text-white">Building Materials</h4>
-                    <div class="text-muted">Welcome Melim Homes. List your properties and building materials.</div>
+                    <div class="text-muted">Welcome {{ ucwords(auth()->user()->name) }}. List your building materials.</div>
                 </div>
                 <div class="">
                     <div class="d-flex align-items-center">

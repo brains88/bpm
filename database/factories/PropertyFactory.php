@@ -33,7 +33,7 @@ class PropertyFactory extends Factory
             'toilets' => $faker->numberBetween(4, 11),
             'bathrooms' => $faker->numberBetween(3, 15),
             'image' => $faker->imageUrl($width = 960, $height = 1024),
-            'category_id' => rand(1, Category::count()),
+            'category_id' => $faker->numberBetween(1, 5),
             'currency_id' => rand(1, Currency::count()),
             'house_id' => rand(1, House::count()),
             'reference' => \Str::uuid(),

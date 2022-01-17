@@ -12,7 +12,7 @@
 							<?php $currency = empty($plan->currency->symbol) ? '$' : $plan->currency->symbol; ?>
 							<p>{{ $currency.$plan->price }}</p>
 							@if(auth()->check())
-								<form class="subscription-payment-initialization-form-{{ $plan->id }}" method="post" action="javascript::" data-action="{{ route('subscription.payment.initialize') }}">
+								<form class="subscription-payment-initialization-form-{{ $plan->id }}" method="post" action="javascript:;" data-action="{{ route('user.subscription.payment.initialize') }}">
 									<input type="hidden" name="amount" value="{{ (int)$plan->price }}">
 									<input type="hidden" name="plan" value="{{ (int)$plan->id }}">
 									<div class="alert mb-3 subscription-payment-initialization-message-{{ $plan->id }} d-none"></div>

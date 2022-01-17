@@ -10,7 +10,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('frontend.properties.index')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'allProperties' => Property::where('status', '!=', 'sold off')->paginate(15), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3)]);
+        return view('frontend.properties.index')->with(['categories' => Category::where(['type' => 'property'])->get(), 'properties' => Property::where('status', '!=', 'sold off')->paginate(15),]);
     }
 
 
@@ -44,5 +44,8 @@ class PropertiesController extends Controller
         $countryProperties = Property::where(['country_id' => $countryid])->paginate(16);
         return view('frontend.properties.country')->with(['countryProperties' => $countryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'country' => $country]);
     }
+
+    public function action()
+    {}
 
 }

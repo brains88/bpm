@@ -1,5 +1,6 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
+    @include('user.layouts.navbar')
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="row">
@@ -7,23 +8,12 @@
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="mb-3">
                             <h4 class="text-white">List Building Material</h4>
-                            <div class="text-muted">Welcome Melim Homes. List your properties and building materials.</div>
+                            <div class="text-muted">After listing, you will be redirected to add the images.</div>
                         </div>
-                        <div class="d-flex align-items-center flex-wrap">
-                            <div class="d-flex align-items-center">
-                                <div class="user-icon bg-info text-white mr-3 mb-4 px-3 py-2 icon-raduis">
-                                    <i class="icofont-ui-user"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="user-icon bg-dark text-white mb-4 px-3 py-2 icon-raduis">
-                                    <i class="icofont-navigation-menu"></i>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="d-flex align-items-center flex-wrap"></div>
                     </div>
                     <div class="bg-white p-4 border rounded">
-                        <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('api.material.add') }}" autocomplete="off">
+                        <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('material.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-12">
                                     <label class="text-muted">Building material name or title</label>
@@ -111,7 +101,7 @@
                             </div>
                             <div class="alert mb-3 add-material-message d-none"></div>
                             <div class="d-flex justify-content-right mb-3 mt-1">
-                                <button type="submit" class="btn btn-info px-4 btn-lg text-white add-material-button">
+                                <button type="submit" class="btn icon-raduis btn-info px-4 btn-lg text-white add-material-button">
                                     <img src="/images/spinner.svg" class="mr-2 d-none add-material-spinner mb-1">
                                     Submit
                                 </button>
