@@ -40,7 +40,7 @@
               {{ $propertytitle }}
           </a>
         </h3>
-        <div class="geodir-category-content_price">€{{ number_format($property->price) }}</div>
+        <div class="geodir-category-content_price">{{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price * 1000) }}</div>
         <div class="geodir-card-text">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="geodir-card-excerpt" style="text-decoration: underline!important;">
                 {{ \Str::limit($property->additional, 85) }}

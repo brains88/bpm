@@ -20,7 +20,7 @@ class Country extends Model
      */
     public function properties()
     {
-        return $this->hasMany(Property::class, 'country_id');
+        return $this->hasMany(Property::class);
     }
 
     /**
@@ -28,7 +28,7 @@ class Country extends Model
      */
     public function continent()
     {
-        return $this->belongsTo(Continent::class, 'continent_id');
+        return $this->belongsTo(Continent::class);
     }
 
 }
