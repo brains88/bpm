@@ -1,7 +1,7 @@
 <?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
 <div class="card border-0 position-relative">
 	<div class="position-relative" style="height: 160px; line-height: 160px;">
-		<a href="{{ route('admin.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-decoration-none">
+		<a href="{{ route('user.property.edit', ['id' => $property->id, 'category' => $categoryname]) }}" class="text-decoration-none">
 			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border-0 w-100 h-100 object-cover">
 		</a>
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">

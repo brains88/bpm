@@ -7,7 +7,7 @@
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
 			<small class="">
 				<small class="text-white">
-					{{ \Str::limit(ucwords($material->state.' '.$material->country->name ?? 'Nill'), 16) }}
+					{{ \Str::limit(ucwords($material->state.' '.$material->city ?? 'Nill'), 16) }}
 				</small>
 			</small>
 			<small class="cursor-pointer text-underline">
