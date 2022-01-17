@@ -7,10 +7,10 @@
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
 			<small class="">
 				<small class="text-white">
-					{{ \Str::limit(ucwords($property->state.' '.$property->country->name ?? 'Nill'), 16) }}
+					{{ \Str::limit(ucwords($property->state), 16) }}
 				</small>
 			</small>
-			<small class="">
+			<small class="cursor-pointer">
 				<small class="text-danger">Promote</small>
 			</small>
 		</div>
