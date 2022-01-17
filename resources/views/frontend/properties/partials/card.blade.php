@@ -1,6 +1,3 @@
-          <?php //dd($property->country->name); ?>
-
-
 <?php $propertytitle = ucfirst(\Str::limit(retitle($property), 34)); ?>
 
 <!-- listing-item -->
