@@ -13,7 +13,7 @@
         <div class="geodir-category-location">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
           <i class="fas fa-map-marker-alt"></i> 
-          <span>{{ ucwords($property->city.', '.$property->country->name ?? 'Nigeria') }}</span></a>
+          <span>{{ ucwords($property->city.', '.empty($property->country->name) ? 'Nigeria') : $property->country->name }}</span></a>
         </div>
         <div class="list-single-opt_header_cat dis-flex-wrap">
           <a href="{{ route('AdvancedSearch') }}" class="cat-opt status-opt flex-items-center">
