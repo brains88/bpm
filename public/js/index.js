@@ -130,3 +130,36 @@ function handleForm(info = {}) {
     });
 }
 
+function handleAjax(info = {}) {
+    if (confirm('Very sure?')) {
+        var button = $('.'+info.button);
+        var spinner = $('.'+info.spinner);
+        button.attr('disabled', true);
+        spinner.removeClass('d-none');
+        $.ajax({
+            method: 'post',
+            url: info.that.attr('data-url'),
+            dataType: 'json',
+
+            success: function(response) {
+                if (response.status === 0) {
+                    alert(response.info);
+                    handleButton(button, spinner)
+                }else if(response.status === 1) {
+                    alert(response.info);
+                    spinner.addClass('d-none');
+                    return window.location.href = response.redirect;
+                }else {
+                    handleButton(button, spinner)
+                    alert('Network error. Try again.');
+                }
+            },
+
+            error: function() {
+                handleButton(button, spinner)
+                alert('Network error. Try again.');
+            },
+        });
+    }
+}
+

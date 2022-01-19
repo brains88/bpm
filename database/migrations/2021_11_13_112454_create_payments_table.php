@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
+            $table->foreignId('product_id')->nullable(); //Either membership id
             $table->string('reference');
             $table->string('status')->default('initialized');
             $table->string('type');

@@ -43,7 +43,7 @@
                                     <?php $imageid = $property->images[$key]->id ?? 'create-'.$key; ?>
                                     <div class="col-6 mb-4">
                                         <div class="w-100 position-relative card">
-                                            <small class="card-header bg-light">View ({{ $key + 1 }})</small>
+                                            <small class="card-header bg-light">({{ $key + 1 }})</small>
                                             <form action="javascript:;">
                                                 <input type="file" name="image" accept="image/*" class="other-property-image-input-{{ $imageid }}" data-url="{{ route('api.property.image.upload', ['id' => $property->id, 'role' => $imageid ]) }}" style="display: none;">
                                             </form>

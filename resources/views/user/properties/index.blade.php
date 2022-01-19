@@ -6,11 +6,11 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-3">
                     <h4 class="text-white">Listed Properties</h4>
-                    <div class="text-muted">Welcome {{ auth()->user()->name }} . List of all your liated properties.</div>
+                    <div class="text-muted">Welcome {{ auth()->user()->name }}. All your listed properties.</div>
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
                     <div class="d-flex align-items-center">
-                        <a href="{{ route('user.property.add') }}" class="bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
+                        <a href="{{ route('user.property.add') }}" class="btn-info btn text-white mb-4 icon-raduis text-decoration-none">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>

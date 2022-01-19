@@ -7,6 +7,21 @@
         handleForm({form: $(this), button: 'individual-signup-button', spinner: 'individual-signup-spinner', message: 'individual-signup-message'});
     });
 
+    $('.renew-subscription-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'renew-subscription-button', spinner: 'renew-subscription-spinner', message: 'renew-subscription-message'});
+    });
+
+    $('.promote-property-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'promote-property-button', spinner: 'promote-property-spinner', message: 'promote-property-message'});
+    });
+
+    $('.membership-subscription-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'membership-subscription-button', spinner: 'membership-subscription-spinner', message: 'membership-subscription-message'});
+    });
+
     $('.buy-credit-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'buy-credit-button', spinner: 'buy-credit-spinner', message: 'buy-credit-message'});

@@ -10,6 +10,8 @@
         <script src="{{ env('APP_URL') }}/js/forms.js"></script>
         {{-- Uploader images --}}
         <script src="{{ env('APP_URL') }}/js/upload.js"></script>
+        {{-- Sending Ajax request --}}
+        <script src="{{ env('APP_URL') }}/js/ajax.js"></script>
         {{-- Sagreit --}}
         {{-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61a5e6cb1bd25500123c9634&product=inline-share-buttons" async="async"></script> --}}
         {{-- Chartjs --}}
@@ -27,17 +29,6 @@
                     height: 500
                 });
             }
-
-            @if(!empty($memberships))
-                @if($memberships->count() > 0)
-                    @foreach($memberships as $plan)
-                        $('.subscription-payment-initialization-form-{{ $plan->id }}').submit(function(event){
-                            event.preventDefault();
-                            handleForm({form: $(this), button: 'subscription-payment-initialization-button-{{ $plan->id }}', spinner: 'subscription-payment-initialization-spinner-{{ $plan->id }}', message: 'subscription-payment-initialization-message-{{ $plan->id }}'});
-                        });
-                    @endforeach
-                @endif
-            @endif
 
             <?php if(!empty($allBlogs)): ?>
                 <?php foreach($allBlogs as $blog): ?>

@@ -35,13 +35,10 @@ class Subscription extends Model
      */
     public static $status = [
         'active', 
-        'suspended', 
-        'paused', 
         'cancelled', 
-        'error',
+        'paused', 
         'expired',
         'renewed',
-        'initialized'
     ];
 
     /**

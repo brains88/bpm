@@ -94,13 +94,6 @@ Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('material.edit');
         Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('material.add');
     });
-
-    Route::post('/initialize', [App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('user.subscription.payment.initialize');
-
-    Route::get('/payment/verify', [App\Http\Controllers\User\SubscriptionController::class, 'verify'])->name('user.subscription.payment.verify');
-
-    Route::post('/credit/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('credit.buy');
-    // Route::get('/credit/buy/verify', [App\Http\Controllers\Api\CreditsController::class, 'verify'])->name('credit.buy.verify');
 });
 
 Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
@@ -202,15 +195,21 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
 
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
 
-    Route::post('/credit/buy', [\App\Http\Controllers\User\CreditsController::class, 'buy'])->name('user.credit.buy');
+    Route::post('/initialize', [App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('user.subscription.payment.initialize');
 
-    Route::get('/credit/buy/verify', [App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.buy.verify');
+    Route::post('/cancel/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'cancel'])->name('user.subscription.cancel');
+    Route::post('/renew/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'renew'])->name('user.subscription.renew');
+    Route::post('/activate/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'activate'])->name('user.subscription.activate');
+
+    Route::post('/credits/buy', [\App\Http\Controllers\User\CreditsController::class, 'buy'])->name('user.credits.buy');
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
 
-        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
+        Route::get('/edit/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
+
+        Route::post('/promote/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'promote'])->name('user.property.promote');
     });
 
     Route::prefix('materials')->group(function () {

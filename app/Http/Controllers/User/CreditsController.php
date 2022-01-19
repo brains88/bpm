@@ -5,6 +5,7 @@ use App\Models\{Unit, Payment, Credit};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use App\Helpers\Paystack;
 use \Exception;
 use Validator;
@@ -48,24 +49,14 @@ class CreditsController extends Controller
 
         try {
             $amount = $unit->price ?? 0;
-            $reference = \Str::uuid();
+            $reference = (string)Str::uuid();
 
             DB::beginTransaction();
             $payment = Payment::create([
                 'reference' => $reference,
                 'amount' => $amount,
-                'type' => 'advert',
-                'status' => 'initialized',
-                'user_id' => auth()->user()->id,
-            ]);
-
-            Credit::create([
-                'price' => $amount,
-                'payment_id' => $payment->id,
-                'duration' => $unit->duration,
-                'unit_id' => $unit->id,
-                'units' => $unit->units,
-                'reference' => $reference,
+                'product_id' => $unit->id,
+                'type' => 'adverts',
                 'status' => 'initialized',
                 'user_id' => auth()->user()->id,
             ]);
@@ -82,7 +73,7 @@ class CreditsController extends Controller
             if ($paystack) {
                 return response()->json([
                     'status' => 1, 
-                    'info' => 'Payment initialized. Please wait . . .',
+                    'info' => 'Please wait . . .',
                     'redirect' => $paystack->data->authorization_url,
                 ]);
             }
@@ -136,15 +127,33 @@ class CreditsController extends Controller
                 ]);
             }
 
-            if ('success' === strtolower($verify->data->status) && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === (int)$payment->amount) {
+            $unitid = $payment->product_id ?? 0;
+            $unit = Unit::find($unitid);
+            if (empty($unit)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Invalid ads unit'
+                ]);
+            }
+
+            $amount = (int)$payment->amount ?? 0;
+            if ('success' === strtolower($verify->data->status) && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === $amount) {
 
                 $payment->status = 'paid';
                 $payment->update();
-                $credit = Credit::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
-                $credit->status = 'paused';
-                $credit->update();
-                DB::commit();
 
+                Credit::create([
+                    'price' => $amount,
+                    'payment_id' => $payment->id,
+                    'duration' => $unit->duration,
+                    'unit_id' => $unit->id,
+                    'units' => $unit->units,
+                    'reference' => $reference,
+                    'status' => 'paused',
+                    'user_id' => auth()->user()->id,
+                ]);
+
+                DB::commit();
                 return response()->json([
                     'status' => 1,
                     'info' => 'Transaction successfull.'

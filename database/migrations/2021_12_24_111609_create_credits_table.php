@@ -17,9 +17,9 @@ class CreateCreditsTable extends Migration
             $table->id();
             $table->string('price');
             $table->foreignId('payment_id');
-            $table->string('duration')->nullable();
+            $table->bigInteger('duration')->nullable();
             $table->dateTime('started')->nullable();
-            $table->string('units');
+            $table->bigInteger('units');
             $table->foreignId('unit_id');
             $table->dateTime('expiry')->nullable();
             $table->string('reference');

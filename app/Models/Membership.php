@@ -14,7 +14,7 @@ class Membership extends Model
      */
     public static $durations = [
         'weekly' => 7, //7days
-        'daily' => 1, //1day
+        'quaterly' => 120, //120days
         'monthly' => 30, //30days
         'yearly' => 360, //360days
     ];

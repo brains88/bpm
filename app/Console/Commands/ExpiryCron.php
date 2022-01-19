@@ -40,7 +40,7 @@ class ExpiryCron extends Command
     {
         $expiries = [];
         foreach (Subscription::all() as $subscription) {
-            if ((int)(Carbon::parse($subscription->expiry))->diffInDays(Carbon::now()) <= 0) {
+            if (Carbon::parse($subscription->expiry)->diffInDays(Carbon::today()) <= 0) {
                 $subscription->status = 'expired';
                 $updated = $subscription->update();
                 $expiries[] = $updated;

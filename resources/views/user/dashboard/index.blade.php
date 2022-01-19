@@ -5,7 +5,7 @@
         <div class="container">
             @if(!empty($reference))
                 @if(isset($verify['status']))
-                    <div class="alert {{ $verify['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
+                    <div class="alert mt-4 {{ $verify['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
                         {{ $verify['info'] }}
                     </div>
                 @endif
@@ -15,51 +15,8 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class="alert alert-success p-3 pb-0 mb-4">
-                        <div class="pb-2">
-                            <div class="">
-                                @if(empty($subscription))
-                                    <div class="alert alert-danger m-0">Subscribe to list more properties. <a href="{{ route('memberships') }}">Click here</a> to get started.</div>
-                                @else
-                                    <?php 
-
-                                        $expiry = \Carbon\Carbon::parse($subscription->expiry);
-
-                                        $remainingdays = (int)$expiry->diffInDays(\Carbon\Carbon::now());
-
-                                        $duration = empty($subscription->duration) ? 1 : (int)$subscription->duration;
-
-                                        $fraction = $duration > $remainingdays ? ($remainingdays/$duration) : 0;
-
-                                        $progress = (100 - (int)($fraction * 100));  
-                                    ?>
-                                    {{-- {{ dd($remainingdays, $duration) }} --}}
-                                    <div class="">
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <small class="">
-                                                {{ ucwords($subscription->membership->name) }} Plan ({{ ucwords($duration) }}days)
-                                            </small>
-                                            <small class="">
-                                                Progress ({{ $progress }}%)
-                                            </small>
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ $progress }}" aria-valuemin="1" aria-valuemax="100" style="width: {{ $progress }}%"></div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <small class="">
-                                                {{ $subscription->updated_at->diffForHumans() }}
-                                            </small>
-                                            <small class="">
-                                                ${{ number_format($subscription->amount) }}
-                                            </small>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                    <div class="alert alert-success shadow-sm p-3 pb-0 mb-4 icon-raduis">
+                        @include('user.subscriptions.partials.panel')
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -87,7 +44,7 @@
                                     <div class="">
                                         <h5 class="text-white mb-3">List Building Materials</h5>
                                         <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                        <a href="{{ route('user.properties') }}" class="btn btn-dark px-4">Get Started</a>
+                                        <a href="{{ route('user.materials') }}" class="btn btn-dark px-4">Get Started</a>
                                     </div>
                                 </div>
                             </div>

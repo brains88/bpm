@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Models\{Category, Property, Country, Image, Division};
 use App\Http\Controllers\Controller;
+use \Carbon\Carbon;
 use \Exception;
 use Validator;
 
@@ -156,12 +157,14 @@ class PropertiesController extends Controller
             }
         };
 
+        $reference = \Str::uuid();
         $property = Property::find($id);
         if (is_string($role) && $role === 'main') {
             $imageurl = $property->image ?? '';
             if (!empty($imageurl)) $delete($imageurl);
 
             $property->image = $link;
+            $property->reference = $reference;
             $image->move($path, $filename);
             $property->update();
             return response()->json([
@@ -170,10 +173,11 @@ class PropertiesController extends Controller
             ]);
         }else {
             $imageid = $role;
-            $picture = Image::where(['type_id' => $id, 'id' => $imageid])->first();
+            $picture = Image::where(['property_id' => $id, 'id' => $imageid])->first();
             if (empty($picture)) {
                 $lastid = Image::create([
-                    'type_id' => $id,
+                    'property_id' => $id,
+                    'reference' => $reference,
                     'link' => $link,
                     'type' => 'property',
                 ])->id;
@@ -195,6 +199,7 @@ class PropertiesController extends Controller
             $imageurl = $picture->link ?? '';
             if (!empty($imageurl)) $delete($imageurl);
             $picture->link = $link;
+            $picture->reference = $reference;
             $success = $picture->update();
 
             if ($success) {
@@ -214,7 +219,7 @@ class PropertiesController extends Controller
     }
 
     /**
-     * Api [post] edit Property
+     * Api update property action
      */
     public function action($id = 0)
     {
@@ -239,7 +244,5 @@ class PropertiesController extends Controller
             'info' => 'Operation successful',
             'redirect' => '',
         ]);
-
-            
     }
 }

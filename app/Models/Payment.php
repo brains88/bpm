@@ -14,13 +14,13 @@ class Payment extends Model
      * @var string[]
      */
     protected $fillable = [
-        'transaction_id',
         'amount',
         'reference',
         'type',
         'status',
         'user_id',
-        'currency_id'
+        'currency_id',
+        'product_id',
     ];
 
     /**
@@ -32,8 +32,7 @@ class Payment extends Model
         'paid', 
         'initialized', 
         'failed', 
-        'cancelled', 
-        'error'
+        'cancelled',
     ];
 
     /**

@@ -14,6 +14,6 @@ class SubscriptionsSeeder extends Seeder
     public function run()
     {
         Subscription::truncate();
-        Subscription::factory()->count(44)->create();
+        //Subscription::factory()->count(44)->create();
     }
 }

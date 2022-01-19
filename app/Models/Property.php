@@ -117,5 +117,13 @@ class Property extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    /**
+     * A property may have been promoted
+     */ 
+    public function promoted()
+    {
+        return $this->hasOne(Promotion::class);
+    }
     
 }

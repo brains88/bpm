@@ -1,7 +1,7 @@
 <div class="modal fade" id="buy-credit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content border-0">
-            <form method="post" action="javascript:;" class="buy-credit-form" data-action="{{ route('user.credit.buy') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="buy-credit-form" data-action="{{ route('user.credits.buy') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-smoky mb-0 font-weight-bold">Buy Credit</div>

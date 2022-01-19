@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\{Plan};
+use App\Models\{Membership};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
@@ -13,7 +13,7 @@ class PlansController extends Controller
      */
     public function index()
     {
-        return view('admin.plans.index')->with(['plans' => Plan::latest('created_at')->paginate(16)]);
+        return view('admin.plans.index')->with(['plans' => Membership::latest('created_at')->paginate(16)]);
     }
 
     public function add()
@@ -34,16 +34,16 @@ class PlansController extends Controller
             ]);
         }
 
-        foreach(Plan::all()->toArray() as $plan) {
+        foreach(Membership::all()->toArray() as $plan) {
             if (($plan['name'] == $data['name']) && ($plan['duration'] == $data['duration'])) {
                 return response()->json([
                     'status' => 0,
-                    'info' => 'Plan already exists for the selected duration'
+                    'info' => 'Membership already exists for the selected duration'
                 ]);
             }
         }
 
-        $plan = Plan::create([
+        $plan = Membership::create([
             'details' => $data['details'],
             'name' => $data['name'],
             'price' => $data['price'],
