@@ -4,7 +4,7 @@
     <div class="user-content user-properties-banner pb-4">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-7 mb-4">
+                <div class="col-12 mb-4">
                     <div class="alert-info alert mb-4">List property</div>
                     <div class="bg-white p-4 border rounded">
                         <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('api.property.add') }}" autocomplete="off">
@@ -13,7 +13,7 @@
                                     <label class="text-muted">Country located</label>
                                     <select class="form-control custom-select country" name="country" id="countries">
                                         <option value="">-- Select country --</option>
-                                        @if(empty($countries))
+                                        @if(empty($countries->count()))
                                             <option value="">No countries listed</option>
                                         @else: ?>
                                             <?php $geoip = geoip()->getLocation(request()->ip());  ?>
@@ -42,7 +42,7 @@
                                     <label class="text-muted">Category</label>
                                     <select class="form-control custom-select category" name="category">
                                         <option value="">-- Select category --</option>
-                                        @if(empty($categories))
+                                        @if(empty($categories->count()))
                                             <option>No Categories Listed</option>
                                         @else: ?>
                                             @foreach ($categories as $category)
@@ -132,20 +132,6 @@
                             </div>
                         </form>
                     </div>                   
-                </div>
-                <div class="col-12 col-lg-5">
-                    <div class="alert-info alert mb-4">Recent listed properties</div>
-                    @if(empty($properties->count()))
-                        <div class="alert-warning alert">No properties yet</div>
-                    @else
-                        <div class="row">
-                            @foreach($properties as $property)
-                                <div class="col-12 col-md-6 mb-4">
-                                    @include('user.properties.partials.card')
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
                 </div>
             </div>      
         </div>

@@ -98,4 +98,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class);
     }
+
+    /**
+     * A user may have many promotions made
+     */
+    public function promotions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
 }

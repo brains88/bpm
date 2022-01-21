@@ -30,8 +30,16 @@ class Promotion extends Model
     /**
      * A property may belong to a property listed
      */
-    // public function property()
-    // {
-    //     return $this->belongsTo(Property::class);
-    // }
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
+
+    /**
+     * A property may belong to a property listed
+     */
+    public function credit()
+    {
+        return $this->belongsTo(Credit::class);
+    }
 }

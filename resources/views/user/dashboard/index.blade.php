@@ -27,7 +27,7 @@
                                     <div class="mb-3">
                                         <h4 class="">Total Credits</h4>
                                         <h6 class="">
-                                            {{ number_format(auth()->user()->credits->sum('units')) }} Units
+                                            {{ number_format(auth()->user()->credits()->where('status', '!=', 'expired')->sum('units')) }} Units
                                         </h6>
                                     </div>
                                     <div class="d-flex">
@@ -62,7 +62,12 @@
                         </div>
                     </div>
                     <div class="">
-                        <div class="alert alert-info mb-4">Recently listed properties</div>
+                        <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
+                            <small>Recent properties</small>
+                            <small>
+                                <a href="{{ route('user.property.add') }}" class="text-primary">List property</a>
+                            </small>
+                        </div>
                         @if(empty($properties->count()))
                             <div class="alert alert-warning mb-4">No properties listed yet</div>
                         @else
@@ -73,7 +78,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            @if($properties->total() > $limit)
+                            @if($properties->total() > 4)
                                 <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
                             @endif
                         @endif

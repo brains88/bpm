@@ -18,6 +18,7 @@ class CreditFactory extends Factory
         return [
             'price' => $faker->numberBetween(100, 1500),
             'status' => 'paused',
+            'duration' => $faker->numberBetween(1, 360),
             'user_id' => rand(1, User::count()),
             'units' => $faker->numberBetween(23, 109),
             'reference' => \Str::uuid(),

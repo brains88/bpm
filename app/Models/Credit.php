@@ -24,4 +24,33 @@ class Credit extends Model
         'duration',
         'user_id',
     ];
+
+    /**
+     * Credit status.
+     *
+     * @var string[]
+     */
+    public static $status = [
+        'running', 
+        'inuse', 
+        'expired',
+        'paused',
+        'used',
+    ];
+
+    /**
+     * Credit has one promotion
+     */
+    public function promotion()
+    {
+        return $this->hasOne(Promotion::class);
+    }
+
+    /**
+     * Credit belongs to a unit
+     */
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

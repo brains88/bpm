@@ -9,26 +9,26 @@
                             <i class="icofont-close text-danger"></i>
                         </div>
                     </div>
-                    <?php $credits = \App\Models\Credit::where(['user_id' => auth()->user()->id])->get(); ?>
+                    <?php $credits = auth()->user()->credits()->where(['status' => 'paused'])->get(); ?>
                     @if(empty($credits->count()))
                         <div class="alert alert-danger">You have no credits. <a href="{{ route('user') }}">Click here</a> to buy.</div>
                     @endif
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label class="text-smoky">Credits</label>
-                            <select class="form-control custom-select rounded-0 credits" name="credits">
+                            <select class="form-control custom-select rounded-0 credit" name="credit">
                                 <option value="">-- Select credit --</option>
                                 @if(empty($credits->count()))
-                                    <option>You ahve no credits</option>
+                                    <option>You have no credits</option>
                                 @else
                                     @foreach ($credits as $credit)
                                         <option value="{{ $credit->id }}">
-                                            {{ number_format($credit->units).'unit(s) for ('.$credit->duration.'days)' }}
+                                            {{ number_format($credit->units).'unit(s) for '.$credit->duration.'day(s)' }}
                                         </option>
                                     @endforeach
                                 @endif
                             </select>
-                            <small class="invalid-feedback credits-error"></small>
+                            <small class="invalid-feedback credit-error"></small>
                         </div>
                     </div>
                     <input type="hidden" name="property" value="{{ $property->id }}">

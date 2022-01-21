@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 use App\Models\{Category, Property, Country, Promotion, Credit};
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use \Carbon\Carbon;
 
@@ -14,8 +15,8 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $properties = Property::latest('created_at')->where(['user_id' => auth()->user()->id])->paginate(12);
-        return view('user.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
+        $properties = auth()->user()->properties()->orderBy('created_at', 'desc')->paginate(12);
+        return view('user.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'credits' => auth()->user()->credits()->get()]);
     }
 
     /**
@@ -23,6 +24,7 @@ class PropertiesController extends Controller
      */
     public function add()
     {
+        $credits = Credit::where(['user_id' => auth()->user()->id])->get();
         return view('user.properties.add')->with(['categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
     }
 
@@ -40,9 +42,9 @@ class PropertiesController extends Controller
      */
     public function promote($id = 0)
     {
-        $data = request()->only(['credits', 'property']);
+        $data = request()->only(['credit', 'property']);
         $validator = Validator::make($data, [
-            'credits' => ['required', 'integer'],
+            'credit' => ['required', 'integer'],
         ]);
 
         if ($validator->fails()) {
@@ -52,7 +54,7 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $creditid = $data['credits'];
+        $creditid = $data['credit'];
         $credit = Credit::find($creditid);
         if (empty($credit)) {
             return response()->json([
@@ -71,21 +73,39 @@ class PropertiesController extends Controller
         }
 
         $days = $credit->duration ?? 0;
-        Promotion::create([
-            'credit_id' => $credit->id,
-            'duration' => $days,
-            'started' => Carbon::today(),
-            'expiry' => Carbon::today()->addDays($days),
-            'status' => 'active',
-            'user_id' => auth()->user()->id,
-            'property_id' => $property->id,
-        ]);
 
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => '',
-        ]);
+        try {
+            DB::beginTransaction();
+            $credit->status = 'running';
+            $credit->update();
+
+            Promotion::create([
+                'credit_id' => $credit->id,
+                'duration' => $days,
+                'started' => Carbon::today(),
+                'expiry' => Carbon::today()->addDays($days),
+                'status' => 'active',
+                'user_id' => auth()->user()->id,
+                'property_id' => $property->id,
+            ]);
+
+            DB::commit();
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => '',
+            ]);
+            
+        } catch (Exception $error) {
+            DB::rollback();
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ]);
+        }
+            
+
+            
     }
 
 }

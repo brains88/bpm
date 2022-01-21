@@ -14,6 +14,6 @@ class UnitsSeeder extends Seeder
     public function run()
     {
         Unit::truncate();
-        Unit::factory()->count(11)->create();
+        Unit::factory()->count(15)->create();
     }
 }

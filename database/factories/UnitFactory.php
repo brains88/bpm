@@ -18,7 +18,7 @@ class UnitFactory extends Factory
         $faker = Faker::create();
         return [
             'price' => $faker->numberBetween(50, 2500),
-            'duration' => $faker->numberBetween(1, 900), //1day - 360days
+            'duration' => $faker->numberBetween(1, 360), //1day - 360days
             'status' => $faker->randomElement(Unit::$status),
             'currency_id' => rand(1, Currency::count()),
             'units' => $faker->numberBetween(10, 900),

@@ -4,17 +4,32 @@
     <div class="user-content user-profile-banner pb-4">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 col-md-3">
+                    <div class="">
+                        <div class="border alert alert-info mb-4">
+                            <div class="position-relative w-100 p-4 border-dark-500">
+                                <div class="border rounded position-relative" style="height: 120px;">
+                                    <div class="rounded-circle bg-success" style="height: 10px; width: 10px; top: 40px"></div>
+                                    <img src="/images/profiles/gitl.jpg" class="img-fluid object-cover h-100 w-100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning">
+                            {{ ucwords(auth()->user()->name) }}
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-9">
                     <div class="card position-relative">
                         <div class="card-header d-flex align-items-center">
-                            <div class="mr-3 position-relative" style="height: 40px; width: 40px;">
+                            {{-- <div class="mr-3 position-relative" style="height: 40px; width: 40px;">
                                 <div class="position-absolute rounded-circle bg-danger" style="width: 10px; height: 10px; top: 10px; right: 0;"></div>
                                 <img src="/images/profiles/avatar.jpg" class="img-fluid object-cover h-100 w-100">
                             </div>
                             <div class="">
                                 <div class="text-main-dark">Marily Murphy</div>
                                 <small>3 years ago</small>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
                             <div class="row">
