@@ -21,16 +21,6 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <div class="card position-relative">
-                        <div class="card-header d-flex align-items-center">
-                            {{-- <div class="mr-3 position-relative" style="height: 40px; width: 40px;">
-                                <div class="position-absolute rounded-circle bg-danger" style="width: 10px; height: 10px; top: 10px; right: 0;"></div>
-                                <img src="/images/profiles/avatar.jpg" class="img-fluid object-cover h-100 w-100">
-                            </div>
-                            <div class="">
-                                <div class="text-main-dark">Marily Murphy</div>
-                                <small>3 years ago</small>
-                            </div> --}}
-                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 col-md-6">

@@ -28,11 +28,11 @@
                             </small>
                         </a>
                         <div class="dropdown-menu border-0 card-raduis shadow dropdown-menu-right" aria-labelledby="promote-{{ auth()->user()->id }}" style="width: 210px !important;">
-                            <a href="{{ 'javascript:;' }}" class="dropdown-item text-dark">
+                            <a href="{{ route('user.profile') }}" class="dropdown-item text-dark">
                                 My Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ route('logout') }}" class="dropdown-item text-danger">
+                            <a href="{{ route('user') }}" class="dropdown-item text-danger">
                                 Logout
                             </a>
                         </div>
