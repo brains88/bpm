@@ -13,21 +13,13 @@
         <meta name="keywords" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <meta name="image" content="/images/logos/logo.png" />
 
-        <meta name="og:site_name" content="Geohomes Services Limited" />
+        <meta name="og:site_name" content="Best Property Market" />
         <meta name="og:locale" content="en_US" />
         <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
         <!--Facebook Open Graph-->
         <meta name="framework" content="Redux 4.3.3">
         <meta name='robots' content='max-image-preview:large'>
-        <link rel='dns-prefetch' href='bpm-content/maps/index.htm'>
-        <link rel='dns-prefetch' href='//fonts.googleapis.com'>
-        <link href='https://fonts.gstatic.com' crossorigin="" rel='preconnect'>
-
-        <link rel="stylesheet" type="text/css" href="bpm-content/uploads/new/bpmStyle.css" id='bestpropertymarket-addons-inline-css'>
-        <link href="bpm-content/uploads/new/bpmsite.css" type="text/css" rel="stylesheet"/>
-
-        <script type='text/javascript' src='assets/js/jquery/jquery.min.js' id='jquery-core-js'></script>
 
         <meta charset="utf-8" name="google-site-verification" content="=8kf5mgYQhvdaG83hokZpIDyISEeWEEa6Jib6s1pjZdM">
         <meta name="msvalidate.01" content="E54BD83E87BAF1B6D2813C397CB5771D" />
@@ -48,7 +40,7 @@
         <meta property="twitter:image" content="/images/logos/logo.png" />
         <meta property="twitter:title" content="Geohomes Services Limited" />
         <meta property="twitter:card" content="summary_large_card" />
-        <meta property="twitter:site" content="https://geohomesgroup.com/" />
+        <meta property="twitter:site" content="https://www.bestpropertymarket.com/" />
         <meta property="twitter:site_name" content="Geohomes Services Limited"/>
         <meta property="twitter:description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
 
@@ -60,22 +52,17 @@
         <title>{{ $title ?? config('app.name') }}</title>
         {{-- Google fonts --}}
         @if(env('APP_ENV') === 'production')
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
         @endif
-
-        {{-- <?php dd(request()->getHost()); ?> --}}
-
-        @if(\Str::contains(request()->getHost(), 'user.') || \Str::contains(request()->getHost(), 'admin.') || \Str::contains(request()->getHost(), 'pricing'))
-            <!-- Bootstrap CSS CDN -->
-            <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
-        @endif
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
 
         <!-- utility CSS -->
         <link rel="stylesheet" type="text/css" href="/css/utility.css">
         <!-- index CSS -->
         <link rel="stylesheet" type="text/css" href="/css/index.css">
-        <!-- Auth processing CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/auth.css">
         <!-- ico font css -->
         <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css">
         <!-- fontawesome css -->

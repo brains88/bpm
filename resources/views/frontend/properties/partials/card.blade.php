@@ -1,68 +1,62 @@
-<?php $propertytitle = ucfirst(\Str::limit(retitle($property), 34)); ?>
-
-<!-- listing-item -->
-<div class="cthiso-item listing-item listing-item-loop post-6152 listing type-listing status-publish has-post-thumbnail hentry listing_cat-house listing_location-01-new-york listing_status-for-sale listing_feature-breakfast listing_feature-free-parking listing_feature-free-wi-fi listing_feature-restaurant-inside listing_tag-fitness listing_tag-gym listing_tag-indoor listing_tag-outdoor listing_tag-running listing_tag-tour" data-postid="6152">
-    <article class="geodir-category-listing fl-wrap">
-      <div class="azp_element preview_listing azp-element-azp-withqfz5u2l geodir-category-img">
-        <a href="{{route('AdvancedSearch')}}" class="listing-thumb-link geodir-category-img_item">
-          <img width="424" height="280" src="{{ $property->image }}" class="respimg" alt="" loading="lazy" style="height: 280px;">
-          <div class="overlay"></div>
+<?php $propertytitle = ucfirst(\Str::limit(retitle($property), 44)); $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
+<div class="card border-0 bg-white w-100 card-raduis position-relative">
+        <div class="position-absolute ml-4 mt-4" style="z-index: 2;">
+            <div class="d-flex align-items-center">
+                @if(isset($actions[$property->action]))
+                    <small class="bg-theme-color px-3 py-1 mr-3">
+                        <small class="text-white">
+                            {{ ucwords($actions[$property->action]) }}
+                        </small>
+                    </small>
+                @endif
+                <small class="bg-info px-3 py-1 mr-3">
+                    <small class="text-white">
+                        {{ ucwords($categoryname) }}
+                    </small>
+                </small>
+                <small class="bg-white text-theme-color cursor-pointer px-3 py-1 rounded">
+                    <i class="icofont-share"></i>
+                </small>
+            </div>
+        </div>
+    <div class="position-relative" style="height: 160px; line-height: 160px;">
+        <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-decoration-none rounded-top">
+            <img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border w-100 h-100 object-cover" style="border-radius: 20px 20px 0 0;">
         </a>
-        <div class="geodir-category-location">
-            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="single-map-item tolt" data-microtip-position="top-left" data-tooltip="On the map"> 
-          <i class="fas fa-map-marker-alt"></i> 
-          <span>{{ ucwords($property->city) }}</span></a>
-        </div>
-        <div class="list-single-opt_header_cat dis-flex-wrap">
-          <a href="{{ route('AdvancedSearch') }}" class="cat-opt status-opt flex-items-center">
-              {{ ucwords(\App\Models\Property::$actions[$property->action]) }}
-          </a> 
-          <a href="{{ route('AdvancedSearch') }}" class="cat-opt flex-items-center">{{ ucfirst($property->category->name ?? 'any') }}</a>
-        </div>
-        <a href="javascript:;" class="geodir_save-btn tolt logreg-modal-open" data-message="Logging in first to save this listing." data-microtip-position="left" data-tooltip="Login">
-        <span>
-            <i class="fal fa-heart"></i></span>
-        </a> 
-        <a href="javascript:;" class="compare-btn tolt compare-btn-{{ $property->id }}" data-microtip-position="left" data-tooltip="Compare" data-text1="Compare" data-text2="Added to Compare" data-lid="{{ $property->id }}" data-ltitle="{{ $propertytitle }}" data-lthumb="{{ $property->image }}" data-laddress="{{ ucwords($property->address) }}">
-        <span><i class="fal fa-random"></i></span></a>
-        <div class="geodir-category-listing_media-list"> 
-          <span><i class="fas fa-camera"></i> 
-            {{ $property->images->count() }}
-          </span>
-        </div>
-        <div class="lcfields-wrap lcfields-abs dis-flex-wrap"></div>
-      </div>
-      <div class="azp_element preview_listing_content azp-element-azp-byjy53nmnw geodir-category-content">
-        <h3 class="title-sin_item dis-flex-wrap-center">
-          <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" style="text-decoration: underline !important;">
-              {{ $propertytitle }}
-          </a>
-        </h3>
-        <div class="geodir-category-content_price">{{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price * 1000) }}</div>
-        <div class="geodir-card-text">
-            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="geodir-card-excerpt" style="text-decoration: underline!important;">
-                {{ \Str::limit($property->additional, 85) }}
-            </a>
-          <div class="lcfields-wrap dis-flex-wrap-center"></div>
-          <div class="geodir-category-content-details">
-            <ul class="no-list-style dis-flex-wrap">
-              <li><i class="fal fa-bed"></i><span>
-                  {{ $property->bedroom ?? 0 }}
-              </span></li>
-              <li><i class="fal fa-bath"></i>
-                <span>
-                    {{ $property->bathroom ?? 0 }}
+        <div class="position-absolute w-100 px-3 d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.2);">
+            <small class="">
+                <span class="text-theme-color">
+                    <i class="icofont-location-pin"></i>
                 </span>
-              </li>
-              <li><i class="fal fa-cube"></i><span> {{ $property->measurement }}Sqft</span></li>
-            </ul>
-          </div>
+                <span class="text-white">
+                    {{ ucwords($property->city) }}
+                </span>
+            </small>
         </div>
-        <div class="geodir-category-footer dis-flex-wrap-center jtf-space-between">
-            <span class="lcard-avatar">By {{ !empty($property->user->name) ? ucwords($property->user->name) : 'Our agent' }}</span>
-          <div class="listing-rating card-popup-rainingvis tolt" data-microtip-position="top" data-tooltip="Good" data-stars="5" data-rating="4.0">
-          </div>
+    </div>
+    <div class="card-body">
+        <div class="font-weight-bolder mb-3">
+            <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-main-dark text-underline">
+                {{ $propertytitle }}
+            </a>
         </div>
-      </div>
-    </article>
+        <h4 class="text-theme-color">
+            {{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price * 1000) }}
+        </h4>
+        <div class="geodir-card-text">
+            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-underline text-muted">
+                <small class="">
+                    {{ \Str::limit($property->additional, 85) }}
+                </small>
+            </a>
+        </div>
+    </div>
+    <div class="card-footer">
+        <small class="">
+            <small>
+                <span class="text-theme-color">By</span> 
+                {{ $property->user ? ucwords($property->user->name) : 'Our agent' }}
+            </small>
+        </small>
+    </div>
 </div>

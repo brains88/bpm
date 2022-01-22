@@ -1,5 +1,5 @@
 body {
-    font-family: 'Crimson Pro', serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .disable { 
@@ -97,13 +97,27 @@ p {
 }
 
 .home-banner {
-    padding: 240px 0 200px;
-    background-image: url('/images/banners/light.jpg');
+    padding: 240px 0 220px;
+    background-image: url('/images/banners/couch.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /*height: 800px;*/
+}
+
+.home-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .nav-link .active {
@@ -118,25 +132,12 @@ p {
     border-radius: 50%;
 }
 
-.home-banner:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
 .home-banner h1 {
-    font-size: 80px;
+    font-size: 70px;
 }
 
 .logo-wrapper {
-    width: 218px !important;
+    width: 210px !important;
 }
 
 .home-properties {
@@ -154,6 +155,11 @@ p {
     width: 100%;
     z-index: -2;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-item .active {
+    background-color: var(--theme-color) !important;
+    color: #fff !important;
 }
 
 .home-property-categories {
@@ -227,6 +233,11 @@ p {
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url('/images/grid.svg');
+}
+
+.signup-banner,
+.login-banner {
+    padding-top: 50px;
 }
 
 .partners-section {
@@ -418,6 +429,26 @@ a:hover, button:hover {
 
 .properties-banner {
     padding: 160px 0 40px;
+    background-image: url('/images/banners/complex.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /*height: 800px;*/
+}
+
+.properties-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .custom-switch .custom-control-input:checked~.custom-control-label::before {
@@ -485,7 +516,7 @@ a:hover, button:hover {
     -webkit-transition: 0.8s;
     -o-transition: 0.8s;
     transition: 0.8s;
-    /*display: none !important;*/
+    display: none !important;
 }
 
 .hanburger-icon .icon-lines {
@@ -564,6 +595,10 @@ a:hover, button:hover {
         width: 100%;
     }
 
+    .navbar-right {
+        display: none !important;
+    }
+
     #property-chart-wrapper {
         height: 350px !important;
     }
@@ -624,31 +659,31 @@ a:hover, button:hover {
     }
 
     .hanburger-icon {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
 
     .hanburger-icon .icon-lines {
-        width: 30px;
-        height: 3px;
+        width: 35px;
+        height: 4px;
     }
 
     .hanburger-icon .icon-lines::before,
     .hanburger-icon .icon-lines::after {
-        width: 30px;
-        height: 3px;
+        width: 40px;
+        height: 4px;
     }
 
     .hanburger-icon .icon-lines::before {
-        -webkit-transform: translateY(-7.5px);
-            -ms-transform: translateY(-7.5px);
-                transform: translateY(-7.5px);
+        -webkit-transform: translateY(-10.5px);
+            -ms-transform: translateY(-10.5px);
+                transform: translateY(-10.5px);
     }
 
     .hanburger-icon .icon-lines::after {
-        -webkit-transform: translateY(7.5px);
-            -ms-transform: translateY(7.5px);
-                transform: translateY(7.5px);
+        -webkit-transform: translateY(10.5px);
+            -ms-transform: translateY(10.5px);
+                transform: translateY(10.5px);
     }
 }
 

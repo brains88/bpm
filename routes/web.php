@@ -65,9 +65,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/{category}', [PropertiesController::class, 'category'])->name('properties.category');
         Route::get('/{action}', [PropertiesController::class, 'action'])->name('properties.action');
         Route::get('/global/{country?}', [PropertiesController::class, 'country'])->name('properties.country');
-    });
 
-    Route::prefix('property')->group(function () {
         Route::get('/{category?}/{id}/{slug}', [PropertiesController::class, 'property'])->name('property.category.id.slug');
         Route::get('/{country}/{id}/{slug}', [PropertiesController::class, 'country'])->name('property.country.id.slug');
     });

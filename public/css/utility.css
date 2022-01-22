@@ -1,9 +1,9 @@
 :root {
-    --theme-color: #ff0000;
+    --theme-color: #a00f0f;
     --main-dark: #0a090b;
     --dark-500: #3D3743;
     --main-ash: #F0F2E3;
-    --tillgreen: #2addc7
+    --theme-shade: #b33f3f
 }
 
 .bg-theme-color {
@@ -14,16 +14,12 @@
     cursor: pointer;
 }
 
-.bg-tillgreen {
-    background-color: var(--tillgreen);
-}
-
 .card-raduis {
     border-radius: 20px;
 }
 
 .icon-raduis {
-    border-radius: 10px;
+    border-radius: 10px !important;
 }
 
 .border-main-dark {
@@ -76,4 +72,8 @@
 
 .bg-main-ash {
     background-color: var(--main-ash);
+}
+
+.text-main-ash {
+    color: var(--main-dark);
 }
