@@ -85,7 +85,7 @@
 			</small>
 			<small class="">
 				<small class="text-white">
-					{{ ucwords($property->category->name) }}
+					{{ ucwords($categoryname) }}
 				</small>
 			</small>
 		</div>
@@ -95,7 +95,7 @@
 		<div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
 			<small class="text-dark">
 				<small class="">
-					{{ $property->currency->symbol ?? '$' }}{{ number_format($property->price) }}
+					{{ $property->currency ? $property->currency->symbol : '$' }}{{ number_format($property->price) }}
 				</small>
 			</small>
 			<?php $action = strtolower($property->action ?? 'nill'); $actions = \App\Models\Property::$actions; ?>
