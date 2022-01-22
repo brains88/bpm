@@ -1,4 +1,4 @@
-<?php $categoryname = strtolower($property->category->name ?? 'any'); ?>
+<?php $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
 <div class="card border-0 position-relative">
 	<div class="position-absolute" style="top: 16px; left: 16px; z-index: 2;">
 		<div class="dropdown">
@@ -141,7 +141,7 @@
 					<small>{{ \Str::limit($property->address, 18) }}</small>
 				</small>
 			</a>
-			<a href="{{ route('user.property.edit', ['category' => $categoryname, 'id' => $property->id]) }}">
+			<a href="{{ route('user.property.edit', ['id' => $property->id]) }}">
 				<small class="text-warning">
 					<i class="icofont-edit"></i>
 				</small>
