@@ -23,7 +23,6 @@
                         </a>
                     </li>
                     <li class="mr-3 position-relative">
-                        {{-- <small class="position-absolute bg-theme-color rounded text-center text-white px-1" style="top: -5px; right: -7.5px; font-size: 8px;">New</small> --}}
                         <a href="{{ route('properties') }}" class="{{ $uri === 'properties' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none">
                             <small>Properties</small>
                         </a>

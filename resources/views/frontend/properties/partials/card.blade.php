@@ -1,7 +1,16 @@
-<?php $propertytitle = ucfirst(\Str::limit(retitle($property), 44)); $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
+<?php $propertytitle = ucfirst(retitle($property)); $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
 <div class="card border-0 bg-white w-100 card-raduis position-relative">
         <div class="position-absolute ml-4 mt-4" style="z-index: 2;">
             <div class="d-flex align-items-center">
+                @if(!$property->promoted)
+                    <small class="bg-success px-3 py-1 mr-3">
+                        <small class="text-white">Promoted</small>
+                    </small>
+                @else
+                    <small class="bg-info px-3 py-1 mr-3">
+                        <small class="text-white">Active</small>
+                    </small>
+                @endif
                 @if(isset($actions[$property->action]))
                     <small class="bg-theme-color px-3 py-1 mr-3">
                         <small class="text-white">
@@ -9,21 +18,16 @@
                         </small>
                     </small>
                 @endif
-                <small class="bg-info px-3 py-1 mr-3">
-                    <small class="text-white">
-                        {{ ucwords($categoryname) }}
-                    </small>
-                </small>
                 <small class="bg-white text-theme-color cursor-pointer px-3 py-1 rounded">
                     <i class="icofont-share"></i>
                 </small>
             </div>
         </div>
     <div class="position-relative" style="height: 160px; line-height: 160px;">
-        <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-decoration-none rounded-top">
+        <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-decoration-none">
             <img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border w-100 h-100 object-cover" style="border-radius: 20px 20px 0 0;">
         </a>
-        <div class="position-absolute w-100 px-3 d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.2);">
+        <div class="position-absolute w-100 px-3 d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(160, 15, 15, 0.2);">
             <small class="">
                 <span class="text-theme-color">
                     <i class="icofont-location-pin"></i>
@@ -37,7 +41,7 @@
     <div class="card-body">
         <div class="font-weight-bolder mb-3">
             <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-main-dark text-underline">
-                {{ $propertytitle }}
+                {{ \Str::limit($propertytitle, 44) }}
             </a>
         </div>
         <h4 class="text-theme-color">
@@ -46,7 +50,7 @@
         <div class="geodir-card-text">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-underline text-muted">
                 <small class="">
-                    {{ \Str::limit($property->additional, 85) }}
+                    {{ \Str::limit($property->additional, 65) }}
                 </small>
             </a>
         </div>

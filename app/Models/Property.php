@@ -51,7 +51,50 @@ class Property extends Model
         'furnished', 
         'unfurnished', 
         'newly built',
+        'Renovated',
         'old', 
+    ];
+
+    /**
+     * Property category description
+     *
+     * @var string[]
+     */
+    public static $categories = [
+        'land' => [
+            'name' => 'Landed Property', 
+            'types' => [
+                'Empty',
+                'Fenced',
+            ],
+        ],
+
+        'commercial' => [
+            'name' => 'Commercial Property', 
+            'types' => [
+                'Shops',
+                'Warehouse',
+            ],
+        ],
+
+        'industrial' => [
+            'name' => 'Industrial Property', 
+            'types' => [
+                'Filling Station',
+            ],
+        ],
+
+        'residential' => [
+            'name' => 'Residential Building', 
+            'types' => [
+                'Duplex',
+                'Flat',
+                'Room(s)',
+                'Semi-Detached Duplex',
+                'Bungalow',
+                'Self-Contain',
+            ],
+        ],
     ];
 
     /**

@@ -1,8 +1,8 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-    <div class="position-relative bg-main-ash border-bottom">
-    	<section class="properties-banner">
-			<div class="container">
+    <div class="bg-main-ash min-vh-100">
+    	<section class="property-banner">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-md-8 col-lg-8">
 						<div class="mb-4">
@@ -17,7 +17,9 @@
 										<small class="position-absolute {{ $property->status == 'for rent' ? 'bg-info' : ($property->status == 'for sale' ? 'bg-main-green' : 'bg-main-red') }} rounded-0 px-4 py-2 text-white" style="top: 20px; left: 0;">
 								            {{ ucwords($property->status) }}
 								        </small>
-										<img src="{{ $property->image ?? '/images/banners/holder.png' }}" class="img-fluid w-100 h-100 border">
+								        <div style="height: 340px;">
+											<img src="{{ $property->image ?? '/images/banners/holder.png' }}" class="img-fluid w-100 h-100 border object-cover">
+								        </div>
 									</div>
 									<div class="row">
 							            <div class="col-12 col-md-6 mb-4">
@@ -40,7 +42,7 @@
 										<p class="text-main-dark">Description</p>
 										<div class="p-3 border rounded">
 											<div class="text-main-dark">
-												{{ $property->additionals }}
+												{{ $property->additional }}
 											</div>
 										</div>
 									</div>

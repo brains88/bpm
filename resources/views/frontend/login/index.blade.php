@@ -17,7 +17,7 @@
 						            <label class="text-main-dark">Email or phone</label>
 						            <div class="input-group">
 						            	<div class="input-group-prepend">
-										    <span class="input-group-text bg-theme-color text-white">
+										    <span class="input-group-text bg-theme-color border-theme-color text-white">
 										    	<i class="icofont-ui-message"></i>
 										    </span>
 										  </div>
@@ -29,7 +29,7 @@
 						            <label class="text-main-dark">Password</label>
 						            <div class="input-group">
 						            	<div class="input-group-prepend">
-										    <span class="input-group-text bg-theme-color text-white">
+										    <span class="input-group-text bg-theme-color border-theme-color text-white">
 										    	<i class="icofont-ui-unlock"></i>
 										    </span>
 										</div>

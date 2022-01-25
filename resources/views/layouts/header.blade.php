@@ -51,11 +51,11 @@
         <!-- SITE TITLE -->
         <title>{{ $title ?? config('app.name') }}</title>
         {{-- Google fonts --}}
-        @if(env('APP_ENV') === 'production')
+        {{-- @if(env('APP_ENV') === 'production') --}}
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
-        @endif
+            <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+        {{-- @endif --}}
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
 

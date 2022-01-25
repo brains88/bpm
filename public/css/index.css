@@ -26,6 +26,16 @@ body {
     padding-top: 100px;
 }
 
+.home-top-countries {
+    padding: 100px 0;
+    background-image: url('/images/banners/seas.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
 .user-panel-icon {
     width: 45px;
     height: 45px;
@@ -449,6 +459,13 @@ a:hover, button:hover {
     width: 100%;
     z-index: -2;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+/**
+ * Single Property banner
+ */
+.property-banner {
+    padding: 160px 0 140px;
 }
 
 .custom-switch .custom-control-input:checked~.custom-control-label::before {
