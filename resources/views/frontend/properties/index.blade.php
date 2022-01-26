@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-12 col-md-9 col-lg-6">
                         <div class="mb-4">
-                            <h2 class="text-white">Listed Properties</h2>
+                            <h1 class="text-white">Listed Properties</h1>
                         </div>
                     </div>
                 </div>
@@ -34,4 +34,5 @@
             </div>
         </div>
     </div>
+    @include('frontend.layouts.bottom')
 @include('layouts.footer')

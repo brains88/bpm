@@ -36,6 +36,20 @@ body {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.home-top-countries:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100%;
+    width: 50%;
+    z-index: -2;
+    /*background-color: rgba(160, 15, 15, 0.2);*/
+    background-color: var(--theme-color);
+}
+
 .user-panel-icon {
     width: 45px;
     height: 45px;
@@ -275,7 +289,7 @@ ul {
 
 .about-banner {
     padding: 180px 0 80px;
-    background-image: url('/images/banners/live.jpg');
+    background-image: url('/images/banners/home.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -302,7 +316,7 @@ ul {
 
 .mission-vision {
     padding: 140px 0;
-    background-image: url('/images/banners/live.jpg');
+    background-image: url('/images/banners/home.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -320,7 +334,7 @@ ul {
     height: 100%;
     width: 70%;
     z-index: -2;
-    background-color: var(--main-dark);
+    background-color: var(--theme-color);
 }
 
 .agent-realtor {

@@ -3,7 +3,7 @@
 		<div class="w-100 text-main-dark">
 			{{ ucwords($category->name) }}
 		</div>
-		<small class="text-main-green">
+		<small class="text-theme-color">
 			<i class="fa-solid fa-angle-right"></i>
 		</small>
 	</a>

@@ -69,22 +69,34 @@
                 </div>
             </div>
         </div>
-        <div class="home-top-countries">
+        <div class="home-top-countries position-relative">
             <div class="container-fluid">
                 <div class="row align-items-baseline">
-                    <div class="col-12 col-md-6">
-                        <h4 class="text-main-dark mb-4">Explore Top Countries</h4>
-                        <div class="mb-4">Take a tour with us as we show your new, big and best cities of the world. Just incase you want to invest on a property, you can take a peak over this section to see very beautiful cities you can own a home.</div>
-                        <a href="{{ route('signup') }}" class="btn text-white px-4 bg-theme-color icon-raduis btn-lg">Explore Countries</a>
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="">
+                            <h4 class="text-white mb-4">Explore Top Countries</h4>
+                            <div class="mb-4 text-white">Take a tour with us as we show your new, big and best cities of the world. Just incase you want to invest on a property, you can take a peak over this section to see very beautiful cities you can own a home.</div>
+                            <a href="{{ route('signup') }}" class="btn text-white px-4 bg-main-dark icon-raduis btn-lg">Explore Countries</a>
+                        </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="">
+                            <div class="col-12 col-md-6 mb-4">
+                                <div class="text-white">
                                     <div class="bg-theme-color rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
                                         <small class="text-white">{{ '567' }}</small>
                                     </div>
                                     <h5 class="">Rome</h5>
+                                    <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 mb-4">
+                                <div class="text-white">
+                                    <div class="bg-theme-color rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
+                                        <small class="text-white">{{ '411' }}</small>
+                                    </div>
+                                    <h5 class="">Paris</h5>
                                     <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</div>
                                 </div>
@@ -95,4 +107,5 @@
             </div>
         </div>
     </div>
+    @include('frontend.layouts.bottom')
 @include('layouts.footer')

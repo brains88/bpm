@@ -1,17 +1,17 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-    <div class="position-relative border-bottom">
+    <div class="bg-main-ash min-vh-100">
     	<section class="news-banner">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row mb-4">
 					<div class="col-12 mb-4">
-						<h1 class="text-white">All <span class="text-main-green">News</span></h1>
+						<h1 class="text-white">Real Estate News</h1>
 					</div>
 				</div>
 			</div>
 		</section>
 		<section class="position-relative" style="padding: 100px 0 60px;">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-md-7 col-lg-9">
 						@if($newsapi['status'] === 1)

@@ -2,7 +2,7 @@
 <div class="card border-0 bg-white w-100 card-raduis position-relative">
         <div class="position-absolute ml-4 mt-4" style="z-index: 2;">
             <div class="d-flex align-items-center">
-                @if(!$property->promoted)
+                @if($property->promoted)
                     <small class="bg-success px-3 py-1 mr-3">
                         <small class="text-white">Promoted</small>
                     </small>
@@ -11,10 +11,11 @@
                         <small class="text-white">Active</small>
                     </small>
                 @endif
-                @if(isset($actions[$property->action]))
+                <?php $actions = \App\Models\Property::$actions; $action = strtolower($property->action); ?>
+                @if(isset($actions[$action]))
                     <small class="bg-theme-color px-3 py-1 mr-3">
                         <small class="text-white">
-                            {{ ucwords($actions[$property->action]) }}
+                            {{ ucwords($actions[$action]) }}
                         </small>
                     </small>
                 @endif

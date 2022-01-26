@@ -21,7 +21,9 @@ class PropertiesController extends Controller
         $property = Property::findOrFail($id);
         $categoryid = $property->category_id ?? 0;
         $propertiesByCategory = Property::where(['category_id' => $categoryid])->paginate(15);
-        return view('frontend.properties.property')->with(['propertyCategories' => Category::where(['type' => 'property'])->get(), 'propertiesByCategory' => $propertiesByCategory, 'property' => $property, 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'relatedProperties' => Property::where(['category_id' => $categoryid, 'country_id' => $property->country_id ?? $id, 'status' => $property->status ?? 'for sale'])->paginate(6)]); 
+        return view('frontend.properties.property')->with([
+            'categories' => Category::where(['type' => 'property'])->get(), 'propertiesByCategory' => $propertiesByCategory, 'property' => $property, 'relatedProperties' => Property::where(['category_id' => $categoryid, 'country_id' => $property->country_id ?? $id, 'status' => $property->status ?? 'for sale'])->paginate(6)
+        ]); 
     }
 
     /**
@@ -30,17 +32,17 @@ class PropertiesController extends Controller
     public function category($category = 'lands')
     {
         $categoryid = Category::where(['name' => $category])->first()->id ?? 0;
-        $categoryProperties = Property::where(['category_id' => $categoryid])->paginate(16);
-        return view('frontend.properties.category')->with(['categoryProperties' => $categoryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'name' => $category]);
+        $categoryProperties = Property::where(['category_id' => $categoryid])->where('action', '!=', 'sold')->paginate(16);
+        return view('frontend.properties.category')->with(['categoryProperties' => $categoryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['action' => 'sold'])->paginate(3), 'name' => $category]);
     }
 
     /**
      * Find Properties by country
      */
-    public function country($country = 'usa')
+    public function country($iso2 = 'us')
     {
-        $countryid = Country::where(['name' => ucfirst($country)])->first()->id ?? 0;
-        $countryProperties = Property::where(['country_id' => $countryid])->paginate(16);
+        $country = Country::where('iso2', 'like', $iso2)->first();
+        $countryProperties = Property::where(['country_id' => $country->id])->where('action', '!=', 'sold')->paginate(16);
         return view('frontend.properties.country')->with(['countryProperties' => $countryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'country' => $country]);
     }
 
