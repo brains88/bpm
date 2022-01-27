@@ -158,7 +158,7 @@ class Property extends Model
      */
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class)->take(4);
     }
 
     /**
