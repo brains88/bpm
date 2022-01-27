@@ -62,17 +62,24 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [PropertiesController::class, 'index'])->name('properties');
-        Route::get('/{category}', [PropertiesController::class, 'category'])->name('properties.category');
-        Route::get('/{action}', [PropertiesController::class, 'action'])->name('properties.action');
         Route::get('/country/{iso2}', [PropertiesController::class, 'country'])->name('properties.country');
+        Route::get('/category/{category}', [PropertiesController::class, 'category'])->name('properties.category');
 
-        Route::get('/{category?}/{id}/{slug}', [PropertiesController::class, 'property'])->name('property.category.id.slug');
+        Route::get('/{category}/{id}/{slug}', [PropertiesController::class, 'property'])->name('property.category.id.slug');
         Route::get('/{country}/{id}/{slug}', [PropertiesController::class, 'country'])->name('property.country.id.slug');
+
+        Route::get('/search', [\App\Http\Controllers\PropertiesController::class, 'search'])->name('properties.search');
+        Route::get('/action/{action}', [\App\Http\Controllers\PropertiesController::class, 'action'])->name('properties.action');
     });
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('news');
         Route::get('/{id}/{slug}', [NewsController::class, 'read'])->name('news.read');
+    });
+
+    Route::prefix('blog')->group(function () {
+        Route::get('/', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+        Route::get('/{id}/{slug}', [\App\Http\Controllers\BlogController::class, 'read'])->name('blog.read');
     });
 
     Route::get('/services', [ServicesController::class, 'index'])->name('services');

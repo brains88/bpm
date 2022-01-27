@@ -3,7 +3,7 @@
     <div class="position-relative">
     	<section class="contact-banner">
 			<div class="container">
-				<h1 class="text-main-green font-weight-bolder mb-4">Send a <span class="text-white">Message</span></h1>
+				<h1 class="text-theme-color mb-4">Send a <span class="text-white">Message</span></h1>
 				<div class="row">
 					<div class="col-12 col-lg-8 mb-4">
 						<form class="contact-form p-4 rounded border" action="javascript:;" method="post">
@@ -40,21 +40,21 @@
 						    	<textarea class="form-control message" name="message" rows="4" placeholder="Enter message here"></textarea>
 						    	<small class="error message-error text-danger"></small>
 						    </div>
-						    <button type="submit" class="btn btn-lg bg-main-green btn-block text-white contact-form-button mb-4">
+						    <button type="submit" class="btn btn-lg bg-theme-color icon-raduis btn-block text-white contact-form-button mb-4">
 						        <img src="/images/spinner.svg" class="mr-2 d-none contact-form-spinner mb-1">
 						        Send
 						    </button>
 						    <div class="alert px-3 contact-form-message d-none mb-3"></div>
 						</form>
 					</div>
-					<div class="col-12 col-md-4">
+					<div class="col-12 col-lg-4">
 						<h3 class="text-white">Office Addresses</h3>
 						<div class="mb-4">
-							<p class="text-main-green">Head Office</p>
+							<p class="text-theme-color">Head Office</p>
 							<div class="text-white">26 Moorehouse Street, Ogui Enugu, Enugu state.</div>
 						</div>
 						<div class="mb-4">
-							<p class="text-main-green">Branch Office</p>
+							<p class="text-theme-color">Branch Office</p>
 							<div class="text-white">Afri Hotel, Plot 281 Herbert Macaulay Way, Opposite National Defense College, Central Business District, Abuja.</div>
 						</div>
 					</div>

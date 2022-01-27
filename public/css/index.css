@@ -307,11 +307,7 @@ ul {
     height: 100%;
     width: 100%;
     z-index: -2;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.core-values {
-    padding: 140px 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .mission-vision {
@@ -336,6 +332,10 @@ ul {
     z-index: -2;
     background-color: var(--theme-color);
 }
+
+/**
+ * Property Search
+ */
 
 .agent-realtor {
     padding: 140px 0;
@@ -452,7 +452,7 @@ a:hover, button:hover {
 }
 
 .properties-banner {
-    padding: 160px 0 40px;
+    padding: 160px 0 180px;
     background-image: url('/images/banners/complex.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -503,6 +503,30 @@ a:hover, button:hover {
 
 .custom-switch .custom-control-label::after {
     background-color: #6c757d;
+}
+
+.blog-banner {
+    padding: 160px 0 60px;
+    background-image: url('/images/banners/home.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.blog-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: -2;
+    /*background-color: rgba(160, 15, 15, 0.2);*/
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .navbar-menu {

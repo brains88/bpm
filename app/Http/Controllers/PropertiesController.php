@@ -41,12 +41,31 @@ class PropertiesController extends Controller
      */
     public function country($iso2 = 'us')
     {
-        $country = Country::where('iso2', 'like', $iso2)->first();
+        $country = Country::where('iso2', 'LIKE', $iso2)->first();
         $countryProperties = Property::where(['country_id' => $country->id])->where('action', '!=', 'sold')->paginate(16);
         return view('frontend.properties.country')->with(['countryProperties' => $countryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'country' => $country]);
     }
 
-    public function action()
-    {}
+    public function search()
+    {
+        $term = request()->get('query');
+        $properties = Property::where([
+            ['action', '!=', 'sold'], 
+            ['address', 'LIKE', '%'.$term.'%'], 
+            [function($query) use($term) {
+                $query->orWhere('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->get();
+            }],
+        ])->orderBy('id', 'desc')->paginate(25);
+        return view('frontend.properties.search')->with(['properties' => $properties]);
+    }
+
+    /**
+     * Find Properties by action like for sale, for lease etc
+     */
+    public function action($action = 'lease')
+    {
+        $properties =  Property::where(['action' => $action])->where('action', '!=', 'sold')->paginate(16);
+        return view('frontend.properties.action')->with(['properties' => $properties]);
+    }
 
 }

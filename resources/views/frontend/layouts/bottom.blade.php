@@ -23,7 +23,7 @@
 
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Terms Of Use</a>
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Privacy Policy</a>
-					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Blog</a>
+					<a href="{{ route('blog') }}" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Blog</a>
 				</div>
 				<div class="col-12 col-md-4 col-lg-3 mb-4">
 					<h4 class="text-theme-color mb-4">Our Services</h4>
@@ -31,13 +31,13 @@
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Construction</a>
 					<a href="{{ route('home') }}" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Consultancy</a>
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Bulding Materials</a>
-					<a href="{{ route('home') }}" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Surveying</a>
+					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Surveying</a>
 				</div>
 				<div class="col-12 col-md-4 col-lg-3">
 					<h4 class="text-theme-color mb-4">Our Community</h4>
-					<a href="{{ route('agents') }}" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Agents</a>
+					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Agents</a>
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Partners</a>
-					<a href="{{ route('artisans') }}" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Artisans</a>
+					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Artisans</a>
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Customers</a>
 					<a href="javascript:;" class="text-white p-3 text-decoration-none mb-3 border-dark-500 rounded bg-main-dark d-block">Realtors</a>
 				</div>
@@ -87,7 +87,7 @@
 	</section>
 	<section class="py-4 bg-main-dark border-top-dark-500">
 		<div class="container">
-			<div class="text-white m-0">&copy Copyright Geohomes Services Limited {{ date('Y') }}</div>
+			<small class="text-white m-0">&copy Copyright Geohomes Services Limited {{ date('Y') }}</small>
 		</div>
 	</section>
 </footer>

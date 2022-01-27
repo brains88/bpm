@@ -51,6 +51,11 @@
                             </a>
                         </div>
                     </li>
+                    <li class="mr-3">
+                        <a href="{{ route('blog') }}" class="text-decoration-none">
+                            <small class="text-main-dark">Blog</small>
+                        </a>
+                    </li>
                     <li class="dropdown mr-3">
                         <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <small class="">
@@ -67,13 +72,13 @@
                         </div>
                     </li>
                     <li class="mr-3">
-                        <a href="{{ route('news') }}" class="{{ $uri === 'news' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none">
-                            <small>News</small>
+                        <a href="{{ route('news') }}" class="text-decoration-none">
+                            <small class="text-main-dark">News</small>
                         </a>
                     </li>
                     <li class="mr-3">
-                        <a href="{{ route('contact') }}" class="{{ $uri === 'contact' ? 'text-theme-color' : 'text-main-dark' }} text-decoration-none">
-                            <small>Contact</small>
+                        <a href="{{ route('contact') }}" class="text-decoration-none">
+                            <small class="text-main-dark">Contact</small>
                         </a>
                     </li>
                 </ul>
@@ -137,33 +142,39 @@
 </div>
 <div class="navbar-menu shadow no-gutters bg-white position-fixed vh-100">
     <div class="menu-content vh-100 px-3 mt-4 pb-5">
-        <a href="{{ url('/') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+        <a href="{{ url('/') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
             <small class="m-0">Home</small>
         </a>
-        <a href="{{ url('/about') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+        <a href="{{ url('/about') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
             <small class="m-0">About</small>
         </a>
-        <a href="{{ url('/contact') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+        <a href="{{ route('blog') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+            <small class="m-0">Blog</small>
+        </a>
+        <a href="{{ route('news') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+            <small class="m-0">News</small>
+        </a>
+        <a href="{{ url('/contact') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
             <small class="m-0">Contact</small>
         </a>
-        <a href="{{ url('/pricing') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
-            <small class="m-0">Pricing</small>
+        <a href="{{ route('properties') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
+            <small class="m-0">Properties</small>
         </a>
         @if(auth()->check())
             @if(auth()->user()->role === 'admin')
-                <a href="{{ route('admin') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+                <a href="{{ route('admin') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
                     <small class="m-0">Dashboard</small>
                 </a>
-                @else
-                <a href="{{ route('user') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+            @else
+                <a href="{{ route('user') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
                     <small class="m-0">My Account</small>
                 </a>
             @endif
         @else
-            <a href="{{ url('/login') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+            <a href="{{ url('/login') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
                 <small class="m-0">Login</small>
             </a>
-            <a href="{{ url('/signup') }}" class="d-block px-3 bg-alabaster text-violet py-3 mb-3">
+            <a href="{{ url('/signup') }}" class="d-block px-3 bg-main-ash text-main-dark py-3 mb-3">
                 <small class="m-0">Signup</small>
             </a>
         @endif

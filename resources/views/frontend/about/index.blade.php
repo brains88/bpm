@@ -10,7 +10,7 @@
                 </div>
             </div>
         </section>
-        <section class="core-values position-relative">
+        <section class="core-values position-relative" style="padding: 120px 0;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 mb-4">

@@ -83,7 +83,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 mb-4">
                                 <div class="text-white">
-                                    <div class="bg-theme-color rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
+                                    <div class="bg-main-dark rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
                                         <small class="text-white">{{ '567' }}</small>
                                     </div>
                                     <h5 class="">Rome</h5>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-12 col-md-6 mb-4">
                                 <div class="text-white">
-                                    <div class="bg-theme-color rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
+                                    <div class="bg-main-dark rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
                                         <small class="text-white">{{ '411' }}</small>
                                     </div>
                                     <h5 class="">Paris</h5>

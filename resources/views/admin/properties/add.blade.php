@@ -129,9 +129,9 @@
                             </div>
                             <div class="alert mb-3 add-property-message d-none"></div>
                             <div class="d-flex justify-content-right mb-3 mt-1">
-                                <button type="submit" class="btn bg-main-dark btn-block btn-lg text-white add-property-button font-weight-bold">
+                                <button type="submit" class="btn btn-info btn-block btn-lg text-white add-property-button font-weight-bold">
                                     <img src="/images/spinner.svg" class="mr-2 d-none add-property-spinner mb-1">
-                                    Add Property
+                                    Add
                                 </button>
                             </div>
                         </form>

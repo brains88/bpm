@@ -4,18 +4,36 @@
         <div class="properties-banner position-relative">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-9 col-lg-6">
+                    <div class="col-12">
                         <div class="mb-4">
                             <h1 class="text-white">Listed Properties</h1>
+                        </div>
+                        <div class="property-search p-3 icon-raduis border" style="background-color: rgba(255, 255, 255, 0.2);">
+                            <div>
+                                <form method="get" action="{{ route('properties.search') }}">
+                                    <div class="form-row m-0 no-gutters">
+                                        <div class="form-group input-group-lg col-12 col-md-11 m-md-0 mb-sm-4">
+                                            <input type="text" class="form-control query icon-raduis" placeholder="Search property" required value="{{ request()->get('query') }}" name="query">
+                                        </div>
+                                        <div class="col-12 col-md-1">
+                                            <button class="btn btn-lg icon-raduis btn-block btn-info" type="submit">
+                                                <small>
+                                                    <i class="icofont-search"></i>
+                                                </small>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="home-properties">
+        <div class="position-relative" style="top: -150px;">
             <div class="container-fluid">
                 <div class="">
-                    <h4 class="text-main-dark mb-4">Global Properties</h4>
+                    <div class="alert alert-info mb-4">Global Properties</div>
                     <div class="">
                         @if(empty($properties->count()))
                             <div class="alert-info alert">No Properties Yet</div>
@@ -26,11 +44,11 @@
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                            </div> 
+                            </div>
+                            {{ $properties->appends(request()->query())->links('vendor.pagination.default') }}
                         @endif
                     </div>
                 </div>
-                <div class="row"></div>
             </div>
         </div>
     </div>
