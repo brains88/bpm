@@ -25,7 +25,7 @@
 								                        <small class="text-white">Active</small>
 								                    </small>
 								                @endif
-								                <?php $action = strtolower($property->action); ?>
+								                <?php $action = strtolower($property->action); $actions = \App\Models\Property::$actions; ?>
 								                @if(isset($actions[$action]))
 								                    <small class="bg-theme-color px-3 py-1 mr-3">
 								                        <small class="text-white">
@@ -38,9 +38,9 @@
 								                </small>
 								            </div>
 								        </div>
-								        <div style="height: 340px;" class="mb-4">
-											<img src="{{ $property->image ?? '/images/banners/holder.png' }}" class="img-fluid w-100 h-100 border object-cover">
-								        </div>
+								        <a href="{{ $property->image ?: '/images/banners/placeholder.png' }}" style="height: 340px;" class="mb-4 d-block">
+											<img src="{{ $property->image ?: '/images/banners/placeholder.png' }}" class="img-fluid w-100 h-100 border object-cover">
+								        </a>
 									</div>
 									@if(!$property->images->count())
 							        	<div class="alert alert-danger mb-4">Other property images not available</div>
@@ -61,7 +61,7 @@
 							            <div class="col-12 col-md-6 mb-4">
 							                <a href="javascript:;" class="btn btn-block bg-theme-color">
 							                    <small class="text-white">
-							                        NGN{{ number_format($property->price.'00000') }}
+							                        NGN{{ number_format($property->price) }}
 							                    </small>
 							                </a>
 							            </div>

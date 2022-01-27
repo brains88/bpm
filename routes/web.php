@@ -92,6 +92,18 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/reset/{token}', [PasswordController::class, 'verify'])->name('reset.verify');
         Route::post('/reset', [PasswordController::class, 'reset'])->name('password.reset');
     });
+
+    Route::prefix('materials')->group(function () {
+        Route::get('/', [\App\Http\Controllers\MaterialsController::class, 'index'])->name('materials');
+        Route::get('/country/{iso2}', [\App\Http\Controllers\MaterialsController::class, 'country'])->name('materials.country');
+        Route::get('/category/{category}', [\App\Http\Controllers\MaterialsController::class, 'category'])->name('materials.category');
+
+        Route::get('/{id}/{slug}', [\App\Http\Controllers\MaterialsController::class, 'material'])->name('material.id.slug');
+        Route::get('/{country}/{id}/{slug}', [\App\Http\Controllers\MaterialsController::class, 'country'])->name('propematerialrty.country.id.slug');
+
+        Route::get('/search', [\App\Http\Controllers\PropertiesController::class, 'search'])->name('materials.search');
+        Route::get('/action/{action}', [\App\Http\Controllers\PropertiesController::class, 'action'])->name('materials.action');
+    });
 });
 
 Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {

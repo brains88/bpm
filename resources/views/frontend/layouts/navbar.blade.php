@@ -66,7 +66,7 @@
                             </small>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right icon-raduis border-0 shadow" aria-labelledby="nav-products">
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('materials') }}">
                                 <small class="text-dark">Building Materials</small>
                             </a>
                         </div>

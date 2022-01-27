@@ -10,12 +10,28 @@
                 </div>
             </div>
         </section>
+        <section class="mission-vision position-relative">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-7 mb-4">
+                        <h1 class="text-white">Our Vision</h1>
+                        <div class="text-white">Our vision is to become the number one online market place for property transactions and be recognized among the top real estate service providers in the global market.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-7 mb-4">
+                        <h1 class="text-white">Our Mission</h1>
+                        <div class="text-white">Our mission is to serve the real estate needs of our clients in a trustworthy environment where they will be served with the highest amount of professionalism, ease of business, innovation, and quality that will ensure maximum client satisfaction.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="core-values position-relative" style="padding: 120px 0;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 mb-4">
-                        <h1 class="text-main-dark">Our <span class="text-main-green">Core</span> Values</h1>
-                        <div class="text-main-dark">Over the past 25 years that we have been in existence, we have identified and outlined some core values which guide everything we do as a company. These core values define our brand, culture, and business strategies, and they are:</div>
+                        <h1 class="text-main-dark">Our <span class="text-theme-color">Core</span> Values</h1>
+                        {{-- <div class="text-main-dark">Over the past 25 years that we have been in existence, we have identified and outlined some core values which guide everything we do as a company. These core values define our brand, culture, and business strategies, and they are:</div> --}}
                     </div>
                 </div>
                 <div class="row">
@@ -53,22 +69,6 @@
                         </div>
                         <h3 class="text-main-dark">Loyalty</h3>
                         <div class="text-dark-500">We are committed to our clients and loyal to them. We commit ourselves to provide long-term opportunities and ensuring long-term stability in our dealings.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="mission-vision position-relative">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-7 mb-4">
-                        <h1 class="font-weight-bolder text-white">Our <span class="text-main-green">Vision</span></h1>
-                        <div class="text-white">Our vision is to be the number one modern real estate provider in Nigeria and the final stop for all real estate needs of our clients from purchase to development.</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-7 mb-4">
-                        <h1 class="font-weight-bolder text-white">Our <span class="text-main-green">Mission</span></h1>
-                        <div class="text-white">Our mission is to serve the real estate needs of our clients in a trustworthy environment where they will be served with the highest amount of professionalism, ease of business, innovation, and quality that will ensure maximum client satisfaction.</div>
                     </div>
                 </div>
             </div>

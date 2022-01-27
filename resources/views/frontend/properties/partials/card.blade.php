@@ -1,4 +1,4 @@
-<?php $propertytitle = ucfirst(retitle($property)); $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
+<?php $title = ucfirst(retitle($property)); $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
 <div class="card border-0 bg-white w-100 card-raduis position-relative">
         <div class="position-absolute ml-4 mt-4" style="z-index: 2;">
             <div class="d-flex align-items-center flex-wrap">
@@ -21,7 +21,7 @@
             </div>
         </div>
     <div class="position-relative" style="height: 160px; line-height: 160px;">
-        <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-decoration-none">
+        <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-decoration-none">
             <img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid w-100 h-100 object-cover" style="border-radius: 20px 20px 0 0;">
         </a>
         <div class="position-absolute w-100 px-3 d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.6);">
@@ -37,15 +37,15 @@
     </div>
     <div class="card-body">
         <div class="font-weight-bolder mb-3">
-            <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-main-dark text-underline">
-                {{ \Str::limit($propertytitle, 44) }}
+            <a href="{{ route('property.category.id.slug', ['category' => $categoryname, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-main-dark text-underline">
+                {{ \Str::limit($title, 44) }}
             </a>
         </div>
         <h4 class="text-theme-color">
             {{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price * 1000) }}
         </h4>
         <div class="geodir-card-text">
-            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($propertytitle)]) }}" class="text-underline text-muted">
+            <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-underline text-muted">
                 <small class="">
                     {{ \Str::limit($property->additional, 65) }}
                 </small>
