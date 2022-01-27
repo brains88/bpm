@@ -48,10 +48,10 @@
 								        <div class="">
 								        	<div class="row">
 								        		@foreach($property->images as $image)
-								        			<div class="col-6 col-md-3">
-								        				<div style="height: 160px;">
-								        					<img src="{{ $image->link }}" class="img-fluid w-100 h-100">
-								        				</div>
+								        			<div class="col-6 col-md-3 mb-4">
+								        				<a href="{{ $image->link }}" style="height: 160px;">
+								        					<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border">
+								        				</a>
 								        			</div>
 								        		@endforeach
 								        	</div>
