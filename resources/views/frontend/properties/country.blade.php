@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-12 col-md-7 col-lg-9">
 						@empty($countryProperties->count())
-							<div class="alert alert-info">No Properties Listed</div>
+							<div class="alert alert-info">No Properties Found</div>
 						@else
 							<div class="p-3 mb-4 bg-white shadow-sm icon-raduis">
 								<h5 class="m-0">
