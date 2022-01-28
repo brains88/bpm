@@ -12,7 +12,9 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        return view('frontend.materials.index')->with(['materials' => Material::paginate(15)]);
+        $term = request()->get('query');
+        $materials = $term ? Material::where('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('name', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->orderBy('id', 'desc')->paginate(15) : Material::paginate(15);
+        return view('frontend.materials.index')->with(['materials' => $materials]);
     }
 
     /**
@@ -21,5 +23,12 @@ class MaterialsController extends Controller
     public function material($id = 45, $slug = '')
     {
         return view('frontend.materials.material')->with(['material' => Material::findOrFail($id)]); 
+    }
+
+    public function search()
+    {
+        $term = request()->get('query');
+        $properties = Material::where('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('name', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->orderBy('id', 'desc')->paginate(25);
+        return view('frontend.materials.search')->with(['properties' => $properties]);
     }
 }

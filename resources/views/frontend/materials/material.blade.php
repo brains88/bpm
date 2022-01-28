@@ -61,13 +61,11 @@
 							        </div>
 									<div class="">
 										<div class="text-main-dark d-block mb-3 pb-3 border-bottom">
-											Location: {{ $material->address }}
+											{{ $material->address }}
 										</div>
 										<p class="text-main-dark font-weight-bold">Description</p>
-										<div class="p-3 border rounded">
-											<div class="text-main-dark">
-												{{ $material->additional }}
-											</div>
+										<div class="text-main-dark">
+											{{ $material->additional }}
 										</div>
 									</div>
 								</div>
@@ -85,7 +83,7 @@
 			                @else
 			                	<div class="row">
 			                        @foreach($materials as $material)
-				                        <div class="col-12 col-md-6">
+				                        <div class="col-12 col-md-6 col-lg-4 mb-4">
 				                        	@include('frontend.materials.partials.card')
 				                        </div>
 			                        @endforeach

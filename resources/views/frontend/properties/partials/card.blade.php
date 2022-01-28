@@ -42,7 +42,7 @@
             </a>
         </div>
         <h4 class="text-theme-color">
-            {{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price * 1000) }}
+            {{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price) }}
         </h4>
         <div class="geodir-card-text">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-underline text-muted">

@@ -51,12 +51,13 @@
 						<h3 class="text-white">Office Addresses</h3>
 						<div class="mb-4">
 							<p class="text-theme-color">Head Office</p>
-							<div class="text-white">26 Moorehouse Street, Ogui Enugu, Enugu state.</div>
+							<div class="text-white">Suit E01b, The statement Complex, Plot 1002, First Avenue, CBD, Abuja.</div>
 						</div>
 						<div class="mb-4">
 							<p class="text-theme-color">Branch Office</p>
-							<div class="text-white">Afri Hotel, Plot 281 Herbert Macaulay Way, Opposite National Defense College, Central Business District, Abuja.</div>
+							<div class="text-white">Geohomes House, 26 Moorehouse Street, Ogui Enugu, Enugu State.</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>
