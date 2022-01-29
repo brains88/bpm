@@ -41,8 +41,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::group(['prefix' => 'signup', 'middleware' => 'guest'], function () {
         Route::get('/', [SignupController::class, 'index'])->name('signup');
-        Route::post('/individual', [SignupController::class, 'individual'])->name('signup.individual');
-        Route::post('/corporate', [SignupController::class, 'corporate'])->name('signup.corporate');
+        Route::post('/process', [SignupController::class, 'signup'])->name('signup.process');
         Route::get('/success', [SignupController::class, 'success'])->name('signup.success');
     });
 
@@ -50,7 +49,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/', [VerifyController::class, 'index'])->name('verify');
         Route::post('/activate', [VerifyController::class, 'activate'])->name('signup.activate');
         Route::post('/resend', [VerifyController::class, 'resend'])->name('verify.code.resend');
-        Route::post('/email', [VerifyController::class, 'email'])->name('verify.email');
+        Route::post('/email/{token?}', [VerifyController::class, 'email'])->name('verify.email');
         Route::post('/phone', [VerifyController::class, 'phone'])->name('verify.phone');
     });
 
@@ -83,8 +82,15 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 
     Route::get('/services', [ServicesController::class, 'index'])->name('services');
-    Route::get('/agents', [AgentsController::class, 'index'])->name('agents');
-    Route::get('/artisans', [ArtisansController::class, 'index'])->name('artisans');
+    Route::prefix('artisans')->group(function () {
+        Route::get('/', [ArtisansController::class, 'index'])->name('artisans');
+        Route::get('/profile/{id}/{name}', [ArtisansController::class, 'profile'])->name('artisan.profile');
+    });
+
+    Route::prefix('agents')->group(function () {
+        Route::get('/', [AgentsController::class, 'index'])->name('agents');
+        Route::get('/profile/{id}/{name}', [AgentsController::class, 'profile'])->name('agent.profile');
+    });
 
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {
         Route::get('/', [PasswordController::class, 'index'])->name('forgot.password');

@@ -1,12 +1,10 @@
 @component('mail::message', ['data' => $data])
 
-<h2>Dear {{ ucwords($data['name']) }} Thank you for your registration.</h2> 
-<p>Please use the code below to verify your Phone number.</p>
-<h1>Phone Verify Code {{ $data['phone_token'] }}</h1>
+<h2>Dear {{ $data['email'] }} Thank you for your registration.</h2> 
 
 <p>Please click on the button below to verify your Email address.</p>
 
-<?php $url = route('verify.email').'/'.$data['email_token']; ?>
+<?php $url = route('verify.email').'/'.$data['token']; ?>
 <div style="text-align: left;">
 	@component('mail::button', ['url' => $url])
 		Click Here

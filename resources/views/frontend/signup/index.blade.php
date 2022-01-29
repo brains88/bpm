@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<section class="">
-						<form action="javascript:;" method="post" class="signup-form mb-4" data-action="{{ route('signup') }}" autocomplete="off">
+						<form action="javascript:;" method="post" class="signup-form mb-4" data-action="{{ route('signup.process') }}" autocomplete="off">
 						    <div class="form-row">
 						     	<div class="form-group col-md-6 input-group-lg">
 						            <label class="text-muted">Email</label>
@@ -49,10 +49,10 @@
 						        <small class="error agree-error text-danger"></small>
 						    </div>
 						    <button type="submit" class="btn btn-lg icon-raduis bg-theme-color btn-block text-white signup-button mb-4">
-						        <img src="/images/spinner.svg" class="mr-2 d-none individual-signup-spinner mb-1">
+						        <img src="/images/spinner.svg" class="mr-2 d-none signup-spinner mb-1">
 						        Signup
 						    </button>
-						    <div class="alert px-3 individual-signup-message d-none mb-3"></div>
+						    <div class="alert px-3 signup-message d-none mb-3"></div>
 						    <p class="text-main-dark mb-0">
 								Already have an account? <a class="text-primary font-weight-bolder" href="{{ route('login') }}">Login</a>
 							</p>

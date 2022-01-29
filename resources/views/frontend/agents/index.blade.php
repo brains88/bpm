@@ -1,44 +1,22 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-    <div class="position-relative border-bottom">
-    	<section class="agents-banner bg-main-ash">
-			<div class="container">
+    <div class="bg-main-ash min-vh-100">
+    	<section class="agents-banner" style="padding: 140px 0;">
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col-12 col-md-8 col-lg-10">
-						<div class="d-flex align-items-center">
-							<div class="d-block bg-white mr-3" style="width: 40px; height: 1px;"></div>
-							<div class="text-main-green font-weight-bolder mr-3">Our Agents</div>
-							<div class="">
-								<small class="text-white font-weight-lighter">
-									<i class="icofont-ui-search"></i>
-								</small>
-							</div>
+					<div class="col-12 col-md-6 col-lg-8">
+						<div class="mb-4">
+							<h3 class="text-main-dark">Our Agents</h3>
+							<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua.</div>
 						</div>
-						<h1 class="text-main-dark mb-4">Our <span class="text-main-green">Agents</span> would help you find the property of your dream.</h1>
 					</div>
 				</div>
 				<div class="row">
+					<?php $agents = ['names' => ['Paul Mainly', 'Reni Black', 'Jim Collins', 'Belim Naha', 'Uche Desmond', 'Hosea Nie', 'Acham Kelly'], 'location' => ['Paris, France', 'Sydney, Australia', 'Austin, USA', null, 'Manchester, UK', '', 'Abuja, Nigeria']]; ?>
 					<?php for ($i = 1; $i < 7; $i++): ?>
-						<div class="col-12 mb-4">
-							<div class="card bg-transparent border-0 p-0">
-								<div class="row">
-									<div class="col-12 col-md-5 col-lg-4">
-										<div style="height: 380px;">
-											<img src="/images/artisans/{{ $i }}.jpg" class="img-fluid border object-cover h-100 card-img-top w-100">
-										</div>
-									</div>
-									<div class="col-12 col-md-7 col-lg-8">
-										<div class="card-body bg-transparent px-0">
-											<p class="text-main-dark">Histro Mansah</p>
-											<div class="text-muted mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</div>
-											<div class="d-flex align-items-center">
-												<a href="tel:08158212666" class="btn mr-3 btn-sm bg-main-green text-white px-3">08158212666</a>
-												<a href="tel:08158212666" class="btn btn-sm btn-outline-dark text-main-dark px-3">More Details</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						<div class="col-12 col-md-4 col-lg-3 mb-4">
+							@include('frontend.agents.partials.card')	
 						</div>
 					<?php endfor; ?>
 				</div>

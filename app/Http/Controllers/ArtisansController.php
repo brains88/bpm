@@ -12,4 +12,12 @@ class ArtisansController extends Controller
     {
         return view('frontend.artisans.index');
     }
+
+    /**
+     * Artisan profile page
+     */
+    public function profile()
+    {
+        return view('frontend.artisans.profile');
+    }
 }

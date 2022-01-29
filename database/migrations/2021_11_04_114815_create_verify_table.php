@@ -15,13 +15,13 @@ class CreateVerifyTable extends Migration
     {
         Schema::create('verify', function (Blueprint $table) {
             $table->id();
-            $table->string('phone_token_expiry')->nullable();
-            $table->string('email_token_expiry')->nullable();
-            $table->string('phone_token')->nullable();
-            $table->string('email_token')->nullable();
-            $table->string('email_status')->nullable();
+            $table->dateTime('otpexpiry');
+            $table->dateTime('tokenexpiry')->nullable();
+            $table->string('otp')->nullable();
+            $table->string('token')->nullable();
+            $table->boolean('emailstatus')->default(false);
             $table->foreignId('user_id');
-            $table->string('phone_status')->nullable();
+            $table->boolean('phonestatus')->default(false);
             $table->timestamps();
         });
     }

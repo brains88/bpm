@@ -13,4 +13,12 @@ class AgentsController extends Controller
     {
         return view('frontend.agents.index');
     }
+
+    /**
+     * Agent profile page
+     */
+    public function profile()
+    {
+        return view('frontend.agents.profile');
+    }
 }

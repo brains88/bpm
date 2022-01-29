@@ -27,11 +27,11 @@
                             </small>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right icon-raduis border-0 shadow" aria-labelledby="nav-services">
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('artisans') }}">
                                 <small class="text-dark">Artisans</small>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('agents') }}">
                                 <small class="text-dark">Agents</small>
                             </a>
                         </div>

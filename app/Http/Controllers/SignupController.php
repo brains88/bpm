@@ -25,31 +25,26 @@ class SignupController extends Controller
      */
     public function index()
     {
-        return view('frontend.signup.index')->with(['title' => 'Signup | Geohomes Services Limited']);
+        return view('frontend.signup.index')->with(['title' => 'Signup | Best Property Market']);
     }
 
-    /**Individual Signup method
-     * 
+    /**
      * @param $request
      * 
      * @return json
      */
-    public function individual()
+    public function signup()
     {
         $data = request()->all();
-        $custom = ['retype.required' => 'Please Retype your password', 
-        'agree.required' => 'You have to agree to our terms and conditions', 
-        'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password'];
-
-        $validator = Validator::make($data, [
-            'firstname' => ['required', 'string', 'min:3', 'max:55'], 
-            'lastname' => ['required', 'string', 'min:3', 'max:55'], 
+        $validator = Validator::make($data, [ 
             'email' => ['nullable', 'email', 'unique:users'], 
             'phone' => ['required', 'min:11', 'max:11'], 
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
-        ], $custom);
+        ], ['retype.required' => 'Please enter a password', 
+        'agree.required' => 'You have to agree to our terms and conditions', 
+        'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password']);
 
         if ($validator->fails()) {
             return response()->json([
@@ -58,49 +53,34 @@ class SignupController extends Controller
             ]);
         }
 
-        $email = $data['email'];
-        $name = ucwords($data['firstname'].' '.$data['lastname']);
-        $phone = $data['phone'];
-        DB::beginTransaction();
+        try {
+            $email = $data['email'] ?: null;
+            $phone = $data['phone'];
+            DB::beginTransaction();
 
-        // try {
             $user = User::create([
-                'name' => $name,
                 'email' => $email,
                 'phone' => $phone,
-                'status' => 'inactive',
-                'type' => 'individual',
                 'password' => Hash::make($data['password']),
                 'role' => 'user',
             ]);
 
-            $phone_token = random_int(100000, 999999);
-            $email_token = \Str::random(64);
+            $otp = random_int(100000, 999999);
             $verify = Verify::create([
-                'phone_token' => $phone_token,
-                'phone_token_expiry' => Carbon::now()->addMinutes(10)->timestamp,
+                'otp' => $otp,
+                'otpexpiry' => Carbon::now()->addMinutes(10)->timestamp,
                 'user_id' => $user->id,
             ]);
 
             if (!empty($email)) {
-                $verify->email_token = $email_token;
-                $verify->email_token_expiry = Carbon::now()->addMinutes(60)->timestamp;
+                $token = \Str::random(64);
+                $verify->token = $token;
+                $verify->tokenexpiry = Carbon::now()->addMinutes(60)->timestamp;
                 $verify->update();
-
-                $maildata = [
-                    'name' => $name, 
-                    'phone_token' => $phone_token, 
-                    'email_token' => $email_token,
-                ];
-
-                Mail::to($email)->send(new AccountVerification($maildata));
+                Mail::to($email)->send(new AccountVerification(['email' => $email, 'token' => $token]));
             }
 
-            $sms = self::kudisms([
-                'message' => $phone_token, 
-                'mobiles' => [$phone],
-            ]);
-                
+            Sms::otp(['message' => '']);
             DB::commit();
             return response()->json([
                 'status' => 1,
@@ -108,13 +88,13 @@ class SignupController extends Controller
                 'redirect' => route('verify'),
             ]);
 
-        // } catch (Exception $error) {
-        //     DB::rollBack();
-        //     return response()->json([
-        //         'status' => 0,
-        //         'info' => 'Unknown Error. Try Again.'
-        //     ]);
-        // }
+        } catch (Exception $error) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown Error. Try Again.'
+            ]);
+        }
     }
 
     /**

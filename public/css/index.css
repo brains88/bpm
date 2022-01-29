@@ -297,17 +297,11 @@ ul {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.about-banner:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-    background-color: rgba(0, 0, 0, 0.8);
+.agent-header {
+    background-image: url('/images/banners/trees.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .mission-vision {
@@ -331,33 +325,6 @@ ul {
     width: 70%;
     z-index: -2;
     background-color: var(--theme-color);
-}
-
-/**
- * Property Search
- */
-
-.agent-realtor {
-    padding: 140px 0;
-    background-image: url('/images/banners/mothern.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.agent-realtor:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 70%;
-    z-index: -2;
-    background-color: var(--main-dark);
 }
 
 
@@ -430,25 +397,6 @@ a:hover, button:hover {
 
 .partners-image {
     height: 80px;
-}
-
-.artisan-banner, .agents-banner {
-    padding: 180px 0 60px;
-}
-
-.artisan-banner:before {
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 40%;
-    width: 100%;
-    z-index: -2;
-    background-color: rgba(0, 0, 0, 1.0);
 }
 
 .properties-banner {

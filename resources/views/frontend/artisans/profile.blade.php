@@ -1,4 +1,4 @@
-@include('layouts.header')
+{{-- @include('layouts.header')
     @include('frontend.layouts.navbar')
     <div class="bg-main-ash min-vh-100 position-relative">
     	<section class="artisan-banner" style="padding: 140px 0;">
@@ -23,4 +23,4 @@
 		</section>
     </div>
 	@include('frontend.layouts.bottom')
-@include('layouts.footer')
+@include('layouts.footer') --}}
