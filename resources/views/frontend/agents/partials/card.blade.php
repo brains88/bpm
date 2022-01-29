@@ -3,23 +3,23 @@
 		<div class="rounded-circle position-relative" style="height: 80px; width: 80px; bottom: -40px;">
 			<img src="https://picsum.photos/200/260?random={{ microtime() }}" class="img-fluid border object-cover h-100 rounded-circle w-100">
 		</div>
-		<div class="position-absolute" style="left: 110px; bottom: -14px">
-			<div class="d-flex align-content-center border rounded-pill bg-white">
-				<div class="border-right text-center" style="height: 28px; width: 28px; line-height: 23px">
+		<div class="position-absolute" style="left: 120px; bottom: -14px">
+			<div class="d-flex align-content-center justify-content-around border rounded-pill bg-white">
+				<div class="border-right text-center px-2 pb-1">
 					<small class="">
 						<small class="text-theme-color">
 							<i class="icofont-email"></i>
 						</small>
 					</small>
 				</div>
-				<div class="border-right text-center" style="height: 28px; width: 28px; line-height: 23px">
+				<div class="border-right text-center px-2 pb-1">
 					<small class="">
 						<small class="text-theme-color">
 							<i class="icofont-phone"></i>
 						</small>
 					</small>
 				</div>
-				<div class="text-center" style="height: 28px; width: 28px; line-height: 23px">
+				<div class="text-center px-2 pb-1">
 					<small class="">
 						<small class="text-theme-color">
 							<i class="icofont-web"></i>
