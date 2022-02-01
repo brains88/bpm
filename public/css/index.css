@@ -297,7 +297,23 @@ ul {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.agent-header {
+.agent-header{
+    background-image: url('/images/banners/trees.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.agent-profile-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
     background-image: url('/images/banners/trees.jpg');
     background-repeat: no-repeat;
     background-size: cover;
