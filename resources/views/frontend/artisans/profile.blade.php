@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-12 col-md-4 col-lg-3">
 						<div class="mb-4 icon-raduis bg-white shadow-sm text-center">
-							<div class="w-auto">
+							<div class="w-auto position-relative">
 								<div class="p-5 rounded" style="height: 240px;">
 									<img src="/images/profiles/girl.jpg" class="img-fluid w-100 h-100 rounded object-cover">
 								</div>
@@ -100,7 +100,7 @@
 					<div class="col-12 col-md-8 col-lg-9">
 						<div class="">
 							<div class="bg-white p-4 mb-4 icon-raduis shadow-sm d-flex justify-content-between">
-								<div class="">Recent Reviews</div>
+								<div class="">Recent Reviews (45)</div>
 								<a href="javascript:;" class="text-main-dark text-underline">
 									<small class="">
 										Add Review

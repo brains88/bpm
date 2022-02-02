@@ -3,18 +3,14 @@
 		<div class="container">
 			<div class="d-flex justify-content-md-center justify-content-sm-start mb-4">
 				<div class="mb-4 w-100" style="height: 49px;">
-					<a href="{{ route('home') }}" class="">
+					<a href="{{ route('home') }}">
 						<img src="/images/logos/logo.png" class="img-fluid w-100">
 					</a>
 				</div>
 			</div>
 			<section class="">
-				<h1 class="font-weight-bolder mb-3">
-					<span class="text-white">Verify</span> 
-					<span class="text-main-green">Here</span>
-				</h1>
 				<div class="alert alert-warning mb-4">An account verification code have been sent to your email and phone number. Please enter the code below to verify your account.</div>
-				<form action="javascript:;" method="post" class="verify-account-form mb-4 p-4" style="background-color: rgba(0, 0, 0, 0.5);" data-action="{{ route('signup.activate') }}" autocomplete="off">
+				<form action="javascript:;" method="post" class="verify-account-form mb-4 p-4" data-action="{{ route('signup.activate') }}" autocomplete="off">
 				    <div class="form-row">
 				        <div class="form-group col-12">
 				            <label class="text-white">Verify Code</label>

@@ -15,7 +15,7 @@ class CreateVerifyTable extends Migration
     {
         Schema::create('verify', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('otpexpiry');
+            $table->dateTime('otpexpiry')->nullable();
             $table->dateTime('tokenexpiry')->nullable();
             $table->string('otp')->nullable();
             $table->string('token')->nullable();

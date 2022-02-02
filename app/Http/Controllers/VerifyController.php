@@ -10,9 +10,15 @@ class VerifyController extends Controller
         return view('frontend.verify.index');
     }
 
-    public static function activate($token = '')
+    public function phone()
+    {  
+        return view('frontend.verify.phone');
+    }
+
+    public static function otp($otp = '')
     {
-        $user = User::where(['verify_token' => $token])->first();
+        $verify = Verify::where(['user_id' => $user_id])->latest()->get()->first();
+        $user = User::where(['verify_token' => $otp])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
@@ -39,6 +45,62 @@ class VerifyController extends Controller
     public function success()
     {
         return view('frontend.signup.success');
+    }
+
+    /**
+     * Resend otp Api
+     */
+    public static function resendotp()
+    {
+        $data = request()->only('phone');
+        $validator = Validator::make($data, [
+            'phone' => ['required'], 
+        ], ['phone.required' => 'Please enter your phone number or email.']);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0,
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $phone = $data['phone'];
+        $user = User::where(['email' => $email, 'phone' => $phone])->first();
+        if (empty($user)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Invalid account details.'
+            ]);
+        }
+
+        $code = random_int(100000, 999999);
+        $user->token = $code;
+        $user->tokenexpiry = Carbon::now()->addMinutes(10);
+
+        try {
+            $isEmail = Validator::make(['email' => $phone], ['email' => ['required', 'email']]);
+            if($isEmail->passes()){
+                $mail = new EmailVerification([ 
+                        'phone' => $phone,
+                        'code' => $code,
+                    ]);
+        
+                Mail::to($phone)->send($mail);
+            }
+
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation successful',
+                'redirect' => route('signup.verify'),
+            ]);
+
+        } catch (Exception $error) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown Error. Try Again.'
+            ]);
+        }
     }
 
     public static function resend()

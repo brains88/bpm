@@ -18,10 +18,8 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
-    Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
-    Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
 
-    Route::get('/memberships', [App\Http\Controllers\MembershipsController::class, 'index'])->name('memberships');
+    Route::get('/memberships', [\App\Http\Controllers\MembershipsController::class, 'index'])->name('memberships');
 
     // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
     // Kindly effect route below (AdvancedSearch) to standard used by you.
@@ -32,24 +30,24 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
      Route::get('/agency', 'AgencyController@index')->name('agency');
      Route::get('/agencylisting', 'AgencyController@index')->name('agencylisting');
 
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::post('/auth', [LoginController::class, 'auth'])->name('auth.login');
+    Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+    Route::post('/auth', [\App\Http\Controllers\LoginController::class, 'auth'])->name('auth.login');
     
     Route::group(['prefix' => 'login', 'middleware' => 'guest'], function () {
-        Route::get('/', [LoginController::class, 'index'])->name('login');
+        Route::get('/', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
     });
 
     Route::group(['prefix' => 'signup', 'middleware' => 'guest'], function () {
-        Route::get('/', [SignupController::class, 'index'])->name('signup');
-        Route::post('/process', [SignupController::class, 'signup'])->name('signup.process');
-        Route::get('/success', [SignupController::class, 'success'])->name('signup.success');
+        Route::get('/', [\App\Http\Controllers\SignupController::class, 'index'])->name('signup');
+        Route::post('/process', [\App\Http\Controllers\SignupController::class, 'signup'])->name('signup.process');
+        Route::get('/success', [\App\Http\Controllers\SignupController::class, 'success'])->name('signup.success');
     });
 
     Route::group(['prefix' => 'verify', 'middleware' => 'guest'], function () {
-        Route::get('/', [VerifyController::class, 'index'])->name('verify');
+        Route::get('/phone', [VerifyController::class, 'phone'])->name('verify.phone');
         Route::post('/activate', [VerifyController::class, 'activate'])->name('signup.activate');
         Route::post('/resend', [VerifyController::class, 'resend'])->name('verify.code.resend');
-        Route::post('/email/{token?}', [VerifyController::class, 'email'])->name('verify.email');
+        Route::post('/email/{token}', [VerifyController::class, 'email'])->name('verify.email');
         Route::post('/phone', [VerifyController::class, 'phone'])->name('verify.phone');
     });
 

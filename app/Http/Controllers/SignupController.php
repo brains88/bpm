@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use App\Mail\AccountVerification;
-use App\Models\User;
+use App\Mail\EmailVerification;
+use Illuminate\Support\Facades\{Http, DB};
+use App\Models\{User, Verify};
+use App\Helpers\{Sms};
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Validator;
 use Hash;
 use Mail;
-use Illuminate\Support\Facades\{Http, DB};
 use Exception;
-use App\Models\Verify;
 
 
 class SignupController extends Controller
@@ -35,16 +35,15 @@ class SignupController extends Controller
      */
     public function signup()
     {
+        User::truncate();
         $data = request()->all();
         $validator = Validator::make($data, [ 
             'email' => ['nullable', 'email', 'unique:users'], 
-            'phone' => ['required', 'min:11', 'max:11'], 
+            'phone' => ['required', 'unique:users'], 
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
-        ], ['retype.required' => 'Please enter a password', 
-        'agree.required' => 'You have to agree to our terms and conditions', 
-        'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password']);
+        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password']);
 
         if ($validator->fails()) {
             return response()->json([
@@ -55,7 +54,7 @@ class SignupController extends Controller
 
         try {
             $email = $data['email'] ?: null;
-            $phone = $data['phone'];
+            $phone = $data['phone'] ?: null;
             DB::beginTransaction();
 
             $user = User::create([
@@ -68,24 +67,24 @@ class SignupController extends Controller
             $otp = random_int(100000, 999999);
             $verify = Verify::create([
                 'otp' => $otp,
-                'otpexpiry' => Carbon::now()->addMinutes(10)->timestamp,
+                'otpexpiry' => Carbon::now()->addMinutes(10),
                 'user_id' => $user->id,
             ]);
 
+            Sms::otp(['otp' => $otp, 'phone' => $phone]);
             if (!empty($email)) {
-                $token = \Str::random(64);
+                $token = Str::random(64);
                 $verify->token = $token;
-                $verify->tokenexpiry = Carbon::now()->addMinutes(60)->timestamp;
+                $verify->tokenexpiry = Carbon::now()->addMinutes(60);
                 $verify->update();
-                Mail::to($email)->send(new AccountVerification(['email' => $email, 'token' => $token]));
+                Mail::to($email)->send(new EmailVerification(['email' => $email, 'token' => $token]));
             }
 
-            Sms::otp(['message' => '']);
             DB::commit();
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
-                'redirect' => route('verify'),
+                'redirect' => route('verify.phone'),
             ]);
 
         } catch (Exception $error) {
