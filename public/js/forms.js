@@ -2,9 +2,14 @@
 
 	'use strict';
 
-    $('.individual-signup-form').submit(function(event){
+    $('.resend-token-link-form').submit(function(event){
         event.preventDefault();
-        handleForm({form: $(this), button: 'individual-signup-button', spinner: 'individual-signup-spinner', message: 'individual-signup-message'});
+        handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});
+    });
+
+    $('.verify-phone-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'verify-phone-button', spinner: 'verify-phone-spinner', message: 'verify-phone-message'});
     });
 
     $('.renew-subscription-form').submit(function(event){

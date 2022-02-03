@@ -4,7 +4,7 @@
     	<section class="position-relative" style="padding: 140px 0;">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-12 col-md-4 col-lg-3">
+					<div class="col-12 col-md-5 col-lg-3">
 						<div class="mb-4 p-3 icon-raduis bg-white shadow-sm text-center">
 							<div class="w-auto rounded-pill border">
 								<div class="rounded-circle" style="width: 80px; height: 80px;">
@@ -86,7 +86,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-md-8 col-lg-9">
+					<div class="col-12 col-md-7 col-lg-9">
 						<div class="">
 							<div class="bg-white p-4 mb-4 icon-raduis shadow-sm d-flex justify-content-between">
 								<div class="">Recent Reviews</div>

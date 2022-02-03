@@ -15,4 +15,12 @@ class ProfileController extends Controller
     {
         return view('user.profile.index')->with([]);
     }
+
+    /**
+     * User profile setup view
+     */
+    public function setup()
+    {
+        return view('user.profile.setup')->with([]);
+    }
 }

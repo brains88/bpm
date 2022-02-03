@@ -4,14 +4,14 @@
 			<div class="row justify-content-center align-items-center">
 				<div class="col-12 col-md-4 mb-4">
 					<div class="d-flex justify-content-md-center justify-content-sm-start mb-4">
-						<div class="mb-4 w-100" style="height: 49px;">
+						<div class="w-100" style="height: 40px;">
 							<a href="{{ route('home') }}" class="">
-								<img src="/images/logos/logo.png" class="img-fluid w-100">
+								<img src="/images/logos/logo.png" class="img-fluid w-75 h-100 object-cover">
 							</a>
 						</div>
 					</div>
 					<section class="">
-						<form action="javascript:;" method="post" class="login-form mb-4" data-action="{{ route('auth.login') }}">
+						<form action="javascript:;" method="post" class="login-form p-4 card-raduis border mb-4" data-action="{{ route('auth.login') }}">
 						    <div class="form-row">
 						        <div class="form-group col-12">
 						            <label class="text-main-dark">Email or phone</label>
@@ -41,10 +41,14 @@
 						    <div class="d-flex align-items-center justify-content-between mb-3">
 						    	<div class="custom-control custom-switch">
 								  	<input type="checkbox" class="custom-control-input rememberme" id="rememberme" name="rememberme" value="on">
-								  	<label class="custom-control-label cursor-pointer text-main-dark" for="rememberme">Remember Login</label>
+								  	<label class="custom-control-label cursor-pointer" for="rememberme">
+								  		<small class="text-main-dark">Remember me</small>
+								  	</label>
 								</div>
 						    	<div class="">
-							    	<a href="{{ route('forgot.password') }}" class="text-main-dark">Forgot Password?</a>
+							    	<a href="{{ route('forgot.password') }}">
+							    		<small class="">Forgot Password?</small>
+							    	</a>
 							    </div>
 						    </div>
 						    <button type="submit" class="btn btn-lg bg-theme-color icon-raduis btn-block text-white login-button mb-4">

@@ -3,19 +3,19 @@
 		<div class="container">
 			<div class="row justify-content-md-center justify-content-sm-start py-5">
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="d-flex mb-4">
-						<div class="mb-5 w-100" style="height: 40px;">
+					<div class="">
+						<div class="mb-3 w-100" style="height: 40px;">
 							<a href="{{ route('home') }}">
-								<img src="/images/logos/logo.png" class="img-fluid w-100">
+								<img src="/images/logos/logo.png" class="img-fluid w-75 h-100 object-cover">
 							</a>
 						</div>
 					</div>
 					<section class="">
 						<div class="alert alert-warning mb-4">Enter the code sent to your phone for verification.</div>
-						<form action="javascript:;" method="post" class="verify-phone-form card-raduis mb-4 p-4 border" data-action="{{ route('signup.activate') }}" autocomplete="off">
+						<form action="javascript:;" method="post" class="verify-phone-form card-raduis mb-4 p-4 border" data-action="{{ route('otp.verify') }}" autocomplete="off">
 						    <div class="form-row">
 						        <div class="form-group col-12 mb-4">
-						            <label class="text-main-dark">Verify Code</label>
+						            <label class="text-main-dark">Enter code</label>
 							        <input type="text" name="code" class="form-control code" placeholder="e.g., 908894">
 						            <small class="error code-error text-danger"></small>
 						        </div>
@@ -26,31 +26,14 @@
 						        Verify
 						    </button>
 						</form>
-						<div class="dropdown card-raduis">
-							<div class="text-main-dark border icon-raduis p-3 cursor-pointer" data-toggle="dropdown">Didn't receive a code or expired? <a class="" href="javascript:;">Resend Code</a></div> 
-							
-					    	<div class="dropdown-menu w-100 rounded border-0 shadow p-0">
-					    		<p class="dropdown-header text-main-dark p-4">Resend Code</p>
-					    		<div class="dropdown-item p-4">
-					    			<form action="javascript:;" class="resend-code-form">
-					    				<div class="form-group">
-									    	<label class="text-main-dark">Email</label>
-									    	<input type="email" class="form-control" name="email" placeholder="e.g., email@example.com">
-									    	<small class="invalid-feedback email-error"></small>
-									  	</div>
-									  	<div class="form-group mb-4">
-									    	<label class="text-main-dark">Phone</label>
-									    	<input type="number" class="form-control phone" name="phone" placeholder="e.g., 09062972785">
-									    	<small class="invalid-feedback phone-error"></small>
-									  	</div>
-									  	<div class="alert mb-4 resend-code-message d-none"></div>
-									  	<button type="submit" class="btn bg-theme-color btn-lg btn-block text-white resend-code-button px-4">
-				                            <img src="/images/spinner.svg" class="mr-2 d-none resend-code-spinner mb-1">
-				                            Resend
-				                        </button>
-					    			</form>	
-								</div>
-					    	</div>
+						<div class="p-4 border card-raduis">
+							<div class="text-main-dark mb-3">Didn't receive any code or expired?</div>
+							<div class="resend-otp" data-url="{{ route('resend.otp') }}">
+								<a href="javascript:;" class="btn btn-lg bg-main-dark btn-block icon-raduis text-white resend-otp-button mb-2">
+							        <img src="/images/spinner.svg" class="mr-2 d-none resend-otp-spinner mb-1">
+							        Resend code
+							    </a>
+							</div>	
 						</div>
 					</section>
 				</div>

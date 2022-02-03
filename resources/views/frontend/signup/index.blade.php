@@ -16,26 +16,26 @@
 						</div>
 					</div>
 					<section class="">
-						<form action="javascript:;" method="post" class="signup-form mb-4" data-action="{{ route('signup.process') }}" autocomplete="off">
+						<form action="javascript:;" method="post" class="signup-form mb-4 p-4 border card-raduis" data-action="{{ route('signup.process') }}" autocomplete="off">
 						    <div class="form-row">
-						     	<div class="form-group col-md-6 input-group-lg">
+						     	<div class="form-group col-md-6">
 						            <label class="text-muted">Email</label>
 							        <input type="email" name="email" class="form-control email" placeholder="e.g., email@you.com">
 						            <small class="error email-error text-danger"></small>
 						        </div>
-						        <div class="form-group col-md-6 input-group-lg">
+						        <div class="form-group col-md-6">
 						            <label class="text-muted">Phone</label>
 						            <input type="number" name="phone" class="form-control phone" placeholder="e.g., +44062972785">
 						            <small class="error phone-error text-danger"></small>
 						        </div>
 						    </div>
 						    <div class="form-row">
-						        <div class="form-group col-md-6 input-group-lg">
+						        <div class="form-group col-md-6">
 						            <label class="text-muted">Password</label>
 						            <input type="password" name="password" class="form-control password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
 						            <small class="error password-error text-danger"></small>
 						        </div>
-						        <div class="form-group col-md-6 input-group-lg">
+						        <div class="form-group col-md-6">
 						            <label class="text-muted">Retype Password</label>
 						            <input type="password" name="retype" class="form-control retype" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
 						            <small class="error retype-error text-danger"></small>

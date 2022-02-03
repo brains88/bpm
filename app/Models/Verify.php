@@ -19,12 +19,12 @@ class Verify extends Model
      * @var string[]
      */
     protected $fillable = [
-        'phone_token_expiry',
-        'email_token_expiry',
-        'phone_token',
+        'otpexpiry',
+        'tokenexpiry',
+        'otp',
         'user_id',
-        'email_token',
-        'email_status',
-        'phone_status',
+        'token',
+        'emailstatus',
+        'phonestatus',
     ];
 }

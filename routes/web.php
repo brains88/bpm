@@ -43,12 +43,12 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/success', [\App\Http\Controllers\SignupController::class, 'success'])->name('signup.success');
     });
 
-    Route::group(['prefix' => 'verify', 'middleware' => 'guest'], function () {
-        Route::get('/phone', [VerifyController::class, 'phone'])->name('verify.phone');
-        Route::post('/activate', [VerifyController::class, 'activate'])->name('signup.activate');
-        Route::post('/resend', [VerifyController::class, 'resend'])->name('verify.code.resend');
-        Route::post('/email/{token}', [VerifyController::class, 'email'])->name('verify.email');
-        Route::post('/phone', [VerifyController::class, 'phone'])->name('verify.phone');
+    Route::group(['prefix' => 'verify'], function () {
+        Route::get('/phone', [VerifyController::class, 'phone'])->name('phone.verify');
+        Route::post('/otp', [VerifyController::class, 'otpverify'])->name('otp.verify');
+        Route::post('/resendotp', [VerifyController::class, 'resendotp'])->name('resend.otp');
+        Route::get('/email/{token}', [VerifyController::class, 'email'])->name('verify.email');
+        Route::post('/resendtoken', [VerifyController::class, 'resendtoken'])->name('token.resend');
     });
 
     Route::prefix('contact')->group(function () {
@@ -206,9 +206,10 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
+    Route::get('/profile/setup', [\App\Http\Controllers\User\ProfileController::class, 'setup'])->name('profile.setup');
 
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
 

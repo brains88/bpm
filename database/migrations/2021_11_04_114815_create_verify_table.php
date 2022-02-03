@@ -17,7 +17,7 @@ class CreateVerifyTable extends Migration
             $table->id();
             $table->dateTime('otpexpiry')->nullable();
             $table->dateTime('tokenexpiry')->nullable();
-            $table->string('otp')->nullable();
+            $table->bigInteger('otp')->nullable();
             $table->string('token')->nullable();
             $table->boolean('emailstatus')->default(false);
             $table->foreignId('user_id');

@@ -35,7 +35,7 @@ class SignupController extends Controller
      */
     public function signup()
     {
-        User::truncate();
+        User::where(['phone' => request()->phone])->delete();
         $data = request()->all();
         $validator = Validator::make($data, [ 
             'email' => ['nullable', 'email', 'unique:users'], 
@@ -53,17 +53,15 @@ class SignupController extends Controller
         }
 
         try {
-            $email = $data['email'] ?: null;
-            $phone = $data['phone'] ?: null;
             DB::beginTransaction();
-
             $user = User::create([
-                'email' => $email,
-                'phone' => $phone,
+                'email' => $data['email'],
+                'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
                 'role' => 'user',
             ]);
 
+            session(['user_id' => $user->id, 'phone' => $data['phone'], 'email' => $data['email']]);
             $otp = random_int(100000, 999999);
             $verify = Verify::create([
                 'otp' => $otp,
@@ -71,20 +69,25 @@ class SignupController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            Sms::otp(['otp' => $otp, 'phone' => $phone]);
-            if (!empty($email)) {
+            Sms::otp(['otp' => $otp, 'phone' => $data['phone']]);
+            if (!empty($data['email'])) {
                 $token = Str::random(64);
                 $verify->token = $token;
                 $verify->tokenexpiry = Carbon::now()->addMinutes(60);
                 $verify->update();
-                Mail::to($email)->send(new EmailVerification(['email' => $email, 'token' => $token]));
+                $mail = new EmailVerification([
+                    'email' => $data['email'], 
+                    'token' => $token,
+                ]);
+
+                Mail::to($data['email'])->send($mail);
             }
 
             DB::commit();
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
-                'redirect' => route('verify.phone'),
+                'redirect' => route('phone.verify'),
             ]);
 
         } catch (Exception $error) {
@@ -96,77 +99,5 @@ class SignupController extends Controller
         }
     }
 
-    /**
-     * 
-     * Corporate Signup method
-     * 
-     * @param $request
-     * 
-     * @return json
-     */
-    public function corporate(Request $request)
-    {
-        $data = $request->all();
-        $custom = ['retype.required' => 'Please Retype your password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'address.required' => 'Office address is required.', 'companyname.required' => 'Company name is required.'];
-
-        $validator = Validator::make($data, [ 
-            'companyname' => ['required', 'string', 'min:3', 'max:255'], 
-            'email' => ['required', 'email', 'unique:users'], 
-            'phone' => ['required', 'min:11', 'max:11'], 
-            'password' => ['required', 'string'],
-            'retype' => ['required'],
-            'address' => ['required', 'string'],
-            'agree' => ['required'],
-        ], $custom);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0,
-                'error' => $validator->errors()
-            ]);
-        }
-
-        if ($data['password'] !== $data['retype']) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Your both passwords do not match.'
-            ]);
-        }
-
-        $email = $data['email'];
-        $token = (string)Str::uuid();
-        $user = User::create([
-            'name' => $data['companyname'],
-            'email' => $email,
-            'phone' => $data['phone'],
-            'type' => 'corporate',
-            'active' => 'inactive',
-            'password' => Hash::make($data['password']),
-            'role' => 'user',
-            'verify_token' => $token
-        ]);
-
-        try {
-            $link = config('app.url')."/signup/verify/{$token}";
-            Mail::to($email)->send((new EmailVerifyMail([
-                    'link' => $link, 
-                    'email' => $email, 
-                    'name' => $name
-                ]))
-            );
-            return response()->json([
-                'status' => 1,
-                'info' => 'Operation successful',
-                'redirect' => route('signup.success'),
-                'user' => $user,
-                'token' => $user->createToken('appToken')->plainTextToken
-            ]);
-        } catch (Exception $error) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Network Error. Try Again.'
-            ]);
-        }
-    }
 
 }

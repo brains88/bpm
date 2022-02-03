@@ -10,4 +10,8 @@
         handleAjax({that: $(this), button: 'activate-subscription-button', spinner: 'activate-subscription-spinner'});    
     });
 
+    $('.resend-otp').on('click', function() {
+        handleAjax({that: $(this), button: 'resend-otp-button', spinner: 'resend-otp-spinner'});    
+    });
+
 })(jQuery);
