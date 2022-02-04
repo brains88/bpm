@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{Verify, User};
+use Illuminate\Support\Str;
+use App\Mail\EmailVerification;
 use App\Helpers\{Sms};
 use Validator;
+use Mail;
 use Carbon\Carbon;
 
 class VerifyController extends Controller
@@ -13,12 +16,12 @@ class VerifyController extends Controller
     /**
      * View to enter phone otp
      */
-    public function phone()
+    public function phone($reference = '')
     {  
-        return view('frontend.verify.phone');
+        return view('frontend.verify.phone')->with(['reference' => $reference]);
     }
 
-    public static function otpverify(Request $request)
+    public static function otpverify($reference)
     {
         $data = request()->only(['code']);
         $validator = Validator::make($data, [ 
@@ -32,8 +35,7 @@ class VerifyController extends Controller
             ]);
         }
 
-        $user_id = $request->session()->get('user_id');
-        $verify = Verify::where(['user_id' => $user_id, 'otp' => $data['code']])->latest()->get()->first();
+        $verify = Verify::where(['otp' => $data['code'], 'reference' => $reference])->latest()->get()->first();
         if (empty($verify)) {
             return response()->json([
                 'status' => 0,
@@ -49,7 +51,8 @@ class VerifyController extends Controller
         }
 
         $verify->otp = null;
-        $verify->phonestatus = true;
+        $verify->phoneactive = true;
+        $verify->reference = null;
         $verify->update();
         return response()->json([
             'status' => 1,
@@ -61,18 +64,9 @@ class VerifyController extends Controller
     /**
      * Resend otp Api
      */
-    public static function resendotp(Request $request)
+    public static function resendotp($reference = '')
     {
-
-        $user = User::find($request->session()->get('user_id'));
-        if (empty($user)) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Invalid operation.'
-            ]);
-        }
-
-        $verify = Verify::where(['user_id' => $user->id])->latest()->get()->first();
+        $verify = Verify::where(['reference' => $reference])->latest()->get()->first();
         if (empty($verify)) {
             return response()->json([
                 'status' => 0,
@@ -82,21 +76,21 @@ class VerifyController extends Controller
 
         $otp = random_int(100000, 999999);
         $verify->otpexpiry = Carbon::now()->addMinutes(10);
-        $verify->phonestatus = false;
+        $verify->phoneactive = false;
         $verify->otp = $otp;
         $verify->update();
-        Sms::otp(['otp' => $otp, 'phone' => $user->phone]);
+        Sms::otp(['otp' => $otp, 'phone' => $verify->phone]);
 
         return response()->json([
             'status' => 1,
             'info' => 'Operation successful',
-            'redirect' => route('phone.verify'),
+            'redirect' => route('phone.verify', ['reference' => $reference]),
         ]);
     }
 
     public static function verifyemail(string $token)
     {
-        $verify = Verify::where(['token' => $token])->first();
+        $verify = Verify::where(['token' => $token])->latest()->get()->first();
         if (empty($verify)) {
             return response()->json([
                 'status' => 0,
@@ -111,7 +105,7 @@ class VerifyController extends Controller
             ]);
         }
 
-        if ($verify->emailstatus === true && empty($verify->token)) {
+        if ($verify->emailactive === true && empty($verify->token)) {
             return response()->json([
                 'status' => 1,
                 'info' => 'Email already verified.'
@@ -119,7 +113,7 @@ class VerifyController extends Controller
         }
 
         $verify->token = null;
-        $verify->emailstatus = true;
+        $verify->emailactive = true;
         $verify->update();
         return response()->json([
             'status' => 1,
@@ -133,10 +127,10 @@ class VerifyController extends Controller
      */
     public function email($token = '')
     {
-        return view('frontend.verify.email')->with(['verify' => self::verifyemail($token)]);
+        return view('frontend.verify.email')->with(['verify' => self::verifyemail($token), 'token' => $token]);
     }
 
-    public static function resendtoken()
+    public static function resendtoken($token = '')
     {
         $data = request()->only(['email']);
         $validator = Validator::make($data, [
@@ -150,27 +144,19 @@ class VerifyController extends Controller
             ]);
         }
 
-        $user = User::where(['email' => $email])->first();
-        if (empty($user)) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Invalid account details.'
-            ]);
-        }
-
-        $token = random_int(100000, 999999);
-        $verify = Verify::where(['user_id' => $user->id])->first();
+        $token = Str::random(64);
+        $verify = Verify::where(['email' => $data['email']])->latest()->get()->first();
         if (empty($verify)) {
             return response()->json([
                 'status' => 0,
-                'info' => 'Invalid account details.'
+                'info' => 'Invalid operation.'
             ]);
         }
-        
-        $verify->token = $token;
-        $verify->tokenexpiry = Carbon::now()->addMinutes(60);
 
         try {
+            $verify->token = $token;
+            $verify->tokenexpiry = Carbon::now()->addMinutes(60);
+            $verify->update();
             $mail = new EmailVerification([ 
                 'email' => $data['email'],
                 'token' => $token,
@@ -180,7 +166,7 @@ class VerifyController extends Controller
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
-                'redirect' => route('signup.verify'),
+                'redirect' => route('token.resent'),
             ]);
 
         } catch (Exception $error) {
@@ -190,6 +176,14 @@ class VerifyController extends Controller
                 'info' => 'Unknown Error. Try Again.'
             ]);
         }
+    }
+
+    /**
+     * View to display successfull resent email verify token
+     */
+    public function resent()
+    {  
+        return view('frontend.verify.resent');
     }
 
 }

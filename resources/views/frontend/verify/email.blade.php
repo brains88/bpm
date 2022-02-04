@@ -16,7 +16,7 @@
 										<div class="dropdown cursor-pointer">
 										  	<a href="javascript:;" class="text-decoration-underline" id="resend-token-link-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resend link</a>
 										  	<div class="dropdown-menu p-4 border-0 shadow card-raduis" style="width: 280px;" aria-labelledby="resend-token-link-dropdown">
-										    	<form method="post" class="resend-token-link-form w-100" action="javascript:;" data-action="{{ route('token.resend') }}">
+										    	<form method="post" class="resend-token-link-form w-100" action="javascript:;" data-action="{{ route('token.resend', ['token' => $token ?? '']) }}">
 										    		<div class="form-group mb-3">
 										    			<label class="text-main-dark">Enter Email</label>
 										    			<input type="email" name="email" class="form-control email" placeholder="e.g., email@email.com">
@@ -34,6 +34,9 @@
 								@elseif($verify['status'] === 1)
 									<div class="alert alert-success">
 										{{ $verify['info'] }}
+									</div>
+									<div class="ml-1">
+										<a href="{{ route('login') }}" class="text-decoration-underline">Login Here</a>
 									</div>
 								@else
 									<div class="alert alert-danger">Unknown error. Try again later.</div>

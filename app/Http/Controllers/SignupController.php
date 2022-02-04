@@ -35,7 +35,6 @@ class SignupController extends Controller
      */
     public function signup()
     {
-        User::where(['phone' => request()->phone])->delete();
         $data = request()->all();
         $validator = Validator::make($data, [ 
             'email' => ['nullable', 'email', 'unique:users'], 
@@ -61,12 +60,13 @@ class SignupController extends Controller
                 'role' => 'user',
             ]);
 
-            session(['user_id' => $user->id, 'phone' => $data['phone'], 'email' => $data['email']]);
             $otp = random_int(100000, 999999);
+            $reference = Str::random(64);
             $verify = Verify::create([
                 'otp' => $otp,
                 'otpexpiry' => Carbon::now()->addMinutes(10),
-                'user_id' => $user->id,
+                'reference' => $reference,
+                'phone' => $data['phone'],
             ]);
 
             Sms::otp(['otp' => $otp, 'phone' => $data['phone']]);
@@ -74,6 +74,7 @@ class SignupController extends Controller
                 $token = Str::random(64);
                 $verify->token = $token;
                 $verify->tokenexpiry = Carbon::now()->addMinutes(60);
+                $verify->email = $data['email'];
                 $verify->update();
                 $mail = new EmailVerification([
                     'email' => $data['email'], 
@@ -87,7 +88,7 @@ class SignupController extends Controller
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
-                'redirect' => route('phone.verify'),
+                'redirect' => route('phone.verify', ['reference' => $reference]),
             ]);
 
         } catch (Exception $error) {

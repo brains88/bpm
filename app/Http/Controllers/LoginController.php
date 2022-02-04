@@ -2,10 +2,33 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 use Validator;
 
 class LoginController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
+    use AuthenticatesUsers;
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {}
 
     /**
      * Login View
@@ -14,7 +37,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('frontend.login.index')->with(['title' => 'Login | Geohomes']);
+        return view('frontend.login.index')->with(['title' => 'Login | Best Property Market']);
     }
 
     /**
@@ -23,11 +46,11 @@ class LoginController extends Controller
      */
     public function auth()
     {
-        $data = request()->only('login', 'password');
+        $data = request()->only(['login', 'password']);
         $validator = Validator::make($data, [
             'login' => ['required'], 
             'password' => ['required']
-        ]);
+        ], ['login.required' => 'Enter your email or phone number.']);
 
         if ($validator->fails()) {
             return response()->json([
@@ -36,18 +59,11 @@ class LoginController extends Controller
             ]);
         }
 
-        $user = User::where(['email' => $data['login']])->whereOr(['phone' => $data['login']])->first();
+        $user = User::where(['email' => $data['login']])->first() || User::where(['phone' => $data['login']])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
                 'info' => 'Invalid login details.'
-            ]);
-        }
-
-        if (strtolower($user->status) !== 'active') {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Please verify your account. A verification link was sent to your email after signup.'
             ]);
         }
 

@@ -12,7 +12,7 @@
 					</div>
 					<section class="">
 						<div class="alert alert-warning mb-4">Enter the code sent to your phone for verification.</div>
-						<form action="javascript:;" method="post" class="verify-phone-form card-raduis mb-4 p-4 border" data-action="{{ route('otp.verify') }}" autocomplete="off">
+						<form action="javascript:;" method="post" class="verify-phone-form card-raduis mb-4 p-4 border" data-action="{{ route('otp.verify', ['reference' => $reference ?? '']) }}" autocomplete="off">
 						    <div class="form-row">
 						        <div class="form-group col-12 mb-4">
 						            <label class="text-main-dark">Enter code</label>
@@ -28,7 +28,7 @@
 						</form>
 						<div class="p-4 border card-raduis">
 							<div class="text-main-dark mb-3">Didn't receive any code or expired?</div>
-							<div class="resend-otp" data-url="{{ route('resend.otp') }}">
+							<div class="resend-otp" data-url="{{ route('resend.otp', ['reference' => $reference ?? '']) }}">
 								<a href="javascript:;" class="btn btn-lg bg-main-dark btn-block icon-raduis text-white resend-otp-button mb-2">
 							        <img src="/images/spinner.svg" class="mr-2 d-none resend-otp-spinner mb-1">
 							        Resend code

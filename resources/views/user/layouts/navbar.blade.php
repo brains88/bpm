@@ -32,7 +32,7 @@
                                 My Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ route('user') }}" class="dropdown-item text-danger">
+                            <a href="{{ route('logout') }}" class="dropdown-item text-danger">
                                 Logout
                             </a>
                         </div>

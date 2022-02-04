@@ -44,11 +44,12 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 
     Route::group(['prefix' => 'verify'], function () {
-        Route::get('/phone', [VerifyController::class, 'phone'])->name('phone.verify');
-        Route::post('/otp', [VerifyController::class, 'otpverify'])->name('otp.verify');
-        Route::post('/resendotp', [VerifyController::class, 'resendotp'])->name('resend.otp');
+        Route::get('/phone/{reference}', [VerifyController::class, 'phone'])->name('phone.verify');
+        Route::post('/otp/{reference}', [VerifyController::class, 'otpverify'])->name('otp.verify');
+        Route::post('/resendotp/{reference}', [VerifyController::class, 'resendotp'])->name('resend.otp');
         Route::get('/email/{token}', [VerifyController::class, 'email'])->name('verify.email');
-        Route::post('/resendtoken', [VerifyController::class, 'resendtoken'])->name('token.resend');
+        Route::post('/resendtoken/{token}', [VerifyController::class, 'resendtoken'])->name('token.resend');
+        Route::get('/resent', [VerifyController::class, 'resent'])->name('token.resent');
     });
 
     Route::prefix('contact')->group(function () {
@@ -206,7 +207,7 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
     Route::get('/profile/setup', [\App\Http\Controllers\User\ProfileController::class, 'setup'])->name('profile.setup');

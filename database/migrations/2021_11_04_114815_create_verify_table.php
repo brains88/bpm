@@ -17,11 +17,13 @@ class CreateVerifyTable extends Migration
             $table->id();
             $table->dateTime('otpexpiry')->nullable();
             $table->dateTime('tokenexpiry')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->bigInteger('otp')->nullable();
             $table->string('token')->nullable();
-            $table->boolean('emailstatus')->default(false);
-            $table->foreignId('user_id');
-            $table->boolean('phonestatus')->default(false);
+            $table->boolean('emailactive')->default(false);
+            $table->string('reference')->nullable();
+            $table->boolean('phoneactive')->default(false);
             $table->timestamps();
         });
     }

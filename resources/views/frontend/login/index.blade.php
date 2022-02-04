@@ -16,11 +16,6 @@
 						        <div class="form-group col-12">
 						            <label class="text-main-dark">Email or phone</label>
 						            <div class="input-group">
-						            	<div class="input-group-prepend">
-										    <span class="input-group-text bg-theme-color border-theme-color text-white">
-										    	<i class="icofont-ui-message"></i>
-										    </span>
-										  </div>
 							            <input type="text" name="login" class="form-control login" placeholder="Enter email or phone">
 						            </div>
 						            <small class="error login-error text-danger"></small>
@@ -28,11 +23,6 @@
 						        <div class="form-group col-12">
 						            <label class="text-main-dark">Password</label>
 						            <div class="input-group">
-						            	<div class="input-group-prepend">
-										    <span class="input-group-text bg-theme-color border-theme-color text-white">
-										    	<i class="icofont-ui-unlock"></i>
-										    </span>
-										</div>
 						            	<input type="password" name="password" class="form-control password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
 						            </div>
 						            <small class="error password-error text-danger"></small>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
-use App\Models\{Category, Blog, Property};
+use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+
 
 class ProfileController extends Controller
 {

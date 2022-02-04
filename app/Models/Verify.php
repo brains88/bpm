@@ -22,9 +22,11 @@ class Verify extends Model
         'otpexpiry',
         'tokenexpiry',
         'otp',
-        'user_id',
         'token',
-        'emailstatus',
-        'phonestatus',
+        'emailactive',
+        'phoneactive',
+        'reference',
+        'phone',
+        'email',
     ];
 }
