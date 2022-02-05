@@ -17,21 +17,23 @@ class Profile extends Model
     public static $designations = ['corporate', 'individual'];
 
     /**
+     * To deserialize it from JSON into a PHP array
+     */
+    protected $casts = [
+        'skills' => 'array',
+        'roles' => 'array',
+    ];
+
+    /**
      * Profile roles.
      *
      * @var []
      */
     public static $roles = [
-        'artisans' => [
-            'ats' => 'Artisan Worker'
-        ],
-        'agents' => [
-            'red' => 'Real Estate Developer', 
-            'rea' => 'Real Estate Agent',
-        ],
-        'dealers' => [
-            'bmd' => 'Building Materials Dealer',
-        ]
+        'ats' => 'Artisan Worker',
+        'bmd' => 'Building Materials Dealer',
+        'red' => 'Real Estate Developer', 
+        'rea' => 'Real Estate Agent',
     ];
 
     /**

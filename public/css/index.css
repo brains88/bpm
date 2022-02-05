@@ -10,7 +10,7 @@ body {
 
 .user-dashboard-banner:before, 
 .user-properties-banner:before,
-.user-profile-banner:before {
+.user-profile-banner:before, .profile-setup {
     content: '';
     position: absolute;
     top: 0;
@@ -20,6 +20,10 @@ body {
     width: 100%;
     background-color: var(--main-dark);
     border-radius: 0 0 30px 30px;
+}
+
+.profile-setup:before {
+    height: 150px;
 }
 
 .user-content {
