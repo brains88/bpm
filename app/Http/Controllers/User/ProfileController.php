@@ -13,7 +13,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('user.profile.index')->with([]);
+        return view('user.profile.index')->with(['profile' => auth()->user()->profile]);
     }
 
     /**

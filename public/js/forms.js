@@ -7,6 +7,16 @@
         handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});
     });
 
+    $('.profile-setup-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'profile-setup-button', spinner: 'profile-setup-spinner', message: 'profile-setup-message'});
+    });
+
+    $('.profile-edit-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'profile-edit-button', spinner: 'profile-edit-spinner', message: 'profile-edit-message'});
+    });
+
     $('.verify-phone-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'verify-phone-button', spinner: 'verify-phone-spinner', message: 'verify-phone-message'});

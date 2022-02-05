@@ -58,7 +58,10 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'admin' => \App\Http\Middleware\Admin::class,
         'user' => \App\Http\Middleware\User::class,
-        'profile.setup' => \App\Http\Middleware\Profile::class,
+        /**
+         * Ensures that user sets up profile before performaing any other operation.
+         */
+        'profile.setup' => \App\Http\Middleware\ProfileSetup::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

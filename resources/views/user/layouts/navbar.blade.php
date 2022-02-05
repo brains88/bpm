@@ -1,9 +1,4 @@
 <div class="fixed-top bg-main-dark border-bottom-dark-500">
-    @if(auth()->check())
-        <small class="bg-success d-block text-center text-white py-1"></small>
-    @else
-        <small class="bg-danger d-block text-center text-white py-1"></small>
-    @endif
 	<div class="container">
         <div class="d-flex py-3 align-items-center justify-content-between">
             <div class="">

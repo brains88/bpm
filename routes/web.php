@@ -207,10 +207,11 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
-    Route::get('/profile/setup', [\App\Http\Controllers\User\ProfileController::class, 'setup'])->name('profile.setup');
+    Route::post('/profile/setup', [\App\Http\Controllers\Api\ProfileController::class, 'setup'])->name('user.profile.setup');
+    Route::post('/profile/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');
 
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
 

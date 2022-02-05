@@ -1,4 +1,4 @@
-<form method="post" class="profile-setup-form" action="javascript:;" data-action="">
+<form method="post" class="profile-setup-form" action="javascript:;" data-action="{{ route('user.profile.setup') }}">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="text-muted">Profile name</label>
@@ -22,14 +22,14 @@
                     @endforeach
                 @endif
             </select>
-            <small class="invalid-feedback type-error"></small>
+            <small class="invalid-feedback designation-error"></small>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <?php $roles = \App\Models\Profile::$roles; ?>
             <label class="text-muted">Profile role</label>
-            <select class="form-control custom-select role" name="role[]">
+            <select class="form-control custom-select role" name="role">
                 <option value="">-- Select role --</option>
                 @if(empty($roles))
                     <option value="">No roles listed</option>
@@ -91,6 +91,7 @@
         <textarea class="form-control description" name="description" placeholder="Enter any further details here" rows="6"></textarea>
         <small class="invalid-feedback description-error"></small>
     </div>
+    <div class="alert mb-3 profile-setup-message d-none"></div>
     <button type="submit" class="btn btn-lg px-4 icon-raduis btn-info text-white profile-setup-button mb-4">
         <img src="/images/spinner.svg" class="mr-2 d-none profile-setup-spinner mb-1">
         Save
