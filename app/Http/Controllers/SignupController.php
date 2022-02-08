@@ -42,7 +42,7 @@ class SignupController extends Controller
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
-        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password']);
+        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password', 'unique:users' => 'The phone number is already used']);
 
         if ($validator->fails()) {
             return response()->json([
@@ -51,8 +51,8 @@ class SignupController extends Controller
             ]);
         }
 
-        // try {
-            // DB::beginTransaction();
+        try {
+            DB::beginTransaction();
             $user = User::create([
                 'email' => $data['email'],
                 'phone' => $data['phone'],
@@ -84,20 +84,20 @@ class SignupController extends Controller
                 Mail::to($data['email'])->send($mail);
             }
 
-            // DB::commit();
+            DB::commit();
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
                 'redirect' => route('phone.verify', ['reference' => $reference]),
             ]);
 
-        // } catch (Exception $error) {
-        //     DB::rollBack();
-        //     return response()->json([
-        //         'status' => 0,
-        //         'info' => 'Unknown Error. Try Again.'
-        //     ]);
-        // }
+        } catch (Exception $error) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown Error. Try Again.'
+            ]);
+        }
     }
 
 
