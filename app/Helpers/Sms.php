@@ -38,8 +38,6 @@ class Sms
             }
 
             curl_close($curl);
-            return json_decode($response, true);
-
             $data = json_decode($response, true);
             $success = $data['success'] ?: false; 
             $comment = $data['comment'] ?: ''; 

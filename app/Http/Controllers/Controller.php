@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Http\Controllers;
+//dd(password_hash('12034', PASSWORD_DEFAULT));
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
