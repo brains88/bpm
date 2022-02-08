@@ -51,8 +51,8 @@ class SignupController extends Controller
             ]);
         }
 
-        try {
-            DB::beginTransaction();
+        // try {
+            // DB::beginTransaction();
             $user = User::create([
                 'email' => $data['email'],
                 'phone' => $data['phone'],
@@ -84,20 +84,20 @@ class SignupController extends Controller
                 Mail::to($data['email'])->send($mail);
             }
 
-            DB::commit();
+            // DB::commit();
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
                 'redirect' => route('phone.verify', ['reference' => $reference]),
             ]);
 
-        } catch (Exception $error) {
-            DB::rollBack();
-            return response()->json([
-                'status' => 0,
-                'info' => 'Unknown Error. Try Again.'
-            ]);
-        }
+        // } catch (Exception $error) {
+        //     DB::rollBack();
+        //     return response()->json([
+        //         'status' => 0,
+        //         'info' => 'Unknown Error. Try Again.'
+        //     ]);
+        // }
     }
 
 

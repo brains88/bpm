@@ -207,7 +207,7 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
     Route::post('/profile/setup', [\App\Http\Controllers\Api\ProfileController::class, 'setup'])->name('user.profile.setup');

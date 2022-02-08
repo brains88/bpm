@@ -10,4 +10,3 @@ We Are A Leading Real Estate Company In Nigeria That Has Been Building Prosperit
 - [Building Construction](https://geohomesgroup.com).
 - [Real Estate](https://geohomesgroup.com/properties).
 - [Consultancy](https://geohomesgroup.com/about).
-"# bestproperty" 
