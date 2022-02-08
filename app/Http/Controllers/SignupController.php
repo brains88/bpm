@@ -97,9 +97,10 @@ class SignupController extends Controller
 
         } catch (Exception $error) {
             DB::rollBack();
+            $error = json_decode($error->getMessage());
             return response()->json([
                 'status' => 0,
-                'info' => $error->getMessage()
+                'info' => $error->Message ?? 'Unknown error. Try again later',
             ]);
         }
     }
