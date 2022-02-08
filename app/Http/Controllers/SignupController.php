@@ -69,7 +69,6 @@ class SignupController extends Controller
                 'phone' => $data['phone'],
             ]);
 
-            Sms::otp(['otp' => $otp, 'phone' => $data['phone']]);
             if (!empty($data['email'])) {
                 $token = Str::random(64);
                 $verify->token = $token;
@@ -84,6 +83,11 @@ class SignupController extends Controller
                 Mail::to($data['email'])->send($mail);
             }
 
+            Sms::otp([
+                'otp' => $otp, 
+                'phone' => $data['phone'],
+            ]);
+
             DB::commit();
             return response()->json([
                 'status' => 1,
@@ -95,7 +99,7 @@ class SignupController extends Controller
             DB::rollBack();
             return response()->json([
                 'status' => 0,
-                'info' => 'Unknown Error. Try Again.'
+                'info' => $error->getMessage()
             ]);
         }
     }

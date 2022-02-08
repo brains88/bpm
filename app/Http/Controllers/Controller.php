@@ -29,56 +29,10 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        //dd(auth()->user());
-        $host = request()->getHost();
-        $this->subdomain = explode('.', $host)[0] ?? '';
+        $this->subdomain = explode('.', request()->getHost())[0] ?? '';
         // $visitor = Visitor::lookup();
         // dd($visitor);
         //echo gettype(geoip());
     }
-
-    /**
-     * Send SMS with Kudisms api
-     */
-    public static function kudisms($sms = [])
-    {
-        try {
-            $mobiles = implode(',', $sms['mobiles']);
-            $data = ['username' => env('KUDISMS_API_USERNAME'), 'password' => env('KUDISMS_API_PASSWORD'), 'sender' => env('APP_NAME'), 'message' => $sms['message'], 'mobiles' => $mobiles];
-            $fields = http_build_query($data);
-            
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, env('KUDISMS_API_URL'));
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
-            $result = json_decode(curl_exec($curl));
-
-            dd($result);
-
-            if(isset($result->status) && strtoupper($result->status) == 'OK'){
-                return response()->json([
-                    'status' => 1,
-                    'info' => 'Message sent successfully',
-                    'price' => $result->price
-                ]);
-            }else if(isset($result->error)){
-                return response()->json([
-                    'status' => 0,
-                    'info' => $result->error,
-                ]);
-            }else{
-                return response()->json([
-                    'status' => 0,
-                    'info' => 'Unknown error. Try again later',
-                ]);
-            }
-        } catch (Exception $error) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Fatal error. Try again later',
-            ]);
-        }
-            
-     }
+    
 }

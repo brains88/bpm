@@ -13,6 +13,9 @@ Delete Posted property after 6months of dormancy
 Username: administrator
 Pass: email@admin
 
+Profile on property listing
+Currency list.
+
 Agents
 RC
 Company name
