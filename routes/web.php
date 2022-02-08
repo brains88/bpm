@@ -19,7 +19,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
 
-    Route::get('/memberships', [\App\Http\Controllers\MembershipsController::class, 'index'])->name('memberships');
+    Route::get('/membership', [\App\Http\Controllers\MembershipController::class, 'index'])->name('membership');
 
     // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
     // Kindly effect route below (AdvancedSearch) to standard used by you.

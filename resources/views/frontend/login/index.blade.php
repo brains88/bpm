@@ -3,12 +3,16 @@
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-12 col-md-4 mb-4">
-					<div class="d-flex justify-content-md-center justify-content-sm-start mb-4">
-						<div class="w-100" style="height: 40px;">
+					<div class="d-flex justify-content-md-center justify-content-sm-start mb-3">
+						<div class="" style="width: 220px; height: 49px;">
 							<a href="{{ route('home') }}" class="">
-								<img src="/images/logos/logo.png" class="img-fluid w-75 h-100 object-cover">
+								<img src="/images/logos/logo.png" class="img-fluid w-100 object-cover">
 							</a>
 						</div>
+					</div>
+					<div class="text-sm-left text-md-center mb-4">
+						<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt.</div>
 					</div>
 					<section class="">
 						<form action="javascript:;" method="post" class="login-form p-4 card-raduis border mb-4" data-action="{{ route('auth.login') }}">

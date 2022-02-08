@@ -441,10 +441,33 @@ a:hover, button:hover {
     left: 0;
     bottom: 0;
     right: 0;
-    min-height: 100%;
+    height: 100%;
     width: 100%;
     z-index: -2;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.membership-banner {
+    padding: 160px 0;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+}
+
+.membership-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 380px;
+    width: 100%;
+    z-index: -2;
+    background-image: url('/images/banners/island.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 /**
@@ -548,7 +571,7 @@ a:hover, button:hover {
 
 .hanburger-icon .icon-lines {
     width: 38px;
-    height: 4px;
+    height: 2px;
     -webkit-transition: 0.6s;
     -o-transition: 0.6s;
     transition: 0.6s;
@@ -576,7 +599,7 @@ a:hover, button:hover {
     content: '';
     position: absolute;
     width: 38px;
-    height: 4px;
+    height: 2px;
     background-color: var(--main-dark);
     -webkit-transition: 0.6s;
     -o-transition: 0.6s;
@@ -597,15 +620,17 @@ a:hover, button:hover {
             transform: translateY(10px);
 }
 
+@media (max-width: 1024px) {
+    .hanburger-icon {
+        display: flex !important;
+    }
+}
+
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 768px) {
 
     .logo-wrapper {
         width: 194px !important;
-    }
-
-    .hanburger-icon {
-        display: flex !important;
     }
 
     .navbar-menu {
@@ -686,19 +711,19 @@ a:hover, button:hover {
     }
 
     .hanburger-icon {
-        width: 35px;
+        width: 38px;
         height: 35px;
     }
 
     .hanburger-icon .icon-lines {
-        width: 35px;
-        height: 4px;
+        width: 38px;
+        height: 2px;
     }
 
     .hanburger-icon .icon-lines::before,
     .hanburger-icon .icon-lines::after {
         width: 40px;
-        height: 4px;
+        height: 2px;
     }
 
     .hanburger-icon .icon-lines::before {
@@ -718,6 +743,17 @@ a:hover, button:hover {
 @media (max-width: 375px) {
     .home-banner h1 {
         font-size: 52px;
+    }
+
+    .membership-banner:before {
+        height: 420px !important;
+    }
+}
+
+/*Small devices (less than 768px)*/
+@media (max-width: 375px) {
+    .membership-banner:before {
+        height: 500px !important;
     }
 }
 

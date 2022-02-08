@@ -14,6 +14,6 @@ class MembershipsSeeder extends Seeder
     public function run()
     {
         Membership::truncate();
-        Membership::factory()->count(13)->create();
+        Membership::factory()->count(4)->create();
     }
 }

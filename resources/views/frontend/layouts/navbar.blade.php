@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="navbar-items py-4 px-0 d-flex align-items-center justify-content-between">
                 <a href="{{ route('home') }}" class="logo-wrapper">
-                  <img src="/images/logos/logo.png" class="img-fluid object-cover" alt="Geohomes Logo">
+                    <img src="/images/logos/logo.png" class="img-fluid object-cover" alt="Best Property Market">
                 </a>
                 <ul class="navbar-center d-flex align-items-center">
                   <?php $uri = str_replace('/', '', request()->route()->uri); ?>
@@ -56,6 +56,11 @@
                             <small class="text-main-dark">Blog</small>
                         </a>
                     </li>
+                    <li class="mr-3">
+                        <a href="{{ route('membership') }}" class="text-decoration-none">
+                            <small class="text-main-dark">Membership</small>
+                        </a>
+                    </li>
                     <li class="dropdown mr-3">
                         <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <small class="">
@@ -83,7 +88,7 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center navbar-right">
-                    <div class="dropdown text-main-ash cursor-pointer mr-3">
+                    {{-- <div class="dropdown text-main-ash cursor-pointer mr-3">
                         <div class="" id="global-languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icofont-globe"></i>
                         </div>
@@ -100,13 +105,7 @@
                                 <small class="text-main-dark">German</small>
                             </a>
                         </div>
-                    </div>
-                    <a class="d-flex mr-3" href="{{ route('login') }}">
-                        <small class="text-main-dark">Login</small>
-                    </a>
-                    <div class="">
-                        <a href="{{ route('signup') }}" class="btn icon-raduis px-4 text-white bg-theme-color">Signup for free</a>
-                    </div>
+                    </div> --}}
                     @if(auth()->check())
                         <div class="dropdown cursor-pointer rounded-circle bg-theme-color ml-3" style="width: 30px; height: 30px;">
                             <small class="text-center d-block mt-1" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -131,7 +130,14 @@
                                 </a>
                             </div>
                         </div>
-                     @endif
+                    @else
+                        <a class="d-flex mr-3" href="{{ route('login') }}">
+                            <small class="text-main-dark">Login</small>
+                        </a>
+                        <div class="">
+                            <a href="{{ route('signup') }}" class="btn icon-raduis px-4 text-white bg-theme-color">Signup for free</a>
+                        </div>
+                    @endif
                 </div>
                 <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
                     <div class="icon-lines"></div>

@@ -17,7 +17,7 @@ class MembershipFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'name' => $faker->randomElement(['gold', 'diamond', 'silver', 'saphire', 'bronde']),
+            'name' => $faker->randomElement(['Indvidual', 'Corporate', 'Enterprise']),
             'price' => $faker->numberBetween(43, 965),
             'duration' => $faker->randomElement(array_keys(Membership::$durations)),
             'listing' => $faker->numberBetween(10, 1200),
