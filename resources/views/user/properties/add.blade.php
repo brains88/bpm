@@ -5,8 +5,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="alert-info alert mb-4">List property</div>
-                    <div class="bg-white p-4 border rounded">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div class="mb-3">
+                            <h4 class="text-main-dark">List Property</h4>
+                            <div class="text-muted">After listing, you will be redirected to add the images and other details.</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 card-raduis">
                         <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('api.property.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-md-6">

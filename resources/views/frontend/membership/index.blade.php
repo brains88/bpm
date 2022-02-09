@@ -13,7 +13,7 @@
 				@if(empty($memberships->count()))
 					<div class="alert alert-danger">No membership plans listed</div>
 				@else
-					<div class="row no-gutters">
+					<div class="row no-gutters mb-4">
 						@foreach($memberships as $plan)
 							<div class="col-12 col-md-4 col-lg-3">
 								<div class="card border-bottom rounded-0 shadow">
@@ -36,6 +36,8 @@
 							</div>
 						@endforeach
 					</div>
+					<h5 class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut.</h5>
 				@endif
 			</div>
 		</div>

@@ -14,11 +14,6 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'land', 'type' => 'property'], 
-            ['name' => 'industrial', 'type' => 'property'], 
-            ['name' => 'residential', 'type' => 'property'], 
-            ['name' => 'commercial', 'type' => 'property'], 
-            ['name' => 'vacation', 'type' => 'property'], 
             ['name' => 'business', 'type' => 'blog'], 
             ['name' => 'real estate', 'type' => 'blog'], 
             ['name' => 'ecommerce', 'type' => 'blog'],

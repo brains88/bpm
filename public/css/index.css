@@ -8,20 +8,6 @@ body {
     pointer-events: none !important;
 }
 
-.user-dashboard-banner:before, 
-.user-properties-banner:before,
-.user-profile-banner:before, .profile-setup {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: var(--main-dark);
-    border-radius: 0 0 30px 30px;
-}
-
 .profile-setup:before {
     height: 150px;
 }
@@ -30,7 +16,7 @@ body {
     padding-top: 100px;
 }
 
-.home-top-countries {
+/*.home-top-countries {
     padding: 100px 0;
     background-image: url('/images/banners/seas.jpg');
     background-repeat: no-repeat;
@@ -50,9 +36,8 @@ body {
     min-height: 100%;
     width: 50%;
     z-index: -2;
-    /*background-color: rgba(160, 15, 15, 0.2);*/
     background-color: var(--theme-color);
-}
+}*/
 
 .user-panel-icon {
     width: 45px;
@@ -62,16 +47,12 @@ body {
     color: rgba(0, 0, 255, 0.6);
 }
 
-.user-dashboard-banner:before {
+.user-banner:before {
     height: 150px;
 }
 
 .user-profile-banner:before {
     height: 130px;
-}
-
-.user-properties-banner:before {
-    height: 210px;
 }
 
 .user-icon {

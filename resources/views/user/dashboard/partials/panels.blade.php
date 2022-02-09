@@ -1,42 +1,38 @@
-<div class="col-12 col-md-6 mb-4">
-    <div class="card icon-raduis shadow-sm border-0" >
-        <div class="card-body d-flex align-items-center">
-            <div class="user-panel-icon mr-3 icon-raduis text-center">
-                <div class="">
-                    <i class="icofont-settings"></i>
-                </div>
-            </div>
-            <div class="">
-                <div class="text-dark">
-                    <span class="">
-                        {{ number_format(auth()->user()->properties->count()) }}
-                    </span>
-                </div>
-                <a href="{{ route('user.properties') }}" class="text-main-dark">
-                    <small>All Properties</small>
+<div class="col-6 mb-4">
+    <div class="card-raduis alert alert-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between">
+                <h5 class="text-main-dark m-0">
+                    {{ number_format(auth()->user()->properties->count()) }}
+                </h5>
+                <a href="{{ route('user.properties') }}" class="text-decoration-none">
+                    <span class="rounded bg-info text-white">+</span>
                 </a>
             </div>
+            <a href="{{ route('user.properties') }}" class="text-main-dark">
+                <small>
+                    <small>All Properties</small>
+                </small>
+            </a>
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 mb-4">
-    <div class="card icon-raduis shadow-sm border-0" >
-        <div class="card-body d-flex align-items-center">
-            <div class="user-panel-icon mr-3 icon-raduis text-center">
-                <div class="">
-                    <i class="icofont-settings"></i>
-                </div>
-            </div>
-            <div class="">
-                <div class="text-dark">
-                    <span>
-                        {{ number_format(auth()->user()->materials->count()) }}
-                    </span>
-                </div>
-                <a href="{{ route('user.materials') }}" class="text-main-dark">
-                    <small>Building Materials</small>
+<div class="col-6 mb-4">
+    <div class="card-raduis alert alert-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between">
+                <h5 class="text-main-dark m-0">
+                    {{ number_format(auth()->user()->materials->count()) }}
+                </h5>
+                <a href="{{ route('user.materials') }}" class="text-decoration-none">
+                    <span class="rounded bg-info text-white">+</span>
                 </a>
             </div>
+            <a href="{{ route('user.materials') }}" class="text-main-dark">
+                <small>
+                    <small>Building Materials</small>
+                </small>
+            </a>
         </div>
     </div>
 </div>

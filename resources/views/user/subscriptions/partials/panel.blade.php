@@ -11,7 +11,7 @@
             $duration = empty($subscription->duration) ? 1 : (int)$subscription->duration;
 
             $fraction = $duration > $remainingdays ? ($remainingdays/$duration) : 0;
-            $progress = $fraction >= 0 ? 0 : (100 - round($fraction * 100));  
+            $progress = (100 - round($fraction * 100));  
         ?>
 
         <div class="d-flex position-relative" style="top: -25px;">
@@ -19,13 +19,13 @@
                 {{ ucfirst($status) }}
             </small>
             <small class="text-white bg-{{ $progress <= 90 ? 'success' : 'danger' }} px-2 rounded mr-3">
-                {{ $progress <= 0 ? 1 : $property }}%
+                {{ $progress <= 0 ? 1 : $progress }}%
             </small>
         </div>
         <div class="">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <small class="">
-                    {{ ucwords($subscription->membership->name) }} Plan ({{ ucwords($duration) }}days)
+                    {{ ucwords($subscription->membership->name ?? 'Nill') }} Plan ({{ ucwords($duration) }}days)
                 </small>
                 <small class="">
                     {{ $remainingdays }} Day(s) remaining

@@ -18,7 +18,7 @@ class PropertiesController extends Controller
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
-            'category' => ['required', 'integer'],
+            'category' => ['required', 'string'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'currency' => ['required', 'integer'],
@@ -41,11 +41,11 @@ class PropertiesController extends Controller
             'address' => $data['address'],
             'city' => $data['city'],
             'action' => $data['action'],
-            'category_id' => $data['category'],
+            'category' => $data['category'],
             'measurement' => $data['measurement'],
             'user_id' => auth()->user()->id ?? 0,
             'additional' => $data['additional'],
-            'reference' => \Str::uuid(),
+            'reference' => \Str::random(64),
             'currency_id' => $data['currency'] ?? 0,
             'price' => $data['price'],
         ]);
@@ -54,7 +54,7 @@ class PropertiesController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.property.edit", ['id' => $property->id, 'category' => $property->category->name ?? 'any']),
+                'redirect' => route("{$this->subdomain}.property.edit", ['reference' => $reference]),
             ]); 
         }else {
             return response()->json([
@@ -74,7 +74,7 @@ class PropertiesController extends Controller
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],
             'state' => ['required', 'string'],
-            'category' => ['required', 'integer'],
+            'category' => ['required', 'string'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'currency' => ['required', 'integer'],
@@ -97,29 +97,20 @@ class PropertiesController extends Controller
         $property->address = $data['address'];
         $property->city = $data['city'];
         $property->action = $data['action'];
-        $property->category_id = $data['category'];
+        $property->category = $data['category'];
         $property->measurement = $data['measurement'];
         $property->additional = $data['additional'];
         $property->price = $data['price'];
         $property->currency_id = $data['currency'] ?? 0;
         $updated = $property->update();
 
-        if ($updated) {
-            return response()->json([
-                'status' => 1, 
-                'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.property.edit", [
-                    'category' => $category,
-                    'id' => $property->id, 
-                ]),
-            ]);
-        }else {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'Operation failed',
-            ]);
-        }
-
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => route("{$this->subdomain}.property.edit", [
+                'reference' => $property->reference, 
+            ]),
+        ]);
             
     }
 
@@ -161,7 +152,9 @@ class PropertiesController extends Controller
         $property = Property::find($id);
         if (is_string($role) && $role === 'main') {
             $imageurl = $property->image ?? '';
-            if (!empty($imageurl)) $delete($imageurl);
+            if (!empty($imageurl)) {
+                $delete($imageurl);
+            }
 
             $property->image = $link;
             $property->reference = $reference;
@@ -200,20 +193,13 @@ class PropertiesController extends Controller
             if (!empty($imageurl)) $delete($imageurl);
             $picture->link = $link;
             $picture->reference = $reference;
-            $success = $picture->update();
+            $picture->update();
 
-            if ($success) {
-                $image->move($path, $filename);
-                return response()->json([
-                    'status' => 1, 
-                    'info' => 'Operation successful'
-                ]);
-            }else {
-                return response()->json([
-                    'status' => 1, 
-                    'info' => 'Operation failed'
-                ]);
-            }
+            $image->move($path, $filename);
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful'
+            ]);
                 
         }     
     }

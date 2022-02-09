@@ -108,12 +108,13 @@
                                         <label class="text-muted">Category</label>
                                         <select class="form-control custom-select category" name="category">
                                             <option value="">-- Select category --</option>
+                                            <?php $categories = \App\Models\Property::$categories; ?>
                                             @if(empty($categories))
                                                 <option>No Categories Listed</option>
                                             @else: ?>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $property->category_id == $category->id ? 'selected' : '' }}>
-                                                        {{ ucwords($category->name ?? 0) }}
+                                                @foreach ($categories as $key => $value)
+                                                    <option value="{{ $key }}" {{ $property->category == $key ? 'selected' : '' }}>
+                                                        {{ ucwords($key ?? 'Nill') }}
                                                     </option>
                                                 @endforeach
                                             @endif

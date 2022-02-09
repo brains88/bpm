@@ -1,4 +1,3 @@
-<?php $categoryname = $property->category ? strtolower($property->category->name) : 'any'; ?>
 <div class="card border-0 position-relative">
 	<div class="position-absolute" style="top: 16px; left: 16px; z-index: 2;">
 		<div class="dropdown">
@@ -19,20 +18,20 @@
 			            $remainingdays = (\Carbon\Carbon::parse($expiry))->diffInDays(\Carbon\Carbon::today());
 			            $duration = empty($property->promoted->duration) ? 1 : (int)$property->promoted->duration;
 			            $fraction = $duration > $remainingdays ? ($remainingdays/$duration) : 0;
-			            $progress = $fraction >= 0 ? 0 : (100 - round($fraction * 100));  
+			            $progress = (100 - round($fraction * 100));  
 			        ?>
-            		<div class="p-3 w-100">
+            		<div class="px-3 py-1 w-100">
             			<div class="d-flex">
-            				<small class="mr-3">
+            				<div class="mr-2">
 					            <small class="text-{{ $progress <= 90 ? 'success' : 'danger' }}">
-					                {{ $progress <= 0 ? 1 : $property }}%
+					                ({{ $progress <= 0 ? 1 : $progress }}%)
 					            </small>
-					        </small>
-	            	 		<small class="">
+					        </div>
+	            	 		<div class="">
 	            	 			<small class="">
 				                    {{ $remainingdays }} day(s) left
 				                </small>
-	            	 		</small>
+	            	 		</div>
             			</div>
             		</div>
             	@else
@@ -60,7 +59,7 @@
 		                        </div>
 		                    </div>
 		                    <input type="hidden" name="property" value="{{ $property->id }}">
-		                    <div class="alert mb-3 promote-property-message d-none"></div>
+		                    <div class="alert mb-3 tiny-font promote-property-message d-none"></div>
 		                    <div class="d-flex justify-content-right mb-3 mt-1">
 		                        <button type="submit" class="btn btn-info icon-raduis btn-block btn-lg text-white promote-property-button px-4">
 		                            <img src="/images/spinner.svg" class="mr-2 d-none promote-property-spinner mb-1">
@@ -74,7 +73,7 @@
         </div>
 	</div>
 	<div class="position-relative" style="height: 160px; line-height: 160px;">
-		<a href="{{ route('user.property.edit', ['id' => $property->id]) }}" class="text-decoration-none">
+		<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}" class="text-decoration-none">
 			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border-0 w-100 h-100 object-cover">
 		</a>
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
@@ -85,7 +84,7 @@
 			</small>
 			<small class="">
 				<small class="text-white">
-					{{ ucwords($categoryname) }}
+					{{ ucwords($property->category) }}
 				</small>
 			</small>
 		</div>
@@ -136,12 +135,12 @@
             </div>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('user.property.edit', ['id' => $property->id]) }}" class="text-underline text-main-dark">
+			<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}" class="text-underline text-main-dark">
 				<small class="">
 					<small>{{ \Str::limit($property->address, 18) }}</small>
 				</small>
 			</a>
-			<a href="{{ route('user.property.edit', ['id' => $property->id]) }}">
+			<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}">
 				<small class="text-warning">
 					<i class="icofont-edit"></i>
 				</small>

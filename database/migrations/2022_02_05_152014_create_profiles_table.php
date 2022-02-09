@@ -21,7 +21,7 @@ class CreateProfilesTable extends Migration
             $table->string('image')->nullable();
             $table->string('description');
             $table->string('city');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('skills')->nullable();
             $table->string('address');
             $table->foreignId('country_id');

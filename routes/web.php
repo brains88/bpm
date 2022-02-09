@@ -226,7 +226,7 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
 
-        Route::get('/edit/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
+        Route::get('/edit/{reference}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
 
         Route::post('/promote/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'promote'])->name('user.property.promote');

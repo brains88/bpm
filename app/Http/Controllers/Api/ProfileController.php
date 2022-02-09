@@ -23,7 +23,6 @@ class ProfileController extends Controller
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'description' => ['required', 'string', 'max:500'],
-            'phone' => ['required', 'integer'],
             'role' => ['required', 'string'],
         ]);
 
@@ -40,7 +39,7 @@ class ProfileController extends Controller
             $user->name = $data['name'];
             $user->update();
 
-            $profile = Profile::create([
+            Profile::create([
                 'country_id' => $data['country'],
                 'state' => $data['state'],
                 'address' => $data['address'],

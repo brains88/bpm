@@ -20,7 +20,6 @@ Route::group(['middleware' => [], 'prefix' => ''], function () {
 
     Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('api.login');
     Route::post('/buy', [\App\Http\Controllers\Api\CreditController::class, 'buy'])->name('api.credit.buy');
-
     Route::post('/password', [PasswordController::class, 'update'])->name('api.password.update');
 
     Route::prefix('property')->group(function () {

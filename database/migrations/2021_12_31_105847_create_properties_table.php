@@ -18,7 +18,7 @@ class CreatePropertiesTable extends Migration
             $table->foreignId('country_id');
             $table->string('action');
             $table->bigInteger('bedrooms')->nullable();
-            $table->foreignId('category_id');
+            $table->string('category');
             $table->bigInteger('price');
             $table->bigInteger('toilets')->nullable();
             $table->foreignId('user_id');
@@ -32,7 +32,7 @@ class CreatePropertiesTable extends Migration
             $table->string('city');
             $table->text('additional')->nullable();
             $table->string('status')->nullable();
-            $table->uuid('reference')->nullable();
+            $table->text('reference')->nullable();
             $table->bigInteger('views')->nullable();
             $table->foreignId('currency_id');
             $table->timestamps();

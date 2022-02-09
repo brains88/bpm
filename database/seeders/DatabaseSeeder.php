@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesSeeder::class);
         $this->call(CurrenciesSeeder::class);
         
-        $this->call(HousesSeeder::class);
         $this->call(PropertiesSeeder::class);
         $this->call(BlogsSeeder::class);
         $this->call(SkillsSeeder::class);
@@ -26,7 +25,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call(MembershipsSeeder::class);
         $this->call(VisitorsSeeder::class);
-        $this->call(ContinentsSeeder::class);
 
         $this->call(PaymentsSeeder::class);
         $this->call(SubscriptionsSeeder::class);

@@ -1,16 +1,16 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
     @include('user.layouts.navbar')
-    <div class="user-content user-properties-banner pb-4">
+    <div class="user-content pb-4">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-3">
-                    <h4 class="text-white">Building Materials</h4>
+                    <h4 class="text-main-dark">Building Materials</h4>
                     <div class="text-muted">Welcome {{ ucwords(auth()->user()->name) }}. List your building materials.</div>
                 </div>
                 <div class="">
                     <div class="d-flex align-items-center">
-                        <a href="{{ route('user.material.add') }}" class="bg-dark text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none">
+                        <a href="{{ route('user.material.add') }}" class="btn btn-info mb-4 icon-raduis">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>

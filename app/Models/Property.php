@@ -16,10 +16,10 @@ class Property extends Model
      */
     public static $actions = [
         'rent' => 'for rent', 
-        'auction' => 'for auction',
+        'auction' => 'auction',
         'sale' => 'for sale', 
         'lease' => 'for lease', 
-        'sold' => 'sold off',
+        'sold' => 'sold',
     ];
 
     /**
@@ -34,7 +34,7 @@ class Property extends Model
         'currency_id',
         'city',
         'action',
-        'category_id',
+        'category',
         'measurement',
         'user_id',
         'additional',
@@ -50,7 +50,7 @@ class Property extends Model
     public static $conditions = [
         'furnished', 
         'unfurnished', 
-        'newly built',
+        'new',
         'Renovated',
         'old', 
     ];

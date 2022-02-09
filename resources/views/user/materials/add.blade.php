@@ -1,18 +1,17 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
     @include('user.layouts.navbar')
-    <div class="user-content user-properties-banner pb-4">
+    <div class="user-content pb-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="mb-3">
-                            <h4 class="text-white">List Building Material</h4>
+                            <h4 class="text-main-dark">List Building Material</h4>
                             <div class="text-muted">After listing, you will be redirected to add the images.</div>
                         </div>
-                        <div class="d-flex align-items-center flex-wrap"></div>
                     </div>
-                    <div class="bg-white p-4 border rounded">
+                    <div class="bg-white p-4 card-raduis">
                         <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('material.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-12">
