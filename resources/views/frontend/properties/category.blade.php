@@ -5,16 +5,16 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-md-7 col-lg-9">
-						@empty($categoryProperties->count())
+						@empty($properties->count())
 							<div class="alert alert-info">No Properties Listed</div>
 						@else
 							<div class="p-3 mb-4 bg-white shadow-sm rounded">
 								<h5 class="m-0">
-									{{ $name == 'land' ? 'Landed' : ucfirst($name) }} Properties ({{ $categoryProperties->total() }})
+									{{ $name == 'land' ? 'Landed' : ucfirst($name) }} Properties ({{ $properties->total() }})
 								</h5>
 							</div>
 							<div class="row">
-								@foreach($categoryProperties as $property)
+								@foreach($properties as $property)
 									<div class="col-12 col-md-6 col-lg-4 mb-4">
 										@include('frontend.properties.partials.card')
 									</div>
@@ -27,11 +27,12 @@
 							<div class="p-3 mb-4 bg-white shadow-sm rounded">
 								<h5 class="m-0">Property Categories</h5>
 							</div>
-							@empty($propertyCategories->count())
+							<?php $categories = \App\Models\Property::query()->distinct()->pluck('category'); ?>
+							@empty($categories->count())
 			                    <div class="alert alert-info">No Categories Yet</div>
 			                @else
 			                	<div class="row">
-									@foreach($propertyCategories as $category)
+									@foreach($categories as $category)
 										<div class="col-12 mb-4">
 											@include('frontend.properties.partials.categories')
 										</div>

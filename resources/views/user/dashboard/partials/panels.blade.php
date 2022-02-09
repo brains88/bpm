@@ -1,5 +1,5 @@
-<div class="col-6 mb-4">
-    <div class="card-raduis alert alert-info m-0">
+<div class="col-6 col-md-4 mb-4">
+    <div class="icon-raduis alert bg-info m-0">
         <div class="py-2">
             <div class="d-flex justify-content-between">
                 <h5 class="text-main-dark m-0">
@@ -9,7 +9,7 @@
                     <span class="rounded bg-info text-white">+</span>
                 </a>
             </div>
-            <a href="{{ route('user.properties') }}" class="text-main-dark">
+            <a href="{{ route('user.properties') }}" class="text-white">
                 <small>
                     <small>All Properties</small>
                 </small>
@@ -17,8 +17,8 @@
         </div>
     </div>
 </div>
-<div class="col-6 mb-4">
-    <div class="card-raduis alert alert-info m-0">
+<div class="col-6 col-md-4 mb-4">
+    <div class="icon-raduis alert bg-info m-0">
         <div class="py-2">
             <div class="d-flex justify-content-between">
                 <h5 class="text-main-dark m-0">
@@ -28,9 +28,28 @@
                     <span class="rounded bg-info text-white">+</span>
                 </a>
             </div>
-            <a href="{{ route('user.materials') }}" class="text-main-dark">
+            <a href="{{ route('user.materials') }}" class="text-white">
                 <small>
                     <small>Building Materials</small>
+                </small>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-4 mb-4">
+    <div class="icon-raduis alert bg-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between">
+                <h5 class="text-main-dark m-0">
+                    {{ number_format(auth()->user()->materials->count()) }}
+                </h5>
+                <a href="{{ route('user.materials') }}" class="text-decoration-none">
+                    <span class="rounded bg-info text-white">+</span>
+                </a>
+            </div>
+            <a href="{{ route('user.materials') }}" class="text-white">
+                <small>
+                    <small>All Adverts</small>
                 </small>
             </a>
         </div>

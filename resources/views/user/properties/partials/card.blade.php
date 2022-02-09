@@ -73,7 +73,7 @@
         </div>
 	</div>
 	<div class="position-relative" style="height: 160px; line-height: 160px;">
-		<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}" class="text-decoration-none">
+		<a href="{{ route('user.property.edit', ['id' => $property->id]) }}" class="text-decoration-none">
 			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border-0 w-100 h-100 object-cover">
 		</a>
 		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
@@ -135,12 +135,12 @@
             </div>
 		</div>
 		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}" class="text-underline text-main-dark">
+			<a href="{{ route('user.property.edit', ['id' => $property->id]) }}" class="text-underline text-main-dark">
 				<small class="">
 					<small>{{ \Str::limit($property->address, 18) }}</small>
 				</small>
 			</a>
-			<a href="{{ route('user.property.edit', ['reference' => $property->reference]) }}">
+			<a href="{{ route('user.property.edit', ['id' => $property->id]) }}">
 				<small class="text-warning">
 					<i class="icofont-edit"></i>
 				</small>

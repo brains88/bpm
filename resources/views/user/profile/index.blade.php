@@ -5,17 +5,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                    <div class="">
-                        <div class="border alert alert-info mb-4">
-                            <div class="position-relative w-100">
-                                <div class="border rounded position-relative" style="height: 120px;">
-                                    <img src="/images/profiles/girl.jpg" class="img-fluid object-cover icon-raduis h-100 w-100">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-12 mb-4">
+                            <div class="position-relative border-bottom w-100 bg-white rounded-top p-4">
+                                <div class="border bg-info p-1 rounded-circle position-relative" style="height: 80px; width: 80px;">
+                                    <img src="/images/profiles/girl.jpg" class="img-fluid object-cover rounded-circle h-100 w-100">
                                 </div>
                             </div>
+                            <div class="bg-white p-3 d-flex justify-content-between rounded-bottom">
+                                <small class="text-success mr-2">
+                                    <small class="cursor-pointer">Change</small>
+                                </small>
+                                <small class="text-danger">
+                                    <small class="cursor-pointer">Delete</small>
+                                </small>
+                            </div>
                         </div>
-                        <div class="border-bottom pb-3 mb-3">
-                            {{ ucwords(auth()->user()->name) }}
-                        </div>
+                        <div class="col-12">
+                            <div class="border-bottom pb-4 mb-4">
+                                {{ ucwords(auth()->user()->name) }}
+                            </div>
+                            <div class="border-bottom pb-4 mb-4">
+                                {{ ucwords(auth()->user()->profile->roles) }}
+                            </div>
+                        </div>   
                     </div> 
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">

@@ -89,11 +89,11 @@
 							<div class="p-3 mb-4 bg-white shadow-sm icon-raduis">
 								<h5 class="m-0">Related Properties</h5>
 							</div>
-							@empty($relatedProperties->count())
+							@empty($related->count())
 								<div class="alert alert-danger">No Related Properties</div>
 							@else
 								<div class="row">
-									@foreach($relatedProperties as $property)
+									@foreach($related as $property)
 										<div class="col-12 col-md-6 col-lg-4 mb-4">
 											@include('frontend.properties.partials.card')
 										</div>
@@ -107,6 +107,7 @@
 							<div class="p-3 mb-4 bg-white shadow-sm icon-raduis">
 								<h5 class="m-0">Property Categories</h5>
 							</div>
+							<?php $categories = \App\Models\Property::query()->distinct()->pluck('category'); ?>
 							@empty($categories->count())
 			                    <div class="alert alert-info">No Categories Yet</div>
 			                @else

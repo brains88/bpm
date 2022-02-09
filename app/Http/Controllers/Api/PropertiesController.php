@@ -91,7 +91,7 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $property = Property::find($id);
+        $property = Property::findOrFail($id);
         $property->country_id = $data['country'];
         $property->state = $data['state'];
         $property->address = $data['address'];
@@ -108,7 +108,7 @@ class PropertiesController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'redirect' => route("{$this->subdomain}.property.edit", [
-                'reference' => $property->reference, 
+                'id' => $id, 
             ]),
         ]);
             

@@ -31,9 +31,9 @@ class PropertiesController extends Controller
     /**
      * User edit property view
      */
-    public function edit($reference = '')
+    public function edit($id = '')
     {
-        return view('user.properties.edit')->with(['countries' => Country::all(), 'property' => Property::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first()]);
+        return view('user.properties.edit')->with(['countries' => Country::all(), 'property' => Property::where(['id' => $id, 'user_id' => auth()->user()->id])->first()]);
     }
 
     /**

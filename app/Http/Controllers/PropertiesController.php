@@ -16,24 +16,20 @@ class PropertiesController extends Controller
     /**
      * Find Single Property
      */
-    public function property($category = 'lands', $id = 45, $slug = '')
+    public function property($category = 'land', $id = 45, $slug = '')
     {
         $property = Property::findOrFail($id);
-        $categoryid = $property->category_id ?? 0;
-        $propertiesByCategory = Property::where(['category_id' => $categoryid])->paginate(15);
         return view('frontend.properties.property')->with([
-            'categories' => Category::where(['type' => 'property'])->get(), 'propertiesByCategory' => $propertiesByCategory, 'property' => $property, 'relatedProperties' => Property::where(['category_id' => $categoryid, 'country_id' => $property->country_id ?? $id, 'status' => $property->status ?? 'for sale'])->paginate(6)
-        ]); 
+            'categories' => Category::where(['type' => 'property'])->get(), 'property' => $property, 'related' => Property::where(['category' => $category, 'country_id' => $property->country_id ?? 0])->paginate(6)]); 
     }
 
     /**
      * Find Properties by category
      */
-    public function category($category = 'lands')
+    public function category($category = 'land')
     {
-        $categoryid = Category::where(['name' => $category])->first()->id ?? 0;
-        $categoryProperties = Property::where(['category_id' => $categoryid])->where('action', '!=', 'sold')->paginate(16);
-        return view('frontend.properties.category')->with(['categoryProperties' => $categoryProperties, 'propertyCategories' => Category::where(['type' => 'property'])->get(), 'soldProperties' => Property::where(['action' => 'sold'])->paginate(3), 'name' => $category]);
+        $properties = Property::where(['category' => $category])->where('action', '!=', 'sold')->paginate(16);
+        return view('frontend.properties.category')->with(['properties' => $properties, 'soldProperties' => Property::where(['action' => 'sold'])->paginate(3), 'name' => $category]);
     }
 
     /**
@@ -50,11 +46,8 @@ class PropertiesController extends Controller
     {
         $term = request()->get('query');
         $properties = Property::where([
-            ['action', '!=', 'sold'], 
-            ['address', 'LIKE', '%'.$term.'%'], 
-            [function($query) use($term) {
-                $query->orWhere('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->get();
-            }],
+            ['action', '!=', 'sold'], ['address', 'LIKE', '%'.$term.'%'], [function($query) use($term) {
+                $query->orWhere('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->orWhere('category', 'LIKE', '%'.$term.'%')->get();}],
         ])->orderBy('id', 'desc')->paginate(25);
         return view('frontend.properties.search')->with(['properties' => $properties]);
     }
