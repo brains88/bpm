@@ -16,7 +16,7 @@ body {
     padding-top: 100px;
 }
 
-/*.home-top-countries {
+.home-top-countries {
     padding: 100px 0;
     background-image: url('/images/banners/seas.jpg');
     background-repeat: no-repeat;
@@ -37,7 +37,7 @@ body {
     width: 50%;
     z-index: -2;
     background-color: var(--theme-color);
-}*/
+}
 
 .user-panel-icon {
     width: 45px;
