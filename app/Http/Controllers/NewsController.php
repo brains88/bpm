@@ -6,15 +6,12 @@ use Exception;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $newsapi = \App\Helpers\News::api($limit = 6, $page = 1);
+        $page = $request->page ?? 1;
+        $newsapi = \App\Helpers\News::api($limit = 8, $page);
+        //dd($newsapi);
         return view('frontend.news.index')->with(['newsapi' => $newsapi]);
     }
 
-    public function search()
-    {}
-
-    public function read()
-    {}
 }

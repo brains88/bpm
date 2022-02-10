@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
     ];
 
     /**
@@ -39,6 +40,8 @@ class Kernel extends HttpKernel
 
             \App\Http\Middleware\CurrencyMiddleware::class,
             \Torann\Currency\Middleware\CurrencyMiddleware::class,
+
+            \App\Http\Middleware\SetLocale::class,
         ],
 
         'api' => [

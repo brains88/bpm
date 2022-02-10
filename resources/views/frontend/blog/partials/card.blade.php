@@ -1,4 +1,4 @@
-<div class="card p-0 bg-transparent">
+<div class="card bg-white border-0 card-raduis">
     <div class="">
         <a href="{{ route('blog.read', ['id' => $blog->id, 'slug' => \Str::slug(strtolower($blog->title))]) }}" class="w-100">
             <div style="height: 160px !important;">
@@ -7,17 +7,17 @@
         </a>
     </div>
     <div class="card-body">
-        <div class="mb-3">
+        <div class="mb-2">
             <a href="{{ route('blog.read', ['id' => $blog->id, 'slug' => \Str::slug(strtolower($blog->title))]) }}" class="text-main-dark text-underline">
-                {{ \Str::limit(ucwords($blog->title), 55) }}
+                {{ \Str::limit(ucwords($blog->title), 25) }}
             </a>
         </div>
+    </div>
+    <div class="card-footer">
         <div class="">
-            <div class="">
-                <small class="text-muted">
-                    Published {{ $blog->created_at->diffForHumans() }}
-                </small>
-            </div>
+            <small class="text-muted">
+                Published {{ $blog->created_at->diffForHumans() }}
+            </small>
         </div>
     </div>
 </div>

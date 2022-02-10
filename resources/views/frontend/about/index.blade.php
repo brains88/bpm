@@ -4,9 +4,9 @@
         <section class="about-banner">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-12 col-lg-10">
+                    <div class="col-12 col-md-10 col-lg-8">
                         <h1 class="text-white">About Us</h1>
-                        <div class="text-white">We are the Best Property Market, strategically positioned to solve the biggest problem when it comes to property transactions in the global real estate industry. Under this governing umbrella we offer property listings, property management, sales and marketing, brokerage, and other professional services.</div>
+                        <div class="text-white">We are the Best Property Market, strategically positioned to solve the biggest problem when it comes to property transactions in the global real estate industry. <br><br> Under this governing umbrella we offer property listings, property management, sales and marketing, brokerage, and other professional services.</div>
                     </div>
                 </div>
             </div>

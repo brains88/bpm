@@ -14,6 +14,7 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 |
 */
 
+Route::get('/translate', [\App\Http\Controllers\TranslationController::class, 'index'])->name('translate');
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');

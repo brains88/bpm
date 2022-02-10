@@ -69,13 +69,13 @@
                 </div>
             </div>
         </div>
-        <div class="home-top-countries position-relative">
+        <div class="top-countries position-relative">
             <div class="container-fluid">
                 <div class="row align-items-baseline">
                     <div class="col-12 col-md-6 mb-4">
                         <div class="">
                             <h4 class="text-white mb-4">Explore Top Countries</h4>
-                            <div class="mb-4 text-white">Take a tour with us as we show your new, big and best cities of the world. Just incase you want to invest on a property, you can take a peak over this section to see very beautiful cities you can own a home.</div>
+                            <div class="mb-4 text-white text-shadow-dark">Take a tour with us as we show your new, big and best cities of the world. Just incase you want to invest on a property, you can take a peak over this section to see very beautiful cities you can own a home.</div>
                             <a href="{{ route('signup') }}" class="btn text-white px-4 bg-main-dark icon-raduis btn-lg">Explore Countries</a>
                         </div>
                     </div>
@@ -86,9 +86,8 @@
                                     <div class="bg-main-dark rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
                                         <small class="text-white">{{ '567' }}</small>
                                     </div>
-                                    <h5 class="">Rome</h5>
-                                    <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</div>
+                                    <h4 class="text-main-dark">Rome</h4>
+                                    <div class="text-white text-shadow-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 mb-4">
@@ -96,9 +95,8 @@
                                     <div class="bg-main-dark rounded-circle text-center mb-4" style="width: 50px; height: 50px; line-height: 50px;">
                                         <small class="text-white">{{ '411' }}</small>
                                     </div>
-                                    <h5 class="">Paris</h5>
-                                    <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</div>
+                                    <h4 class="text-main-dark">Paris</h4>
+                                    <div class="text-white text-shadow-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                                 </div>
                             </div>
                         </div>

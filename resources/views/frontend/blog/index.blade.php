@@ -5,10 +5,9 @@
 			<div class="container-fluid">
 				<div class="row mb-4">
 					<div class="col-12 mb-4">
-						<h1 class="text-white">Welcome to our Blog</h1>
-						<p class="text-white p-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco</p>
+						<h1 class="text-white">Our Blogs</h1>
+						<div class="text-white p-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</div>
 					</div>
 				</div>
 			</div>
@@ -25,7 +24,8 @@
                                         @include('frontend.blog.partials.card')
                                     </div>
                                 @endforeach
-                            </div> 
+                            </div>
+                            {{ $blogs->appends(request()->query())->links('vendor.pagination.default') }}
                         @endif
                     </div>
                 </div>

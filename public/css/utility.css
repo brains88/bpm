@@ -10,6 +10,14 @@
     background-color: var(--theme-color);
 }
 
+.text-shadow-white {
+    text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+.text-shadow-dark {
+    text-shadow: var(--main-dark) 0.1em 0.1em 0.2em;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }

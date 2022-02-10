@@ -16,17 +16,17 @@ body {
     padding-top: 100px;
 }
 
-.home-top-countries {
+.top-countries {
     padding: 100px 0;
-    background-image: url('/images/banners/seas.jpg');
+    background-image: url('/images/banners/rend.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
     background-position: center;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.home-top-countries:before {
+.top-countries:before {
     content: '';
     position: absolute;
     top: 0;
@@ -253,13 +253,26 @@ ul {
 }
 
 .about-banner {
-    padding: 180px 0 80px;
+    padding: 180px 0 100px;
     background-image: url('/images/banners/complex.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.about-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 .agent-header{
@@ -521,7 +534,7 @@ a:hover, button:hover {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 115px;
+    padding-top: 94px;
 }
 
 .navbar-toggle {

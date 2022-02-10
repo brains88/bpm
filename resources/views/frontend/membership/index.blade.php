@@ -5,8 +5,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-md-8 col-lg-6 mb-4">
-						<h1 class="text-main-dark mb-4">Our Memberships</h1>
-						<div class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						<h1 class="text-main-dark mb-4 text-shadow-white">Our Memberships</h1>
+						<div class="text-white text-shadow-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua.</div>
 					</div>
 				</div>
