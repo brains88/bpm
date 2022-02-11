@@ -1,55 +1,65 @@
 <div class="col-6 col-md-4 mb-4">
     <div class="icon-raduis alert bg-info m-0">
+        <div class="position-absolute" style="top: -14px; right: 16px;">
+            <small class="rounded-pill tiny-font bg-danger px-2">
+                <small class="text-white position-relative" style="top: -1px;">
+                    +{{ '4' }} views
+                </small>
+            </small>
+        </div>
         <div class="py-2">
-            <div class="d-flex justify-content-between">
-                <h5 class="text-main-dark m-0">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
                     {{ number_format(auth()->user()->properties->count()) }}
                 </h5>
-                <a href="{{ route('user.properties') }}" class="text-decoration-none">
-                    <span class="rounded bg-info text-white">+</span>
-                </a>
             </div>
             <a href="{{ route('user.properties') }}" class="text-white">
                 <small>
-                    <small>All Properties</small>
+                    Properties
                 </small>
             </a>
         </div>
     </div>
 </div>
 <div class="col-6 col-md-4 mb-4">
-    <div class="icon-raduis alert bg-info m-0">
+    <div class="icon-raduis position-relative alert bg-info m-0">
+        <div class="position-absolute" style="top: -14px; right: 16px;">
+            <small class="rounded-pill tiny-font bg-success px-2">
+                <small class="text-white position-relative" style="top: -1px;">+3 views</small>
+            </small>
+        </div>
         <div class="py-2">
-            <div class="d-flex justify-content-between">
-                <h5 class="text-main-dark m-0">
+            <div class="d-flex justify-content-between align-items-center align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
                     {{ number_format(auth()->user()->materials->count()) }}
                 </h5>
-                <a href="{{ route('user.materials') }}" class="text-decoration-none">
-                    <span class="rounded bg-info text-white">+</span>
-                </a>
             </div>
             <a href="{{ route('user.materials') }}" class="text-white">
                 <small>
-                    <small>Building Materials</small>
+                    Materials
                 </small>
             </a>
         </div>
     </div>
 </div>
 <div class="col-12 col-md-4 mb-4">
-    <div class="icon-raduis alert bg-info m-0">
+    <div class="icon-raduis alert bg-pinky position-relative m-0">
+        <div class="position-absolute" style="top: -14px; right: 16px;">
+            <small class="rounded-pill tiny-font bg-success px-2">
+                <small class="text-white position-relative" style="top: -1px;">
+                    +{{ '17' }} reviews
+                </small>
+            </small>
+        </div>
         <div class="py-2">
-            <div class="d-flex justify-content-between">
-                <h5 class="text-main-dark m-0">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
                     {{ number_format(auth()->user()->materials->count()) }}
                 </h5>
-                <a href="{{ route('user.materials') }}" class="text-decoration-none">
-                    <span class="rounded bg-info text-white">+</span>
-                </a>
             </div>
             <a href="{{ route('user.materials') }}" class="text-white">
                 <small>
-                    <small>All Adverts</small>
+                    <small>Reviews</small>
                 </small>
             </a>
         </div>

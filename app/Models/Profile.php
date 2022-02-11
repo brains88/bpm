@@ -45,10 +45,7 @@ class Profile extends Model
     /**
      * To deserialize it from JSON into a PHP array
      */
-    protected $casts = [
-        'skills' => 'array',
-        'roles' => 'array',
-    ];
+    protected $casts = [];
 
     /**
      * Profile roles.
@@ -56,10 +53,11 @@ class Profile extends Model
      * @var []
      */
     public static $roles = [
-        'ats' => 'Artisan Worker',
-        'bmd' => 'Building Materials Dealer',
-        'red' => 'Real Estate Developer', 
-        'rea' => 'Real Estate Agent',
+        'ats' => ['name' => 'Artisan Worker', 'type' => 'artisan'],
+        'bmd' => ['name' => 'Building Materials Dealer', 'type' => 'dealer'],
+        'red' => ['name' => 'Real Estate Developer', 'type' => 'agent'], 
+        'rea' => ['name' => 'Real Estate Agent', 'type' => 'agent'],
+        'prd' => ['name' => 'Property Developer', 'type' => 'agent'],
     ];
 
     /**

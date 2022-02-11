@@ -27,16 +27,16 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <?php $roles = \App\Models\Profile::$roles; ?>
             <label class="text-muted">Profile role</label>
             <select class="form-control custom-select role" name="role">
                 <option value="">-- Select role --</option>
+                <?php $roles = \App\Models\Profile::$roles; ?>
                 @if(empty($roles))
                     <option value="">No roles listed</option>
                 @else
-                    @foreach ($roles as $role => $name)
-                        <option value="{{ $role }}">
-                            {{ ucfirst($name) }}
+                    @foreach ($roles as $key => $value)
+                        <option value="{{ $key }}">
+                            {{ ucfirst($value['name']) }}
                         </option>
                     @endforeach
                 @endif

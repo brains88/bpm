@@ -42,7 +42,7 @@ class SignupController extends Controller
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
-        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password', 'unique:users' => 'The phone number is already used']);
+        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password', 'unique:users' => 'The phone number is already in use.']);
 
         if ($validator->fails()) {
             return response()->json([
@@ -83,10 +83,10 @@ class SignupController extends Controller
                 Mail::to($data['email'])->send($mail);
             }
 
-            Sms::otp([
-                'otp' => $otp, 
-                'phone' => $data['phone'],
-            ]);
+            // Sms::otp([
+            //     'otp' => $otp, 
+            //     'phone' => $data['phone'],
+            // ]);
 
             DB::commit();
             return response()->json([

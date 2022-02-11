@@ -22,12 +22,16 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="border-bottom pb-4 mb-4">
-                                {{ ucwords(auth()->user()->name) }}
-                            </div>
-                            <div class="border-bottom pb-4 mb-4">
-                                {{ ucwords(auth()->user()->profile->roles) }}
-                            </div>
+                            @if(!empty(auth()->user()->name))
+                                <div class="border-bottom pb-4 mb-4">
+                                    {{ ucwords(auth()->user()->name) }}
+                                </div>
+                            @endif
+                            @if(!empty(auth()->user()->profile->roles))
+                                <div class="border-bottom pb-4 mb-4">
+                                    {{ ucwords(auth()->user()->profile->roles) }}
+                                </div>
+                            @endif
                         </div>   
                     </div> 
                 </div>

@@ -3,11 +3,16 @@
     --main-dark: #0a090b;
     --dark-500: #3D3743;
     --main-ash: #F0F2E3;
-    --theme-shade: #b33f3f
+    --theme-shade: #b33f3f;
+    --pink-color: #f1416c;
 }
 
 .bg-theme-color {
     background-color: var(--theme-color);
+}
+
+.bg-pinky {
+    background-color: var(--pink-color);
 }
 
 .text-shadow-white {

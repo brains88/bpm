@@ -79,7 +79,11 @@ class VerifyController extends Controller
         $verify->phoneactive = false;
         $verify->otp = $otp;
         $verify->update();
-        Sms::otp(['otp' => $otp, 'phone' => $verify->phone]);
+
+        Sms::otp([
+            'otp' => $otp, 
+            'phone' => $verify->phone,
+        ]);
 
         return response()->json([
             'status' => 1,
