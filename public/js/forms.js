@@ -7,9 +7,9 @@
         handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});
     });
 
-    $('.profile-setup-form').submit(function(event){
+    $('.add-profile-form').submit(function(event){
         event.preventDefault();
-        handleForm({form: $(this), button: 'profile-setup-button', spinner: 'profile-setup-spinner', message: 'profile-setup-message'});
+        handleForm({form: $(this), button: 'add-profile-button', spinner: 'add-profile-spinner', message: 'add-profile-message'});
     });
 
     $('.profile-edit-form').submit(function(event){

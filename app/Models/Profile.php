@@ -25,21 +25,31 @@ class Profile extends Model
         'image',
         'description',
         'phone',
-        'skills',
+        'type',
         'address',
         'country_id',
-        'qualifications',
+        'code',
+        'website',
         'idnumber',
         'status',
-        'roles',
+        'role',
         'rcnumber',
         'iscertified',
+        'email',
         'reference',
         'designation',
         'user_id',
         'state',
         'city',
+        'certified',
     ];
+
+    /**
+     * Profile status.
+     *
+     * @var []
+     */
+    public static $status = ['active', 'inactive'];
 
 
     /**
@@ -53,12 +63,19 @@ class Profile extends Model
      * @var []
      */
     public static $roles = [
-        'ats' => ['name' => 'Artisan Worker', 'type' => 'artisan'],
-        'bmd' => ['name' => 'Building Materials Dealer', 'type' => 'dealer'],
-        'red' => ['name' => 'Real Estate Developer', 'type' => 'agent'], 
-        'rea' => ['name' => 'Real Estate Agent', 'type' => 'agent'],
-        'prd' => ['name' => 'Property Developer', 'type' => 'agent'],
+        'artisan' => 'Artisan',
+        'dealer' => 'Building Materials Dealer',
+        'agent' => 'Real Estate Agent',
+        'agent' => 'Property Developer',
+        'agent' => 'Real Estate Developer',
     ];
+
+    /**
+     * Profile types.
+     *
+     * @var []
+     */
+    public static $types = ['normal', 'partner'];
 
     /**
      * A user may have a profile

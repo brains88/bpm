@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Agent extends Model
+class Product extends Model
 {
     use HasFactory;
 
     /**
-     * Agent types.
+     * Product types.
      *
      * @var []
      */
-    public static $types = [
-        'red' => 'Real Estate Developer', 
-        'rea' => 'Real Estate Agent',
-        'prd' => 'Property Developer',
+    public static $categories = [
+        'material' => 'Building Materials',
     ],
 
     /**
@@ -27,14 +25,13 @@ class Agent extends Model
      */
     protected $fillable = [
         'user_id',
-        'certified', 
-        'website', 
+        'name', 
+        'image', 
         'status',
-        'code', 
-        'services', 
+        'category', 
+        'quantity', 
         'description',
-        'phone',
-        'type',
+        'price',
         'reference',
     ];
 

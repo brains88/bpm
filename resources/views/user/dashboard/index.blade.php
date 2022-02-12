@@ -10,13 +10,28 @@
                     </div>
                 @endif
             @endif
+            @if(!empty(auth()->user()->name))
+                <div class="alert-info alert mb-4 d-flex justify-content-between al;align-items-center">
+                    <div class="">
+                        <span class="mr-2">Welcome</span> <a href="{{ route('user.profile') }}">{{ ucwords(auth()->user()->name) }}</a>
+                    </div>
+                    <div>
+                        <small class="text-main-dark">
+                            <i class="icofont-settings"></i>
+                        </small>
+                    </div>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
-                    <div class="alert alert-success shadow-sm p-3 pb-0 mb-4 icon-raduis">
+                    <div class="alert alert-success shadow-sm p-3 mb-4 icon-raduis">
                         @include('user.subscriptions.partials.panel')
+                    </div>
+                    <div class="alert alert-info shadow-sm p-3 mb-4 icon-raduis">
+                        @include('user.adverts.partials.panel')
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">

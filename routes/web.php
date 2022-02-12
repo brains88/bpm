@@ -22,15 +22,6 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::get('/membership', [\App\Http\Controllers\MembershipController::class, 'index'])->name('membership');
 
-    // Route::get('/AdvancedSearch', [AdvancedSearchController::class, 'index'])->name('AdvancedSearch');
-    // Kindly effect route below (AdvancedSearch) to standard used by you.
-    Route::get('/AdvancedSearch', 'AdvancedSearchController@index')->name('AdvancedSearch');
-    Route::get('/author', 'authorController@index')->name('author');
-
-     // Kindly effect route below (Author) to standard used by you.
-     Route::get('/agency', 'AgencyController@index')->name('agency');
-     Route::get('/agencylisting', 'AgencyController@index')->name('agencylisting');
-
     Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
     Route::post('/auth', [\App\Http\Controllers\LoginController::class, 'auth'])->name('auth.login');
     
@@ -211,7 +202,7 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
-    Route::post('/profile/setup', [\App\Http\Controllers\Api\ProfileController::class, 'setup'])->name('user.profile.setup');
+    Route::post('/profile/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('user.profile.add');
     Route::post('/profile/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');
 
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');

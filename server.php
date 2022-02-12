@@ -6,7 +6,7 @@ International Passport
 NIN
 vOTERS CARD 
 DRIVER lISCENCE
-gOVERNMENT api For ID Number Verification.
+GOVERNMENT api For ID Number Verification.
 Slider on login explaining what the comapny does.
 Delete Third party sold property after one month
 Delete Posted property after 6months of dormancy
@@ -21,6 +21,11 @@ RC
 Company name
 Company Logo
 Website URL
+
+Certifications
+Intitution, year, type (Bsc, )
+
+Services - Agent, Dealer, Artisan
 
 Certified agents
 

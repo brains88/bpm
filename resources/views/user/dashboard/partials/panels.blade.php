@@ -1,7 +1,7 @@
 <div class="col-6 col-md-4 mb-4">
     <div class="icon-raduis alert bg-info m-0">
         <div class="position-absolute" style="top: -14px; right: 16px;">
-            <small class="rounded-pill tiny-font bg-danger px-2">
+            <small class="rounded tiny-font bg-danger px-2">
                 <small class="text-white position-relative" style="top: -1px;">
                     +{{ '4' }} views
                 </small>
@@ -24,7 +24,7 @@
 <div class="col-6 col-md-4 mb-4">
     <div class="icon-raduis position-relative alert bg-info m-0">
         <div class="position-absolute" style="top: -14px; right: 16px;">
-            <small class="rounded-pill tiny-font bg-success px-2">
+            <small class="rounded tiny-font bg-success px-2">
                 <small class="text-white position-relative" style="top: -1px;">+3 views</small>
             </small>
         </div>
@@ -36,7 +36,7 @@
             </div>
             <a href="{{ route('user.materials') }}" class="text-white">
                 <small>
-                    Materials
+                    Products
                 </small>
             </a>
         </div>
@@ -45,7 +45,7 @@
 <div class="col-12 col-md-4 mb-4">
     <div class="icon-raduis alert bg-pinky position-relative m-0">
         <div class="position-absolute" style="top: -14px; right: 16px;">
-            <small class="rounded-pill tiny-font bg-success px-2">
+            <small class="rounded tiny-font bg-success px-2">
                 <small class="text-white position-relative" style="top: -1px;">
                     +{{ '17' }} reviews
                 </small>
@@ -54,10 +54,10 @@
         <div class="py-2">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="text-main-dark text-shadow-white m-0">
-                    {{ number_format(auth()->user()->materials->count()) }}
+                    {{ number_format(auth()->user()->materials->count() * 5) }}
                 </h5>
             </div>
-            <a href="{{ route('user.materials') }}" class="text-white">
+            <a href="{{ 'javascript:;' }}" class="text-white">
                 <small>
                     <small>Reviews</small>
                 </small>

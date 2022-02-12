@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Profile, User};
+use App\Models\{Profile, User, Artisan, Dealer, Agent};
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{DB, Str};
 use Validator;
 
 
@@ -12,7 +12,7 @@ class ProfileController extends Controller
     /**
      * Api add Profile
      */
-    public function setup()
+    public function add()
     {
         $data = request()->all();
         $validator = Validator::make($data, [
@@ -24,6 +24,9 @@ class ProfileController extends Controller
             'city' => ['required', 'string'],
             'description' => ['required', 'string', 'max:500'],
             'role' => ['required', 'string'],
+            'phone' => ['nullable', 'unique:profiles'],
+            'website' => ['nullable', 'url'],
+            'email' => ['nullable', 'email', 'unique:profiles'],
         ]);
 
         if ($validator->fails()) {
@@ -35,28 +38,30 @@ class ProfileController extends Controller
 
         try {
             DB::beginTransaction();
-            $user = User::find(auth()->user()->id);
-            $user->name = $data['name'];
-            $user->update();
-
             Profile::create([
                 'country_id' => $data['country'],
+                'description' => $data['description'],
                 'state' => $data['state'],
                 'address' => $data['address'],
-                'designation' => $data['designation'],
                 'city' => $data['city'],
+                'website' => $data['website'],
+                'email' => $data['email'],
                 'user_id' => auth()->user()->id,
-                'description' => $data['description'],
-                'reference' => \Str::uuid(),
-                'roles' => $data['role'],
+                'designation' => $data['designation'],
+                'reference' => \Str::random(64),
+                'role' => $data['role'],
                 'phone' => $data['phone'],
             ]);
+
+            $user = auth()->user();
+            $user->name = $data['name'];
+            $user->update();
 
             DB::commit();
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.profile"),
+                'redirect' => route('user'),
             ]);
         } catch (Exception $error) {
             DB::rollback();

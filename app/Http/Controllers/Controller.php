@@ -29,6 +29,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        //dd(\App\Models\Profile::all());
         $this->subdomain = explode('.', request()->getHost())[0] ?? '';
         // $visitor = Visitor::lookup();
         // dd($visitor);

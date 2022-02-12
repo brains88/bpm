@@ -1,4 +1,4 @@
-<form method="post" class="profile-setup-form" action="javascript:;" data-action="{{ route('user.profile.setup') }}">
+<form method="post" class="add-profile-form" action="javascript:;" data-action="{{ route('user.profile.add') }}">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="text-muted">Profile name</label>
@@ -34,9 +34,9 @@
                 @if(empty($roles))
                     <option value="">No roles listed</option>
                 @else
-                    @foreach ($roles as $key => $value)
-                        <option value="{{ $key }}">
-                            {{ ucfirst($value['name']) }}
+                    @foreach ($roles as $role => $name)
+                        <option value="{{ $role }}">
+                            {{ ucfirst($name) }}
                         </option>
                     @endforeach
                 @endif
@@ -82,8 +82,20 @@
         </div>
         <div class="form-group col-md-6">
             <label class="text-muted">Additional phone number</label>
-            <input type="number" class="form-control phone" name="phone" placeholder="e.g., +443240989">
+            <input type="text" class="form-control phone" name="phone" placeholder="e.g., +443240989">
             <small class="invalid-feedback phone-error"></small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="text-muted">Website link</label>
+            <input type="url" class="form-control website" name="website" placeholder="e.g., bestproperty.com">
+            <small class="invalid-feedback website-error"></small>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-muted">Profile email</label>
+            <input type="email" class="form-control email" name="email" placeholder="e.g., email@mail.com">
+            <small class="invalid-feedback email-error"></small>
         </div>
     </div>
     <div class="mb-4">
@@ -91,9 +103,9 @@
         <textarea class="form-control description" name="description" placeholder="Enter any further details here" rows="6"></textarea>
         <small class="invalid-feedback description-error"></small>
     </div>
-    <div class="alert mb-3 profile-setup-message d-none"></div>
-    <button type="submit" class="btn btn-lg px-4 icon-raduis btn-info text-white profile-setup-button mb-4">
-        <img src="/images/spinner.svg" class="mr-2 d-none profile-setup-spinner mb-1">
+    <div class="alert mb-3 add-profile-message d-none"></div>
+    <button type="submit" class="btn btn-lg px-4 icon-raduis btn-info text-white add-profile-button mb-4">
+        <img src="/images/spinner.svg" class="mr-2 d-none add-profile-spinner mb-1">
         Save
     </button>
 </form>

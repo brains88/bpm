@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agents', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->string('website')->nullable();
-            $table->string('type')->default('normal');
+            $table->string('name');
             $table->foreignId('user_id');
-            $table->string('code');
-            $table->string('phone')->nullable();
-            $table->boolean('certified')->default(false);
+            $table->string('image')->nullable();
+            $table->string('category');
+            $table->string('quantity')->nullable();
+            $table->string('description')->nullable();
+            $table->decimal('price', 10, 2);
             $table->string('status')->default('active');
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agent');
+        Schema::dropIfExists('products');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtisansTable extends Migration
+class CreateSocialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateArtisansTable extends Migration
      */
     public function up()
     {
-        Schema::create('artisans', function (Blueprint $table) {
+        Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->string('website')->nullable();
             $table->foreignId('user_id');
-            $table->string('phone')->nullable();
-            $table->string('status')->default('active');
+            $table->string('whatsapp')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateArtisansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artisans');
+        Schema::dropIfExists('socials');
     }
 }

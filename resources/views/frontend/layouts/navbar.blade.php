@@ -122,7 +122,7 @@
                             <div class="text-center" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <small class="text-white">
                                     @if(empty(auth()->user()->name))
-                                        <i class="icofont-login"></i>
+                                        <i class="icofont-ui-user"></i>
                                     @else
                                         {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
                                     @endif
