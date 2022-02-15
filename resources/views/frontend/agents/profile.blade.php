@@ -11,7 +11,7 @@
 							<div class="mb-4 p-3 icon-raduis bg-white shadow-sm text-center">
 								<div class="w-auto rounded-pill border">
 									<div class="rounded-circle" style="width: 80px; height: 80px;">
-										<img src="/images/profiles/girl.jpg" class="img-fluid w-100 h-100 rounded-circle object-cover">
+										<img src="{{ empty($profile->image) ? '/images/profiles/girl.jpg' : $profile->image }}" class="img-fluid w-100 h-100 rounded-circle object-cover">
 									</div>
 								</div>
 							</div>

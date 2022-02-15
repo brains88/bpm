@@ -11,7 +11,7 @@
 							<div class="mb-4 icon-raduis bg-white shadow-sm text-center">
 								<div class="w-auto position-relative">
 									<div class="p-5 rounded" style="height: 240px;">
-										<img src="/images/profiles/girl.jpg" class="img-fluid w-100 h-100 rounded object-cover">
+										<img src="{{ empty($profile->image) ? '/images/profiles/girl.jpg' : $profile->image }}" class="img-fluid w-100 h-100 rounded object-cover">
 									</div>
 								</div>
 							</div>

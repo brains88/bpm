@@ -1,8 +1,8 @@
 <div class="w-100 p-4 border-bottom border-success bg-white shadow-sm position-relative">
 	<div class="mb-3">
-		<small class="text-main-dark">
+		<div class="text-main-dark">
 			{{ ucfirst($review->review) }}
-		</small>
+		</div>
 	</div>
 	<div class="d-flex justify-content-between align-items-center">
 		<small>
