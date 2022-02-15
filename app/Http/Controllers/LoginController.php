@@ -89,6 +89,8 @@ class LoginController extends Controller
         auth()->logout();
         request()->session()->flush();
         request()->session()->invalidate();
+
+        
         return redirect('/login');
     }
 
