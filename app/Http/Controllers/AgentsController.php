@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\{Profile, Review};
 use Illuminate\Http\Request;
 
 class AgentsController extends Controller
@@ -11,14 +11,14 @@ class AgentsController extends Controller
      */
     public function index()
     {
-        return view('frontend.agents.index');
+        return view('frontend.agents.index')->with(['agents' => Profile::where(['role' => 'agent'])->paginate(24)]);
     }
 
     /**
      * Agent profile page
      */
-    public function profile()
+    public function profile($id, $name)
     {
-        return view('frontend.agents.profile');
+        return view('frontend.agents.profile')->with(['profile' => Profile::findOrFail($id)]);
     }
 }

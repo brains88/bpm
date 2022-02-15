@@ -13,10 +13,10 @@ class Membership extends Model
      * Plans duration before expiry
      */
     public static $durations = [
-        'weekly' => 7, //7days
-        'quaterly' => 120, //120days
-        'monthly' => 30, //30days
-        'yearly' => 360, //360days
+        'weekly' => 7 * 24, //7days * 24hours
+        'quaterly' => 120 * 24, //120days * 24hours
+        'monthly' => 30 * 24, //30days * 24hours
+        'yearly' => 360 * 24, //360days * 24hours
     ];
 
     /**

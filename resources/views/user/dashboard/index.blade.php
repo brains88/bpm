@@ -13,7 +13,8 @@
             @if(!empty(auth()->user()->name))
                 <div class="alert-info alert mb-4 d-flex justify-content-between al;align-items-center">
                     <div class="">
-                        <span class="mr-2">Welcome</span> <a href="{{ route('user.profile') }}">{{ ucwords(auth()->user()->name) }}</a>
+                        <span class="mr-2">Welcome</span>
+                        <a href="{{ route('user.profile') }}">{{ ucwords(auth()->user()->name) }}</a>
                     </div>
                     <div>
                         <small class="text-main-dark">
@@ -53,28 +54,45 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mb-4">
-                            <div class="card bg-info card-raduis shadow-sm">
-                                <div class="card-body">
-                                    <div class="">
-                                        <h5 class="text-white mb-3">List Building Materials</h5>
-                                        <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                        <a href="{{ route('user.materials') }}" class="btn btn-dark px-4">Get Started</a>
+                        @if(auth()->user()->profile->role !== 'dealer')
+                            <div class="col-12 mb-4">
+                                <div class="card bg-info card-raduis shadow-sm">
+                                    <div class="card-body">
+                                        <div class="">
+                                            <h5 class="text-white mb-3">List Building Materials</h5>
+                                            <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 mb-4">
-                            <div class="card bg-info card-raduis shadow-sm">
-                                <div class="card-body">
-                                    <div class="">
-                                        <h5 class="text-white mb-3">List Properties</h5>
-                                        <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                        <a href="{{ route('user.properties') }}" class="btn btn-dark px-4">Get Started</a>
+                        @endif
+                        @if(auth()->user()->profile->role !== 'agent')
+                            <div class="col-12 mb-4">
+                                <div class="card bg-info card-raduis shadow-sm">
+                                    <div class="card-body">
+                                        <div class="">
+                                            <h5 class="text-white mb-3">List Your Properties</h5>
+                                            <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+                        @if(auth()->user()->profile->role !== 'artisan')
+                            <div class="col-12 mb-4">
+                                <div class="card bg-info card-raduis shadow-sm">
+                                    <div class="card-body">
+                                        <div class="">
+                                            <h5 class="text-white mb-3">List Your Services</h5>
+                                            <div class="mb-3">Become an artisan, With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <div class="">
                         <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">

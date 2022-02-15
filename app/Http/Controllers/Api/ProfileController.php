@@ -87,7 +87,6 @@ class ProfileController extends Controller
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'description' => ['required', 'string', 'max:500'],
-            'phone' => ['required', 'integer'],
         ]);
 
         if ($validator->fails()) {

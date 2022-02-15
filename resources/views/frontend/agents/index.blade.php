@@ -12,14 +12,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<?php $agents = ['names' => ['Paul Mainly', 'Reni Black', 'Jim Collins', 'Belim Naha', 'Uche Desmond', 'Hosea Nie', 'Acham Kelly'], 'location' => ['Paris, France', 'Sydney, Australia', 'Austin, USA', null, 'Manchester, UK', '', 'Abuja, Nigeria']]; ?>
-					<?php for ($i = 1; $i < 7; $i++): ?>
-						<div class="col-12 col-md-4 col-lg-3 mb-4">
-							@include('frontend.agents.partials.card')	
-						</div>
-					<?php endfor; ?>
-				</div>
+				@if(empty($agents->count()))
+					<div class="alert alert-info">No agents listed</div>
+				@else
+					<div class="row">
+						@foreach ($agents as $agent)
+							<div class="col-12 col-md-4 col-lg-3 mb-4">
+								@include('frontend.agents.partials.card')	
+							</div>
+						@endforeach
+					</div>
+					{{ $agents->appends(request()->query())->links('vendor.pagination.default') }}
+				@endif
 			</div>
 		</section>
     </div>

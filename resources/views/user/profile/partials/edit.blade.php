@@ -65,7 +65,7 @@
         </div>
         <div class="form-group col-md-6">
             <label class="text-muted">Additional phone number</label>
-            <input type="number" class="form-control phone" name="phone" placeholder="e.g., +443240989" value="{{ ucwords($profile->phone) }}">
+            <input type="text" class="form-control phone" name="phone" placeholder="e.g., +443240989" value="{{ ucwords($profile->phone) }}">
             <small class="invalid-feedback phone-error"></small>
         </div>
     </div>

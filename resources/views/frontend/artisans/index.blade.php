@@ -11,14 +11,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<?php $artisans = ['names' => ['Paul Mainly', 'Reni Black', 'Jim Collins', 'Belim Naha', 'Uche Desmond', 'Hosea Nie', 'Acham Kelly'], 'location' => ['Paris, France', 'Sydney Australia', 'Austin, USA', null, 'Manchester, UK', '', 'Abuja Nigeria']]; ?>
-					<?php for ($i = 1; $i < 7; $i++): ?>
-						<div class="col-12 col-md-4 col-lg-3">
-							@include('frontend.artisans.partials.card')	
-						</div>
-					<?php endfor; ?>
-				</div>
+				@if(empty($artisans->count()))
+					<div class="alert alert-info">No artisans listed</div>
+				@else
+					<div class="row">
+						@foreach ($artisans as $artisan)
+							<div class="col-12 col-md-4 col-lg-3">
+								@include('frontend.artisans.partials.card')	
+							</div>
+						@endforeach
+					</div>
+					{{ $artisans->appends(request()->query())->links('vendor.pagination.default') }}
+				@endif
 			</div>
 		</section>
     </div>

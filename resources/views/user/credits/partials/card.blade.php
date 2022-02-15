@@ -1,42 +1,40 @@
-<div class="card rounded shadow-sm border-0 position-relative">
+<div class="card card-raduis shadow-sm border-0 position-relative">
 	<?php $status = strtolower($credit->status ?? ''); ?>
-	<div class="position-relative px-3" style="top: -10px;">
-		@if($credit->promotion !== null)
-			@if($status === 'expired')
-	    		<small class="bg-danger px-2 py-1 rounded">
-	    			<small class="text-white">Used</small>
-	    		</small>
-			@else
-				<small class="bg-success px-2 py-1 rounded">
-					<small class="text-white">Running</small>
-				</small>
-	    	@endif
-		@else
-			<small class="{{ $status === 'expired' ? 'bg-danger' : 'bg-info' }} px-2 py-1 rounded">
-				<small class="text-white">{{ ucwords($credit->status ?? 'nill') }}</small>
-			</small>
-		@endif
-	</div>
-	<div class="card-body pt-1">
+	<div class="card-body">
 		<div class="d-flex justify-content-between align-items-center">
-			<small class="text-dark">
-				<small class="">
-					{{ $credit->units ?? 'USD' }}units
+			<div class="">
+				<small class="text-dark">
+					<small class="">
+						{{ $credit->units ?? 'USD' }}units ({{ $credit->duration ?? 1 }}days)
+					</small>
 				</small>
-			</small>
-            <small class="cursor-pointer">
-            	{{ $credit->duration ?? 1 }}day(s)
-			</small>
+			</div>
+			<div>
+				@if($credit->promotion !== null)
+					@if($status === 'expired')
+			    		<small class="">
+			    			<small class="text-danger">Used</small>
+			    		</small>
+					@else
+						<small class="">
+							<small class="text-success">Running</small>
+						</small>
+			    	@endif
+				@else
+					<small class="{{ $status === 'expired' ? 'text-danger' : 'text-info' }}">
+						<small class="">
+							{{ ucwords($credit->status ?? 'nill') }}
+						</small>
+					</small>
+				@endif
+			</div>
 		</div>
-		{{-- <div class="d-flex justify-content-between align-items-center">
-			<small class="text-dark">
-				<small>{{ $credit->created_at->diffForHumans() }}</small>
+	</div>
+	<div class="card-footer bg-main-dark d-flex align-items-center justify-content-between">
+		<small class="text-white">
+			<small>
+				{{ $credit->created_at->diffForHumans() }}
 			</small>
-			<small class="">
-				<small class="text-success">
-					{{ $credit->duration ?? 1 }}day(s)
-				</small>
-			</small>
-		</div> --}}
+		</small>
 	</div>
 </div>

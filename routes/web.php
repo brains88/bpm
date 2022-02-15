@@ -104,6 +104,11 @@ Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('material.edit');
         Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('material.add');
     });
+
+    Route::prefix('review')->group(function () {
+        Route::post('/edit/{id}', [\App\Http\Controllers\User\ReviewsController::class, 'edit'])->name('review.edit');
+        Route::post('/add/{profileid}', [\App\Http\Controllers\User\ReviewsController::class, 'add'])->name('review.add');
+    });
 });
 
 Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
@@ -206,6 +211,7 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
     Route::post('/profile/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');
 
     Route::get('/credits', [\App\Http\Controllers\User\CreditsController::class, 'index'])->name('user.credits');
+    Route::get('/reviews', [\App\Http\Controllers\User\ReviewsController::class, 'index'])->name('user.reviews');
 
     Route::post('/initialize', [App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('user.subscription.payment.initialize');
 

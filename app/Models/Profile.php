@@ -84,4 +84,28 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * A user profile may have many social links
+     */
+    public function socials()
+    {
+        return $this->hasMany(Social::class);
+    }
+
+    /**
+     * A profile belongs to a country
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * A user profile may have many reviews
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

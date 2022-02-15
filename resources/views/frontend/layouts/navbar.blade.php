@@ -18,7 +18,7 @@
                         </a>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-services" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-services" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 38">
                            <small class="">
                                 <span class="text-main-dark">Services</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -37,7 +37,7 @@
                         </div>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 38">
                            <small class="">
                                 <span class="text-main-dark">Properties</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 38">
                            <small class="">
                                 <span class="text-main-dark">Products</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -90,7 +90,7 @@
                 <div class="d-flex align-items-center navbar-right">
                     <div class="dropdown text-main-ash cursor-pointer mr-3">
                         <?php $languages = config()->get('languages'); ?>
-                        <div class="d-flex align-items-center" id="global-languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="d-flex align-items-center" id="global-languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 38">
                             <span class="mr-1 text-theme-color">
                                 {{-- <img src="{{ env('COUNTRY_FLAG_URL') }}/{{ $languages[app()->getLocale()]['code'] }}.svg" height="13" width="20"> --}}
                                 <i class="icofont-web"></i>
@@ -119,7 +119,7 @@
                     </div>
                     @if(auth()->check())
                         <div class="dropdown cursor-pointer rounded-circle bg-theme-color" style="width: 30px; height: 30px; line-height: 30px;">
-                            <div class="text-center" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 38">
                                 <small class="text-white">
                                     @if(empty(auth()->user()->name))
                                         <i class="icofont-ui-user"></i>

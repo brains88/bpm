@@ -50,21 +50,6 @@
         event.stopPropagation();
     });
 
-    var url = document.location.toString();
-    if (url.match('#')) {
-        var tabLink = url.split('#')[1];
-        $(`.signup-tabs a[href="#${tabLink}"]`).tab('show');
-        window.location.href = url;
-    } 
-
-    // Change hash for page-reload
-    $('.signup-tabs a').on('shown', function (e) {
-        window.location.hash = e.target.hash;
-    });
-
-    var collapsible = $('#properties-form-home-search');
-    ($(window).width() <= 575.98) ? collapsible.collapse('hide') : collapsible.collapse('show');
-
 })(jQuery);
 
 function handleButton(button, spinner) {

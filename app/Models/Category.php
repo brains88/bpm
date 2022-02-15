@@ -31,14 +31,6 @@ class Category extends Model
     ];
 
     /**
-     * A category may have many subcategories
-     */
-    public function subcategories()
-    {
-        return $this->hasMany(Subcategory::class, 'category_id');
-    }
-
-    /**
      * A property category may have many properties
      */
     public function properties()

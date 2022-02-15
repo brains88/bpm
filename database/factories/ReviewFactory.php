@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\{Review, User, Country};
+use App\Models\{Review, User, Profile};
 use Faker\Factory as Faker;
 
 
-class ReviewsFactory extends Factory
+class ReviewFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +17,10 @@ class ReviewsFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'review' => $faker->text(),
+            'review' => $faker->text($maxNbChars = 500),
             'status' => $faker->randomElement(Review::$status),
-            'user_id' => rand(1, User::count()),
-            'reviewer_id' => rand(1, User::count()),
+            'user_id' => rand(1, User::count()), //The user that reviewed
+            'profile_id' => rand(1, Profile::count()), // The reviewed profile
         ];
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,10 +24,12 @@ class Promotion extends Model
         'property_id',
         'material_id',
         'artisan_id',
+        'agent_id', 
+        'dealer_id',
     ];
 
     /**
-     * A property may belong to a property listed
+     * A promotion may belong to a property listed
      */
     public function property()
     {
@@ -36,7 +37,7 @@ class Promotion extends Model
     }
 
     /**
-     * A property may belong to a property listed
+     * A credit may belong to a property listed
      */
     public function credit()
     {

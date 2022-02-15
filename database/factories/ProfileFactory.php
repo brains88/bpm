@@ -30,7 +30,7 @@ class ProfileFactory extends Factory
             'email' => $faker->safeEmail(),
             'idnumber' => $faker->numberBetween(11, 15),
             'rcnumber' => $faker->numberBetween(5, 6),
-            'image' => $faker->imageUrl($width = 960, $height = 1024),
+            'image' => $faker->imageUrl($width = 180, $height = 174),
             'role' => $faker->randomElement(array_keys(Profile::$roles)),
             'certified' => $faker->boolean($chanceOfGettingTrue = 18),
             'reference' => \Str::random(64),

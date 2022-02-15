@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Profile;
+use App\Models\Review;
    
-class ProfilesSeeder extends Seeder
+class ReviewsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class ProfilesSeeder extends Seeder
      */
     public function run()
     {
-        Profile::truncate();
-        Profile::factory()->count(454)->create();
+        Review::truncate();
+        Review::factory()->count(4289)->create();
     }
 }

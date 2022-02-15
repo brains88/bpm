@@ -21,8 +21,24 @@ class Review extends Model
      */
     protected $fillable = [
         'review',
-        'reviewer_id',
+        'profile_id', // The reviewed profile
         'status',
-        'user_id',
+        'user_id', //The user that reviewed
     ];
+
+    /**
+     * A review was posted by a user
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * A review belongs to a profile 
+     */
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
 }
