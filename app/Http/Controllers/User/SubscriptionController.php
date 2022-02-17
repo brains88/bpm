@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
                 'email' => auth()->user()->email, 
                 'reference' => $reference,
                 'currency' => 'NGN',
-                'callback_url' => route('user'),
+                'callback_url' => route('user.subscription'),
             ]);
 
             if ($paystack) {

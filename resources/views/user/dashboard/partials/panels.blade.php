@@ -1,4 +1,5 @@
-@if(auth()->user()->profile->role === 'agent')
+<?php $role = auth()->user()->profile ? auth()->user()->profile->role : null; ?>
+@if($role === 'agent')
     <div class="col-6 mb-4">
         <div class="icon-raduis alert bg-info m-0">
             <div class="position-absolute" style="top: -14px; right: 16px;">
@@ -23,7 +24,7 @@
         </div>
     </div>
 @endif
-@if(auth()->user()->profile->role === 'dealer')
+@if($role === 'dealer')
     <div class="col-6 mb-4">
         <div class="icon-raduis position-relative alert bg-info m-0">
             <div class="position-absolute" style="top: -14px; right: 16px;">
@@ -40,6 +41,29 @@
                 <a href="{{ route('user.materials') }}" class="text-white">
                     <small>
                         Materials
+                    </small>
+                </a>
+            </div>
+        </div>
+    </div>
+@endif
+@if($role === 'artisan')
+    <div class="col-6 mb-4">
+        <div class="icon-raduis position-relative alert bg-info m-0">
+            <div class="position-absolute" style="top: -14px; right: 16px;">
+                <small class="tiny-font bg-success px-2">
+                    <small class="text-white position-relative" style="top: -1px;">+3 views</small>
+                </small>
+            </div>
+            <div class="py-2">
+                <div class="d-flex justify-content-between align-items-center align-items-center">
+                    <h5 class="text-main-dark text-shadow-white m-0">
+                        {{ number_format(auth()->user()->gigs->count()) }}
+                    </h5>
+                </div>
+                <a href="{{ route('user.gigs') }}" class="text-white">
+                    <small>
+                        Services
                     </small>
                 </a>
             </div>

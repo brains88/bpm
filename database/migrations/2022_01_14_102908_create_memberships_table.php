@@ -18,7 +18,7 @@ class CreateMembershipsTable extends Migration
             $table->bigInteger('price');
             $table->foreignId('currency_id')->nullable();
             $table->string('name');
-            $table->bigInteger('listing'); // Max listing for a perticular plan
+            $table->bigInteger('maxlisting'); // Max listing for a perticular plan
             $table->text('details')->nullable();
             $table->text('duration');
             $table->timestamps();

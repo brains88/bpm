@@ -106,4 +106,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Promotion::class);
     }
+
+    /**
+     * A user may have many service offerings
+     */
+    public function gigs()
+    {
+        return $this->hasMany(Gig::class);
+    }
 }

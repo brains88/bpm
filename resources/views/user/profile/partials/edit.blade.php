@@ -26,10 +26,27 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-12">
+        <div class="form-group col-md-6">
             <label class="text-muted">Address</label>
             <input type="text" class="form-control address" name="address" value="{{ ucwords($profile->address) }}" placeholder="e.g., No 66 Trenth Avenue">
             <small class="invalid-feedback address-error"></small>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="text-muted">Profile role</label>
+            <select class="form-control custom-select role" name="role">
+                <option value="">-- Select role --</option>
+                <?php $roles = \App\Models\Profile::$roles; ?>
+                @if(empty($roles))
+                    <option value="">No roles listed</option>
+                @else
+                    @foreach ($roles as $role => $name)
+                        <option value="{{ $role }}" {{ $profile->role == $role ? 'selected' : '' }}>
+                            {{ ucfirst($name) }}
+                        </option>
+                    @endforeach
+                @endif
+            </select>
+            <small class="invalid-feedback role-error"></small>
         </div>
     </div>
     <div class="form-row">

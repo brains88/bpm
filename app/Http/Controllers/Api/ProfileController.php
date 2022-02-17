@@ -87,6 +87,7 @@ class ProfileController extends Controller
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'description' => ['required', 'string', 'max:500'],
+            'role' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -99,12 +100,12 @@ class ProfileController extends Controller
         try {
             DB::beginTransaction();
             if (auth()->user()->name !== $data['name']) {
-                $user = User::findOrFail(auth()->user()->id);
+                $user = User::find(auth()->user()->id);
                 $user->name = $data['name'];
                 $user->update();
             }
 
-            $profile = Profile::findOrFail($id);
+            $profile = Profile::find($id);
             $profile->country_id = $data['country'];
             $profile->state = $data['state'];
             $profile->address = $data['address'];
@@ -112,13 +113,14 @@ class ProfileController extends Controller
             $profile->city = $data['city'];
             $profile->description = $data['description'];
             $profile->phone = $data['phone'];
+            $profile->role = $data['role'];
             $profile->update();
 
             DB::commit();
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.profile"),
+                'redirect' => route(request()->subdomain()),
             ]);
         } catch (Exception $error) {
             DB::rollback();

@@ -17,10 +17,10 @@ class MembershipFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'name' => $faker->randomElement(['Indvidual', 'Corporate', 'Enterprise']),
-            'price' => $faker->numberBetween(43, 965),
+            'name' => $faker->randomElement(Membership::$names),
+            'price' => $faker->numberBetween(20, 90),
             'duration' => $faker->randomElement(array_keys(Membership::$durations)),
-            'listing' => $faker->numberBetween(10, 1200),
+            'maxlisting' => $faker->numberBetween(100, 900),
             'details' => $faker->text(25),
             'currency_id' => rand(1, Currency::count())
         ];

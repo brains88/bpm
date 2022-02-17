@@ -2,11 +2,11 @@
 
 
 namespace App\Http\Controllers;
-//dd(password_hash('12034', PASSWORD_DEFAULT));
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
 use Stevebauman\Location\Facades\Location;
 use App\Helpers\Visitor;
@@ -29,8 +29,11 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        Request::macro('subdomain', function () {
+            return current(explode('.', $this->getHost()));
+        });
+        //dd(request()->subdomain());
         //dd(\App\Models\Profile::all());
-        $this->subdomain = explode('.', request()->getHost())[0] ?? '';
         // $visitor = Visitor::lookup();
         // dd($visitor);
         //echo gettype(geoip());

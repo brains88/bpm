@@ -4,20 +4,20 @@
             <form method="post" action="javascript:;" class="membership-subscription-form" data-action="{{ route('user.subscription.payment.initialize') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
-                        <div class="text-smoky mb-0 font-weight-bold">Membership subscription</div>
+                        <div class="text-main-dark mb-0">Membership subscription</div>
                         <div class="cursor-pointer" data-dismiss="modal" aria-label="Close">
                             <i class="icofont-close text-danger"></i>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <label class="text-smoky">Choose plan</label>
+                            <label class="text-main-dark">Choose plan</label>
                             <select class="form-control custom-select rounded-0 plan" name="plan">
                                 <option value="">-- Select plan --</option>
                                 <?php $plans = \App\Models\Membership::all(); ?>
                                 @foreach ($plans as $plan)
                                     <option value="{{ $plan->id }}">
-                                        {{ ucfirst($plan->name).' ('.ucfirst($plan->duration).') $'.$plan->price }}
+                                        {{ ucfirst($plan->name).' ('.ucfirst($plan->duration).') '.($plan->currency ? $plan->currency->symbol : 'NGN' ).$plan->price }}
                                     </option>
                                 @endforeach
                             </select>
@@ -28,7 +28,7 @@
                     <div class="d-flex justify-content-right mb-3 mt-1">
                         <button type="submit" class="btn btn-info icon-raduis btn-lg btn-block membership-subscription-button">
                             <img src="/images/spinner.svg" class="mr-2 d-none membership-subscription-spinner mb-1">
-                            Continue
+                            Pay
                         </button>
                     </div>
                 </div>

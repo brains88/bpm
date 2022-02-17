@@ -204,8 +204,11 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
+    Route::get('/subscription', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.subscription');
+    Route::get('/gigs', [\App\Http\Controllers\User\GigsController::class, 'index'])->name('user.gigs');
+
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
     Route::post('/profile/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('user.profile.add');
     Route::post('/profile/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');
@@ -228,6 +231,9 @@ Route::middleware(['web', 'auth', 'user'])->domain(env('USER_URL'))->group(funct
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
 
         Route::post('/promote/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'promote'])->name('user.property.promote');
+
+        Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('user.property.update');
+        Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('user.property.add');
     });
 
     Route::prefix('materials')->group(function () {

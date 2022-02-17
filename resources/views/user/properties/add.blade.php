@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="bg-white p-4 card-raduis">
-                        <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('api.property.add') }}" autocomplete="off">
+                        <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('user.property.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="text-muted">Country located</label>
@@ -47,12 +47,13 @@
                                     <label class="text-muted">Category</label>
                                     <select class="form-control custom-select category" name="category">
                                         <option value="">-- Select category --</option>
-                                        @if(empty($categories->count()))
+                                        <?php $categories = \App\Models\Property::$categories; ?>
+                                        @if(empty($categories))
                                             <option>No Categories Listed</option>
                                         @else: ?>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">
-                                                    {{ ucwords($category->name ?? 0) }}
+                                            @foreach ($categories as $category => $values)
+                                                <option value="{{ $category }}">
+                                                    {{ ucwords($values['name'] ?? null) }}
                                                 </option>
                                             @endforeach
                                         @endif

@@ -8,7 +8,7 @@
             $expiry = empty($subscription->expiry) ? null : $subscription->expiry;
 
             $remainingdays = (\Carbon\Carbon::parse($expiry))->diffInDays(\Carbon\Carbon::today());
-            $duration = empty($subscription->duration) ? 1 : (int)$subscription->duration;
+            $duration = empty($subscription->membership->duration) ? 1 : (int)$subscription->duration;
 
             $fraction = $duration > $remainingdays ? ($remainingdays/$duration) : 0;
             $progress = (100 - round($fraction * 100));  

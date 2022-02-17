@@ -63,8 +63,8 @@ class DashboardController extends Controller
 
                 $payment->status = 'paid';
                 $payment->update();
-                $paymentid = $payment->id ?? 0;
 
+                $paymentid = $payment->id ?? 0;
                 $subscription = Subscription::where(['reference' => $reference])->first();
                 $planid = $payment->product_id ?? 0;
                 $plan = Membership::find($planid);
@@ -86,8 +86,8 @@ class DashboardController extends Controller
                     // Check previous remaining days and add to the renewal if any
                     $remainingdays = Carbon::parse($subscription->expiry)->diffInDays(Carbon::today());
                     $totaldays = $duration + ($remainingdays <= 0 ? 0 : $remainingdays);
-                    $subscription->expiry = Carbon::today()->addDays($totaldays);
 
+                    $subscription->expiry = Carbon::today()->addDays($totaldays);
                     $subscription->duration = $totaldays;
                     $subscription->renewals = $subscription->renewals + 1;
                     $subscription->membership_id = $planid;

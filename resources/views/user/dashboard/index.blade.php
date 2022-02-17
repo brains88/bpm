@@ -61,7 +61,7 @@
                                         <div class="">
                                             <h5 class="text-white mb-3">List Building Materials</h5>
                                             <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                         <div class="">
                                             <h5 class="text-white mb-3">List Your Properties</h5>
                                             <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <div class="">
                                             <h5 class="text-white mb-3">List Your Services</h5>
                                             <div class="mb-3">Become an artisan, With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('signup', ['action' => 'logout']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
                                         </div>
                                     </div>
                                 </div>

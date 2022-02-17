@@ -4,18 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Route;
 use Validator;
 
 class LoginController extends Controller
 {
-
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {}
 
     /**
      * Login View
@@ -77,8 +70,12 @@ class LoginController extends Controller
         request()->session()->flush();
         request()->session()->invalidate();
 
-        
-        return redirect('/login');
+        $redirect = request()->query('redirect');
+        if ($redirect) {
+            return Route::has("{$redirect}") ? redirect()->route("{$redirect}") : redirect()->route('login');
+        }
+
+        return redirect()->route('login');
     }
 
 }

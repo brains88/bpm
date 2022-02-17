@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         
         $this->call(PropertiesSeeder::class);
         $this->call(BlogsSeeder::class);
-        $this->call(SkillsSeeder::class);
+        //$this->call(SkillsSeeder::class);
         $this->call(MaterialsSeeder::class);
         $this->call(ImagesSeeder::class);
         
@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfilesSeeder::class);
         
         $this->call(ReviewsSeeder::class);
+        $this->call(ServicesSeeder::class);
     }
 }

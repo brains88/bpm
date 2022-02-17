@@ -16,7 +16,7 @@ class PropertiesController extends Controller
     public function index()
     {
         $properties = auth()->user()->properties()->orderBy('created_at', 'desc')->paginate(12);
-        return view('user.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'credits' => auth()->user()->credits()->get()]);
+        return view('user.properties.index')->with(['properties' => $properties]);
     }
 
     /**
@@ -24,16 +24,15 @@ class PropertiesController extends Controller
      */
     public function add()
     {
-        $credits = Credit::where(['user_id' => auth()->user()->id])->get();
-        return view('user.properties.add')->with(['categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
+        return view('user.properties.add')->with(['countries' => Country::all()]);
     }
 
     /**
      * User edit property view
      */
-    public function edit($id = '')
+    public function edit($id = 0)
     {
-        return view('user.properties.edit')->with(['countries' => Country::all(), 'property' => Property::where(['id' => $id, 'user_id' => auth()->user()->id])->first()]);
+        return view('user.properties.edit')->with(['countries' => Country::all(), 'property' => Property::find($id)]);
     }
 
     /**

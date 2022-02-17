@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Models\{Category, Property, Country, Image, Division};
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use \Carbon\Carbon;
 use \Exception;
 use Validator;
@@ -43,25 +44,20 @@ class PropertiesController extends Controller
             'action' => $data['action'],
             'category' => $data['category'],
             'measurement' => $data['measurement'],
-            'user_id' => auth()->user()->id ?? 0,
+            'user_id' => auth()->user()->id,
             'additional' => $data['additional'],
-            'reference' => \Str::random(64),
+            'reference' => Str::random(64),
             'currency_id' => $data['currency'] ?? 0,
             'price' => $data['price'],
         ]);
 
-        if ($property) {
-            return response()->json([
-                'status' => 1, 
-                'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.property.edit", ['reference' => $reference]),
-            ]); 
-        }else {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'Operation failed. Try again.',
-            ]);   
-        }
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => route(request()->subdomain().'.property.edit', [
+                'id' => $property->id
+            ]),
+        ]); 
 
     }
 
@@ -102,14 +98,12 @@ class PropertiesController extends Controller
         $property->additional = $data['additional'];
         $property->price = $data['price'];
         $property->currency_id = $data['currency'] ?? 0;
-        $updated = $property->update();
+        $property->update();
 
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'redirect' => route("{$this->subdomain}.property.edit", [
-                'id' => $id, 
-            ]),
+            'redirect' => route(request()->subdomain().'.properties'),
         ]);
             
     }
@@ -132,7 +126,7 @@ class PropertiesController extends Controller
         }
 
         $extension = $image->getClientOriginalExtension();
-        $filename = \Str::uuid().'.'.$extension;
+        $filename = Str::uuid().'.'.$extension;
         $path = 'images/properties';
         $link = env('APP_URL')."/images/properties/{$filename}";
 
@@ -148,7 +142,7 @@ class PropertiesController extends Controller
             }
         };
 
-        $reference = \Str::uuid();
+        $reference = Str::uuid();
         $property = Property::find($id);
         if (is_string($role) && $role === 'main') {
             $imageurl = $property->image ?? '';
@@ -166,7 +160,11 @@ class PropertiesController extends Controller
             ]);
         }else {
             $imageid = $role;
-            $picture = Image::where(['property_id' => $id, 'id' => $imageid])->first();
+            $picture = Image::where([
+                'property_id' => $id, 
+                'id' => $imageid,
+            ])->first();
+            
             if (empty($picture)) {
                 $lastid = Image::create([
                     'property_id' => $id,
@@ -190,7 +188,10 @@ class PropertiesController extends Controller
             }
 
             $imageurl = $picture->link ?? '';
-            if (!empty($imageurl)) $delete($imageurl);
+            if (!empty($imageurl)) {
+                $delete($imageurl);
+            }
+
             $picture->link = $link;
             $picture->reference = $reference;
             $picture->update();

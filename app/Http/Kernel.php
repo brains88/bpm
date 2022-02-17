@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'admin' => \App\Http\Middleware\Admin::class,
         'user' => \App\Http\Middleware\User::class,
+        
         /**
          * Ensures that user sets up profile before performaing any other operation.
          */
@@ -74,5 +75,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        /**
+         * To Prevent accessing cached auth page after logout
+         */
+        'revalidate' => \App\Http\Middleware\RevalidateCache::class,
     ];
 }

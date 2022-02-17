@@ -16,7 +16,12 @@
                         </div>
                         <div class="">
                             <div class="position-relative card mb-4">
-                                <small class="card-header bg-light">Main property view</small>
+                                <div class="card-header bg-white d-flex justify-content-between">
+                                    <small class="text-main-dark">Main view</small>
+                                    <small class="mt-2 add-main-property-image-{{ $property->id }} cursor-pointer text-main-dark" data-id="{{ $property->id }}">
+                                        <i class="icofont-camera"></i>
+                                    </small>
+                                </div> 
                                 <form action="javascript:;">
                                     <input type="file" name="image" accept="image/*" class="main-property-image-input-{{ $property->id }}" data-url="{{ route('api.property.image.upload', ['id' => $property->id, 'role' => 'main' ]) }}" style="display: none;">
                                 </form>
@@ -29,21 +34,20 @@
                                         <img src="{{ $imagelink }}" class="img-fluid main-property-image-preview-{{ $property->id }} h-100 w-100 object-cover">
                                     </a>
                                 </div>
-                                <div class=" card-footer d-flex align-items-center justify-content-between">
-                                    <small class="mt-2 add-main-property-image-{{ $property->id }} cursor-pointer text-main-dark" data-id="{{ $property->id }}">
-                                        <i class="icofont-camera"></i>
-                                    </small>
-                                    <a class="text-decoration-none" href="{{ $imagelink }}">
-                                        <i class="icofont-long-arrow-right"></i>
-                                    </a>
-                                </div>
                             </div>
                             <div class="row">
                                 @for($key = 0; $key <= 3; $key++)
                                     <?php $imageid = $property->images[$key]->id ?? 'create-'.$key; ?>
                                     <div class="col-6 mb-4">
                                         <div class="w-100 position-relative card">
-                                            <small class="card-header bg-light">({{ $key + 1 }})</small>
+                                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                                <small class="text-main-dark">
+                                                    ({{ $key + 1 }})
+                                                </small>
+                                                <small class="add-other-property-image-{{ $imageid }} cursor-pointer text-main-dark" data-id="{{ $imageid }}">
+                                                    <i class="icofont-camera"></i>
+                                                </small>
+                                            </div>
                                             <form action="javascript:;">
                                                 <input type="file" name="image" accept="image/*" class="other-property-image-input-{{ $imageid }}" data-url="{{ route('api.property.image.upload', ['id' => $property->id, 'role' => $imageid ]) }}" style="display: none;">
                                             </form>
@@ -53,15 +57,7 @@
                                             <div class="bg-dark" style="height: 140px;">
                                                 <?php $imagelink = isset($property->images[$key]->link) ? $property->images[$key]->link  : '/images/banners/holder.png'; ?>
                                                 <a href="{{ $imagelink }}" class="text-main-dark">
-                                                    <img src="{{ $imagelink }}" class="img-fluid other-property-image-preview-{{ $imageid }} h-100 w-100 object-cover">
-                                                </a>
-                                            </div>
-                                            <div class=" card-footer d-flex justify-content-between align-items-center">
-                                                <small class="add-other-property-image-{{ $imageid }} cursor-pointer text-main-dark" data-id="{{ $imageid }}">
-                                                    <i class="icofont-camera"></i>
-                                                </small>
-                                                <a class="text-decoration-none" href="{{ $imagelink }}">
-                                                    <i class="icofont-long-arrow-right"></i>
+                                                    <img src="{{ $imagelink }}" class="img-fluid other-property-image-preview-{{ $imageid }} h-100 w-100 border-bottom object-cover">
                                                 </a>
                                             </div>
                                         </div>
@@ -73,7 +69,7 @@
                     <div class="col-12 col-md-7 mb-4">
                         <div class="alert alert-info mb-4">Edit property details</div>
                         <div class="p-4 bg-white">
-                            <form method="post" action="javascript:;" class="edit-property-form" data-action="{{ route('api.property.update', ['id' => $property->id]) }}" autocomplete="off">
+                            <form method="post" action="javascript:;" class="edit-property-form" data-action="{{ route('user.property.update', ['id' => $property->id]) }}" autocomplete="off">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="text-muted">Country located</label>
@@ -112,9 +108,9 @@
                                             @if(empty($categories))
                                                 <option>No Categories Listed</option>
                                             @else: ?>
-                                                @foreach ($categories as $key => $value)
-                                                    <option value="{{ $key }}" {{ $property->category == $key ? 'selected' : '' }}>
-                                                        {{ ucwords($key ?? 'Nill') }}
+                                                @foreach ($categories as $category => $values)
+                                                    <option value="{{ $category }}" {{ $property->category == $category ? 'selected' : '' }}>
+                                                        {{ ucwords($values['name'] ?? 'Nill') }}
                                                     </option>
                                                 @endforeach
                                             @endif
