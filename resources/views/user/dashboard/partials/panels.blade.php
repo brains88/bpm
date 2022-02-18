@@ -17,7 +17,7 @@
                 </div>
                 <a href="{{ route('user.properties') }}" class="text-white">
                     <small>
-                        Properties
+                        All Properties
                     </small>
                 </a>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <a href="{{ route('user.materials') }}" class="text-white">
                     <small>
-                        Materials
+                        All Materials
                     </small>
                 </a>
             </div>
@@ -63,7 +63,7 @@
                 </div>
                 <a href="{{ route('user.gigs') }}" class="text-white">
                     <small>
-                        Services
+                        My Gigs
                     </small>
                 </a>
             </div>
@@ -87,7 +87,7 @@
             </div>
             <a href="{{ route('user.reviews') }}" class="text-white">
                 <small>
-                    Reviews
+                    My Reviews
                 </small>
             </a>
         </div>

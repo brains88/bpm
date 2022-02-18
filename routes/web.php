@@ -14,8 +14,8 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 |
 */
 
-Route::get('/translate', [\App\Http\Controllers\TranslationController::class, 'index'])->name('translate');
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
+    Route::get('/translate', [\App\Http\Controllers\TranslationController::class, 'index'])->name('translate');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
@@ -207,7 +207,12 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/subscription', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.subscription');
-    Route::get('/gigs', [\App\Http\Controllers\User\GigsController::class, 'index'])->name('user.gigs');
+
+    Route::prefix('gigs')->group(function () {
+        Route::get('/', [\App\Http\Controllers\User\GigsController::class, 'index'])->name('user.gigs');
+        Route::post('/create', [\App\Http\Controllers\User\GigsController::class, 'create'])->name('user.gig.create');
+        Route::post('/edit/{id}', [\App\Http\Controllers\User\GigsController::class, 'edit'])->name('user.gig.edit');
+    });
 
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
     Route::post('/profile/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('user.profile.add');

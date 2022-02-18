@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call(ReviewsSeeder::class);
         $this->call(ServicesSeeder::class);
+        $this->call(GigsSeeder::class);
     }
 }

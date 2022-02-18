@@ -23,7 +23,7 @@ class ReviewsController extends Controller
     }
 
     /**
-     * Buy ads credit
+     * Review a user
      */
     public function add($profileid)
     {

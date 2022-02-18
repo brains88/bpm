@@ -17,6 +17,16 @@
         handleForm({form: $(this), button: 'add-profile-button', spinner: 'add-profile-spinner', message: 'add-profile-message'});
     });
 
+    $('.create-gig-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'create-gig-button', spinner: 'create-gig-spinner', message: 'create-gig-message'});
+    });
+
+    $('.edit-gig-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-gig-button', spinner: 'edit-gig-spinner', message: 'edit-gig-message'});
+    });
+
     $('.profile-edit-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'profile-edit-button', spinner: 'profile-edit-spinner', message: 'profile-edit-message'});

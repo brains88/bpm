@@ -55,6 +55,16 @@ class Property extends Model
         'old', 
     ];
 
+    // ['type' => 'Duplex', 'category' => $faker->numberBetween(1, 7)],
+    // ['type' => 'Bungalow', 'category' => $faker->numberBetween(1, 7)],
+    // ['type' => 'flat', 'category' => $faker->numberBetween(1, 7)], 
+    // ['type' => 'self contain', 'category' => $faker->numberBetween(1, 7)],
+    // ['type' => 'One room', 'category' => $faker->numberBetween(1, 7)],
+    // ['type' => 'Storey building', 'category' => $faker->numberBetween(1, 7)], 
+    // ['type' => 'plaza', 'category' => $faker->numberBetween(1, 7)], 
+    // ['type' => 'shop', 'category' => $faker->numberBetween(1, 7)], 
+    // ['type' => 'event center', 'category' => $faker->numberBetween(1, 7)]
+
     /**
      * Property category description
      *

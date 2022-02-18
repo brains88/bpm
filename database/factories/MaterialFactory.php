@@ -31,7 +31,6 @@ class MaterialFactory extends Factory
             'reference' => \Str::uuid(),
             'city' => $faker->city(),
             'additional' => $faker->paragraph(15),
-            'created_at' => Carbon::now(),
         ];
     }
 }
