@@ -12,6 +12,11 @@
         handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});
     });
 
+    $('.update-property-specifics-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'update-property-specifics-button', spinner: 'update-property-specifics-spinner', message: 'update-property-specifics-message'});
+    });
+
     $('.add-profile-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-profile-button', spinner: 'add-profile-spinner', message: 'add-profile-message'});

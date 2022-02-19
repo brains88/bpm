@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-3">
-                    <h4 class="text-main-dark">All Reviews ({{ $reviews->count() }})</h4>
+                    <h4 class="text-main-dark">All Reviews ({{ auth()->user()->reviews()->count() }})</h4>
                     <div class="text-muted">Welcome <a href="{{ route('user.profile') }}">{{ auth()->user()->name }}</a>. List of all your reviews.</div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                 @else
                     <div class="row">
                         @foreach($reviews as $review)
-                            <div class="col-12 mb-4">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4">
                                 @include('user.reviews.partials.card')
                             </div>
                         @endforeach

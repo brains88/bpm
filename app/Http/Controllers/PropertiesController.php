@@ -45,9 +45,12 @@ class PropertiesController extends Controller
     public function search()
     {
         $term = request()->get('query');
-        $properties = Property::where([
-            ['action', '!=', 'sold'], ['address', 'LIKE', '%'.$term.'%'], [function($query) use($term) {
-                $query->orWhere('city', 'LIKE', '%'.$term.'%')->orWhere('state', 'LIKE', '%'.$term.'%')->orWhere('price', 'LIKE', '%'.$term.'%')->orWhere('address', 'LIKE', '%'.$term.'%')->orWhere('category', 'LIKE', '%'.$term.'%')->get();}],
+        $term = '%'.request()->get('query').'%';
+        $properties = Property::where([['action', '!=', 'sold'], [
+                function($query) use($term) {
+                    $query->orWhere('city', 'LIKE', $term)->orWhere('state', 'LIKE', $term)->orWhere('group', 'LIKE', $term)->orWhere('price', 'LIKE', $term)->orWhere('address', 'LIKE', $term)->orWhere('category', 'LIKE', $term)->get();
+                }
+            ],
         ])->orderBy('id', 'desc')->paginate(25);
         return view('frontend.properties.search')->with(['properties' => $properties]);
     }

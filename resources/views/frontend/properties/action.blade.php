@@ -25,6 +25,7 @@
                                         </div>
                                     @endforeach
                                 </div> 
+                                {{ $properties->appends(request()->query())->links('vendor.pagination.default') }}
                             @endif
                         </div>
                     </div>

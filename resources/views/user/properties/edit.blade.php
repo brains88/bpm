@@ -67,6 +67,66 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-7 mb-4">
+                        <div class="mb-4">
+                            <div class="alert alert-info mb-4">Add property specifics</div>
+                            <div class="p-4 border">
+                                <form method="post" action="javascript:;" class="update-property-specifics-form p-4 bg-white" data-action="{{ route('user.property.specifics.update', ['id' => $property->id]) }}" autocomplete="off">
+                                    @if($property->category === 'residential')
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-muted">Bedrooms</label>
+                                                <input type="number" class="form-control bedrooms" name="bedrooms" placeholder="e.g., 4" value="{{ $property->bedrooms }}">
+                                                <small class="invalid-feedback bedrooms-error"></small>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-muted">Toilets</label>
+                                                <input type="number" class="form-control toilets" name="toilets" placeholder="e.g., 6" value="{{ $property->toilets }}">
+                                                <small class="invalid-feedback toilets-error"></small>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="text-muted">Group</label>
+                                            <select class="form-control custom-select group" name="group">
+                                                <option value="">-- Select group --</option>
+                                                <?php $groups = \App\Models\Property::$categories[$property->category]['groups'] ?? []; ?>
+                                                @if(empty($groups))
+                                                    <option>No groups listed</option>
+                                                @else: ?>
+                                                    @foreach ($groups as $group)
+                                                        <option value="{{ $group }}" {{ $property->group == $group ? 'selected' : '' }}>
+                                                            {{ ucwords($group) }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <small class="invalid-feedback group-error"></small>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="text-muted">List Now?</label>
+                                            <select class="form-control custom-select listed" name="listed">
+                                                <option value="">-- Select yes or no --</option>
+                                                <?php $listed = \App\Models\Property::$listed; ?>
+                                                @foreach($listed as $answer)
+                                                    <option value="{{ $answer }}" {{ $property->listed == $answer ? 'selected' : '' }}>
+                                                        {{ ucfirst($answer) }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <small class="invalid-feedback listed-error"></small>
+                                        </div>
+                                    </div>
+                                    <div class="alert mb-3 update-property-specifics-message d-none"></div>
+                                    <div class="d-flex justify-content-right mb-3 mt-1">
+                                        <button type="submit" class="btn btn-info icon-raduis px-4 btn-lg text-white update-property-specifics-button">
+                                            <img src="/images/spinner.svg" class="mr-2 d-none update-property-specifics-spinner mb-1">
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="alert alert-info mb-4">Edit property details</div>
                         <div class="p-4 bg-white">
                             <form method="post" action="javascript:;" class="edit-property-form" data-action="{{ route('user.property.update', ['id' => $property->id]) }}" autocomplete="off">
@@ -181,12 +241,12 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="text-muted">Additional details</label>
-                                    <textarea class="form-control additional" name="additional" placeholder="Enter any further details here" rows="4">{{ $property->additional }}</textarea>
+                                    <textarea class="form-control additional" name="additional" placeholder="Enter any further details here" rows="10">{{ $property->additional }}</textarea>
                                     <small class="invalid-feedback additional-error"></small>
                                 </div>
                                 <div class="alert mb-3 edit-property-message d-none"></div>
                                 <div class="d-flex justify-content-right mb-3 mt-1">
-                                    <button type="submit" class="btn btn-info px-4 btn-lg text-white edit-property-button">
+                                    <button type="submit" class="btn btn-info icon-raduis px-4 btn-lg text-white edit-property-button">
                                         <img src="/images/spinner.svg" class="mr-2 d-none edit-property-spinner mb-1">
                                         Save
                                     </button>

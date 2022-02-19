@@ -18,7 +18,6 @@ class PropertyFactory extends Factory
     {
         $faker = Faker::create();
         $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
-
         return [
             'condition' => $faker->randomElement(Property::$conditions),
             'user_id' => $faker->numberBetween(1, User::count()),
@@ -38,8 +37,7 @@ class PropertyFactory extends Factory
             'views' => $faker->numberBetween(78, 534),
             'measurement' => $faker->numberBetween(500, 6500),
             'city' => $faker->city(),
-            'additional' => $faker->paragraph(15),
-            'created_at' => Carbon::now(),
+            'additional' => $faker->text($maxNbChars = 400),
         ];
     }
 }

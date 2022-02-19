@@ -25,7 +25,7 @@ class GigsController extends Controller
         $validator = Validator::make($data, [
             'description' => ['required', 'string', 'max:400'],
             'service' => ['required', 'integer',],
-            'price' => ['required'],
+            'price' => ['required', 'numeric'],
         ]);
 
         $gig = Gig::where([
@@ -71,7 +71,7 @@ class GigsController extends Controller
         $validator = Validator::make($data, [
             'description' => ['required', 'string', 'max:400'],
             'service' => ['required', 'integer',],
-            'price' => ['required'],
+            'price' => ['nullable', 'numeric'],
         ]);
 
         if ($validator->fails()) {

@@ -94,7 +94,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="">
+                    {{-- <div class="">
                         <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
                             <small>Recent properties</small>
                             <small>
@@ -115,7 +115,7 @@
                                 <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
                             @endif
                         @endif
-                    </div>    
+                    </div>  --}}   
                 </div>
             </div>
         </div>

@@ -1,27 +1,27 @@
 <?php 
 
+use App\Models\Property;
+
 if (!function_exists('retitle')) {
     function retitle($property) {
         if (empty($property)) {
             throw new \Exception('Invalid property passed for title generation');
         }
 
-        $category = $property->category->name ?? '';
-        $action = $property->action ? ucwords(\App\Models\Property::$actions[$property->action]) : '';
-        $bedrooms = $property->bedrooms ?? '';
-        $condition = $property->condition ?? '';
-        switch ($category) {
-            case 'lands':
-                return 'Landed Property '. $action.' Located at '. $property->address ?? '';
+        $category = Property::$categories[$property->category];
+        $action = $property->action ? Property::$actions[$property->action] : '';
+        switch ($property->category) {
+            case 'land':
+                return (empty($property->group) ? $category['name'] : $property->group.' land') .' '. $action.' located at '. $property->address ?? '';
                 break;
             case 'residential':
-                return $condition.' '.$bedrooms.' bedroom apartment '.($property->house->name ?? '').' '.$action.' Located at '.$property->address ?? '';
+                return $property->bedrooms.' Bedroom '.(empty($property->group) ? $category['name'] : $property->group).' '.' Bedroom Apartment '.$action.' located at '.$property->address ?? '';
                 break;
             case 'commercial':
-                return $condition.' '.($property->house->name ?? '').' '.$action.' Located at '.$property->address ?? '';
+                return (empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';
                 break;
             default:
-                return ucfirst($category).' Building '. $action.' Located at '. $property->address ?? '';
+                return ucfirst($category['name']).' '. $action.' located at '. $property->address ?? '';
                 break;
         }
     }

@@ -10,7 +10,7 @@
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
                     <div class="d-flex align-items-center">
-                        <a href="javascript:;" class="btn-info btn text-white mb-4 icon-raduis text-decoration-none" data-toggle="modal" data-target="#create-gig">
+                        <a href="javascript:;" class="btn-info btn px-4 text-white mb-4 icon-raduis text-decoration-none" data-toggle="modal" data-target="#create-gig">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>
@@ -26,7 +26,7 @@
                 @else
                     <div class="row">
                         @foreach($gigs as $gig)
-                            <div class="col-12 col-md-4 mb-4">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4">
                                 @include('user.gigs.partials.card')
                             </div>
                             @include('user.gigs.partials.edit')

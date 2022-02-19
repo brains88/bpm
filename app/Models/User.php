@@ -114,4 +114,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Gig::class);
     }
+
+    /**
+     * A user may have many reviews
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

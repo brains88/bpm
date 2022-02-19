@@ -55,7 +55,8 @@ class PropertiesController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'redirect' => route(request()->subdomain().'.property.edit', [
-                'id' => $property->id
+                'category' => strtolower($property->category),
+                'id' => $property->id,
             ]),
         ]); 
 
@@ -231,5 +232,116 @@ class PropertiesController extends Controller
             'info' => 'Operation successful',
             'redirect' => '',
         ]);
+    }
+
+    /**
+     * Api update property specifics
+     * 
+     * Like only residential properties should have bedrooms
+     */
+    public function specifics($id, $category = 'land')
+    {
+        $data = request()->all();
+        $validator = Validator::make($data, [
+            'group' => ['nullable', 'string'],
+            'bedrooms' => ['nullable', 'integer'],
+            'toilets' => ['nullable', 'integer'],
+            'listed' => ['required', 'string'],
+        ], ['listed.required' => 'Please select yes or no']);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $property = Property::find($id);
+        if (empty($property->image) && $data['listed'] == 'yes') {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'You have to upload property images before listing.',
+                'redirect' => '',
+            ]);
+        }
+
+        $property->group = $data['group'];
+        $property->bedrooms = $data['bedrooms'] ?? null;
+        $property->toilets = $data['toilets'] ?? null;
+        $property->listed = $data['listed'];
+        $updated = $property->update();
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => route('user.properties'),
+        ]);
+    }
+
+    /**
+     * Api promote property
+     */
+    public function promote($id = 0)
+    {
+        $data = request()->only(['credit', 'property']);
+        $validator = Validator::make($data, [
+            'credit' => ['required', 'integer'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $creditid = $data['credit'];
+        $credit = Credit::find($creditid);
+        if (empty($credit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid credit.',
+            ]);
+        }
+
+        $propertyid = $data['property'] ?? 0;
+        $property = Property::find($propertyid);
+        if (empty($property)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid property promotion.',
+            ]);
+        }
+
+        try {
+            DB::beginTransaction();
+            $credit->status = 'running';
+            $credit->update();
+
+            $days = $credit->duration ?? 0;
+            Promotion::create([
+                'credit_id' => $credit->id,
+                'duration' => $days,
+                'started' => Carbon::today(),
+                'expiry' => Carbon::today()->addDays($days),
+                'status' => 'active',
+                'user_id' => auth()->user()->id,
+                'property_id' => $property->id,
+            ]);
+
+            DB::commit();
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => '',
+            ]);
+            
+        } catch (Exception $error) {
+            DB::rollback();
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ]);
+        }
     }
 }

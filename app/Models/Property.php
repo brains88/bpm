@@ -16,10 +16,10 @@ class Property extends Model
      */
     public static $actions = [
         'rent' => 'for rent', 
-        'auction' => 'auction',
+        'auction' => 'for auction',
         'sale' => 'for sale', 
         'lease' => 'for lease', 
-        'sold' => 'sold',
+        'sold' => 'sold off',
     ];
 
     /**
@@ -29,6 +29,7 @@ class Property extends Model
      */
     protected $fillable = [
         'country_id',
+        'listed',
         'state',
         'address',
         'currency_id',
@@ -40,6 +41,7 @@ class Property extends Model
         'additional',
         'reference',
         'price',
+        'group',
     ];
 
     /**
@@ -48,22 +50,11 @@ class Property extends Model
      * @var string[]
      */
     public static $conditions = [
-        'furnished', 
-        'unfurnished', 
+        'furnished',  
         'new',
         'Renovated',
         'old', 
     ];
-
-    // ['type' => 'Duplex', 'category' => $faker->numberBetween(1, 7)],
-    // ['type' => 'Bungalow', 'category' => $faker->numberBetween(1, 7)],
-    // ['type' => 'flat', 'category' => $faker->numberBetween(1, 7)], 
-    // ['type' => 'self contain', 'category' => $faker->numberBetween(1, 7)],
-    // ['type' => 'One room', 'category' => $faker->numberBetween(1, 7)],
-    // ['type' => 'Storey building', 'category' => $faker->numberBetween(1, 7)], 
-    // ['type' => 'plaza', 'category' => $faker->numberBetween(1, 7)], 
-    // ['type' => 'shop', 'category' => $faker->numberBetween(1, 7)], 
-    // ['type' => 'event center', 'category' => $faker->numberBetween(1, 7)]
 
     /**
      * Property category description
@@ -73,7 +64,7 @@ class Property extends Model
     public static $categories = [
         'land' => [
             'name' => 'Landed Property', 
-            'types' => [
+            'groups' => [
                 'Empty',
                 'Fenced',
             ],
@@ -81,25 +72,26 @@ class Property extends Model
 
         'commercial' => [
             'name' => 'Commercial Property', 
-            'types' => [
-                'Shops',
+            'groups' => [
+                'Shop',
                 'Warehouse',
+                'Event center'
             ],
         ],
 
         'industrial' => [
             'name' => 'Industrial Property', 
-            'types' => [
+            'groups' => [
                 'Filling Station',
             ],
         ],
 
         'residential' => [
             'name' => 'Residential Building', 
-            'types' => [
+            'groups' => [
                 'Duplex',
                 'Flat',
-                'Room(s)',
+                'One Room',
                 'Semi-Detached Duplex',
                 'Bungalow',
                 'Self-Contain',
@@ -120,6 +112,13 @@ class Property extends Model
         'banned', 
         'rejected', 
     ];
+
+    /**
+     * Listed status.
+     *
+     * @var string[]
+     */
+    public static $listed = ['yes', 'no'];
 
     /**
      * A property belongs to a user who listed it.
