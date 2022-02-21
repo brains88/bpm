@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 use Validator;
 
 class LoginController extends Controller
@@ -70,12 +71,12 @@ class LoginController extends Controller
         request()->session()->flush();
         request()->session()->invalidate();
 
-        $redirect = request()->query('redirect');
-        if ($redirect) {
-            return Route::has("{$redirect}") ? redirect()->route("{$redirect}") : redirect()->route('login');
+        foreach(request()->cookie() as $name => $value) {
+            Cookie::queue(Cookie::forget($name));
         }
 
-        return redirect()->route('login');
+        $redirect = request()->query('redirect');
+        return Route::has($redirect) ? redirect()->route($redirect) : redirect()->route('login');
     }
 
 }

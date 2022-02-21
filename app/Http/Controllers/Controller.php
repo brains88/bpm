@@ -16,12 +16,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * Get subdomain value
-     * e.g., admin or user
-     */
-    protected $subdomain = '';
-
-    /**
      * API Request timeout
      * 180 seconds or 3Minutes
      */
@@ -32,8 +26,9 @@ class Controller extends BaseController
         Request::macro('subdomain', function () {
             return current(explode('.', $this->getHost()));
         });
-        //dd(request()->subdomain());
-        //dd(\App\Models\Profile::all());
+
+        //dd(request()->cookie());
+
         // $visitor = Visitor::lookup();
         // dd($visitor);
         //echo gettype(geoip());
