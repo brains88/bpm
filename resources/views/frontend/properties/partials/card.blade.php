@@ -25,14 +25,14 @@
             <img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid w-100 h-100 object-cover" style="border-radius: 20px 20px 0 0;">
         </a>
         <div class="position-absolute w-100 px-3 d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.6);">
-            <small class="">
+            <div class="">
                 <small class="text-theme-color">
                     <i class="icofont-location-pin"></i>
                 </small>
                 <small class="text-white">
-                    {{ ucwords($property->city) }} {{ $property->country ? ', '.ucwords($property->country->name) : '' }} 
+                    {{ \Str::limit(ucwords($property->city.' '.($property->state ? ', '.$property->state : '')), 30) }}
                 </small>
-            </small>
+            </div>
         </div>
     </div>
     <div class="card-body">

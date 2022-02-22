@@ -249,6 +249,12 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
     });
 });
 
+Route::fallback(function () {
+    Route::group(['domain' => 'https://www.bestpropertymarket.com'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+    });
+});
+
 
     
 

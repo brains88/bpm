@@ -15,7 +15,7 @@ if (!function_exists('retitle')) {
                 return (empty($property->group) ? $category['name'] : $property->group.' land') .' '. $action.' located at '. $property->address ?? '';
                 break;
             case 'residential':
-                return $property->bedrooms.' Bedroom '.(empty($property->group) ? $category['name'] : $property->group).' '.' Bedroom Apartment '.$action.' located at '.$property->address ?? '';
+                return (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';
                 break;
             case 'commercial':
                 return (empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';
