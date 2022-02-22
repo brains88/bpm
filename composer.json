@@ -13,11 +13,9 @@
         "laravel/framework": "^8.6.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.4",
         "smknstd/fakerphp-picsum-images": "^1.0",
         "torann/currency": "^1.1",
         "torann/geoip": "^3.0",
-        "vluzrmos/language-detector": "^2.3",
         "wildbit/swiftmailer-postmark": "^3.3",
         "yabacon/paystack-php": "^2.2"
     },

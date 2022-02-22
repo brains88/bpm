@@ -96,7 +96,7 @@ function handleForm(info = {}) {
                     handleButton(button, spinner);
                 }
             }else if(response.status === 1) {
-                handleButton(button, spinner);
+                // handleButton(button, spinner);
                 message.removeClass('d-none alert-danger').addClass('alert-success');
                 message.html(response.info).fadeIn();
                 console.log(response.redirect);

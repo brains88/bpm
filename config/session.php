@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'cookie'),
+    'driver' => env('SESSION_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'encrypt' => true,
+    'encrypt' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +126,7 @@ return [
     |
     */
 
-    'cookie' => env('LOCAL_COOKIE', Str::slug(env('APP_NAME', 'bestpropertymarket'), '_').'_session'),
+    'cookie' => env('LOCAL_COOKIE', Str::slug(env('APP_NAME', 'bpm'), '_').'_session'),
 
     /*
     |--------------------------------------------------------------------------
