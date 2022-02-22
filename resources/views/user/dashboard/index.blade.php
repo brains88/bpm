@@ -34,6 +34,7 @@
                     <div class="alert alert-info shadow-sm p-3 mb-4 icon-raduis">
                         @include('user.adverts.partials.panel')
                     </div>
+                    @include('user.adverts.partials.post')
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">
@@ -94,28 +95,30 @@
                             </div>
                         @endif
                     </div>
-                    {{-- <div class="">
-                        <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
-                            <small>Recent properties</small>
-                            <small>
-                                <a href="{{ route('user.property.add') }}" class="text-primary">List property</a>
-                            </small>
-                        </div>
-                        @if(empty($properties->count()))
-                            <div class="alert alert-warning mb-4">No properties listed yet</div>
-                        @else
-                            <div class="row">
-                                @foreach($properties as $property)
-                                    <div class="col-12 col-md-4 col-lg-6 mb-4">
-                                        @include('user.properties.partials.card')
-                                    </div>
-                                @endforeach
+                    @if(auth()->user()->profile->role == 'agent')
+                        <div class="">
+                            <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
+                                <small>Recent properties</small>
+                                <small>
+                                    <a href="{{ route('user.property.add') }}" class="text-primary">List property</a>
+                                </small>
                             </div>
-                            @if($properties->total() > 4)
-                                <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
+                            @if(empty($properties->count()))
+                                <div class="alert alert-warning mb-4">No properties listed yet</div>
+                            @else
+                                <div class="row">
+                                    @foreach($properties as $property)
+                                        <div class="col-12 col-md-4 col-lg-6 mb-4">
+                                            @include('user.properties.partials.card')
+                                        </div>
+                                    @endforeach
+                                </div>
+                                @if($properties->total() > 4)
+                                    <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
+                                @endif
                             @endif
-                        @endif
-                    </div>  --}}   
+                        </div>   
+                    @endif
                 </div>
             </div>
         </div>

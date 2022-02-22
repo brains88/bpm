@@ -29,7 +29,7 @@ if (!function_exists('retitle')) {
 
 if (!function_exists('randomhex')) {
     function randomhex() {
-        $code = substr(md5(rand()), 0, 6);
+        $code = substr(md5(rand(198984, 398094)), 0, 6);
         return '#'.$code;
     }
 }

@@ -17,13 +17,12 @@ class CreateCreditsTable extends Migration
             $table->id();
             $table->string('price');
             $table->foreignId('payment_id');
-            $table->bigInteger('duration')->nullable();
             $table->dateTime('started')->nullable();
-            $table->bigInteger('units');
             $table->foreignId('unit_id');
             $table->dateTime('expiry')->nullable();
             $table->string('reference');
             $table->string('status')->default('active');
+            $table->boolean('inuse')->default(false);
             $table->foreignId('user_id');
             $table->timestamps();
         });

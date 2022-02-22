@@ -16,7 +16,7 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('price');
-            $table->bigInteger('duration');
+            $table->bigInteger('duration'); //In days
             $table->foreignId('currency_id')->nullable();
             $table->bigInteger('units');
             $table->string('reference');

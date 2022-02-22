@@ -279,7 +279,7 @@ class PropertiesController extends Controller
     }
 
     /**
-     * Api promote property
+     * Api promote a property
      */
     public function promote($id = 0)
     {

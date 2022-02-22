@@ -23,9 +23,6 @@ class Promotion extends Model
         'user_id',
         'property_id',
         'material_id',
-        'artisan_id',
-        'agent_id', 
-        'dealer_id',
     ];
 
     /**

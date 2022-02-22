@@ -17,8 +17,9 @@ class CreateAdvertsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('banner')->nullable();
-            $table->bigInteger('duration')->nullable();
-            $table->dateTime('started')->nullable();
+            $table->string('description')->nullable();
+            $table->dateTime('started');
+            $table->foreignId('credit_id');
             $table->dateTime('expiry')->nullable();
             $table->string('status')->default('inactive');
             $table->string('reference');

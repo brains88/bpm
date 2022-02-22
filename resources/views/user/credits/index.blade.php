@@ -10,11 +10,11 @@
                 </div>
                 <div class="">
                     <div class="d-flex align-items-center">
-                        <a href="javascript:;" class="bg-info text-white mr-3 mb-4 px-3 py-2 icon-raduis text-decoration-none" data-toggle="modal" data-target="#buy-credit">
+                        <a href="javascript:;" class="btn-info btn mb-4 px-4 icon-raduis" data-toggle="modal" data-target="#buy-credit">
                             <small class="mr-1">
                                 <i class="icofont-plus"></i>
                             </small>
-                            <div class="d-inline">Buy credits</div>
+                            <div class="d-inline">Buy credit</div>
                         </a>
                         @include('user.credits.partials.buy')
                     </div>
@@ -32,7 +32,7 @@
                 @else
                     <div class="row">
                         @foreach($credits as $credit)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-6 col-lg-3 mb-4">
                                 @include('user.credits.partials.card')
                             </div>
                         @endforeach

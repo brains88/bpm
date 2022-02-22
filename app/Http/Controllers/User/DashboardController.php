@@ -18,8 +18,8 @@ class DashboardController extends Controller
     public function index()
     {
         $reference = request()->get('reference');
-        $properties = Property::latest('created_at')->where(['user_id' => auth()->user()->id])->paginate(4);
-        return view('user.dashboard.index')->with(['properties' => $properties, 'subscription' => Subscription::where(['user_id' => auth()->user()->id])->first(), 'units' => Unit::all(), 'reference' => $reference, 'verify' => $this->verify($reference), 'credits' => Credit::where(['user_id' => auth()->user()->id])->get()]);
+        $properties = Property::latest('created_at')->where(['user_id' => auth()->id()])->paginate(4);
+        return view('user.dashboard.index')->with(['properties' => $properties, 'subscription' => Subscription::where(['user_id' => auth()->id()])->first(), 'units' => Unit::all(), 'reference' => $reference, 'verify' => $this->verify($reference), 'credits' => Credit::where(['user_id' => auth()->id()])->get()]);
     }
 
     /**
@@ -75,7 +75,7 @@ class DashboardController extends Controller
                         'started' => Carbon::today(),
                         'expiry' => Carbon::today()->addDays($duration),
                         'duration' => $duration,
-                        'user_id' => auth()->user()->id,
+                        'user_id' => auth()->id(),
                         'reference' => $reference,
                         'membership_id' => $planid,
                         'status' => 'active',
