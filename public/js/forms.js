@@ -7,6 +7,11 @@
         handleForm({form: $(this), button: 'add-review-button', spinner: 'add-review-spinner', message: 'add-review-message'});
     });
 
+    $('.post-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'post-advert-button', spinner: 'post-advert-spinner', message: 'post-advert-message'});
+    });
+
     $('.resend-token-link-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});

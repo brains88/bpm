@@ -28,13 +28,90 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
+                    {{-- Subscription section starts --}}
                     <div class="alert alert-success shadow-sm p-3 mb-4 icon-raduis">
-                        @include('user.subscriptions.partials.panel')
+                        <div class="pb-3">
+                            @if(empty($subscription))
+                                <div class="alert alert-danger m-0">Subscribe to list more properties. <a href="javascript:;" data-target="#membership-subscription" data-toggle="modal">Click here</a> to get started.</div>
+                                @include('user.subscriptions.partials.subscribe')
+                            @else
+                                <?php 
+                                    $status = strtolower($subscription->status ?? ''); 
+                                    $expiry = empty($subscription->expiry) ? null : $subscription->expiry;
+
+                                    $remainingdays = (\Carbon\Carbon::parse($expiry))->diffInDays(\Carbon\Carbon::today());
+                                    $duration = empty($subscription->membership->duration) ? 1 : (int)$subscription->duration;
+
+                                    $fraction = $duration > $remainingdays ? ($remainingdays/$duration) : 0;
+                                    $progress = (100 - round($fraction * 100));  
+                                ?>
+
+                                <div class="d-flex position-relative" style="top: -25px;">
+                                    <small class="text-white bg-{{ $status == 'expired' ? 'danger' : ($status === 'cancelled' ? 'secondary' : 'success') }} px-2 rounded mr-3">
+                                        {{ ucfirst($status) }}
+                                    </small>
+                                    <small class="text-white bg-{{ $progress <= 90 ? 'success' : 'danger' }} px-2 rounded mr-3">
+                                        {{ $progress <= 0 ? 1 : $progress }}%
+                                    </small>
+                                </div>
+                                <div class="">
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <small class="">
+                                            {{ ucwords($subscription->membership->name ?? 'Nill') }} Plan ({{ ucwords($duration) }}days)
+                                        </small>
+                                        <small class="">
+                                            {{ $remainingdays }} Day(s) remaining
+                                        </small>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="progress" style="height: 7.5px;">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{ $progress <= 90 ? 'success' : 'danger' }}" role="progressbar" aria-valuenow="{{ $progress <= 0 ? 1 : $progress }}" aria-valuemin="1" aria-valuemax="100" style="width: {{ $progress <= 0 ? 1 : $progress }}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        @if($status === 'active' || $progress <= 50)
+                                            <div class="d-flex">
+                                                <a href="javascript:;" class="btn btn-info icon-raduis px-4 mr-3" data-toggle="modal" data-target="#renew-subscription">
+                                                    Renew
+                                                </a>
+                                                <a href="javascript:;" class="btn btn-dark icon-raduis px-4 user-cancel-subscription" data-url="{{ route('user.subscription.cancel', ['id' => $subscription->id]) }}">
+                                                    <img src="/images/spinner.svg" class="mr-2 d-none cancel-subscription-spinner mb-1">
+                                                    Cancel
+                                                </a>
+                                            </div>
+                                            @include('user.subscriptions.partials.renew')
+                                        @elseif($status === 'cancelled')
+                                            <div class="d-flex align-items-center">
+                                                <a href="javascript:;" class="btn btn-info icon-raduis btn-block px-4 user-activate-subscription" data-url="{{ route('user.subscription.activate', ['id' => $subscription->id]) }}">
+                                                    <img src="/images/spinner.svg" class="mr-2 d-none activate-subscription-spinner mb-1">
+                                                    Activate
+                                                </a>
+                                            </div>
+                                        @else
+                                            <div class="d-flex align-items-center">
+                                                <a href="javascript:;" class="btn btn-info icon-raduis btn-block px-4 user-cancel-subscription" data-url="{{ route('user.subscription.cancel', ['id' => $subscription->id]) }}">
+                                                    <img src="/images/spinner.svg" class="mr-2 d-none cancel-subscription-spinner mb-1">
+                                                    Cancel
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
                     </div>
+                    {{-- Advert section starts --}}
                     <div class="alert alert-info shadow-sm p-3 mb-4 icon-raduis">
-                        @include('user.adverts.partials.panel')
+                        <div class="card bg-info shadow-sm">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between">
+                                    <div class="text-white">Adverts</div>
+                                    <a href="javascript:;" class="text-white" data-toggle="modal" data-target="#post-advert">Post Advert</a>
+                                </div>
+                            </div>
+                        </div>
+                        @include('user.adverts.partials.post')
                     </div>
-                    @include('user.adverts.partials.post')
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">

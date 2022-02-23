@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 use App\Models\{Unit, Payment, Credit};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use App\Helpers\Paystack;
 use \Exception;
@@ -19,7 +18,7 @@ class CreditsController extends Controller
     public function index()
     {
         $reference = request()->get('reference');
-        return view('user.credits.index')->with(['credits' => Credit::where(['user_id' => auth()->user()->id])->latest('created_at')->paginate(12), 'units' => Unit::all(), 'verify' => $this->verify($reference), 'reference' => $reference]);
+        return view('user.credits.index')->with(['credits' => Credit::where(['user_id' => auth()->id()])->latest('created_at')->paginate(12), 'units' => Unit::all(), 'verify' => $this->verify($reference), 'reference' => $reference]);
     }
 
     /**
@@ -58,7 +57,7 @@ class CreditsController extends Controller
                 'product_id' => $unit->id,
                 'type' => 'adverts',
                 'status' => 'initialized',
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->id(),
             ]);
 
             DB::commit();
@@ -150,7 +149,7 @@ class CreditsController extends Controller
                     'units' => $unit->units,
                     'reference' => $reference,
                     'status' => 'paused',
-                    'user_id' => auth()->user()->id,
+                    'user_id' => auth()->id(),
                 ]);
 
                 DB::commit();

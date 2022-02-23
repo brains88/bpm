@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-6">
                             <label class="text-smoky">Your Credits</label>
                             <select class="form-control custom-select rounded-0 unit" name="unit">
                                 <option value="">-- Select credit --</option>
@@ -26,15 +26,20 @@
                             </select>
                             <small class="invalid-feedback unit-error"></small>
                         </div>
+                        <div class="form-group col-6">
+                            <label class="text-smoky">Website link</label>
+                            <input type="url" name="link" class="form-control link" placeholder="Enter website link">
+                            <small class="invalid-feedback link-error"></small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="text-smoky">Advert Details (Optional)</label>
-                        <textarea class="form-control description" name="description" rows="6" placeholder="Enter advert details (optional)"></textarea>
+                        <textarea class="form-control description" name="description" rows="6" placeholder="Maximum of 300 characters"></textarea>
                         <small class="invalid-feedback description-error"></small>
                     </div>
                     <div class="alert mb-3 post-advert-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">
-                        <button type="submit" class="btn icon-raduis btn-block btn-info btn-lg text-white post-advert-button px-4">
+                        <button type="submit" class="btn icon-raduis btn-info btn-lg text-white post-advert-button px-4">
                             <img src="/images/spinner.svg" class="mr-2 d-none post-advert-spinner mb-1">
                             Post
                         </button>
