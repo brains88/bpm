@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\{Category, Property, Country};
+use Illuminate\Support\Str;
 
 class PropertiesController extends Controller
 {
@@ -19,8 +20,7 @@ class PropertiesController extends Controller
     public function property($category = 'land', $id = 45, $slug = '')
     {
         $property = Property::findOrFail($id);
-        return view('frontend.properties.property')->with([
-            'categories' => Category::where(['type' => 'property'])->get(), 'property' => $property, 'related' => Property::where(['category' => $category, 'country_id' => $property->country_id ?? 0])->paginate(6)]); 
+        return view('frontend.properties.property')->with(['title' => Str::headline($slug), 'property' => $property, 'related' => Property::where(['category' => $category, 'country_id' => $property->country_id ?? 0])->paginate(6)]); 
     }
 
     /**
@@ -29,7 +29,7 @@ class PropertiesController extends Controller
     public function category($category = 'land')
     {
         $properties = Property::where(['category' => $category])->where('action', '!=', 'sold')->paginate(16);
-        return view('frontend.properties.category')->with(['properties' => $properties, 'soldProperties' => Property::where(['action' => 'sold'])->paginate(3), 'name' => $category]);
+        return view('frontend.properties.category')->with(['title' => "$category Propertes", 'properties' => $properties, 'soldProperties' => Property::where(['action' => 'sold'])->paginate(3), 'name' => $category]);
     }
 
     /**

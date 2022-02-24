@@ -4,6 +4,8 @@ namespace Database\Factories;
 use Faker\Factory as Faker;
 use App\Models\{User, Payment, Unit};
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class CreditFactory extends Factory
 {
@@ -16,13 +18,12 @@ class CreditFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'price' => $faker->numberBetween(100, 1500),
             'status' => 'paused',
-            'duration' => $faker->numberBetween(1, 360),
             'user_id' => rand(1, User::count()),
             'units' => $faker->numberBetween(23, 109),
-            'reference' => \Str::uuid(),
+            'reference' => Str::random(64),
             'unit_id' => rand(1, Unit::count()),
+            'inuse' => $faker->boolean(40),
             'payment_id' => rand(1, Payment::count()),
         ];
     }

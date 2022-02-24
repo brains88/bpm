@@ -74,12 +74,10 @@ class DashboardController extends Controller
                     Subscription::create([
                         'started' => Carbon::today(),
                         'expiry' => Carbon::today()->addDays($duration),
-                        'duration' => $duration,
                         'user_id' => auth()->id(),
                         'reference' => $reference,
                         'membership_id' => $planid,
                         'status' => 'active',
-                        'amount' => $amount,
                         'payment_id' => $paymentid,
                     ]);
                 }else {

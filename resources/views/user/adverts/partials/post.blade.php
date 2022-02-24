@@ -1,7 +1,7 @@
 <div class="modal fade" id="post-advert" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content border-0">
-            <form method="post" action="javascript:;" class="post-advert-form" data-action="{{ route('user.credits.buy') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="post-advert-form" data-action="{{ route('user.advert.post') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-smoky mb-0 font-weight-bold">Post Advert</div>
@@ -12,19 +12,20 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label class="text-smoky">Your Credits</label>
-                            <select class="form-control custom-select rounded-0 unit" name="unit">
+                            <select class="form-control custom-select rounded-0 credit" name="credit">
                                 <option value="">-- Select credit --</option>
-                                @if(empty($units->count()))
-                                    <option value="">-- No units listed --</option>
+                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false])->get(); ?>
+                                @if(empty($credits->count()))
+                                    <option value="">-- You have no available credits --</option>
                                 @else
-                                    @foreach ($units as $unit)
-                                        <option value="{{ $unit->id }}">
-                                            {{ $unit->units.'units for $'.$unit->price.'('.$unit->duration.'days)' }}
+                                    @foreach ($credits as $credit)
+                                        <option value="{{ $credit->id }}">
+                                            {{ $credit->units.'units '.$credit->unit->duration.' days' }}
                                         </option>
                                     @endforeach
                                 @endif
                             </select>
-                            <small class="invalid-feedback unit-error"></small>
+                            <small class="invalid-feedback credit-error"></small>
                         </div>
                         <div class="form-group col-6">
                             <label class="text-smoky">Website link</label>

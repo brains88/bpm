@@ -16,15 +16,15 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('credit_id');
-            $table->bigInteger('duration');
             $table->dateTime('started');
             $table->dateTime('expiry');
             $table->foreignId('property_id')->nullable();
+            $table->string('type')->nullable();
             $table->boolean('promoted')->default(true);
             $table->string('status');
             $table->foreignId('user_id');
             $table->foreignId('material_id')->nullable();
-            $table->foreignId('artisan_id')->nullable();
+            $table->foreignId('profile_id')->nullable();
             $table->timestamps();
         });
     }

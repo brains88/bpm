@@ -122,4 +122,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    /**
+     * A user may have adverts
+     */
+    public function adverts()
+    {
+        return $this->hasMany(Advert::class);
+    }
 }

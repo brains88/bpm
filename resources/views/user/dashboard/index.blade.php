@@ -5,7 +5,7 @@
         <div class="container">
             @if(!empty($reference))
                 @if(isset($verify['status']))
-                    <div class="alert mt-4 {{ $verify['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
+                    <div class="alert mb-4 {{ $verify['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
                         {{ $verify['info'] }}
                     </div>
                 @endif
@@ -101,17 +101,24 @@
                         </div>
                     </div>
                     {{-- Advert section starts --}}
-                    <div class="alert alert-info shadow-sm p-3 mb-4 icon-raduis">
-                        <div class="card bg-info shadow-sm">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between">
-                                    <div class="text-white">Adverts</div>
-                                    <a href="javascript:;" class="text-white" data-toggle="modal" data-target="#post-advert">Post Advert</a>
-                                </div>
-                            </div>
+                    <div class="p-4 border">
+                        <div class="d-flex justify-content-between alert alert-info mb-4 icon-raduis">
+                            <span class="">Adverts</span>
+                            <a href="javascript:;" class="" data-toggle="modal" data-target="#post-advert">Post advert</a>
+                            @include('user.adverts.partials.post')
                         </div>
-                        @include('user.adverts.partials.post')
-                    </div>
+                        @if(empty(auth()->user()->adverts))
+                            <div class="alert alert-danger">You have no adverts. Post advert.</div>
+                        @else
+                            <div class="row">
+                                @foreach(auth()->user()->adverts as $advert)
+                                    <div class="col-12 mb-4">
+                                        @include('user.adverts.partials.card')
+                                    </div>
+                                @endforeach
+                            </div>  
+                        @endif
+                    </div>   
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">
@@ -120,8 +127,9 @@
                                 <div class="pb-0 position-relative">
                                     <div class="mb-3">
                                         <h4 class="">Total Credits</h4>
+                                        <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id()])->get(); ?>
                                         <h6 class="">
-                                            {{ number_format(auth()->user()->credits()->where('status', '!=', 'expired')->sum('units')) }} Units
+                                            {{ empty($credits->count()) ? 0 : number_format($credits->sum('units')) }} Units
                                         </h6>
                                     </div>
                                     <div class="d-flex">
@@ -132,69 +140,73 @@
                                 </div>
                             </div>
                         </div>
-                        @if(auth()->user()->profile->role !== 'dealer')
-                            <div class="col-12 mb-4">
-                                <div class="card bg-info card-raduis shadow-sm">
-                                    <div class="card-body">
-                                        <div class="">
-                                            <h5 class="text-white mb-3">List Building Materials</h5>
-                                            <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                        @if(auth()->user()->profile)
+                            @if(auth()->user()->profile->role !== 'dealer')
+                                <div class="col-12 mb-4">
+                                    <div class="card bg-info card-raduis shadow-sm">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <h5 class="text-white mb-3">List Building Materials</h5>
+                                                <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                        @if(auth()->user()->profile->role !== 'agent')
-                            <div class="col-12 mb-4">
-                                <div class="card bg-info card-raduis shadow-sm">
-                                    <div class="card-body">
-                                        <div class="">
-                                            <h5 class="text-white mb-3">List Your Properties</h5>
-                                            <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                            @endif
+                            @if(auth()->user()->profile->role !== 'agent')
+                                <div class="col-12 mb-4">
+                                    <div class="card bg-info card-raduis shadow-sm">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <h5 class="text-white mb-3">List Your Properties</h5>
+                                                <div class="mb-3">With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                        @if(auth()->user()->profile->role !== 'artisan')
-                            <div class="col-12 mb-4">
-                                <div class="card bg-info card-raduis shadow-sm">
-                                    <div class="card-body">
-                                        <div class="">
-                                            <h5 class="text-white mb-3">List Your Services</h5>
-                                            <div class="mb-3">Become an artisan, With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
-                                            <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                            @endif
+                            @if(auth()->user()->profile->role !== 'artisan')
+                                <div class="col-12 mb-4">
+                                    <div class="card bg-info card-raduis shadow-sm">
+                                        <div class="card-body">
+                                            <div class="">
+                                                <h5 class="text-white mb-3">List Your Services</h5>
+                                                <div class="mb-3">Become an artisan, With over 5,000 weekly visitors, you stand a change to leverage our platform.</div>
+                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-main-dark text-white icon-raduis px-4">Get Started</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endif
                     </div>
-                    @if(auth()->user()->profile->role == 'agent')
-                        <div class="">
-                            <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
-                                <small>Recent properties</small>
-                                <small>
-                                    <a href="{{ route('user.property.add') }}" class="text-primary">List property</a>
-                                </small>
-                            </div>
-                            @if(empty($properties->count()))
-                                <div class="alert alert-warning mb-4">No properties listed yet</div>
-                            @else
-                                <div class="row">
-                                    @foreach($properties as $property)
-                                        <div class="col-12 col-md-4 col-lg-6 mb-4">
-                                            @include('user.properties.partials.card')
-                                        </div>
-                                    @endforeach
+                    @if(auth()->user()->profile)
+                        @if(auth()->user()->profile->role == 'agent')
+                            <div class="">
+                                <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
+                                    <small>Recent properties</small>
+                                    <small>
+                                        <a href="{{ route('user.property.add') }}" class="text-primary">List property</a>
+                                    </small>
                                 </div>
-                                @if($properties->total() > 4)
-                                    <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
+                                @if(empty($properties->count()))
+                                    <div class="alert alert-warning mb-4">No properties listed yet</div>
+                                @else
+                                    <div class="row">
+                                        @foreach($properties as $property)
+                                            <div class="col-12 col-md-4 col-lg-6 mb-4">
+                                                @include('user.properties.partials.card')
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @if($properties->total() > 4)
+                                        <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
+                                    @endif
                                 @endif
-                            @endif
-                        </div>   
+                            </div>   
+                        @endif
                     @endif
                 </div>
             </div>

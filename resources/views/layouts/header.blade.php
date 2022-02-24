@@ -49,7 +49,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
         <link rel="manifest" href="/favicon/site.webmanifest">
         <!-- SITE TITLE -->
-        <title>{{ $title ?? config('app.name') }}</title>
+        <title>{{ ucfirst($title ?? config('app.name')) }}</title>
         {{-- Google fonts --}}
         {{-- @if(env('APP_ENV') === 'production') --}}
             <link rel="preconnect" href="https://fonts.googleapis.com">

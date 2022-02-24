@@ -27,19 +27,6 @@ if (!function_exists('retitle')) {
     }
 }
 
-if (!function_exists('randomhex')) {
-    function randomhex() {
-        $code = substr(md5(rand(198984, 398094)), 0, 6);
-        return '#'.$code;
-    }
-}
-
-if (!function_exists('randomrgba')) {
-    function randomrgba($opacity = 0.5) {
-        return 'rgba('.rand(0, 255).','. rand(0, 255).','. rand(0, 255).','. $opacity.')';
-    }
-}
-
 if (!function_exists('firstname')) {
     function firstname($fullname = '') {
         return empty($fullname) ? '' : (explode(' ', $fullname)[0] ?? '');

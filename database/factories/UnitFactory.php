@@ -4,7 +4,6 @@ namespace Database\Factories;
 use App\Models\{Membership, Unit, Currency, Payment};
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
-use Carbon\Carbon;
 
 class UnitFactory extends Factory
 {

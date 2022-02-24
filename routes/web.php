@@ -214,6 +214,11 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
         Route::post('/edit/{id}', [\App\Http\Controllers\User\GigsController::class, 'edit'])->name('user.gig.edit');
     });
 
+    Route::prefix('adverts')->group(function () {
+        Route::post('/post', [\App\Http\Controllers\User\AdvertsController::class, 'post'])->name('user.advert.post');
+        Route::post('/edit/{id}', [\App\Http\Controllers\User\GigsController::class, 'edit'])->name('user.gig.edit');
+    });
+
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
     Route::post('/profile/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('user.profile.add');
     Route::post('/profile/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');

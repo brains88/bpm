@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-use App\Models\Advert;
+use App\Models\{Advert, Credit};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -17,9 +17,11 @@ class AdvertsController extends Controller
      */
     public function post()
     {
-        $data = request()->only(['unit']);
+        $data = request()->all();
         $validator = Validator::make($data, [
-            'unit' => ['required', 'integer'],
+            'credit' => ['required', 'integer'],
+            'description' => ['required', 'string'],
+            'link' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -29,54 +31,35 @@ class AdvertsController extends Controller
             ]);
         }
 
-        $unit = Unit::find($data['unit']);
-        if (empty($unit)) {
+        $credit = Credit::find($data['credit']);
+        if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid ads unit'
+                'info' => 'Invalid advert credit'
             ]);
         }
 
         try {
-            $amount = $unit->price ?? 0;
-            $reference = (string)Str::uuid();
-
-            DB::beginTransaction();
-            $payment = Payment::create([
-                'reference' => $reference,
-                'amount' => $amount,
-                'product_id' => $unit->id,
-                'type' => 'adverts',
-                'status' => 'initialized',
+            Advert::create([
+                'reference' => Str::random(64),
+                'description' => $data['description'],
+                'credit_id' => $credit->id,
+                'link' => $data['link'],
                 'user_id' => auth()->id(),
+                'status' => 'initialized',
             ]);
 
-            DB::commit();
-            $paystack = (new Paystack())->initialize([
-                'amount' => $amount * 100, //in kobo
-                'email' => auth()->user()->email, 
-                'reference' => $reference,
-                'currency' => 'NGN',
-                'callback_url' => route('user.credits')
-            ]);
-
-            if ($paystack) {
-                return response()->json([
-                    'status' => 1, 
-                    'info' => 'Please wait . . .',
-                    'redirect' => $paystack->data->authorization_url,
-                ]);
-            }
-            
+            $credit->inuse = true;
+            $credit->update();
             return response()->json([
-                'status' => 0, 
-                'info' => 'Payment initialization failed. Try again.',
+                'status' => 1, 
+                'info' => 'Operation successful.',
+                'redirect' => ''
             ]);
         } catch (Exception $error) {
-            DB::rollback();
             return response()->json([
                 'status' => 0, 
-                'info' => 'An error occured. Refresh the page and try again.'
+                'info' => 'Operation failed. Try again.'
             ]);
         }         
     }

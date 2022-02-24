@@ -34,7 +34,7 @@ class Timing
 
 	/**
 	 */
-	public function __construct((int)$duration = 0, (int)$progress = '', (boolean)$expired = false, (int)$remainingdays = 0)
+	public function __construct((int)$duration = 0, (int)$progress = 0, (boolean)$expired = false, (int)$remainingdays = 0)
 	{
 		$this->expired = $expired;
 		$this->remainingdays = $remainingdays;
@@ -57,7 +57,7 @@ class Timing
 	 */
 	public function expired() : bool
 	{
-		return self::$expired;
+		return $this->expired;
 	}
 
 	/**

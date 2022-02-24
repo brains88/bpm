@@ -26,8 +26,11 @@ class Advert extends Model
         'started', 
         'banner',
         'credit_id',
+        'description',
+        'link',
         'expiry',
         'status', 
         'reference',
     ];
+
 }

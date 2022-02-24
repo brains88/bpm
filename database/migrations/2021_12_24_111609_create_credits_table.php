@@ -15,13 +15,11 @@ class CreateCreditsTable extends Migration
     {
         Schema::create('credits', function (Blueprint $table) {
             $table->id();
-            $table->string('price');
             $table->foreignId('payment_id');
-            $table->dateTime('started')->nullable();
             $table->foreignId('unit_id');
-            $table->dateTime('expiry')->nullable();
             $table->string('reference');
             $table->string('status')->default('active');
+            $table->bigInteger('units')->nullable();
             $table->boolean('inuse')->default(false);
             $table->foreignId('user_id');
             $table->timestamps();

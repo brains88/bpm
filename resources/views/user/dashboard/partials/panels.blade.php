@@ -82,7 +82,7 @@
         <div class="py-2">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="text-main-dark text-shadow-white m-0">
-                    {{ number_format(auth()->user()->profile->reviews->count()) }}
+                    {{ number_format(auth()->user()->reviews->count()) }}
                 </h5>
             </div>
             <a href="{{ route('user.reviews') }}" class="text-white">
