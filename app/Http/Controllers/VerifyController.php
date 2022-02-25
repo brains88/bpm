@@ -35,7 +35,11 @@ class VerifyController extends Controller
             ]);
         }
 
-        $verify = Verify::where(['otp' => $data['code'], 'reference' => $reference])->latest()->get()->first();
+        $verify = Verify::where([
+            'otp' => $data['code'], 
+            'reference' => $reference
+        ])->latest()->get()->first();
+        
         if (empty($verify)) {
             return response()->json([
                 'status' => 0,

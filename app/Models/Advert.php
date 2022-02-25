@@ -31,6 +31,16 @@ class Advert extends Model
         'expiry',
         'status', 
         'reference',
+        'paused_at',
+        'clicks',
     ];
+
+    /**
+     * An advert is posted with a particular credit unit
+     */
+    public function credit()
+    {
+        return $this->belongsTo(Credit::class);
+    }
 
 }

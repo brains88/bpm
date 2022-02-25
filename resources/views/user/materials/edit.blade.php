@@ -73,7 +73,7 @@
                     <div class="col-12 col-md-7 mb-4">
                         <div class="alert alert-info mb-4">Edit material details</div>
                         <div class="p-4 bg-white">
-                            <form method="post" action="javascript:;" class="edit-material-form" data-action="{{ route('api.material.update', ['id' => $material->id]) }}" autocomplete="off">
+                            <form method="post" action="javascript:;" class="edit-material-form" data-action="{{ route('user.material.edit', ['id' => $material->id]) }}" autocomplete="off">
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label class="text-muted">Building material name or title</label>

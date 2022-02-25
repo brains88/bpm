@@ -3,7 +3,7 @@
 		<div class="dropdown">
             <a href="javascript:;" class="align-items-center d-flex text-decoration-none
             " id="promote-{{ $property->id }}" data-toggle="dropdown">
-                <small class="{{ $property->promoted ? 'bg-success' : 'bg-dark' }} rounded px-2">
+                <small class="{{ $property->promoted ? 'bg-success' : 'bg-info' }} rounded px-2">
                 	<small class="text-white">
                 		{{ $property->promoted ? 'Promoted' : 'Promote' }}
                 		<i class="icofont icofont-caret-down"></i>
@@ -76,7 +76,7 @@
 		<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-decoration-none border-0">
 			<img src="{{ empty($property->image) ? '/images/banners/holder.png' : $property->image }}" class="img-fluid border-0 w-100 h-100 object-cover">
 		</a>
-		<div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
+		{{-- <div class="position-absolute w-100 px-3 border-top d-flex align-items-center justify-content-between" style="height: 45px; line-height: 45px; bottom: 0; background-color: rgba(0, 0, 0, 0.8);">
 			<small class="">
 				<small class="text-white">
 					{{ \Str::limit(ucwords($property->city), 16) }}
@@ -87,17 +87,31 @@
 					{{ ucwords($property->category) }}
 				</small>
 			</small>
-		</div>
+		</div> --}}
 	</div>
 	@include('user.properties.partials.promote')
 	<div class="card-body">
 		<div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
-			<small class="text-dark">
-				{{ $property->currency ? $property->currency->symbol : '$' }}{{ number_format($property->price) }}
-			</small>
+			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">
+				<small class="text-main-dark text-underline">
+					{{ $property->currency ? $property->currency->symbol : 'NGN' }}{{ number_format($property->price) }}
+				</small>
+			</a>
+			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">
+				<small class="text-main-dark text-underline">
+					{{ \Str::limit(ucwords($property->city), 12) }}
+				</small>
+			</a>	
+		</div>
+		<div class="d-flex justify-content-between align-items-center">
+			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-underline text-main-dark">
+				<small class="">
+					{{ \Str::limit($property->address, 18) }}
+				</small>
+			</a>
 			<?php $action = strtolower($property->action ?? 'nill'); $actions = \App\Models\Property::$actions; ?>
 			<div class="dropdown">
-                <small id="change-action-{{ $property->id }}" data-toggle="dropdown" class="{{ $action === 'sold' ? 'text-danger' : 'text-info' }} cursor-pointer">
+                <small id="change-action-{{ $property->id }}" data-toggle="dropdown" class="{{ $action === 'sold' ? 'text-danger' : 'text-info' }} cursor-pointer text-underline">
 					{{ ucwords($actions[$action] ?? 'nill') }} <i class="icofont icofont-caret-down position-relative" style="top: 1px;"></i>
 				</small>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="change-action-{{ $property->id }}">
@@ -130,17 +144,15 @@
                 </div>
             </div>
 		</div>
-		<div class="d-flex justify-content-between align-items-center">
-			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-underline text-main-dark">
-				<small class="">
-					{{ \Str::limit($property->address, 18) }}
-				</small>
-			</a>
-			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">
-				<small class="text-warning">
-					<i class="icofont-edit"></i>
-				</small>
-			</a>
-		</div>
+	</div>
+	<div class="card-footer bg-main-dark d-flex justify-content-between">
+		<small class="text-white">
+			{{ $property->created_at->diffForHumans() }}
+		</small>
+		<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">
+			<small class="text-warning">
+				<i class="icofont-edit"></i>
+			</small>
+		</a>
 	</div>
 </div>

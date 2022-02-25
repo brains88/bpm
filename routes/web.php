@@ -215,8 +215,12 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
     });
 
     Route::prefix('adverts')->group(function () {
-        Route::post('/post', [\App\Http\Controllers\User\AdvertsController::class, 'post'])->name('user.advert.post');
-        Route::post('/edit/{id}', [\App\Http\Controllers\User\GigsController::class, 'edit'])->name('user.gig.edit');
+        Route::post('/post', [\App\Http\Controllers\Api\AdvertsController::class, 'post'])->name('user.advert.post');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('user.advert.edit');
+        Route::post('/banner/upload/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'banner'])->name('advert.banner.upload');
+
+        Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('user.advert.activate');
+        Route::post('/remove/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'remove'])->name('user.advert.remove');
     });
 
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
@@ -251,6 +255,9 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
 
         Route::get('/edit/{id}', [\App\Http\Controllers\User\MaterialsController::class, 'edit'])->name('user.material.edit');
         Route::get('/add', [\App\Http\Controllers\User\MaterialsController::class, 'add'])->name('user.material.add');
+
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('user.material.edit');
+        Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('user.material.add');
     });
 });
 

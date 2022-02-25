@@ -49,8 +49,8 @@ class MaterialsController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.material.edit", [
-                    'id' => $material->id, 
+                'redirect' => route(request()->subdomain().'.material.edit', [
+                    'id' => $material->id,
                 ]),
             ]); 
         }else {
@@ -65,7 +65,7 @@ class MaterialsController extends Controller
     /**
      * Api [post] edit Material
      */
-    public function update($id = 0)
+    public function edit($id = 0)
     {
         $data = request()->all();
         $validator = Validator::make($data, [
@@ -97,21 +97,11 @@ class MaterialsController extends Controller
         $material->currency_id = $data['currency'] ?? 0;
         $updated = $material->update();
 
-        if ($updated) {
-            return response()->json([
-                'status' => 1, 
-                'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.material.edit", [
-                    'id' => $material->id, 
-                ]),
-            ]);
-        }else {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'Operation failed',
-            ]);
-        }
-
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => route('user.materials'),
+        ]);
             
     }
 

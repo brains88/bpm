@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     {{-- Advert section starts --}}
-                    <div class="p-4 border">
+                    <div class="">
                         <div class="d-flex justify-content-between alert alert-info mb-4 icon-raduis">
                             <span class="">Adverts</span>
                             <a href="javascript:;" class="" data-toggle="modal" data-target="#post-advert">Post advert</a>
@@ -110,11 +110,13 @@
                         @if(empty(auth()->user()->adverts))
                             <div class="alert alert-danger">You have no adverts. Post advert.</div>
                         @else
+                            <?php $adverts = auth()->user()->adverts; ?>
                             <div class="row">
-                                @foreach(auth()->user()->adverts as $advert)
+                                @foreach($adverts as $advert)
                                     <div class="col-12 mb-4">
                                         @include('user.adverts.partials.card')
                                     </div>
+                                    @include('user.adverts.partials.edit')
                                 @endforeach
                             </div>  
                         @endif

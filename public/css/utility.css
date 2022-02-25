@@ -11,6 +11,10 @@
     background-color: var(--theme-color);
 }
 
+.progress-bar-height {
+    height: 7.5px;
+}
+
 .bg-pinky {
     background-color: var(--pink-color);
 }

@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="bg-white p-4 card-raduis">
-                        <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('material.add') }}" autocomplete="off">
+                        <form method="post" action="javascript:;" class="add-material-form" data-action="{{ route('user.material.add') }}" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-12">
                                     <label class="text-muted">Building material name or title</label>

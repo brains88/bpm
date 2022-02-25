@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Blog;
+use App\Models\{Advert, User};
 use Illuminate\Database\Seeder;
 
-class BlogsSeeder extends Seeder
+class AdvertsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class BlogsSeeder extends Seeder
      */
     public function run()
     {
-        Blog::truncate();
-        Blog::factory()->count(547)->create();
+        Advert::truncate();
+        Advert::factory()->count(User::count() * 3)->create();
     }
 }

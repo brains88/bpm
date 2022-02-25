@@ -20,7 +20,8 @@ class CreditFactory extends Factory
         return [
             'status' => 'paused',
             'user_id' => rand(1, User::count()),
-            'units' => $faker->numberBetween(23, 109),
+            'units' => $faker->numberBetween(100, 909),
+            'duration' => $faker->numberBetween(7, 360),
             'reference' => Str::random(64),
             'unit_id' => rand(1, Unit::count()),
             'inuse' => $faker->boolean(40),

@@ -20,10 +20,12 @@ class CreateAdvertsTable extends Migration
             $table->string('description')->nullable();
             $table->dateTime('started')->nullable();
             $table->text('link')->nullable();
+            $table->bigInteger('clicks')->nullable();
             $table->foreignId('credit_id');
             $table->dateTime('expiry')->nullable();
             $table->string('status')->default('inactive');
             $table->string('reference');
+            $table->dateTime('paused_at')->nullable();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class Credit extends Model
         'reference',
         'unit_id',
         'status',
+        'duration',
         'units',
         'duration',
         'user_id',
@@ -36,6 +37,7 @@ class Credit extends Model
         'expired',
         'paused',
         'used',
+        'active',
     ];
 
     /**

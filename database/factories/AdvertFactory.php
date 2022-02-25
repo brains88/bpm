@@ -1,8 +1,10 @@
 <?php
 
 namespace Database\Factories;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\{Credit, User};
+use Carbon\Carbon;
+use Faker\Factory as Faker;
 
 class AdvertFactory extends Factory
 {
@@ -13,8 +15,14 @@ class AdvertFactory extends Factory
      */
     public function definition()
     {
+        $faker = Faker::create();
         return [
-            //
+            'description' => $faker->sentence(),
+            'user_id' => rand(1, User::count()),
+            'clicks' => $faker->numberBetween(103, 765),
+            'link' => $faker->url(),
+            'credit_id' => rand(1, Credit::count()),
+            'reference' => \Str::random(64),
         ];
     }
 }
