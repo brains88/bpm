@@ -34,26 +34,26 @@ class Timing
 
 	/**
 	 */
-	public function __construct(int $duration = 0, int $progress = 0, bool $expired = false, int $remainingdays = 0)
+	public function __construct(int $duration = 0, int $progress = 0, bool $expired = false, int $daysleft = 0)
 	{
-		$this->expired = $expired;
-		$this->remainingdays = $remainingdays;
-		$this->progress = $progress;
 		$this->duration = $duration;
+		$this->progress = $progress;
+		$this->expired = $expired;
+		$this->daysleft = $daysleft;
 	}
 
 	/**
 	 * Calculate durations
 	 */
-	public static function calculate(?string $expiry = '', int $duration = 0) : self
+	public static function calculate(int $duration = 0, ?string $dateone = '', ?string $datetwo = '') : self
 	{
-		$remainingdays = (Carbon::parse($expiry))->diffInDays(Carbon::today());
-		$fraction = $duration >= $remainingdays ? ($remainingdays/$duration) : 0;
-		return new Timing($duration, (100 - round($fraction * 100)), ($fraction === 0), $remainingdays);
+		$daysleft = (Carbon::parse($dateone))->diffInDays($datetwo);
+		$fraction = $duration >= $daysleft ? ($daysleft/$duration) : 0;
+		return new Timing($duration, round(100 - ($fraction * 100)), ($fraction === 0), $daysleft);
 	}
 
 	/**
-	 * Expired timing duration
+	 * Expired status
 	 */
 	public function expired() : bool
 	{
@@ -65,9 +65,9 @@ class Timing
 	 * 
 	 * @return integer
 	 */
-	public function remainingdays() : int
+	public function daysleft() : int
 	{
-		return $this->remainingdays;
+		return $this->daysleft;
 	}
 
 	/**

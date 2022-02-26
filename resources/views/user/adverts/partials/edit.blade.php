@@ -1,7 +1,7 @@
 <div class="modal fade" id="edit-advert-{{ $advert->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content border-0">
-            <form method="post" action="javascript:;" class="edit-advert-form" data-action="{{ route('user.advert.post') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="edit-advert-form" data-action="{{ route('user.advert.edit', ['id' => $advert->id]) }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-smoky mb-0 font-weight-bold">Post Advert</div>
@@ -14,7 +14,7 @@
                             <label class="text-smoky">Your Credits</label>
                             <select class="form-control custom-select rounded-0 credit" name="credit">
                                 <option value="">-- Select credit --</option>
-                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false])->get(); ?>
+                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false])->whereAnd('status', '!=', 'expired')->get(); ?>
                                 @if(empty($credits->count()))
                                     <option value="">-- You have no available credits --</option>
                                 @else

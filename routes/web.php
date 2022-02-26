@@ -217,6 +217,9 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
     Route::prefix('adverts')->group(function () {
         Route::post('/post', [\App\Http\Controllers\Api\AdvertsController::class, 'post'])->name('user.advert.post');
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('user.advert.edit');
+        Route::post('/pause/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'pause'])->name('user.advert.pause');
+        
+        Route::post('/resume/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'resume'])->name('user.advert.resume');
         Route::post('/banner/upload/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'banner'])->name('advert.banner.upload');
 
         Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('user.advert.activate');

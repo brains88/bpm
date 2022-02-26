@@ -23,7 +23,7 @@ class CreateAdvertsTable extends Migration
             $table->bigInteger('clicks')->nullable();
             $table->foreignId('credit_id');
             $table->dateTime('expiry')->nullable();
-            $table->string('status')->default('inactive');
+            $table->string('status')->default('initialized');
             $table->string('reference');
             $table->dateTime('paused_at')->nullable();
             $table->timestamps();

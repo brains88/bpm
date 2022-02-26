@@ -18,93 +18,179 @@
 				</a>
 			</div>
 		</div>
+		<?php $duration = $advert->credit->duration ?? 1; ?>
 		<div class="col-12 col-md-7 p-4">
-			<div class="mb-4">
-				@if($advert->status == 'active')
-					<div class="row">
-						<div class="col-6">
-							<a href="javascript:;" class="btn btn-block rounded-0 btn-outline-success">
-		                		<small class="mr-1">
+			@if($advert->status == 'initialized' || empty($advert->expiry) || empty($advert->started))
+				<div class="row">
+					<div class="col-6 mb-4">
+            			<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-outline-info" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
+		                			<i class="icofont-play-alt-2"></i>
+		                		</small>
+		                		<small>Activate</small>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
+				            	<form method="post" class="activate-advert-form p-4" action="javascript:;" data-action="{{ route('user.advert.activate', ['id' => $advert->id]) }}">
+				            		<div class="alert alert-warning mb-4">This advert will start immediately after activation.</div>
+				            		<input type="hidden" name="status" value="active">
+				            		<div class="alert mb-3 activate-advert-message d-none"></div>
+				            		<button type="submit" class="btn btn-warning btn-block activate-advert-button">
+				            			<img src="/images/spinner.svg" class="mr-2 d-none activate-advert-spinner mb-1">Activate
+				            		</button>
+				            	</form>
+				            </div>
+				        </div>
+            		</div>
+					<div class="col-6 mb-4">
+						<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-outline-danger" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
+		                			<i class="icofont-rewind"></i>
+		                		</small>
+		                		<small>Remove</small>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
+				            	<div class="p-4">
+				            		<div class="alert alert-danger mb-4">This action is destructive and cannot be reversed.</div>
+				            		<a href="javascript:;" class="btn btn-danger btn-block remove-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.remove', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none remove-advert-spinner-{{ $advert->id }} mb-1">Remove</a>
+				            	</div>
+				            </div>
+				        </div>
+					</div>
+				</div>
+				<div class="">
+					<div class="progress progress-bar-height bg-light border mb-3">
+	                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="1" aria-valuemax="100"></div>
+	                </div>
+	                <div class="d-flex justify-content-between align-items-center mb-3">
+						<a href="javascript:;" class="d-flex justify-content-between text-main-dark text-underline text-main-dark" data-toggle="modal" data-target="#edit-advert-{{ $advert->id }}">0%</a>
+						<a href="javascript:;" class="text-underline text-main-dark" data-toggle="modal" data-target="#edit-advert-{{ $advert->id }}">
+							Total({{$duration }}days)
+						</a>
+					</div>
+				</div>
+            @elseif($advert->status == 'paused')
+            	<div class="row">
+            		<div class="col-6 mb-4">
+						<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-warning" id="pause-advert-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
 		                			<i class="icofont-pause"></i>
 		                		</small>
 		                		<small>Pause</small>
-		                	</a>
-						</div>
-						<div class="col-6">
-							<div class="dropdown">
-					            <a href="javascript:;" class="btn btn-block rounded-0 btn-outline-danger" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
-					                <small class="mr-1">
-			                			<i class="icofont-rewind"></i>
-			                		</small>
-			                		<small>Remove</small>
-					            </a>
-					            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
-					            	<div class="p-4">
-					            		<div class="alert alert-danger mb-4">This action is destructive and cannot be reversed.</div>
-					            		<a href="javascript:;" class="btn btn-danger btn-block rounded-0 remove-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.remove', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none remove-advert-spinner-{{ $advert->id }} mb-1">Remove</a>
-					            	</div>
-					            </div>
-					        </div>
-						</div>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" style="width: 260px !important;">
+				            	<form method="post" class="pause-advert-form p-4" action="javascript:;" data-action="{{ route('user.advert.pause', ['id' => $advert->id]) }}">
+				            		<div class="alert alert-warning mb-4">This advert will be invisible till you resume it.</div>
+				            		<input type="hidden" name="status" value="paused">
+				            		<div class="alert mb-3 pause-advert-message d-none"></div>
+				            		<button type="submit" class="btn btn-warning btn-block pause-advert-button">
+				            			<img src="/images/spinner.svg" class="mr-2 d-none pause-advert-spinner mb-1">Pause
+				            		</button>
+				            	</form>
+				            </div>
+				        </div>
 					</div>
-	            @else
-	            	<div class="row">
-	            		<div class="col-6">
-	            			<div class="dropdown">
-					            <a href="javascript:;" class="btn btn-block rounded-0 btn-outline-info" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
-					                <small class="mr-1">
-			                			<i class="icofont-play-alt-2"></i>
-			                		</small>
-			                		<small>Activate</small>
-					            </a>
-					            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
-					            	<div class="p-4">
-					            		<div class="alert alert-info mb-4">Your advert will start immediately after activation</div>
-					            		<a href="javascript:;" class="btn btn-info btn-block rounded-0 activate-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.activate', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none activate-advert-spinner-{{ $advert->id }} mb-1">Activate</a>
-					            	</div>
-					            </div>
-					        </div>
-	            		</div>
-	            		<div class="col-6">
-	            			<div class="dropdown">
-					            <a href="javascript:;" class="btn btn-block rounded-0 btn-outline-danger" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
-					                <small class="mr-1">
-			                			<i class="icofont-rewind"></i>
-			                		</small>
-			                		<small>Remove</small>
-					            </a>
-					            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
-					            	<div class="p-4">
-					            		<div class="alert alert-danger mb-4">This action is destructive and cannot be reversed.</div>
-					            		<a href="javascript:;" class="btn btn-danger btn-block rounded-0 remove-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.remove', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none remove-advert-spinner-{{ $advert->id }} mb-1">Remove</a>
-					            	</div>
-					            </div>
-					        </div>
-						</div>
-	            	</div>      
-	            @endif  
-			</div>
-			<div class="mb-4">
-				<?php $ads = \App\Helpers\Timing::calculate($advert->expiry, $advert->credit->unit->duration); //dd($ads); ?>
-				@if(empty($advert->expiry))
-					<div class="progress progress-bar-height bg-light border">
-	                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="55" aria-valuemin="1" aria-valuemax="100"></div>
+            		<div class="col-6 mb-4">
+            			<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-outline-danger" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
+		                			<i class="icofont-rewind"></i>
+		                		</small>
+		                		<small>Remove</small>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
+				            	<div class="p-4">
+				            		<div class="alert alert-danger mb-4">This action is destructive and cannot be reversed.</div>
+				            		<a href="javascript:;" class="btn btn-danger btn-block remove-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.remove', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none remove-advert-spinner-{{ $advert->id }} mb-1">Remove</a>
+				            	</div>
+				            </div>
+				        </div>
+					</div>
+            	</div>
+            	<div class="">
+            		<?php $daysdone = (\Carbon\Carbon::parse($advert->paused_at))->diffInDays($advert->started); $fraction = $duration >= $daysdone ? ($daysdone/$duration) : 0; ?>
+	            	<div class="progress progress-bar-height mb-3">
+	                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" aria-valuenow="{{ round($fraction * 100) <= 0 ? 1 : round($fraction * 100) }}" aria-valuemin="1" aria-valuemax="100" style="width: {{ round($fraction * 100) <= 0 ? 1 : round($fraction * 100) }}%"></div>
 	                </div>
-	            @else
-	            	<div class="progress progress-bar-height">
-	                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{ $ads->progress() <= 90 ? 'success' : 'danger' }}" role="progressbar" aria-valuenow="{{ $ads->progress() <= 0 ? 1 : $ads->progress() }}" aria-valuemin="1" aria-valuemax="100" style="width: {{ $ads->progress() <= 0 ? 1 : $ads->progress() }}%"></div>
+	                <div class="d-flex justify-content-between align-items-center mb-3">
+						<a href="javascript:;" class="d-flex justify-content-between text-main-dark text-underline text-main-dark" data-toggle="modal" data-target="#edit-advert-{{ $advert->id }}">
+							{{ $timing->progress() }}%
+						</a>
+						<div class="dropdown">
+				            <a href="javascript:;" class="text-underline text-main-dark" id="advert-credit-{{ $advert->id }}" data-toggle="dropdown">
+				            	({{ $timing->daysleft() }})days left
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="advert-credit-{{ $advert->id }}" style="width: 240px !important;">
+				            	<div class="px-4 py-3">
+				            		Total {{ $duration }}days ({{ $advert->credit->units }}units)
+				            	</div>
+				            </div>
+				        </div>
+					</div>
+            	</div>
+	        @else
+	        	<div class="row">
+					<div class="col-6 mb-4">
+            			<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-warning" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
+		                			<i class="icofont-pause"></i>
+		                		</small>
+		                		<small>Pause</small>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
+				            	<form method="post" class="pause-advert-form p-4" action="javascript:;" data-action="{{ route('user.advert.pause', ['id' => $advert->id]) }}">
+				            		<div class="alert alert-warning mb-4">This advert will be invisible till you resume it.</div>
+				            		<input type="hidden" name="status" value="active">
+				            		<div class="alert mb-3 pause-advert-message d-none"></div>
+				            		<button type="submit" class="btn btn-warning btn-block pause-advert-button">
+				            			<img src="/images/spinner.svg" class="mr-2 d-none pause-advert-spinner mb-1">Pause
+				            		</button>
+				            	</form>
+				            </div>
+				        </div>
+            		</div>
+					<div class="col-6 mb-4">
+						<div class="dropdown">
+				            <a href="javascript:;" class="btn btn-block btn-sm btn-outline-danger" id="toggle-advert-status-{{ $advert->id }}" data-toggle="dropdown">
+				                <small class="mr-1">
+		                			<i class="icofont-rewind"></i>
+		                		</small>
+		                		<small>Remove</small>
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="toggle-advert-status-{{ $advert->id }}" style="width: 260px !important;">
+				            	<div class="p-4">
+				            		<div class="alert alert-danger mb-4">This action is destructive and cannot be reversed.</div>
+				            		<a href="javascript:;" class="btn btn-danger btn-block remove-advert-button-{{ $advert->id }}" data-url="{{ route('user.advert.remove', ['id' => $advert->id]) }}"><img src="/images/spinner.svg" class="mr-2 d-none remove-advert-spinner-{{ $advert->id }} mb-1">Remove</a>
+				            	</div>
+				            </div>
+				        </div>
+					</div>
+				</div>
+				<div class="">
+	            	<?php $timing = \App\Helpers\Timing::calculate($duration, $advert->expiry, \Carbon\Carbon::now()); ?>
+	            	<div class="progress progress-bar-height mb-3">
+	                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{ $timing->progress() <= 0 ? 1 : $timing->progress() }}" aria-valuemin="1" aria-valuemax="100" style="width: {{ $timing->progress() <= 0 ? 1 : $timing->progress() }}%"></div>
 	                </div>
-	            @endif
-			</div>
-			<div class="d-flex justify-content-between align-items-center mb-3">
-				<a href="javascript:;" class="d-flex justify-content-between text-main-dark text-underline text-main-dark" data-toggle="modal" data-target="#edit-advert-{{ $advert->id }}">
-					{{ empty($advert->description) ? 'Nill' : \Str::limit($advert->description, 10, ' ( . . . )') }}
-				</a>
-				<a href="javascript:;" class="text-underline text-muted">
-					<i class="icofont-caret-down"></i>
-				</a>
-			</div>
-				
+	                <div class="d-flex justify-content-between align-items-center mb-3">
+						<a href="javascript:;" class="d-flex justify-content-between text-main-dark text-underline text-main-dark" data-toggle="modal" data-target="#edit-advert-{{ $advert->id }}">
+							{{ $timing->progress() }}%
+						</a>
+						<div class="dropdown">
+				            <a href="javascript:;" class="text-underline text-main-dark" id="advert-credit-{{ $advert->id }}" data-toggle="dropdown">
+				            	({{ $timing->daysleft() }})days left
+				            </a>
+				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="advert-credit-{{ $advert->id }}" style="width: 240px !important;">
+				            	<div class="px-4 py-3">
+				            		Total {{ $duration }}days ({{ $advert->credit->units }}units)
+				            	</div>
+				            </div>
+				        </div>
+					</div>
+				</div>    
+            @endif  	
 		</div>
 	</div>
 </div>

@@ -175,11 +175,46 @@ class AdvertsController extends Controller
         }
 
         $advert->started = Carbon::now();
-        $advert->expiry = Carbon::now()->addDays($credit->unit->duration);
+        $advert->expiry = Carbon::now()->addDays($credit->duration);
         $advert->status = 'active';
         $advert->update();
 
         $credit->inuse = true;
+        $credit->update();
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'redirect' => ''
+        ]);
+    }
+
+    /**
+     * Pause advert
+     */
+    public function pause($id = 0)
+    {
+        $advert = Advert::find($id);
+        if (empty($advert)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $credit = Credit::find($advert['credit_id']);
+        if (empty($credit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $advert->paused_at = Carbon::now();
+        $advert->status = 'paused';
+        $advert->update();
+
+        $credit->inuse = true;
+        $credit->status = 'paused';
         $credit->update();
         return response()->json([
             'status' => 1, 

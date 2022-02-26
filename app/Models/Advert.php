@@ -14,7 +14,13 @@ class Advert extends Model
      *
      * @var []
      */
-    public static $status = ['expired', 'active', 'inactive'];
+    public static $status = [
+        'expired', 
+        'active',
+        'dormant', 
+        'paused',
+        'initialized',
+    ];
 
     /**
      * The attributes that are mass assignable.

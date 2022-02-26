@@ -101,9 +101,9 @@
                 <?php foreach($adverts as $advert): ?>
 
                     <?php $id = empty($advert->id) ? 0 : $advert->id; ?>
-                    $('.activate-advert-button-<?= $id; ?>').on('click', function() {
-                        handleAjax({that: $(this), button: 'activate-advert-button-<?= $id; ?>', spinner: 'activate-advert-spinner-<?= $id; ?>'});
-                    });
+                    // $('.activate-advert-button-<?= $id; ?>').on('click', function() {
+                    //     handleAjax({that: $(this), button: 'activate-advert-button-<?= $id; ?>', spinner: 'activate-advert-spinner-<?= $id; ?>'});
+                    // });
 
                     var button = $('.add-advert-image-<?= $id; ?>');
                     if (button) {

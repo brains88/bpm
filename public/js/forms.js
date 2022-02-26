@@ -12,6 +12,21 @@
         handleForm({form: $(this), button: 'post-advert-button', spinner: 'post-advert-spinner', message: 'post-advert-message'});
     });
 
+    $('.activate-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'activate-advert-button', spinner: 'activate-advert-spinner', message: 'activate-advert-message'});
+    });
+
+    $('.pause-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'pause-advert-button', spinner: 'pause-advert-spinner', message: 'pause-advert-message'});
+    });
+
+    $('.edit-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-advert-button', spinner: 'edit-advert-spinner', message: 'edit-advert-message'});
+    });
+
     $('.resend-token-link-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'resend-token-link-button', spinner: 'resend-token-link-spinner', message: 'resend-token-link-message'});

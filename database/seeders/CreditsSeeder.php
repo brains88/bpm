@@ -14,6 +14,6 @@ class CreditsSeeder extends Seeder
     public function run()
     {
         Credit::truncate();
-        Credit::factory()->count(470)->create();
+        Credit::factory()->count(370)->create();
     }
 }

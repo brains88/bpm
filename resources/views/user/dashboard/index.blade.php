@@ -107,9 +107,7 @@
                             <a href="javascript:;" class="" data-toggle="modal" data-target="#post-advert">Post advert</a>
                             @include('user.adverts.partials.post')
                         </div>
-                        @if(empty(auth()->user()->adverts))
-                            <div class="alert alert-danger">You have no adverts. Post advert.</div>
-                        @else
+                        @if(auth()->user()->adverts()->exists())
                             <?php $adverts = auth()->user()->adverts; ?>
                             <div class="row">
                                 @foreach($adverts as $advert)
@@ -118,7 +116,9 @@
                                     </div>
                                     @include('user.adverts.partials.edit')
                                 @endforeach
-                            </div>  
+                            </div>
+                        @else
+                             <div class="alert alert-danger">You have no adverts. <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#post-advert">Post advert</a>.</div>
                         @endif
                     </div>   
                 </div>
