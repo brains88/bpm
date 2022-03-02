@@ -107,9 +107,11 @@
                             <a href="javascript:;" class="" data-toggle="modal" data-target="#post-advert">Post advert</a>
                             @include('user.adverts.partials.post')
                         </div>
-                        @if(auth()->user()->adverts()->exists())
-                            <?php $adverts = auth()->user()->adverts; ?>
-                            <div class="row">
+                        <?php $adverts = \App\Models\Advert::latest()->where(['user_id' => auth()->id()])->get(); ?>
+                        @if(empty($adverts->count()))
+                            <div class="alert alert-danger">You have no adverts. <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#post-advert">Post advert</a>.</div>
+                        @else
+                             <div class="row">
                                 @foreach($adverts as $advert)
                                     <div class="col-12 mb-4">
                                         @include('user.adverts.partials.card')
@@ -117,27 +119,37 @@
                                     @include('user.adverts.partials.edit')
                                 @endforeach
                             </div>
-                        @else
-                             <div class="alert alert-danger">You have no adverts. <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#post-advert">Post advert</a>.</div>
                         @endif
                     </div>   
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">
                         <div class="col-12 mb-4">
-                            <div class="card-raduis alert alert-primary p-4 m-0 position-relative shadow-sm border-0" >
-                                <div class="pb-0 position-relative">
-                                    <div class="mb-3">
-                                        <h4 class="">Total Credits</h4>
-                                        <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id()])->get(); ?>
-                                        <h6 class="">
-                                            {{ empty($credits->count()) ? 0 : number_format($credits->sum('units')) }} Units
-                                        </h6>
-                                    </div>
-                                    <div class="d-flex">
-                                        <a href="javascript:;" class="btn btn-info icon-raduis px-3 mr-3" data-toggle="modal" data-target="#buy-credit">Buy credits</a>
-                                        @include('user.credits.partials.buy')
-                                        <a href="{{ route('user.credits') }}" class="btn btn-info icon-raduis px-3">View all</a>
+                            <div class="card position-relative shadow-sm border-0" >
+                                <div class="card-header icon-raduis py-5" style="background-color: #f1416c">
+                                    <h4 class="text-white">Total Payments</h4>
+                                    <h4 class="m-0">
+                                        ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id])->sum('amount')) }}
+                                    </h4>
+                                </div>
+                                <div class="card-body py-0 position-relative" style="top: -16px;">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="alert alert-warning m-0 rounded p-4">
+                                                <h5>Adverts</h5>
+                                                <div>
+                                                    ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'advert'])->sum('amount')) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <div class="alert alert-warning m-0 rounded p-4">
+                                                <h5>Subscriptions</h5>
+                                                <div>
+                                                    ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'subscription'])->sum('amount')) }}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

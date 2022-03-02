@@ -84,6 +84,22 @@ class User extends Authenticatable
     }
 
     /**
+     * A user has one social links
+     */
+    public function social()
+    {
+        return $this->hasOne(Social::class);
+    }
+
+    /**
+     * A user may have many certifications
+     */
+    public function certifications()
+    {
+        return $this->hasMany(Certification::class);
+    }
+
+    /**
      * A user may have many credits purchased
      */
     public function credits()

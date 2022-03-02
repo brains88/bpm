@@ -17,9 +17,11 @@ class ProfileSetup
     public function handle(Request $request, Closure $next)
     {
         if (empty(auth()->user()->profile)) {
-            return $next($request);
+            if (strtolower($request->method()) === 'get') {
+                die(view('user.profile.index'));
+            }
         }
 
-        return route('user.profile');
+        return $next($request);
     }
 }

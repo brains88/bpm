@@ -204,7 +204,7 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
 });
 
-Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
     Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
     Route::get('/subscription', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.subscription');
 
@@ -212,6 +212,16 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
         Route::get('/', [\App\Http\Controllers\User\GigsController::class, 'index'])->name('user.gigs');
         Route::post('/create', [\App\Http\Controllers\User\GigsController::class, 'create'])->name('user.gig.create');
         Route::post('/edit/{id}', [\App\Http\Controllers\User\GigsController::class, 'edit'])->name('user.gig.edit');
+    });
+
+    Route::prefix('socials')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Api\SocialsController::class, 'add'])->name('user.social.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\SocialsController::class, 'edit'])->name('user.social.edit');
+    });
+
+    Route::prefix('certifications')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\Api\CertificationsController::class, 'add'])->name('user.certification.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\CertificationsController::class, 'edit'])->name('user.certification.edit');
     });
 
     Route::prefix('adverts')->group(function () {
@@ -224,6 +234,8 @@ Route::middleware(['web', 'auth', 'user', 'revalidate'])->domain(env('USER_URL')
 
         Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('user.advert.activate');
         Route::post('/remove/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'remove'])->name('user.advert.remove');
+        
+        Route::post('/cancel/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'cancel'])->name('user.advert.cancel');
     });
 
     Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');

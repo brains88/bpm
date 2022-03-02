@@ -78,6 +78,18 @@ class Profile extends Model
     public static $types = ['normal', 'partner'];
 
     /**
+     * Profile educational qualifications.
+     *
+     * @var []
+     */
+    public static $qualifications = [
+        'BSc' => 'Bachelor\'s Degree', 
+        'SSCE' => 'Senior School Certificate', 
+        'OND' => 'National Diploma',
+        'HND' => 'Higher National Diploma',
+    ];
+
+    /**
      * A user may have a profile
      */
     public function user()

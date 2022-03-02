@@ -1,13 +1,13 @@
-<form method="post" class="add-profile-form" action="javascript:;" data-action="{{ route('user.profile.add') }}">
+<form method="post" class="add-profile-form" action="javascript:;" data-action="{{ route('user.profile.add') }}" autocomplete="off">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Profile name</label>
             <div class="input-group">
                 <input type="text" name="name" class="form-control name" placeholder="Enter profile name">
             </div>
             <small class="error name-error text-danger"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <?php $designations = \App\Models\Profile::$designations; ?>
             <label class="text-muted">Designation</label>
             <select class="form-control custom-select designation" name="designation">
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Profile role</label>
             <select class="form-control custom-select role" name="role">
                 <option value="">-- Select role --</option>
@@ -43,14 +43,14 @@
             </select>
             <small class="invalid-feedback role-error"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Address</label>
             <input type="text" class="form-control address" name="address" placeholder="e.g., No 66 Trenth Avenue">
             <small class="invalid-feedback address-error"></small>
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Country located</label>
             <select class="form-control custom-select country" name="country" id="countries">
                 <?php $countries = \App\Models\Country::all(); ?>
@@ -68,31 +68,31 @@
             </select>
             <small class="invalid-feedback country-error"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">State, county or division</label>
             <input type="text" class="form-control state" name="state" placeholder="e.g., Texas">
             <small class="invalid-feedback state-error"></small>
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">City, area or town</label>
             <input type="text" class="form-control city" name="city" placeholder="e.g., Plano">
             <small class="invalid-feedback city-error"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Additional phone number</label>
             <input type="text" class="form-control phone" name="phone" placeholder="e.g., +443240989">
             <small class="invalid-feedback phone-error"></small>
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Website link</label>
             <input type="url" class="form-control website" name="website" placeholder="e.g., bestproperty.com">
             <small class="invalid-feedback website-error"></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-lg-6">
             <label class="text-muted">Profile email</label>
             <input type="email" class="form-control email" name="email" placeholder="e.g., email@mail.com">
             <small class="invalid-feedback email-error"></small>

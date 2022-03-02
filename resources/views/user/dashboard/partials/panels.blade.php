@@ -1,4 +1,27 @@
 <?php $role = auth()->user()->profile ? auth()->user()->profile->role : null; ?>
+<div class="col-6 mb-4">
+    <div class="icon-raduis alert bg-pinky position-relative m-0">
+        <div class="position-absolute" style="top: -14px; right: 16px;">
+            <small class="tiny-font bg-success px-2">
+                <small class="text-white position-relative" style="top: -1px;">
+                    +{{ '17' }} reviews
+                </small>
+            </small>
+        </div>
+        <div class="py-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
+                    {{ number_format(auth()->user()->reviews->count()) }}
+                </h5>
+            </div>
+            <a href="{{ route('user.reviews') }}" class="text-white">
+                <small>
+                    My Reviews
+                </small>
+            </a>
+        </div>
+    </div>
+</div>
 @if($role === 'agent')
     <div class="col-6 mb-4">
         <div class="icon-raduis alert bg-info m-0">
@@ -70,55 +93,20 @@
         </div>
     </div>
 @endif
-<div class="col-6 mb-4">
-    <div class="icon-raduis alert bg-pinky position-relative m-0">
-        <div class="position-absolute" style="top: -14px; right: 16px;">
-            <small class="tiny-font bg-success px-2">
-                <small class="text-white position-relative" style="top: -1px;">
-                    +{{ '17' }} reviews
-                </small>
-            </small>
-        </div>
-        <div class="py-2">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-main-dark text-shadow-white m-0">
-                    {{ number_format(auth()->user()->reviews->count()) }}
-                </h5>
-            </div>
-            <a href="{{ route('user.reviews') }}" class="text-white">
-                <small>
-                    My Reviews
-                </small>
-            </a>
-        </div>
-    </div>
-</div>
 <div class="col-12 mb-4">
-    <div class="card position-relative shadow-sm border-0" >
-        <div class="card-header icon-raduis py-5" style="background-color: #f1416c">
-            <h4 class="text-white">Total Payments</h4>
-            <h4 class="m-0">
-                ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id])->sum('amount')) }}
-            </h4>
-        </div>
-        <div class="card-body py-0 position-relative" style="top: -16px;">
-            <div class="row">
-                <div class="col-12 col-md-6 mb-3">
-                    <div class="alert alert-warning m-0 rounded p-4">
-                        <h5>Adverts</h5>
-                        <div>
-                            ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'advert'])->sum('amount')) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 mb-3">
-                    <div class="alert alert-warning m-0 rounded p-4">
-                        <h5>Subscriptions</h5>
-                        <div>
-                            ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id, 'type' => 'subscription'])->sum('amount')) }}
-                        </div>
-                    </div>
-                </div>
+    <div class="card-raduis alert alert-primary p-4 m-0 position-relative shadow-sm border-0" >
+        <div class="pb-0 position-relative">
+            <div class="mb-3">
+                <h4 class="">Total Credits</h4>
+                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id()])->get(); ?>
+                <h6 class="">
+                    {{ empty($credits->count()) ? 0 : number_format($credits->sum('units')) }} Units
+                </h6>
+            </div>
+            <div class="d-flex">
+                <a href="javascript:;" class="btn btn-info icon-raduis px-3 mr-3" data-toggle="modal" data-target="#buy-credit">Buy credits</a>
+                @include('user.credits.partials.buy')
+                <a href="{{ route('user.credits') }}" class="btn btn-info icon-raduis px-3">View all</a>
             </div>
         </div>
     </div>

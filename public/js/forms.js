@@ -7,9 +7,34 @@
         handleForm({form: $(this), button: 'add-review-button', spinner: 'add-review-spinner', message: 'add-review-message'});
     });
 
+    $('.add-social-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-social-button', spinner: 'add-social-spinner', message: 'add-social-message'});
+    });
+
+    $('.add-certification-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'add-certification-button', spinner: 'add-certification-spinner', message: 'add-certification-message'});
+    });
+
+    $('.edit-certification-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-certification-button', spinner: 'edit-certification-spinner', message: 'edit-certification-message'});
+    });
+
     $('.post-advert-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'post-advert-button', spinner: 'post-advert-spinner', message: 'post-advert-message'});
+    });
+
+    $('.cancel-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'cancel-advert-button', spinner: 'cancel-advert-spinner', message: 'cancel-advert-message'});
+    });
+
+    $('.resume-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'resume-advert-button', spinner: 'resume-advert-spinner', message: 'resume-advert-message'});
     });
 
     $('.activate-advert-form').submit(function(event){

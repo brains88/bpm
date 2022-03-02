@@ -18,13 +18,13 @@ class CreditFactory extends Factory
     {
         $faker = Faker::create();
         return [
-            'status' => 'paused',
+            'status' => 'available',
             'user_id' => rand(1, User::count()),
-            'units' => $faker->numberBetween(100, 909),
-            'duration' => $faker->numberBetween(7, 360),
+            'units' => $faker->numberBetween(50, 300),
+            'duration' => $faker->numberBetween(7, 35),
             'reference' => Str::random(64),
             'unit_id' => rand(1, Unit::count()),
-            'inuse' => $faker->boolean(40),
+            'inuse' => false,
             'payment_id' => rand(1, Payment::count()),
         ];
     }

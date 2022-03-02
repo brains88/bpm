@@ -18,7 +18,7 @@ class CreditsController extends Controller
     public function index()
     {
         $reference = request()->get('reference');
-        return view('user.credits.index')->with(['credits' => Credit::where(['user_id' => auth()->id()])->latest('created_at')->paginate(12), 'units' => Unit::all(), 'verify' => $this->verify($reference), 'reference' => $reference]);
+        return view('user.credits.index')->with(['credits' => Credit::latest()->where(['user_id' => auth()->id()])->paginate(12), 'units' => Unit::all(), 'verify' => $this->verify($reference), 'reference' => $reference]);
     }
 
     /**
@@ -142,13 +142,12 @@ class CreditsController extends Controller
                 $payment->update();
 
                 Credit::create([
-                    'price' => $amount,
                     'payment_id' => $payment->id,
                     'duration' => $unit->duration,
                     'unit_id' => $unit->id,
                     'units' => $unit->units,
                     'reference' => $reference,
-                    'status' => 'paused',
+                    'status' => 'available',
                     'user_id' => auth()->id(),
                 ]);
 

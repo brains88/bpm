@@ -18,7 +18,8 @@ class CreateCertificationsTable extends Migration
             $table->foreignId('user_id');
             $table->text('institution');
             $table->string('year');
-            $table->string('type')->nullable();
+            $table->string('qualification')->nullable();
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }

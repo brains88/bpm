@@ -94,7 +94,7 @@
 		<div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
 			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">
 				<small class="text-main-dark text-underline">
-					{{ $property->currency ? $property->currency->symbol : 'NGN' }}{{ number_format($property->price) }}
+					NGN{{ number_format($property->price) }}
 				</small>
 			</a>
 			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}">

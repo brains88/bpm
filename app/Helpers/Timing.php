@@ -45,9 +45,11 @@ class Timing
 	/**
 	 * Calculate durations
 	 */
-	public static function calculate(int $duration = 0, ?string $dateone = '', ?string $datetwo = '') : self
+	public static function calculate(int $duration = 0, ?string $expiry = '', ?string $current = '') : self
 	{
-		$daysleft = (Carbon::parse($dateone))->diffInDays($datetwo);
+
+		$daysleft = Carbon::parse($expiry)->diffInDays($current);
+		$daysleft = !empty($paused) ? $daysleft + $paused : $daysleft;
 		$fraction = $duration >= $daysleft ? ($daysleft/$duration) : 0;
 		return new Timing($duration, round(100 - ($fraction * 100)), ($fraction === 0), $daysleft);
 	}

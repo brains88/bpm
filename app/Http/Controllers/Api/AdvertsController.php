@@ -48,6 +48,7 @@ class AdvertsController extends Controller
             ]);
 
             $credit->inuse = true;
+            $credit->status = 'active';
             $credit->update();
             return response()->json([
                 'status' => 1, 
@@ -131,7 +132,7 @@ class AdvertsController extends Controller
         }
 
         $extension = $image->getClientOriginalExtension();
-        $filename = \Str::uuid().'.'.$extension;
+        $filename = Str::uuid().'.'.$extension;
         $path = 'images/adverts';
 
         $advert = Advert::find($id);
@@ -166,6 +167,13 @@ class AdvertsController extends Controller
             ]);
         }
 
+        if(empty($advert->banner)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Please upload advert image first by clicking the camera icon.'
+            ]);
+        }
+
         $credit = Credit::find($advert['credit_id']);
         if (empty($credit)) {
             return response()->json([
@@ -180,6 +188,7 @@ class AdvertsController extends Controller
         $advert->update();
 
         $credit->inuse = true;
+        $credit->status = 'active';
         $credit->update();
         return response()->json([
             'status' => 1, 
@@ -216,6 +225,126 @@ class AdvertsController extends Controller
         $credit->inuse = true;
         $credit->status = 'paused';
         $credit->update();
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'redirect' => ''
+        ]);
+    }
+
+    /**
+     * Resume advert
+     */
+    public function resume($id = 0)
+    {
+        $advert = Advert::find($id);
+        if (empty($advert)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $credit = Credit::find($advert['credit_id']);
+        if (empty($credit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $days = Carbon::parse($advert->paused_at)->diffInDays($advert->started);
+        $expiry = Carbon::parse($advert->expiry)->addDays($days);
+
+        //$advert->paused_at = null;
+        $advert->expiry = $expiry;
+        $advert->status = 'active';
+        $advert->update();
+
+        $credit->inuse = true;
+        $credit->duration = $credit->duration + $days;
+        $credit->status = 'active';
+        $credit->update();
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'redirect' => ''
+        ]);
+    }
+
+    /**
+     * Remove advert (Must not have started)
+     */
+    public function remove($id = 0)
+    {
+        $advert = Advert::find($id);
+        if (empty($advert)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $credit = Credit::find($advert['credit_id']);
+        if (empty($credit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $credit->inuse = false;
+        $credit->status = 'available';
+        $credit->update();
+
+        if(!empty($advert->banner)) {
+            $prevfile = explode('/', $advert->banner);
+            $previmage = end($prevfile);
+            $file = "images/adverts/{$previmage}";
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+        $advert->delete();
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'redirect' => ''
+        ]);
+    }
+
+    /**
+     * Remove advert (Must not have started)
+     */
+    public function cancel($id = 0)
+    {
+        $advert = Advert::find($id);
+        if (empty($advert)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $credit = Credit::find($advert['credit_id']);
+        if (empty($credit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $daysused = Carbon::parse($advert->started)->diffInDays(Carbon::now());
+        $newunits = $daysused > 0 ? round(($daysused * $credit->units)/$credit->duration) : $credit->units;
+
+        $credit->inuse = false;
+        $credit->units = $newunits;
+        $credit->duration = ($credit->duration - $daysused);
+        $credit->status = 'available';
+        $credit->update();
+
+        $advert->delete();
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successfull',

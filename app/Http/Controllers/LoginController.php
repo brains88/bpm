@@ -50,12 +50,11 @@ class LoginController extends Controller
 
         if (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
             request()->session()->regenerate();
-            $redirect = auth()->user()->role === 'admin' ? route('admin') : (empty(auth()->user()->profile) ? route('user.profile') : route('user'));
 
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful.', 
-                'redirect' => $redirect,
+                'redirect' => auth()->user()->role === 'admin' ? route('admin') : route('user'),
             ]);
         }
 

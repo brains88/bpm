@@ -105,7 +105,6 @@ class CreditsController extends Controller
             ]);
         }
 
-        DB::beginTransaction();
         $payment = Payment::where(['reference' => $reference])->first();
         if (empty($payment)) {
             return response()->json([
@@ -120,6 +119,7 @@ class CreditsController extends Controller
         }
 
         try {
+            DB::beginTransaction();
             $verify = (new \App\Helpers\Paystack())->verify($reference);
             if (empty($verify) || $verify === false) {
                 return response()->json([
@@ -132,11 +132,11 @@ class CreditsController extends Controller
 
                 $payment->status = 'paid';
                 $payment->update();
-                $credit = Credit::where(['reference' => $reference, 'user_id' => auth()->user()->id])->first();
-                $credit->status = 'paused';
+                $credit = Credit::where(['reference' => $reference, 'user_id' => auth()->id()])->first();
+                $credit->status = 'available';
                 $credit->update();
-                DB::commit();
 
+                DB::commit();
                 return response()->json([
                     'status' => 1,
                     'info' => 'Transaction successfull.'

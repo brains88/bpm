@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\{Advert, User};
+use App\Models\{Advert, Credit};
 use Illuminate\Database\Seeder;
 
 class AdvertsSeeder extends Seeder
@@ -14,6 +14,6 @@ class AdvertsSeeder extends Seeder
     public function run()
     {
         Advert::truncate();
-        Advert::factory()->count(User::count() * 3)->create();
+        Advert::factory()->count(Credit::count())->create();
     }
 }

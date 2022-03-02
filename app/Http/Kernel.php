@@ -63,9 +63,10 @@ class Kernel extends HttpKernel
         'user' => \App\Http\Middleware\User::class,
         
         /**
-         * Ensures that user sets up profile before performaing any other operation.
+         * Ensures that user sets up profile before performaing any other operation after login.
          */
         'profile.setup' => \App\Http\Middleware\ProfileSetup::class,
+
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

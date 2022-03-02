@@ -23,7 +23,7 @@
             <div class="">
                 @if(!empty($reference))
                     <?php $response = json_decode($verify->content(), true); ?>
-                    <div class="alert {{ $response['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
+                    <div class="alert mb-4 {{ $response['status'] === 0 ? 'alert-danger' : 'alert-success' }}">
                         {{ $response['info'] }}
                     </div>
                 @endif

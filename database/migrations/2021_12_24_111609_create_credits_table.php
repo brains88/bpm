@@ -20,7 +20,7 @@ class CreateCreditsTable extends Migration
             $table->string('units');
             $table->bigInteger('duration');
             $table->string('reference');
-            $table->string('status')->default('active');
+            $table->string('status')->default('available');
             $table->boolean('inuse')->default(false);
             $table->foreignId('user_id');
             $table->timestamps();

@@ -14,7 +14,7 @@
                             <label class="text-smoky">Your Credits</label>
                             <select class="form-control custom-select rounded-0 credit" name="credit">
                                 <option value="">-- Select credit --</option>
-                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false])->get(); ?>
+                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false, 'status' => 'available'])->get(); ?>
                                 @if(empty($credits->count()))
                                     <option value="">-- You have no available credits --</option>
                                 @else

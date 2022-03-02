@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Profile, User, Artisan, Dealer, Agent};
+use App\Models\{Profile, User};
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\{DB, Str};
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Validator;
 
 
@@ -38,7 +39,7 @@ class ProfileController extends Controller
 
         try {
             DB::beginTransaction();
-            Profile::create([
+            $profile = Profile::create([
                 'country_id' => $data['country'],
                 'description' => $data['description'],
                 'state' => $data['state'],
@@ -46,9 +47,9 @@ class ProfileController extends Controller
                 'city' => $data['city'],
                 'website' => $data['website'],
                 'email' => $data['email'],
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->id(),
                 'designation' => $data['designation'],
-                'reference' => \Str::random(64),
+                'reference' => Str::random(64),
                 'role' => $data['role'],
                 'phone' => $data['phone'],
             ]);

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguagesSeeder::class);
         $this->call(UnitsSeeder::class);
         $this->call(CreditsSeeder::class);
-        $this->call(ProfilesSeeder::class);
+        //$this->call(ProfilesSeeder::class);
         
         $this->call(ReviewsSeeder::class);
         $this->call(ServicesSeeder::class);

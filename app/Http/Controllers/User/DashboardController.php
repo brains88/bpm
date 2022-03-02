@@ -17,6 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //dd(auth()->user()->profile);
         $reference = request()->get('reference');
         $properties = Property::latest('created_at')->where(['user_id' => auth()->id()])->paginate(4);
         return view('user.dashboard.index')->with(['properties' => $properties, 'subscription' => Subscription::where(['user_id' => auth()->id()])->first(), 'units' => Unit::all(), 'reference' => $reference, 'verify' => $this->verify($reference), 'credits' => Credit::where(['user_id' => auth()->id()])->get()]);
