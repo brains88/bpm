@@ -20,7 +20,9 @@ class SocialsController extends Controller
             'linkedin' => ['nullable', 'url'],
             'instagram' => ['nullable', 'url'],
             'twitter' => ['nullable', 'url'],
-            'facebook' => ['required', 'url'],
+            'facebook' => ['nullable', 'url'],
+            'youtube' => ['nullable', 'url'],
+            'whatsapp' => ['required', 'numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -32,9 +34,11 @@ class SocialsController extends Controller
 
         Social::create([
             'twitter' => $data['twitter'],
+            'youtube' => $data['youtube'],
             'facebook' => $data['facebook'],
+            'instagram' => $data['instagram'],
             'reference' => Str::uuid(),
-            'whatsapp' => $data['whatsapp'] ?? null,
+            'whatsapp' => $data['whatsapp'],
             'linkedin' => $data['linkedin'],
             'user_id' => auth()->id(),
         ]);
@@ -53,9 +57,12 @@ class SocialsController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
-            'qualification' => ['required', 'string'],
-            'institution' => ['required', 'string'],
-            'year' => ['required', 'string'],
+            'linkedin' => ['nullable', 'url'],
+            'instagram' => ['nullable', 'url'],
+            'twitter' => ['nullable', 'url'],
+            'facebook' => ['nullable', 'url'],
+            'youtube' => ['nullable', 'url'],
+            'whatsapp' => ['required', 'numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -65,11 +72,14 @@ class SocialsController extends Controller
             ]);
         }
 
-        $certificate = Social::find($id);
-        $certificate->institution = $data['institution'];
-        $certificate->year = $data['year'];
-        $certificate->qualification = $data['qualification'];
-        $certificate->update();
+        $social = Social::find($id);
+        $social->whatsapp = $data['whatsapp'];
+        $social->linkedin = $data['linkedin'];
+        $social->twitter = $data['twitter'];
+        $social->facebook = $data['facebook'];
+        $social->instagram = $data['instagram'];
+        $social->youtube = $data['youtube'];
+        $social->update();
             
         return response()->json([
             'status' => 1, 

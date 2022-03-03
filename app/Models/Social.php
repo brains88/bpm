@@ -21,6 +21,7 @@ class Social extends Model
         'user_id',
         'instagram',
         'whatsapp',
+        'youtube',
         'reference',
     ];
 }

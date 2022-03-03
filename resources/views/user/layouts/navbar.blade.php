@@ -7,21 +7,27 @@
                 </h5>
             </div>
         	<div class="d-flex align-items-center">
-                <div class="dropdown rounded-circle bg-info text-center" style="width: 30px; height: 30px; line-height: 25px;">
-                    <a href="javascript:;" class="text-decoration-none" id="promote-{{ auth()->user()->id }}" data-toggle="dropdown" data-offset="35, 25">
+                <div class="dropdown rounded-circle cursor-pointer bg-info text-center" style="width: 30px; height: 30px; line-height: 25px;">
+                    <a href="javascript:;" class="text-decoration-none" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="35, 22.5">
                         <small class="text-white">
                             <small>
                                 <i class="icofont-ui-user"></i>
                             </small>
                         </small>
                     </a>
-                    <div class="dropdown-menu border-0 card-raduis shadow dropdown-menu-right" aria-labelledby="promote-{{ auth()->user()->id }}" style="width: 210px !important;">
-                        <a href="{{ route('user.profile') }}" class="dropdown-item text-dark">
-                            My Profile
+                    <div class="dropdown-menu border-0 icon-raduis shadow dropdown-menu-right" aria-labelledby="user-{{ auth()->id() }}" style="width: 210px !important;">
+                        <a href="{{ route('user.profile') }}" class="dropdown-item">
+                            <small class="text-main-dark mr-1">
+                                <i class="icofont-ui-user"></i>
+                            </small>
+                            <small class="text-main-dark">My Profile</small>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('logout') }}" class="dropdown-item text-danger">
-                            Logout
+                        <a href="{{ route('logout') }}" class="dropdown-item">
+                            <small class="text-danger mr-1">
+                                <i class="icofont-power"></i>
+                            </small>
+                            <small class="text-danger">Logout</small>
                         </a>
                     </div>
                 </div>

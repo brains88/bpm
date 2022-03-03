@@ -1,4 +1,4 @@
-<form method="post" class="add-social-form bg-white p-4" action="javascript:;" data-action="{{ route('user.social.add') }}" autocomplete="off">
+<form method="post" class="add-social-form bg-white p-4 mb-4" action="javascript:;" data-action="{{ route('user.social.add') }}" autocomplete="off">
     <div class="form-row">
         <div class="form-group col-lg-6">
             <label class="text-muted">Linkedin</label>
@@ -35,7 +35,7 @@
         <div class="form-group col-lg-6">
             <label class="text-muted">Whatsapp</label>
             <div class="input-group">
-                <input type="url" name="whatsapp" class="form-control whatsapp" placeholder="Enter whatsapp number">
+                <input type="text" name="whatsapp" class="form-control whatsapp" placeholder="Enter whatsapp number">
             </div>
             <small class="error whatsapp-error text-danger"></small>
         </div>

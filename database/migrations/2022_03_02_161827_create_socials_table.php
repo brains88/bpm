@@ -21,6 +21,7 @@ class CreateSocialsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('youtube')->nullable();
             $table->string('reference')->nullable();
             $table->timestamps();
         });

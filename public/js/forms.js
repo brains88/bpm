@@ -12,6 +12,11 @@
         handleForm({form: $(this), button: 'add-social-button', spinner: 'add-social-spinner', message: 'add-social-message'});
     });
 
+    $('.edit-social-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-social-button', spinner: 'edit-social-spinner', message: 'edit-social-message'});
+    });
+
     $('.add-certification-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-certification-button', spinner: 'add-certification-spinner', message: 'add-certification-message'});

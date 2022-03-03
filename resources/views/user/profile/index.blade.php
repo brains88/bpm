@@ -6,7 +6,6 @@
             <div class="row">
                 <div class="col-12 mb-4">
                     <div class="">
-                        {{-- {{ dd(auth()->user()->profile) }} --}}
                         @if(empty(auth()->user()->profile))
                             <h6 class="alert alert-info mb-4">Setup Profile details</h6>
                             <div class="p-4 card-raduis bg-white border mb-4">
@@ -21,9 +20,15 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <div class="">
-                                        <h6 class="alert alert-info mb-4">Social handles</h6>
+                                    <div class="px-4 pt-4 mb-4 border icon-raduis">
                                         <?php $social = auth()->user()->social ?? ''; ?>
+                                        <h6 class="alert alert-info d-flex justify-content-between align-items-center mb-4">
+                                            Social handles
+                                            @if(!empty($social))
+                                                <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-social">Edit</a>
+                                                @include('user.socials.partials.edit')
+                                            @endif
+                                        </h6>
                                         @if(empty($social))
                                             <div class="alert alert-danger mb-4">Add your social handles</div>
                                             @include('user.socials.partials.add')
@@ -31,37 +36,18 @@
                                             <div class="row">
                                                 <?php $socials = ['facebook' => $social->facebook, 'twitter' => $social->twitter, 'linkedin' => $social->linkedin, 'whatsapp' => $social->whatsapp, 'instagram' => $social->instagram, 'youtube' => $social->youtube ?? '']; ?>
                                                 @foreach($socials as $name => $link)
-                                                    <div class="col-3 col-lg-2 mb-4">
-                                                        <a href="{{ $link }}" class="d-block border p-3 bg-white">
-                                                            <img src="/images/socials/{{ $name }}.png" class="img-fluid w-100 h-100">
-                                                        </a>
+                                                    <div class="col-4 col-lg-2 mb-4">
+                                                        @if(empty($link))
+                                                            <div class="d-block border p-3 bg-light position-relative" target="_blank">
+                                                                <img src="/images/socials/{{ $name }}.png" class="img-fluid w-100 h-100">
+                                                            </div>
+                                                        @else
+                                                            <a href="{{ $link }}" class="d-block border border-success p-3 bg-white position-relative" target="_blank">
+                                                                <img src="/images/socials/{{ $name }}.png" class="img-fluid w-100 h-100">
+                                                            </a>
+                                                        @endif
                                                     </div>
                                                 @endforeach
-                                                {{-- <div class="col-3 mb-4">
-                                                    <a href="{{ $social->instagram }}" class="d-block border p-3 bg-white">
-                                                        <img src="/images/socials/instagram.png" class="img-fluid w-100 h-100">
-                                                    </a>
-                                                </div> --}}
-                                                {{-- <div class="col-3 mb-4">
-                                                    <a href="{{ $social->twitter }}" class="d-block border p-3 bg-white">
-                                                        <img src="/images/socials/twitter.png" class="img-fluid w-100 h-100">
-                                                    </a>
-                                                </div>
-                                                <div class="col-3 mb-4">
-                                                    <a href="{{ $social->linkedin }}" class="d-block border p-3 bg-white">
-                                                        <img src="/images/socials/linkedin.png" class="img-fluid w-100 h-100">
-                                                    </a>
-                                                </div>
-                                                <div class="col-3 mb-4">
-                                                    <a href="{{ $social->linkedin }}" class="d-block border p-3 bg-white">
-                                                        <img src="/images/socials/linkedin.png" class="img-fluid w-100 h-100">
-                                                    </a>
-                                                </div>
-                                                <div class="col-3 mb-4">
-                                                    <a href="{{ $social->linkedin }}" class="d-block border p-3 bg-white">
-                                                        <img src="/images/socials/linkedin.png" class="img-fluid w-100 h-100">
-                                                    </a>
-                                                </div> --}}
                                             </div>
                                         @endif
                                     </div>
@@ -102,9 +88,11 @@
                                                                         <i class="icofont-edit"></i>
                                                                     </small>
                                                                 </a>
-                                                                <small class="mr-1 text-danger">
-                                                                    <i class="icofont-trash"></i>
-                                                                </small>
+                                                                <a href="javascript:;" data-url="{{ '' }}">
+                                                                    <small class="mr-1 text-danger">
+                                                                        <i class="icofont-trash"></i>
+                                                                    </small>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
