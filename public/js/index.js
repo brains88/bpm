@@ -116,7 +116,7 @@ function handleForm(info = {}) {
 }
 
 function handleAjax(info = {}) {
-    if (confirm('Are you sure?')) {
+    if (confirm(info.that.attr('data-message') || 'Are you sure?')) {
         var button = $('.'+info.button);
         var spinner = $('.'+info.spinner);
         button.attr('disabled', true);

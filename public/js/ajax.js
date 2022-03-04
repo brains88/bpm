@@ -14,4 +14,8 @@
         handleAjax({that: $(this), button: 'resend-otp-button', spinner: 'resend-otp-spinner'});    
     });
 
+    $('.delete-profile-image').on('click', function() {
+        handleAjax({that: $(this), button: 'delete-profile-image-button', spinner: 'delete-profile-image-spinner'});    
+    });
+
 })(jQuery);

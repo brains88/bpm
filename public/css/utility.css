@@ -15,12 +15,16 @@
     height: 7.5px;
 }
 
-.bg-pinky {
-    background-color: var(--pink-color);
+.bg-pink {
+    background-color: var(--pink-color) !important;
 }
 
 .text-shadow-white {
     text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+.border-pink {
+    border: 1px solid var(--pink-color) !important;
 }
 
 .text-shadow-dark {

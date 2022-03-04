@@ -14,7 +14,7 @@ class ProfileController extends Controller
     /**
      * Profile image upload
      */
-    public function image($id = 0)
+    public function upload($id = 0)
     {
         $image = request()->file('image');
         $validator = Validator::make(['image' => $image], [
@@ -170,6 +170,30 @@ class ProfileController extends Controller
                 'info' => 'Operation failed. Try again.',
             ]);
         }    
+    }
 
+    /**
+     * Remove Profile image
+     */
+    public function remove($id)
+    {
+        $profile = Profile::find($id);
+        if (!empty($profile->image)) {
+            $prevfile = explode('/', $profile->image);
+            $previmage = end($prevfile);
+            $file = "images/profiles/{$previmage}";
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+        $profile->image = null;
+        $profile->update();
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => '',
+        ]);    
     }
 }

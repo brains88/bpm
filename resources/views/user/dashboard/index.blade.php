@@ -14,7 +14,9 @@
                 <div class="alert-info alert mb-4 d-flex justify-content-between al;align-items-center">
                     <div class="">
                         <span class="mr-2">Welcome</span>
-                        <a href="{{ route('user.profile') }}">{{ ucwords(auth()->user()->name) }}</a>
+                        <a href="{{ route('user.profile') }}">
+                            {{ ucwords(auth()->user()->name) }}
+                        </a>
                     </div>
                     <div>
                         <small class="text-main-dark">
@@ -126,7 +128,7 @@
                     <div class="row">
                         <div class="col-12 mb-4">
                             <div class="card position-relative shadow-sm border-0" >
-                                <div class="card-header icon-raduis py-5" style="background-color: #f1416c">
+                                <div class="card-header icon-raduis py-5 bg-pink">
                                     <h4 class="text-white">Total Payments</h4>
                                     <h4 class="m-0">
                                         ${{ number_format(\App\Models\Payment::where(['user_id' => auth()->user()->id])->sum('amount')) }}

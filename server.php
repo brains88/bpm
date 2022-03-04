@@ -7,11 +7,15 @@ NIN
 vOTERS CARD 
 DRIVER lISCENCE
 GOVERNMENT api For ID Number Verification.
-Slider on login explaining what the comapny does.
+
 Delete Third party sold property after one month
 Delete Posted property after 6months of dormancy
 Username: administrator
 Pass: email@admin
+
+1000GB = TB
+1GB = $0.023
+50TB * 1000 = 50000GB
 
 Profile on property listing
 Currency list.
