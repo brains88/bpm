@@ -42,6 +42,17 @@ class Advert extends Model
     ];
 
     /**
+     * Advert types.
+     *
+     * @var []
+     */
+    public static $sizes = [
+        ['name' => 'Sidebar small banner', 'code' => 'ssb', 'width' => '100%', 'height' => '200px'],
+        ['name' => 'Fullwidth horizontal banner', 'code' => 'fhb', 'width' => '100%', 'height' => '120px'],
+        ['name' => 'Sidebar veritcal banner', 'code' => 'svb', 'width' => '100%', 'height' => '680px'],
+    ];
+
+    /**
      * An advert is posted with a particular credit unit
      */
     public function credit()

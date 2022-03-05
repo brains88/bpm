@@ -173,7 +173,7 @@
 				        </div>
 					</div>
 				</div>
-				<div class="">
+				<div class="row">
 	            	<?php  $timing = \App\Helpers\Timing::calculate($duration, $advert->expiry, $advert->paused_at); ?>
 	            	<div class="progress progress-bar-height mb-3">
 	                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{ $timing->progress() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $timing->progress() }}%"></div>

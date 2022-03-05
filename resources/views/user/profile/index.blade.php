@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="">
                                             <form action="javascript:;">
-                                                {{-- <input type="file" name="image" accept="image/*" class="profile-image-input d-none" data-url="{{ route('user.profile.image.upload', ['id' => auth()->user()->profile->id ]) }}"> --}}
+                                                <input type="file" name="image" accept="image/*" class="profile-image-input d-none" data-url="{{ route('user.profile.image.upload', ['id' => auth()->user()->profile->id ]) }}">
                                             </form>
                                         </div>
                                         <div class="pb-5">
@@ -63,10 +63,10 @@
                                     </div>
                                     @if(auth()->user()->profile->role == 'artisan')
                                         @if(auth()->user()->gigs()->exists())
-                                            <div class="d-flex flex-wrap alert alert-info pt-4 icon-raduis border-info border border mb-4">
+                                            <div class="d-flex flex-wrap alert alert-info pt-4 card-raduis mb-4">
                                                 @foreach(auth()->user()->gigs as $gig)
-                                                    <div class="mr-2 mb-4 position-relative">
-                                                        <small class="px-3 py-1 border-info border bg-white text-main-dark rounded-pill">
+                                                    <div class="mr-3 mb-4 position-relative">
+                                                        <small class="px-3 py-1 text-main-dark rounded-pill border border-info">
                                                             {{ ucfirst($gig->service->name) }}
                                                         </small>
                                                     </div>
@@ -91,9 +91,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <div class="alert alert-info mb-4 pt-4 pb-0 position-relative icon-raduis">
+                                    <div class="alert alert-info mb-4 pt-4 pb-0 position-relative card-raduis">
                                         <?php $social = auth()->user()->social ?? ''; ?>
-                                        @if(!empty($social))
+                                        @if(empty($social))
                                             <div class="alert alert-danger mb-4">Add your social handles</div>
                                             @include('user.socials.partials.add')
                                         @else

@@ -22,6 +22,7 @@ class CreateAdvertsTable extends Migration
             $table->text('link')->nullable();
             $table->bigInteger('clicks')->nullable();
             $table->foreignId('credit_id');
+            $table->string('size')->nullable();
             $table->dateTime('expiry')->nullable();
             $table->string('status')->default('initialized');
             $table->string('reference');

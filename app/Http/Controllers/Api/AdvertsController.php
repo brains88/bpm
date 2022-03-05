@@ -20,6 +20,7 @@ class AdvertsController extends Controller
             'credit' => ['required', 'integer'],
             'description' => ['required', 'string'],
             'link' => ['required', 'string'],
+            'size' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -41,6 +42,7 @@ class AdvertsController extends Controller
             Advert::create([
                 'reference' => Str::random(64),
                 'description' => $data['description'],
+                'size' => $data['size'],
                 'credit_id' => $credit->id,
                 'link' => $data['link'],
                 'user_id' => auth()->id(),

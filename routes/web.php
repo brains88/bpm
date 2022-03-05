@@ -238,11 +238,12 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
         Route::post('/cancel/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'cancel'])->name('user.advert.cancel');
     });
 
+    Route::post('/image/upload/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'upload'])->name('user.profile.image.upload');
+
     Route::prefix('profile')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
         Route::post('/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('user.profile.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('user.profile.edit');
-        Route::post('/image/upload/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'upload'])->name('user.upload');
         Route::post('/image/upload/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'remove'])->name('user.profile.image.remove');
     });
 

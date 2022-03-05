@@ -4,7 +4,7 @@
             <form method="post" action="javascript:;" class="edit-advert-form" data-action="{{ route('user.advert.edit', ['id' => $advert->id]) }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
-                        <div class="text-smoky mb-0 font-weight-bold">Post Advert</div>
+                        <div class="text-smoky mb-0 font-weight-bold">Edit Advert</div>
                         <div class="cursor-pointer" data-dismiss="modal" aria-label="Close">
                             <i class="icofont-close text-danger"></i>
                         </div>
@@ -14,29 +14,55 @@
                             <label class="text-smoky">Your Credits</label>
                             <select class="form-control custom-select rounded-0 credit" name="credit">
                                 <option value="">-- Select credit --</option>
-                                <?php $credits = \App\Models\Credit::where(['user_id' => auth()->id(), 'inuse' => false])->whereAnd('status', '!=', 'expired')->get(); ?>
-                                @if(empty($credits->count()))
+                                @if(!auth()->user()->credits()->exists())
                                     <option value="">-- You have no available credits --</option>
                                 @else
+                                    <?php $credits = auth()->user()->credits; $count = 0; ?>
                                     @foreach ($credits as $credit)
-                                        <option value="{{ $credit->id }}" {{ $credit->id == $advert->credit_id ? 'selected' : '' }}>
-                                            {{ $credit->units.'units '.$credit->unit->duration.' days' }}
-                                        </option>
+                                        <?php $count++; ?>
+                                        @if(($credit->status == 'available' && $credit->status == false) || $credit->id == $advert->credit_id))
+                                            <option value="{{ $credit->id }}" {{ $credit->id == $advert->credit_id ? 'selected' : '' }}>
+                                                {{ $credit->units.'units '.$credit->unit->duration.' days' }}
+                                            </option>
+                                        @else
+                                            @if($count == 1)
+                                                <option value="">-- You have no available credits --</option>
+                                            @endif
+                                        @endif
                                     @endforeach
                                 @endif
                             </select>
                             <small class="invalid-feedback credit-error"></small>
                         </div>
                         <div class="form-group col-12 col-md-6">
-                            <label class="text-smoky">Website link</label>
-                            <input type="url" name="link" class="form-control link" placeholder="Enter website link" value="{{ $advert->link }}">
+                            <label class="text-smoky">Advert link</label>
+                            <input type="url" name="link" class="form-control link" placeholder="Enter advert link" value="{{ $advert['link'] }}">
                             <small class="invalid-feedback link-error"></small>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-smoky">Advert Details (Optional)</label>
-                        <textarea class="form-control description" name="description" rows="6" placeholder="Maximum of 300 characters">{{ $advert->description }}</textarea>
-                        <small class="invalid-feedback description-error"></small>
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label class="text-smoky">Description (Optional)</label>
+                            <input type="text" name="description" class="form-control description" placeholder="Enter advert description" value="{{ $advert->description }}">
+                            <small class="invalid-feedback description-error"></small>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label class="text-smoky">Advert Size</label>
+                            <select class="form-control custom-select rounded-0 size" name="size">
+                                <option value="">-- Select size --</option>
+                                <?php $sizes = \App\Models\Advert::$sizes; ?>
+                                @if(empty($sizes))
+                                    <option value="">-- You sizes listed --</option>
+                                @else
+                                    @foreach ($sizes as $key => $size)
+                                        <option value="{{ $size['code'] }}" {{ $advert->size == $size['code'] ? 'selected' : '' }}>
+                                            {{ $size['name'] }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            <small class="invalid-feedback size-error"></small>
+                        </div>
                     </div>
                     <div class="alert mb-3 edit-advert-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">

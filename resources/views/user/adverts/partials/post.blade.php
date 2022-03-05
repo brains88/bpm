@@ -28,15 +28,34 @@
                             <small class="invalid-feedback credit-error"></small>
                         </div>
                         <div class="form-group col-12 col-md-6">
-                            <label class="text-smoky">Website link</label>
-                            <input type="url" name="link" class="form-control link" placeholder="Enter website link">
+                            <label class="text-smoky">Advert link</label>
+                            <input type="url" name="link" class="form-control link" placeholder="Enter advert link">
                             <small class="invalid-feedback link-error"></small>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-smoky">Advert Details (Optional)</label>
-                        <textarea class="form-control description" name="description" rows="6" placeholder="Maximum of 300 characters"></textarea>
-                        <small class="invalid-feedback description-error"></small>
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label class="text-smoky">Description (Optional)</label>
+                            <input type="text" name="description" class="form-control description" placeholder="Enter advert description">
+                            <small class="invalid-feedback description-error"></small>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label class="text-smoky">Advert Size</label>
+                            <select class="form-control custom-select rounded-0 size" name="size">
+                                <option value="">-- Select size --</option>
+                                <?php $sizes = \App\Models\Advert::$sizes; ?>
+                                @if(empty($sizes))
+                                    <option value="">-- You sizes listed --</option>
+                                @else
+                                    @foreach ($sizes as $key => $size)
+                                        <option value="{{ $size['code'] }}">
+                                            {{ $size['name'] }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            <small class="invalid-feedback size-error"></small>
+                        </div>
                     </div>
                     <div class="alert mb-3 post-advert-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">

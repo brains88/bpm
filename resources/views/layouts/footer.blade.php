@@ -23,7 +23,7 @@
 
         <script type="text/javascript">
 
-            <?php if(auth()->user()->profile): ?>
+            <?php if(!empty(auth()->user()->profile)): ?>
                 var button = $('.upload-profile-image');
                 if (button) {
                     button.click(function(event) {
