@@ -7,8 +7,8 @@
                 </h5>
             </div>
         	<div class="d-flex align-items-center">
-                <div class="dropdown rounded-circle cursor-pointer bg-info text-center" style="width: 30px; height: 30px; line-height: 25px;">
-                    <a href="javascript:;" class="text-decoration-none" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="35, 22.5">
+                <div class="dropdown">
+                    <a href="javascript:;" class="text-decoration-none d-block rounded-circle cursor-pointer bg-info text-center" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="35, 15" style="width: 30px; height: 30px; line-height: 25px;">
                         <small class="text-white">
                             <small>
                                 <i class="icofont-ui-user"></i>
@@ -31,9 +31,6 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
-                    <div class="icon-lines"></div>
-                </div>  --}} 
             	<div class="border rounded-circle text-center ml-3" style="width: 30px; height: 30px; line-height: 25px;">
                     <small class="text-white">
                         <small>

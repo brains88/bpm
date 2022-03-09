@@ -5,10 +5,20 @@
     --main-ash: #F0F2E3;
     --theme-shade: #b33f3f;
     --pink-color: #f1416c;
+    --blue-primary: #0095E8;
+    --orange-color: #f45b0f;
 }
 
 .bg-theme-color {
     background-color: var(--theme-color);
+}
+
+.bg-blue {
+    background-color: var(--blue-primary);
+}
+
+.bg-orange {
+    background-color: var(--orange-color);
 }
 
 .progress-bar-height {
@@ -21,6 +31,10 @@
 
 .text-shadow-white {
     text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+.border-white {
+    border:  1px solid #fff;
 }
 
 .border-pink {

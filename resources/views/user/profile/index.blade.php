@@ -63,7 +63,7 @@
                                     </div>
                                     @if(auth()->user()->profile->role == 'artisan')
                                         @if(auth()->user()->gigs()->exists())
-                                            <div class="d-flex flex-wrap alert alert-info pt-4 card-raduis mb-4">
+                                            <div class="d-flex flex-wrap alert alert-info pt-4 icon-raduis mb-4">
                                                 @foreach(auth()->user()->gigs as $gig)
                                                     <div class="mr-3 mb-4 position-relative">
                                                         <small class="px-3 py-1 text-main-dark rounded-pill border border-info">

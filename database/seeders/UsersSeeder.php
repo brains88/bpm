@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
         User::truncate();
         $faker = Faker::create();
         $users = [
-            ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@bpm.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
+            ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
             ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => $faker->unique()->safeEmail(), 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'inactive'],
             ['name' => $faker->name(), 'phone' => '08158212666', 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],
         ];
@@ -27,6 +27,6 @@ class UsersSeeder extends Seeder
             User::create($user);
         }
 
-        User::factory()->count(96)->create();
+        User::factory()->count(312)->create();
     }
 }

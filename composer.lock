@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed949644d63c5d97c5cbb4f38881274f",
+    "content-hash": "e9dcb6752b97a8ec9182b12f78ac5d64",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3244,6 +3244,61 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "sineld/bladeset",
+            "version": "5.6.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sineld/bladeset.git",
+                "reference": "59090b4c65c2affefaef4344138c4e76305bf9cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sineld/bladeset/zipball/59090b4c65c2affefaef4344138c4e76305bf9cb",
+                "reference": "59090b4c65c2affefaef4344138c4e76305bf9cb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*|6.*|7.*|8.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sineld\\BladeSet\\BladeSetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sinan Eldem",
+                    "email": "sineld@gmail.com"
+                }
+            ],
+            "description": "A very simple blade extension which allows variables to be set within blade templates.",
+            "homepage": "https://github.com/sineld/bladeset",
+            "keywords": [
+                "blade",
+                "bladeset",
+                "laravel",
+                "template"
+            ],
+            "support": {
+                "issues": "https://github.com/sineld/bladeset/issues",
+                "source": "https://github.com/sineld/bladeset/tree/5.6"
+            },
+            "time": "2021-10-05T17:39:14+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
