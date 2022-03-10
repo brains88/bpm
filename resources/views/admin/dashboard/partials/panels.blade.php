@@ -2,7 +2,9 @@
     <div class="card position-relative card-raduis border-0" >
         @set('users', \App\Models\User::where(['role' => 'user'])->get())
         <div class="card-header pt-5 bg-blue" style="padding-bottom: 90px !important;">
-            <h4 class="text-white">All Users</h4>
+            <h4 class="text-white">
+                <a href="{{ route('admin.users') }}" class="text-decoration-none text-white">All Users</a>
+            </h4>
             <div class="d-flex justify-content-between">
                 <h5 class="m-0">
                     {{ number_format($users->count()) }}
@@ -21,7 +23,7 @@
                                 <i class="icofont-users"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['type' => 'corporate']) }}" class="text-decoration-none">Corporate</a>
+                        <a href="{{ route('admin.users.designation', ['designation' => 'corporate']) }}" class="text-decoration-none">Corporate</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'corporate'])->get()->count()) }}
@@ -39,7 +41,7 @@
                                 <i class="icofont-user-alt-3"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['type' => 'individuals']) }}" class="text-decoration-none">Individuals</a>
+                        <a href="{{ route('admin.users.designation', ['designation' => 'individuals']) }}" class="text-decoration-none">Individuals</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'individual'])->get()->count()) }}

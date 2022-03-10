@@ -74,33 +74,29 @@
 											{{ ucwords($profile->city).', '.ucwords($profile->state) }}
 										</small>
 									</p>
-									<div class="d-flex align-items-center justify-content-between icon-raduis bg-white shadow-sm w-100 p-3">
-										<a href="javascript:;" class="text-center bg-theme-color rounded-circle border text-decoration-none" style="height: 35px; width: 35px; line-height: 30px;">
-											<small class="text-white">
-												<i class="icofont-facebook"></i>
-											</small>
-										</a>
-										<a href="javascript:;" class="text-center bg-theme-color rounded-circle border text-decoration-none" style="height: 35px; width: 35px; line-height: 30px;">
-											<small class="text-white">
-												<i class="icofont-linkedin"></i>
-											</small>
-										</a>
-										<a href="javascript:;" class="text-center bg-theme-color rounded-circle border text-decoration-none" style="height: 35px; width: 35px; line-height: 30px;">
-											<small class="text-white">
-												<i class="icofont-twitter"></i>
-											</small>
-										</a>
-										<a href="javascript:;" class="text-center bg-theme-color rounded-circle border text-decoration-none" style="height: 35px; width: 35px; line-height: 30px;">
-											<small class="text-white">
-												<i class="icofont-whatsapp"></i>
-											</small>
-										</a>
-										<a href="javascript:;" class="text-center bg-theme-color rounded-circle border text-decoration-none" style="height: 35px; width: 35px; line-height: 30px;">
-											<small class="text-white">
-												<i class="icofont-instagram"></i>
-											</small>
-										</a>
-									</div>
+									@if(empty($user->social))
+	                                    <div class="alert alert-danger">No social links</div>
+	                                @else
+	                                    @set('social', $user->social)
+	                                    @set('socials', ['facebook' => $social->facebook, 'twitter' => $social->twitter, 'linkedin' => $social->linkedin, 'whatsapp' => $social->whatsapp, 'instagram' => $social->instagram, 'youtube' => $social->youtube ?? ''])
+	                                    <div class="d-flex align-items-center justify-content-between icon-raduis bg-white shadow-sm w-100 p-3">
+	                                        @foreach($socials as $name => $link)
+	                                            @if(empty($link))
+	                                                <div class="text-center bg-main-ash border rounded-circle border text-decoration-none md-circle">
+	                                                    <small class="text-main-dark">
+	                                                        <i class="icofont-{{ $name }}"></i>
+	                                                    </small>
+	                                                </div>
+	                                            @else
+	                                                <a href="{{ $name == 'whatsapp' ? "tel:{$link}" : $link }}" class="text-center bg-theme-color rounded-circle border text-decoration-none md-circle">
+	                                                    <small class="text-white">
+	                                                        <i class="icofont-{{ $name }}"></i>
+	                                                    </small>
+	                                                </a>
+	                                            @endif
+	                                        @endforeach
+	                                    </div>
+	                                @endif
 								</div>
 							</div>
 						</div>

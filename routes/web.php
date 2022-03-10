@@ -111,7 +111,7 @@ Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
+Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
 
@@ -174,13 +174,11 @@ Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(fun
 
     Route::prefix('users')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        Route::get('/search', [\App\Http\Controllers\Admin\UsersController::class, 'search'])->name('admin.users.search');
         
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
-    });
-
-    Route::prefix('user')->group(function () {
-        Route::post('/profile/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'profile'])->name('admin.user.profile');
-        Route::post('/properties/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'properties'])->name('admin.user.properties');
+        Route::get('/profile/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'profile'])->name('admin.user.profile');
+        Route::get('/designation/{designation?}', [\App\Http\Controllers\Admin\UsersController::class, 'designation'])->name('admin.users.designation');
     });
 
     Route::prefix('subcategory')->group(function () {

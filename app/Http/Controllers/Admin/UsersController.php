@@ -12,37 +12,38 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::with('properties')->get()->SortByDesc(function($user){
-            return $user->properties->count();
-        })->paginate(16);
-        return view('admin.users.index')->with(['users' => $users, 'roles' => User::query()->distinct()->pluck('role')]);
+        $users = User::query();
+        return view('admin.users.index')->with(['users' => $users->paginate(32), 'roles' => $users->distinct()->pluck('role')]);
     }
 
     /**
-     * Companies registered users
+     * get users by designation
      */
-    public function companies()
+    public function designation($designation = '')
     {
-        $properties = User::findOrFail($id)->properties()->paginate(16);
-        return view('admin.users.properties')->with(['properties' => $properties]);
+        $users = User::whereHas('profile', function($query) use($designation) {
+            $query->where(['designation' => $designation]);
+        })->latest()->paginate(24);
+        return view('admin.users.designation')->with(['users' => $users, 'designation' => $designation]);
     }
 
     /**
-     * Individuals registered users
-     */
-    public function individuals()
-    {
-        $properties = User::findOrFail($id)->properties()->paginate(16);
-        return view('admin.users.properties')->with(['properties' => $properties]);
-    }
-
-    /**
-     * User profile (company or individual)
+     * User profile
      */
     public function profile($id = 0)
     {
-        $properties = User::findOrFail($id)->properties()->paginate(16);
-        return view('admin.users.properties')->with(['properties' => $properties]);
+        return view('admin.users.profile')->with(['user' => User::find($id)]);
+    }
+
+    /**
+     * Search Users
+     */
+    public function search()
+    {
+        $users = User::query();
+        $query = request()->get('query');
+        $users = empty($query) ? $users->latest()->paginate(24) : $users->where('name', 'Like', '%'.$query.'%')->latest()->paginate(24);
+        return view('admin.users.search')->with(['users' => $users, 'query' => $query]);
     }
 
 }

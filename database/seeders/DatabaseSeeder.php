@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ServicesSeeder::class);
         $this->call(GigsSeeder::class);
         $this->call(AdvertsSeeder::class);
+        $this->call(ProfilesSeeder::class);
     }
 }
