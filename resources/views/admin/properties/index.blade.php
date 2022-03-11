@@ -1,11 +1,11 @@
 @include('layouts.header')
-<div class="min-vh-100">
+<div class="min-vh-100 bg-main-ash">
     @include('admin.layouts.navbar')
     <div class="section-padding min-vh-100 pb-4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center">
+                    <div class="alert alert-info d-flex align-items-center mb-4">
                         <small class="mr-2">All properties ({{ \App\Models\Property::count() }})</small>
                         <a href="javascript:;" class="text-underline" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
                             <small class="mr-2">

@@ -17,7 +17,9 @@ class SubscriptionFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
+        $duration = array_rand(array_flip(Membership::$durations));
         return [
+            'duration' => $duration,
             'status' => $faker->randomElement(Subscription::$status),
             'user_id' => rand(1, User::count()),
             'renewals' => $faker->numberBetween(2, 9),
@@ -25,7 +27,7 @@ class SubscriptionFactory extends Factory
             'payment_id' => rand(1, Payment::count()),
             'started' => Carbon::now(),
             'membership_id' => rand(1, Membership::count()),
-            'expiry' => Carbon::now()->addDays($faker->randomElement(array_values(Membership::$durations))),
+            'expiry' => Carbon::now()->addDays($duration),
         ];
     }
 }

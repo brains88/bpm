@@ -102,7 +102,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route('user'),
+                'redirect' => route('user.dashboard'),
             ]);
         } catch (Exception $error) {
             DB::rollback();
@@ -161,7 +161,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route(request()->subdomain()),
+                'redirect' => route('user.dashboard'),
             ]);
         } catch (Exception $error) {
             DB::rollback();

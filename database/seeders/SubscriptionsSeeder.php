@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Subscription;
+use App\Models\{Subscription, User};
 
 class SubscriptionsSeeder extends Seeder
 {
@@ -14,6 +14,6 @@ class SubscriptionsSeeder extends Seeder
     public function run()
     {
         Subscription::truncate();
-        Subscription::factory()->count(170)->create();
+        Subscription::factory()->count(User::count())->create();
     }
 }

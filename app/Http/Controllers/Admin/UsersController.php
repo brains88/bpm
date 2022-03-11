@@ -10,21 +10,11 @@ class UsersController extends Controller
     /**
      * Admin users list view
      */
-    public function index()
+    public function index($designation = '')
     {
-        $users = User::query();
-        return view('admin.users.index')->with(['users' => $users->paginate(32), 'roles' => $users->distinct()->pluck('role')]);
-    }
-
-    /**
-     * get users by designation
-     */
-    public function designation($designation = '')
-    {
-        $users = User::whereHas('profile', function($query) use($designation) {
-            $query->where(['designation' => $designation]);
-        })->latest()->paginate(24);
-        return view('admin.users.designation')->with(['users' => $users, 'designation' => $designation]);
+        $query = User::query();
+        $users = empty($designation) ? $query->paginate(32) : $query->whereHas('profile', function($profile) use($designation) {$profile->where(['designation' => $designation]);})->latest()->paginate(24);
+        return view('admin.users.index')->with(['users' => $users, 'roles' => $query->distinct()->pluck('role')]);
     }
 
     /**

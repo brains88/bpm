@@ -112,14 +112,12 @@ Route::middleware(['web', 'auth'])->domain(env('APP_URL'))->group(function() {
 });
 
 Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL'))->group(function() {
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
 
     Route::get('/subscriptions', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.subscriptions');
 
     Route::get('/adverts', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.adverts');
-
-    Route::get('/companies', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.companies');
 
     Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
     Route::prefix('plan')->group(function () {
@@ -131,6 +129,11 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     Route::prefix('skill')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\SkillsController::class, 'add'])->name('admin.skill.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SkillsController::class, 'edit'])->name('admin.skill.edit');
+    });
+
+    Route::prefix('payments')->group(function () {
+        Route::get('/search/{query?}', [\App\Http\Controllers\Admin\PaymentsController::class, 'search'])->name('admin.payments.search');
+        Route::get('/{type?}', [\App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.payments');
     });
 
     Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
@@ -157,40 +160,22 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
         Route::get('/user/{userid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'user'])->name('admin.properties.user');
     });
 
-    Route::prefix('property')->group(function () {
-        Route::get('/edit/{category}/{id}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
-        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
-    });
-
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
     Route::prefix('category')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\CategoriesController::class, 'add'])->name('admin.category.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
     });
 
-    Route::get('/individuals', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users.individuals');
-
-    Route::get('/companies', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users.companies');
-
     Route::prefix('users')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        Route::get('/{designation?}', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
         Route::get('/search', [\App\Http\Controllers\Admin\UsersController::class, 'search'])->name('admin.users.search');
         
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
         Route::get('/profile/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'profile'])->name('admin.user.profile');
-        Route::get('/designation/{designation?}', [\App\Http\Controllers\Admin\UsersController::class, 'designation'])->name('admin.users.designation');
-    });
-
-    Route::prefix('subcategory')->group(function () {
-        Route::post('/add', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'add'])->name('admin.subcategory.add');
-        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\SubcategoriesController::class, 'edit'])->name('admin.subcategory.edit');
     });
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
-    });
-
-    Route::prefix('blog')->group(function () {
         Route::post('/image/upload/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'image'])->name('blog.image.upload');
         Route::post('/store', [\App\Http\Controllers\Admin\BlogsController::class, 'store'])->name('admin.blog.store');
 
@@ -203,7 +188,7 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 });
 
 Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domain(env('USER_URL'))->group(function() {
-    Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user');
+    Route::get('/', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.dashboard');
     Route::get('/subscription', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.subscription');
 
     Route::prefix('gigs')->group(function () {

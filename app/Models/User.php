@@ -146,4 +146,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Advert::class);
     }
+
+     /**
+     * A user may subscribe to a membership plan
+     */
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
 }

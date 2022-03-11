@@ -43,6 +43,7 @@ class Payment extends Model
     public static $types = [
         'advert', 
         'subscription',
+        'credit',
     ];
 
     /**
@@ -51,5 +52,13 @@ class Payment extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class, 'currency_id');
+    }
+
+    /**
+     * A payment belongs to a user
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

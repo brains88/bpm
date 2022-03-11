@@ -4,9 +4,7 @@
 			<div class="d-flex justify-content-between align-items-center">
 				<ul class="d-flex">
 					<li class="mr-3 cursor-pointer bg-violet navbar-icon text-center">
-				    	<a href="{{ route('admin'); }}" class="text-decoration-none">
-				    		<small class="text-dark">Dashboard</small>
-				    	</a>
+				    	<a href="{{ route('admin.dashboard'); }}" class="text-decoration-none text-main-dark">Dashboard</a>
 				    </li>
 				</ul>
 				<ul class="d-flex align-items-baseline">

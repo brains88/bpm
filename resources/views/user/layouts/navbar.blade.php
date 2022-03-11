@@ -3,7 +3,7 @@
         <div class="d-flex py-3 align-items-center justify-content-between">
             <div class="">
                 <h5 class="m-0">
-                	<a href="{{ route('user') }}" class="text-white text-decoration-none">Dashboard</a>
+                	<a href="{{ route('user.dashboard') }}" class="text-white text-decoration-none">Dashboard</a>
                 </h5>
             </div>
         	<div class="d-flex align-items-center">

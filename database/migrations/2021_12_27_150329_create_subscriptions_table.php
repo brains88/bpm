@@ -20,6 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('status')->define('initialized');
             $table->dateTime('started');
             $table->foreignId('currency_id')->nullable();
+            $table->string('duration');
             $table->foreignId('user_id');
             $table->foreignId('payment_id');
             $table->dateTime('expiry');

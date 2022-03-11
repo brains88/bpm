@@ -1,4 +1,4 @@
-<div class="card border-0 position-relative rounded-0">
+<div class="card border-0 shadow-sm position-relative rounded-0">
     @set('status', strtolower($user->status ?? ''))
     <div class="card-header bg-white py-4 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
@@ -43,13 +43,11 @@
                 </div>
             </div>
             <div class="ml-3">
-            	<a href="{{ route('admin.user.profile', ['id' => $user->id]) }}" class="d-flex align-items-center">
-            		<small class="d-block text-dark mr-2">
-	                	{{ \Str::limit(ucwords($user->name), 12) }}
-	                </small>
+            	<a href="{{ route('admin.user.profile', ['id' => $user->id]) }}" class="d-flex align-items-center text-main-dark">
+	                {{ \Str::limit(ucwords($user->name), 12) }}
             	</a>
                 <a href="{{ route('admin.user.profile', ['id' => $user->id]) }}" class="">
-                    <small class="text-main-dark">
+                    <small class="text-muted">
                     	{{ empty($user->profile) ? 'No profile' : ucfirst($user->profile->role) }}
                     </small>
                 </a>

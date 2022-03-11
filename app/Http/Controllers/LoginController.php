@@ -54,7 +54,7 @@ class LoginController extends Controller
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful.', 
-                'redirect' => auth()->user()->role === 'admin' ? route('admin') : route('user'),
+                'redirect' => auth()->user()->role === 'admin' ? route('admin.dashboard') : route('user.dashboard'),
             ]);
         }
 
