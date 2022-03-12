@@ -155,9 +155,15 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 
         Route::get('/country/{countryid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'country'])->name('admin.properties.country');
 
+        Route::get('/add', [\App\Http\Controllers\Admin\PropertiesController::class, 'add'])->name('admin.property.add');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
+
+        Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('admin.property.add');
+        Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('admin.property.edit');
+
         Route::get('/category/{categoryname}', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.properties.category');
 
-        Route::get('/user/{userid}', [\App\Http\Controllers\Admin\PropertiesController::class, 'user'])->name('admin.properties.user');
+        Route::get('/action/{action}', [\App\Http\Controllers\Admin\PropertiesController::class, 'action'])->name('admin.properties.action');
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
@@ -167,7 +173,7 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     });
 
     Route::prefix('users')->group(function () {
-        Route::get('/{designation?}', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
         Route::get('/search', [\App\Http\Controllers\Admin\UsersController::class, 'search'])->name('admin.users.search');
         
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');

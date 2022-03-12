@@ -13,8 +13,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $properties = Property::latest('created_at')->paginate(12);
-        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get(), 'countries' => Country::all()]);
+        return view('admin.properties.index')->with(['properties' => Property::latest('created_at')->paginate(30)]);
     }
 
     /**
@@ -26,44 +25,32 @@ class PropertiesController extends Controller
             $query->where(['id' => $countryid]);
         })->paginate(12);
 
-        $categories = Category::where(['type' => 'property'])->get();
-        return view('admin.properties.country')->with(['properties' => $properties, 'categories' => $categories]);
+        return view('admin.properties.country')->with(['properties' => $properties]);
     }
 
     /**
      * Admin view to edit property
      */
-    public function edit($category = '', $id = 0)
+    public function edit($id = 0)
     {
-        $property = Property::find($id);
-        $categories = Category::where(['type' => 'property'])->get();
-        return view('admin.properties.edit')->with(['property' => $property, 'categories' => $categories, 'category' => $category, 'countries' => Country::all()]);
+        $category = request()->get('category');
+        return view('admin.properties.edit')->with(['property' => Property::find($id), 'countries' => Country::all(), 'category' => $category]);
     }
 
     /**
      * Admin get properties by user
      */
-    public function user($userid = 0)
+    public function action($action = '')
     {
-        $properties = Property::whereHas('user', function ($query) use ($userid) {
-            $query->where(['id' => $userid]);
-        })->paginate(12);
-
-        $categories = Category::where(['type' => 'property'])->get();
-        return view('admin.properties.user')->with(['properties' => $properties, 'categories' => $categories]);
+        return view('admin.properties.action')->with(['properties' => Property::where(['action' => $action])->paginate(28), 'action' => $action]);
     }
 
     /**
      * Admin get properties by category
      */
-    public function category($categoryname = 'lands')
+    public function category($category = 'land')
     {
-        $properties = Property::whereHas('category', function ($query) use ($categoryname) {
-            $query->where(['name' => $categoryname]);
-        })->paginate(12);
-
-        $categories = Category::where(['type' => 'property'])->get();
-        return view('admin.properties.category')->with(['properties' => $properties, 'categories' => $categories]);
+        return view('admin.properties.category')->with(['properties' => Property::where(['category' => $category])->paginate(24)]);
     }
 
     /**
@@ -71,8 +58,8 @@ class PropertiesController extends Controller
      */
     public function search()
     {
-        $properties = Property::search(request()->query)->paginate(16);
-        return view('admin.properties.index')->with(['properties' => $properties, 'categories' => Category::where(['type' => 'property'])->get()]);
+        $query = request()->get('query');
+        return view('admin.properties.search')->with(['properties' => Property::search(['category', 'price', 'country.name'], $query)->paginate(24), 'query' => $query]);
     }
 
 }

@@ -21,8 +21,8 @@ class PaymentsController extends Controller
      */
     public function search()
     {
-        $payments = Payment::search(['amount', 'type', 'currency.symbol', 'user.name'], request()->get('query'))->paginate(24);
-        dd($payments);
+        $query = request()->get('query');
+        $payments = Payment::search(['amount', 'type', 'currency.symbol', 'user.name'], $query)->paginate(24);
         return view('admin.payments.search')->with(['payments' => $payments, 'query' => $query]);
     }
 

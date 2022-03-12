@@ -23,7 +23,7 @@
                                 <i class="icofont-users"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['designation' => 'corporate']) }}" class="text-decoration-none">Corporate</a>
+                        <a href="{{ route('admin.users', ['query' => 'corporate']) }}" class="text-decoration-none">Corporate</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'corporate'])->get()->count()) }}
@@ -41,7 +41,7 @@
                                 <i class="icofont-user-alt-3"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['designation' => 'individual']) }}" class="text-decoration-none">Individual</a>
+                        <a href="{{ route('admin.users', ['query' => 'individual']) }}" class="text-decoration-none">Individual</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'individual'])->get()->count()) }}
@@ -115,19 +115,15 @@
     <div class="card card-raduis border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center mb-3">
-                <small class="px-3 mr-2 tiny-font py-1 bg-danger rounded-pill">
-                    <small class="text-white">-3.6%</small>
+                <small class="px-3 mr-2 tiny-font py-1 bg-info rounded-pill">
+                    <small class="text-white">0%</small>
                 </small>
-                <small>from last month</small>
             </div>
             <div class="">
                 <h5 class="text-main-dark">
-                    <span>
+                    <span class="">
                         {{ number_format(\App\Models\Property::count()) }}
                     </span>
-                    <small class="text-danger">
-                        <i class="icofont-long-arrow-down"></i>
-                    </small>
                 </h5>
                 <a href="{{ route('admin.properties') }}" class="text-main-dark text-decoration-none">All Properties
                 </a>

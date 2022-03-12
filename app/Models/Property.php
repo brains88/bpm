@@ -59,7 +59,7 @@ class Property extends Model
     /**
      * Property category description
      *
-     * @var string[]
+     * @var string
      */
     public static $categories = [
         'land' => [
@@ -75,7 +75,7 @@ class Property extends Model
             'groups' => [
                 'Shop',
                 'Warehouse',
-                'Event center'
+                'Event center',
             ],
         ],
 

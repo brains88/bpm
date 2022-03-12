@@ -129,7 +129,7 @@
                         </div>
                         <div class="alert alert-info mb-4">Edit property details</div>
                         <div class="p-4 bg-white">
-                            <form method="post" action="javascript:;" class="edit-property-form" data-action="{{ route('user.property.update', ['id' => $property->id]) }}" autocomplete="off">
+                            <form method="post" action="javascript:;" class="edit-property-form" data-action="{{ route('api.property.update', ['id' => $property->id]) }}" autocomplete="off">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="text-muted">Country located</label>

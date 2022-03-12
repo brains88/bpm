@@ -1,16 +1,14 @@
 @include('layouts.header')
 <div class="min-vh-100 bg-main-ash">
     @include('admin.layouts.navbar')
-    <div class="section-padding min-vh-100 pb-4">
+    <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center mb-4">
-                        <small class="mr-2">All properties ({{ \App\Models\Property::count() }})</small>
-                        <a href="javascript:;" class="text-underline" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
-                            <small class="mr-2">
-                                Add
-                            </small>
+                        <div class="mr-2">All properties ({{ \App\Models\Property::count() }})</div>
+                        <a href="javascript:;" class="text-decoration-none" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                            <i class="icofont-plus"></i>
                         </a>
                         @include('admin.properties.forms.add')
                     </div>
@@ -18,16 +16,9 @@
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
                         <a class="text-underline" href="javascript:;" data-target="#search-properties" data-toggle="modal">
-                            <small class="mr-2">
-                                Search
-                            </small>
+                            <i class="icofont-search"></i>
                         </a>
                         @include('admin.properties.forms.search')
-                        <a class="text-underline" href="javascript:;">
-                            <small class="">
-                                Date filter
-                            </small>
-                        </a>
                     </div>
                 </div>
             </div>

@@ -1,45 +1,41 @@
 @include('layouts.header')
-<div class="bg-white min-vh-100">
+<div class="bg-main-ash min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
-        <div class="container">
-            @if(empty($properties->count()))
-                <div class="alert-warning alert">No properties found</div>
-            @else
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="alert alert-info d-flex align-items-center">
-                            <small class="mr-2">Properties in {{ ucwords($properties[0]->country->name ?? '') }}</small>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="alert alert-info d-flex align-items-center">
-                            <a class="" href="javascript:;">
-                                <small class="mr-2 font-weight-bold">
-                                    <i class="icofont-search"></i>
-                                </small>
-                            </a>
-                            <a class="text-underline" href="javascript:;">
-                                <small class="">
-                                    Date filter
-                                </small>
-                            </a>
-                        </div>
+    <div class="section-padding pb-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info m-0 d-flex align-items-center justify-content-between">
+                        <div class="mr-2">({{ $properties->total() }}) {{ ucwords($properties[0]->country->name) }} Property</div>
+                        <a href="javascript:;" class="text-decoration-none" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                            <i class="icofont-plus"></i>
+                        </a>
+                        @include('admin.properties.forms.add')
                     </div>
                 </div>
-                <div class="">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info m-0 d-flex align-items-center">
+                        <a class="text-decoration-none" href="javascript:;" data-target="#search-properties" data-toggle="modal">
+                            <i class="icofont-search"></i>
+                        </a>
+                        @include('admin.properties.forms.search')
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                    @if(empty($properties->count()))
+                    <div class="alert-warning alert">No properties found</div>
+                @else
                     <div class="row">
                         @foreach($properties as $property)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-4 col-lg-2 mb-4">
                                 @include('admin.properties.partials.card')
                             </div>
                         @endforeach
                     </div>
-                    <div class="mb-4 alert-info alert">
-                        {{ $properties->links('vendor.pagination.links') }}
-                    </div>
-                </div>
-            @endif
+                    {{ $properties->links('vendor.pagination.links') }}
+                @endif
+            </div>
         </div>
     </div>
 </div>

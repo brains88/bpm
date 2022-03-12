@@ -10,11 +10,11 @@ class UsersController extends Controller
     /**
      * Admin users list view
      */
-    public function index($designation = '')
+    public function index()
     {
-        $query = User::query();
-        $users = empty($designation) ? $query->paginate(32) : $query->whereHas('profile', function($profile) use($designation) {$profile->where(['designation' => $designation]);})->latest()->paginate(24);
-        return view('admin.users.index')->with(['users' => $users, 'roles' => $query->distinct()->pluck('role')]);
+        $query = request()->get('query');
+        $users = empty($query) ? User::paginate(32) : User::search(['name', 'email', 'profile.designation', 'profile.role', 'profile.type', 'profile.description', 'profile.address'], $query)->paginate(24);
+        return view('admin.users.index')->with(['users' => $users, 'roles' => User::distinct()->pluck('role')]);
     }
 
     /**
@@ -30,10 +30,8 @@ class UsersController extends Controller
      */
     public function search()
     {
-        $users = User::query();
         $query = request()->get('query');
-        $users = empty($query) ? $users->latest()->paginate(24) : $users->where('name', 'Like', '%'.$query.'%')->latest()->paginate(24);
-        return view('admin.users.search')->with(['users' => $users, 'query' => $query]);
+        return view('admin.users.search')->with(['users' => User::search(['name', 'email', 'profile.designation', 'profile.role'], $query)->paginate(24), 'query' => $query]);
     }
 
 }

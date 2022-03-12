@@ -52,32 +52,8 @@
         </div>
         <div class="mr-2 cursor-pointer text-center text-decoration-none md-circle rounded-circle border border-info" data-toggle="modal" data-target="#designation-filter">
             <small class="text-muted tiny-font">
-                <i class="icofont-users"></i>
+                <i class="icofont-users-alt"></i>
             </small>
-        </div>
-        {{-- Designation filter Users modal --}}
-        <div class="modal fade" id="designation-filter" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                <div class="modal-content border-0">
-                    <div class="px-4 pt-5 pb-4">
-                        @set('designations', \App\Models\Profile::$designations)
-                        @if(empty($designations))
-                            <div value="alert alert-danger">No designations</div>
-                        @else
-                            @foreach($designations as $designation)
-                                <a href="{{ route('admin.users.designation', ['designation' => $designation]) }}" class="alert alert-info mb-4 d-flex align-items-center text-decoration-none justify-content-between">
-                                    <span>{{ ucwords($designation) }}</span>
-                                    <small class="px-3 tiny-font py-1 bg-danger rounded-pill">
-                                        <small class="text-white">
-                                            {{ \App\Models\Profile::where(['designation' => $designation])->get()->count() }}
-                                        </small>
-                                    </small>
-                                </a>
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

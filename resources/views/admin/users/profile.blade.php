@@ -251,6 +251,9 @@
                             @endif
                         </div>
                         <div class="">
+                            <div class="alert alert-info mb-4">
+                                Posted Adverts
+                            </div>
                             @if($user->adverts()->exists())
                                 @set('adverts', $user->adverts)
                                 <div class="row">
@@ -262,7 +265,7 @@
                                                     <img src="{{ empty($advert->banner) ? '/images/banners/placeholder.png' : $advert->banner }}" class="img-fluid h-100 object-cover border w-100">
                                                 </a>
                                                 <div class="card-body pt-0">
-                                                    <?php  $timing = \App\Helpers\Timing::calculate($duration, $advert->expiry, $advert->started); ?>
+                                                    <?php  $timing = \App\Helpers\Timing::calculate($advert->credit->duration, $advert->expiry, $advert->started); ?>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="">
                                                             {{ $timing->progress() }}%
@@ -275,7 +278,7 @@
                                                 <div class="card-footer bg-info">
                                                     <div>
                                                         <small class="text-main-dark">
-                                                            {{ $subscription->created_at->diffForHumans() }}
+                                                            {{ $advert->created_at->diffForHumans() }}
                                                         </small>
                                                     </div>
                                                 </div>
