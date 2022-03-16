@@ -28,7 +28,7 @@ class BlogsController extends Controller
         }
 
         $extension = $image->getClientOriginalExtension();
-        $filename = \Str::uuid().'.'.$extension;
+        $filename = Str::uuid().'.'.$extension;
         $path = 'images/blogs';
         $image->move($path, $filename);
 
