@@ -142,6 +142,11 @@
         handleForm({form: $(this), button: 'edit-blog-button', spinner: 'edit-blog-spinner', message: 'edit-blog-message'});
     });
 
+    $('.update-blog-status-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'update-blog-status-button', spinner: 'update-blog-status-spinner', message: 'update-blog-status-message'});
+    });
+
     $('.add-property-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-property-button', spinner: 'add-property-spinner', message: 'add-property-message'});

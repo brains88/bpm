@@ -53,12 +53,13 @@ class BlogsController extends Controller
 
     public function status($id)
     {
-        $article = Blog::find($id);
-        $article->published = (boolean)$article->published ? false : true;
-        $article->update();
+        $blog = Blog::find($id);
+        $blog->published = (boolean)request()->post('status');
+        $blog->update();
         return response()->json([
             'status' => 1, 
-            'info' => 'Article status updated successfully'
+            'info' => 'Article status updated successfully',
+            'redirect' => ''
         ]);
     }
 
@@ -78,18 +79,27 @@ class BlogsController extends Controller
             ]);
         }
 
+        $published = (boolean)$data['status'] ?? false;
+        if($published === true) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'You can publish the post only after uploading an image. Select No.',
+            ]);
+        }
+
         Blog::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'category_id' => $data['category'],
-            'published' => (boolean)$data['status'],
-            'user_id' => 67
+            'published' => $published,
+            'user_id' => auth()->id(),
+            'reference' => Str::random(64),
         ]);
 
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'redirect' => ''
+            'redirect' => route(request()->subdomain().'.blogs')
         ]);
 
     }
@@ -115,14 +125,12 @@ class BlogsController extends Controller
         $blog->description = $data['description'];
         $blog->category_id = $data['category'];
         $blog->published = (boolean)$data['status'];
-        $blog->reference = Str::random(32);
-        $blog->image = 'https://picsum.photos/1260/960?random='.rand(10434, 90920);
         $blog->update();
 
         return response()->json([
             'status' => 1, 
             'info' => 'Operation Successful',
-            'redirect' => ''
+            'redirect' => route(request()->subdomain().'.blogs')
         ]);
 
     }

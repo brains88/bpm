@@ -7,7 +7,7 @@
                     <div class="col-12 col-lg-9 mb-4">
                         <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">Add Blog</div>
                         <div class="bg-white p-4 card-raduis shadow-sm">
-                            <form method="post" action="javascript:;" class="add-blog-form" data-action="{{ route('admin.blog.store'); }}" autocomplete="off">
+                            <form method="post" action="javascript:;" class="add-blog-form" data-action="{{ route('blog.store'); }}" autocomplete="off">
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label class="form-label text-muted">Title</label>
@@ -52,12 +52,12 @@
                                 <div class="form-group mb-3">
                                     <label class="text-muted">Description</label>
                                     <div class="bg-white">
-                                        <textarea class="form-control description" name="description" rows="4" placeholder="Add book description." id="description"></textarea>
+                                        <textarea class="form-control description" name="description" rows="4" placeholder="Add book description" id="description"></textarea>
                                     </div>
                                     <small class="invalid-feedback description-error"></small>
                                 </div>
                                 <div class="alert mb-3 add-blog-message d-none"></div>
-                                <button type="submit" class="btn btn-lg btn-info text-white add-blog-button mt-3">
+                                <button type="submit" class="btn btn-lg btn-info text-white add-blog-button mt-3 px-4">
                                     <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
                                     Post
                                 </button>

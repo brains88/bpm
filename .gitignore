@@ -12,6 +12,3 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-
-.certificate.txt
-.private.txt

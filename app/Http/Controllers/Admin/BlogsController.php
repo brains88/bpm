@@ -10,9 +10,9 @@ class BlogsController extends Controller
     /**
      * Admin Bogs list view
      */
-    public function index($limit = 12)
+    public function index()
     {
-        return view('admin.blogs.index')->with(['blogs' => Blog::paginate(8), 'categories' => Category::where(['type' => 'blog'])->get()]);
+        return view('admin.blogs.index')->with(['blogs' => Blog::latest()->paginate(8), 'categories' => Category::where(['type' => 'blog'])->get()]);
     }
 
     /**

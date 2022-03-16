@@ -25,7 +25,6 @@ class Category extends Model
      * @var string[]
      */
     public static $types = [
-        'news',
         'blog',
     ];
 

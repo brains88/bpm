@@ -26,16 +26,45 @@
             <a href="{{ route('admin.blog.edit', ['id' => $blog->id]) }}" class="text-underline">
                 {{ \Str::limit(strip_tags($blog->title), 10) }}
             </a>
-            <div class="custom-control custom-switch p-0">
-                <input class="custom-control-input blog-status m-0" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
-                <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
-            </div>
+            <div class="dropdown">
+                <a href="javascript:;" class="rounded-circle d-block sm-circle bg-{{ $blog->published ? 'success' : 'danger' }} text-center" id="status-{{ $blog->id }}" data-toggle="dropdown">
+                    <small class="text-white tiny-font">
+                        <i class="icofont-{{ $blog->published ? 'tick-mark' : 'close' }}"></i>
+                    </small>
+                </a>
+                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $blog->id }}">
+                    <form method="post" class="p-4 w-100 update-blog-status-form" action="javascript:;" style="width: 210px !important;" data-action="{{ route('blog.status.update', ['id' => $blog->id]) }}">
+                        <div class="form-group">
+                            <label class="form-label text-muted">Published?</label>
+                            <select class="custom-select form-control status" name="status">
+                                <?php $status = \App\Models\Blog::$publish; ?>
+                                @empty($status)
+                                    <option value="">No Status</option>
+                                @else
+                                    <option value="">Select option</option>
+                                    @foreach ($status as $key => $value)
+                                        <option value="{{ (boolean)$value }}" {{ (boolean)$blog->published == (boolean)$value ? 'selected' : '' }}>
+                                            {{ ucfirst($key) }}
+                                        </option>
+                                    @endforeach
+                                @endempty
+                            </select>
+                            <small class="invalid-feedback status-error"></small>
+                        </div>
+                        <div class="alert mb-3 update-blog-status-message d-none"></div>
+                        <div class="d-flex justify-content-right mb-3 mt-1">
+                            <button type="submit" class="btn btn-info btn-lg btn-block update-blog-status-button">
+                                <img src="/images/spinner.svg" class="mr-2 d-none update-blog-status-spinner mb-1">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>  
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <small class="bg-info px-3 rounded-pill">
-                <small class="text-white tiny-font">
-                    {{ number_format($blog->views ?? 0) }} views
-                </small>
+            <small class="text-main-dark">
+                {{ number_format($blog->views ?? 0) }} views
             </small>
             <a href="{{ route('admin.blogs.category', ['categoryid' => $blog->category->id]) }}" class="text-main-dark text-underline">
                 {{ ucwords(\Str::limit($blog->category->name, 5) ?? 'Nill') }}
@@ -48,7 +77,7 @@
         </small>
         <div class="d-flex">
             <small class="mr-2">
-                <a href="javascript:;" class=" text-warning" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
+                <a href="{{ route('admin.blog.edit', ['id' => $blog->id]) }}" class=" text-warning">
                     <i class="icofont-edit"></i>
                 </a>
             </small>

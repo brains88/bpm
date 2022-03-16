@@ -186,8 +186,8 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
         Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
 
         Route::post('/image/upload/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'image'])->name('blog.image.upload');
-        Route::post('/store', [\App\Http\Controllers\Api\BlogsController::class, 'store'])->name('admin.blog.store');
-        Route::post('/status/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'status'])->name('blog.status');
+        Route::post('/store', [\App\Http\Controllers\Api\BlogsController::class, 'store'])->name('blog.store');
+        Route::post('/status/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'status'])->name('blog.status.update');
         Route::post('/delete/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'delete'])->name('blog.delete');
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'edit'])->name('blog.edit');
 

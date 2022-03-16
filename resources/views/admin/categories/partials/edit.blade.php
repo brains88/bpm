@@ -19,7 +19,8 @@
                             <label class="text-smoky">Category Type</label>
                             <select class="form-control custom-select rounded-0 type" name="type">
                                 <option value="">-- Select Type --</option>
-                                @foreach (\App\Models\Category::$types as $type)
+                                @set('types', \App\Models\Category::$types)
+                                @foreach ($types as $type)
                                     <option value="{{ $type }}" {{ $type == $category->type ? 'selected' : '' }}>
                                         {{ ucfirst($type) }}
                                     </option>
