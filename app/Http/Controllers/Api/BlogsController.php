@@ -54,11 +54,19 @@ class BlogsController extends Controller
     public function status($id)
     {
         $blog = Blog::find($id);
-        $blog->published = (boolean)request()->post('status');
+        $status = (boolean)request()->post('status');
+        if($status === true && empty($blog->image)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Upload blog image first.',
+            ]);
+        }
+
+        $blog->published = $status;
         $blog->update();
         return response()->json([
             'status' => 1, 
-            'info' => 'Article status updated successfully',
+            'info' => 'Operation successful',
             'redirect' => ''
         ]);
     }
