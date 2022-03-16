@@ -28,9 +28,12 @@ class Membership extends Model
         'price', 
         'duration', 
         'name', 
-        'listing', 
+        'paidlisting', 
+        'freelisting', 
+        'freeboost', 
         'details',
         'currency_id',
+        'status',
     ];
 
     /**

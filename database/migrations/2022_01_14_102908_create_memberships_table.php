@@ -23,7 +23,7 @@ class CreateMembershipsTable extends Migration
             $table->text('details')->nullable();
             $table->bigInteger('freeboost')->nullable();
             $table->text('duration');
-            $table->text('status')->default('active');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
