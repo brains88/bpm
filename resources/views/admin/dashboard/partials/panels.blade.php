@@ -10,7 +10,7 @@
                     {{ number_format($users->count()) }}
                 </div>
                 <small class="tiny-font px-3 py-1 bg-pink rounded-pill">
-                    <a href="{{ route('admin.users') }}" class="text-white text-decoration-none">+1.5%</a>
+                    <a href="{{ route('admin.users') }}" class="text-white text-decoration-none">0%</a>
                 </small>
             </div>
         </div>
@@ -23,13 +23,10 @@
                                 <i class="icofont-users"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['query' => 'corporate']) }}" class="text-decoration-none">Corporate</a>
+                        <a href="{{ route('admin.users', ['query' => 'corporate']) }}" class="text-decoration-none">Corporate Users</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'corporate'])->get()->count()) }}
-                            </small>
-                            <small class="text-success">
-                                (+1.5%)
                             </small>
                         </div>
                     </div>
@@ -41,13 +38,10 @@
                                 <i class="icofont-user-alt-3"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.users', ['query' => 'individual']) }}" class="text-decoration-none">Individual</a>
+                        <a href="{{ route('admin.users', ['query' => 'individual']) }}" class="text-decoration-none">Individual Users</a>
                         <div class="d-flex align-items-center">
                             <small class="mr-2">
                                 {{ number_format(\App\Models\Profile::where(['designation' => 'individual'])->get()->count()) }}
-                            </small>
-                            <small class="text-danger">
-                                (-2.34%)
                             </small>
                         </div>
                     </div>
@@ -66,7 +60,7 @@
                 <div class="">
                     ${{ number_format(\App\Models\Payment::where(['status' => 'paid'])->get()->sum('amount')) }}
                 </div>
-                <small class="tiny-font px-3 py-1 bg-blue rounded-pill">+1.5%</small>
+                <small class="tiny-font px-3 py-1 bg-blue rounded-pill">0%</small>
             </div>
         </div>
         <div class="card-body py-0 position-relative" style="top: -64px;">
@@ -78,14 +72,11 @@
                                 <i class="icofont-users"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.payments', ['type' => 'advert']) }}" class="text-decoration-none">Advert</a>
+                        <a href="{{ route('admin.payments', ['type' => 'advert']) }}" class="text-decoration-none">For Adverts</a>
                         <div class="d-flex align-items-center">
-                            <small class="mr-2">
+                            <div class="mr-2">
                                 ${{ number_format(\App\Models\Payment::where(['status' => 'paid', 'type' => 'advert'])->get()->sum('amount')) }}
-                            </small>
-                            <small class="text-success">
-                                <small>(+1.5%)</small>
-                            </small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,14 +87,11 @@
                                 <i class="icofont-user-alt-3"></i>
                             </small>
                         </div>
-                        <a href="{{ route('admin.payments', ['type' => 'subscription']) }}" class="text-decoration-none">Subscription</a>
+                        <a href="{{ route('admin.payments', ['type' => 'subscription']) }}" class="text-decoration-none">For Subscriptions</a>
                         <div class="d-flex align-items-center">
-                            <small class="mr-2">
+                            <div class="mr-2">
                                 ${{ number_format(\App\Models\Payment::where(['status' => 'paid', 'type' => 'subscription'])->get()->sum('amount')) }}
-                            </small>
-                            <small class="text-danger">
-                                <small>(-0.15%)</small>
-                            </small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +99,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 col-md-6 col-lg-6 mb-4">
+<div class="col-12 col-md-6 col-lg-3 mb-4">
     <div class="card card-raduis border-0 shadow-sm" >
         <div class="card-body">
             <div class="d-flex align-items-center mb-3">
@@ -125,57 +113,7 @@
                         {{ number_format(\App\Models\Property::count()) }}
                     </span>
                 </div>
-                <a href="{{ route('admin.properties') }}" class="text-main-dark text-decoration-none">All Properties
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-3 mb-4">
-    <div class="card card-raduis border-0 shadow-sm" >
-        <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-                <small class="px-3 tiny-font py-1 bg-success rounded-pill">
-                    <small class="text-white">+33%</small>
-                </small>
-            </div>
-            <div class="">
-                <div class="text-main-dark">
-                    <span>{{ number_format(\App\Models\User::count()) }}</span>
-                    <small class="text-success">
-                        <i class="icofont-long-arrow-up"></i>
-                    </small>
-                </div>
-                <a href="{{ route('admin.dashboard') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
-                    <small>Plans</small>
-                    <span class="">
-                        <i class="icofont-long-arrow-right"></i>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-12 col-md-6 col-lg-3 mb-4">
-    <div class="card card-raduis border-0 shadow-sm" >
-        <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-                <small class="px-3 tiny-font py-1 bg-success rounded-pill">
-                    <small class="text-white">+33%</small>
-                </small>
-            </div>
-            <div class="">
-                <div class="text-main-dark">
-                    <span>{{ number_format(\App\Models\Skill::count()) }}</span>
-                    <small class="text-success">
-                        <i class="icofont-long-arrow-up"></i>
-                    </small>
-                </div>
-                <a href="{{ route('admin.skills') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
-                    <small>Skills</small>
-                    <span class="">
-                        <i class="icofont-long-arrow-right"></i>
-                    </span>
+                <a href="{{ route('admin.properties') }}" class="text-main-dark text-decoration-none">Properties
                 </a>
             </div>
         </div>
@@ -237,7 +175,7 @@
                         <i class="icofont-long-arrow-up"></i>
                     </small>
                 </div>
-                <a href="{{ route('admin.blogs') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">News</a>
+                <a href="javascipt:;" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">News</a>
             </div>
         </div>
     </div>

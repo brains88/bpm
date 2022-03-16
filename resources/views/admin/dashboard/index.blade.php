@@ -22,86 +22,45 @@
                         <div class="col-12 col-lg-6 mb-4">
                             <div class="card card-raduis border-0 bg-orange shadow-sm">
                                 <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <small class="">
-                                            <small class="px-2 py-1 bg-warning rounded-pill">~95%</small>
+                                    @set('total_subscriptions', \App\Models\Subscription::count())
+                                    @set('total_adverts', \App\Models\Advert::count())
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="">
+                                            <h4 class="text-main-dark">
+                                                {{ number_format($total_subscriptions) }}
+                                            </h4>
+                                            <a href="{{ route('admin.subscriptions') }}" class="text-white">Subscriptions</a>
+                                        </div>
+                                        <small class="px-3 bg-warning rounded-pill">
+                                            <small class="tiny-font text-main-dark">0%</small>
                                         </small>
                                     </div>
-                                    <div class="mb-4">
-                                        <h4 class="text-main-dark">
-                                            {{ number_format(\App\Models\Subscription::count()) }}
-                                        </h4>
-                                        <a href="{{ route('admin.subscriptions') }}" class="text-white">Subscriptions</a>
-                                    </div>
+                                    <?php $subscription_percentages = [
+                                        'active' => ['count' => \App\Models\Subscription::where(['status' => 'active'])->count(), 'color' => 'success'],
+                                        'cancelled' => ['count' => \App\Models\Subscription::where(['status' => 'cancelled'])->count(), 'color' => 'warning'], 
+                                        'expired' => ['count' => \App\Models\Subscription::where(['status' => 'expired'])->count(), 'color' => 'danger'],
+                                        'renewed' => ['count' => \App\Models\Subscription::where(['status' => 'renewed'])->count(), 'color' => 'info']
+                                    ]; ?>
                                     <div class="row">
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-success icon-raduis">
-                                                <div class="">
+                                        @foreach($subscription_percentages as $name => $percentage)
+                                            <div class="col-12 col-md-6 mb-4">
+                                                <div class="alert m-0 d-flex justify-content-between align-items-center alert-{{ $percentage['color'] }} icon-raduis">
                                                     <div class="">
-                                                        {{ 56 }}
+                                                        <div class="">
+                                                            {{ $percentage['count'] }}
+                                                        </div>
+                                                        <div>
+                                                            {{ ucfirst($name) }}
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        {{ 'Active' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-success rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-warning icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Cancelled' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-warning rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
+                                                    <div class="border lg-circle rounded-circle border-{{ $percentage['color'] }} text-center">
+                                                        <small class="tiny-font position-relative" style="top: 4px;">
+                                                            {{ round(($percentage['count']/$total_subscriptions) * 100) }}%
+                                                        </small>
+                                                    </div>  
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-danger icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Expired' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-danger rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-info icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Renewed' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-info rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div> 
                             </div>
@@ -109,86 +68,44 @@
                         <div class="col-12 col-lg-6 mb-4">
                             <div class="card card-raduis border-0 shadow-sm bg-orange">
                                 <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <small class="">
-                                            <small class="px-2 py-1 bg-warning rounded-pill">~95%</small>
+                                    @set('total_adverts', \App\Models\Advert::count())
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="">
+                                            <h4 class="text-main-dark">
+                                                {{ number_format($total_adverts) }}
+                                            </h4>
+                                            <a href="{{ route('admin.adverts') }}" class="text-white">Adverts</a>
+                                        </div>
+                                        <small class="px-3 bg-warning rounded-pill">
+                                            <small class="tiny-font text-main-dark">0%</small>
                                         </small>
                                     </div>
-                                    <div class="mb-4">
-                                        <h4 class="text-main-dark">
-                                            {{ number_format(\App\Models\Advert::count()) }}
-                                        </h4>
-                                        <a href="{{ route('admin.adverts') }}" class="text-white">Adverts</a>
-                                    </div>
+                                    <?php $advert_percentages = [
+                                        'active' => ['count' => \App\Models\Advert::where(['status' => 'active'])->count(), 'color' => 'success'],
+                                        'cancelled' => ['count' => \App\Models\Advert::where(['status' => 'cancelled'])->count(), 'color' => 'warning'], 
+                                        'expired' => ['count' => \App\Models\Advert::where(['status' => 'expired'])->count(), 'color' => 'danger'],
+                                        'paused' => ['count' => \App\Models\Advert::where(['status' => 'paused'])->count(), 'color' => 'info']
+                                    ]; ?>
                                     <div class="row">
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-success icon-raduis">
-                                                <div class="">
+                                        @foreach($advert_percentages as $name => $percentage)
+                                            <div class="col-12 col-md-6 mb-4">
+                                                <div class="alert m-0 d-flex justify-content-between align-items-center alert-{{ $percentage['color'] }} icon-raduis">
                                                     <div class="">
-                                                        {{ 56 }}
+                                                        <div class="">
+                                                            {{ $percentage['count'] }}
+                                                        </div>
+                                                        <div class="">
+                                                            {{ ucfirst($name) }}
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        {{ 'Active' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-success rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-warning icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Cancelled' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-warning rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
+                                                    <div class="border lg-circle rounded-circle border-{{ $percentage['color'] }} text-center">
+                                                        <small class="tiny-font position-relative" style="top: 4px;">
+                                                            {{ round(($percentage['count']/$total_adverts) * 100) }}%
+                                                        </small>
+                                                    </div>  
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-danger icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Expired' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-danger rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <div class="alert m-0 d-flex justify-content-between align-items-center alert-info icon-raduis">
-                                                <div class="">
-                                                    <div class="">
-                                                        {{ 56 }}
-                                                    </div>
-                                                    <div>
-                                                        {{ 'Paused' }}
-                                                    </div>
-                                                </div>
-                                                <div class="border border-info rounded-circle text-center" style="height: 40px; width: 40px; line-height: 35px;">
-                                                    <small class="tiny-font">
-                                                        {{ '25%' }}
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

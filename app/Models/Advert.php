@@ -17,9 +17,9 @@ class Advert extends Model
     public static $status = [
         'expired', 
         'active',
-        'dormant', 
         'paused',
         'initialized',
+        'cancelled',
     ];
 
     /**

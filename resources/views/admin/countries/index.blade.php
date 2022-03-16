@@ -4,13 +4,13 @@
     <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info m-0 d-flex align-items-center">
                         <span class="mr-2">All Countries ({{ \App\Models\Country::count() }})</span>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info m-0 d-flex align-items-center">
                         <a class="" href="javascript:;">
                             <small class="mr-2 font-weight-bold">
                                 <i class="icofont-search"></i>
