@@ -51,4 +51,12 @@ class Membership extends Model
     {
         return $this->belongsTo(Currency::class);
     }
+
+    /**
+     * A membership plan may have many subscriptions
+     */
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }

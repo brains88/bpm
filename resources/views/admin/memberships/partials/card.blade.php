@@ -7,13 +7,20 @@
 		</div>
 	</div>
 	<div class="card-body">
-		<div class="mb-4">
-			<div class="text-main-dark mb-3">
-				{{ ucfirst($membership->name) }}
+		<div class="mb-4 d-flex justify-content-between align-items-center">
+			<div>
+				<div class="text-main-dark mb-3">
+					{{ ucfirst($membership->name) }}
+				</div>
+				<h5 class="font-weight-bolder">
+					{{ $membership->currency->symbol ?? 'NGN' }}{{ number_format($membership->price) }}
+				</h5>
 			</div>
-			<h5 class="font-weight-bolder">
-				{{ $membership->currency->symbol ?? 'NGN' }}{{ number_format($membership->price) }}
-			</h5>
+			<small class="px-3 rounded-pill bg-warning">
+				<small class="tiny-font">
+					+{{ $membership->subscriptions->count() }} <i class="icofont-caret-down"></i>
+				</small>
+			</small>	
 		</div>
 		<div class="">
 			<div class="d-flex align-items-center mb-4">
