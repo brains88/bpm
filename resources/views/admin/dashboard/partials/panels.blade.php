@@ -146,7 +146,7 @@
                         <i class="icofont-long-arrow-up"></i>
                     </small>
                 </div>
-                <a href="{{ route('admin.plans') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
+                <a href="{{ route('admin.dashboard') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
                     <small>Plans</small>
                     <span class="">
                         <i class="icofont-long-arrow-right"></i>
