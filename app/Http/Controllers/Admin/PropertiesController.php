@@ -29,6 +29,14 @@ class PropertiesController extends Controller
     }
 
     /**
+     * Admin Property add view
+     */
+    public function add()
+    {
+        return view('admin.properties.add')->with(['properties' => Property::latest('created_at')->paginate(5)]);
+    }
+
+    /**
      * Admin view to edit property
      */
     public function edit($id = 0)

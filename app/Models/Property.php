@@ -65,8 +65,8 @@ class Property extends Model
         'land' => [
             'name' => 'Landed Property', 
             'groups' => [
-                'Empty',
-                'Fenced',
+                'Empty Land',
+                'Fenced Land',
             ],
         ],
 

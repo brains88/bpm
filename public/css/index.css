@@ -12,6 +12,27 @@ body {
     height: 150px;
 }
 
+.admin-pricing-card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.admin-pricing-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(160, 15, 15, 0.5);
+}
+
 .user-content {
     padding-top: 95px;
 }

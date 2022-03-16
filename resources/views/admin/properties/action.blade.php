@@ -7,10 +7,9 @@
                 <div class="col-12 col-md-6 mb-4">
                     <div class="alert alert-info d-flex justify-content-between align-items-center m-0">
                         <div class="mr-2">{{ ucfirst($action) }} ({{ $properties->total() }})</div>
-                        <a href="javascript:;" class="text-decoration-none" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                        <a href="{{ route('admin.property.add') }}" class="text-decoration-none">
                             <i class="icofont-plus"></i>
                         </a>
-                        @include('admin.properties.forms.add')
                     </div>
                 </div>
                 <div class="col-12 col-md-6 mb-4">

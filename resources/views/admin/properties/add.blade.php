@@ -1,143 +1,162 @@
 @include('layouts.header')
-<div class="bg-alabaster min-vh-100">
+<div class="bg-main-ash min-vh-100">
     @include('admin.layouts.navbar')
-    <div class="section-padding">
+    <div class="section-padding pb-4">
         <div class="container-fluid">
-            <div class="alert alert-info mb-4">Add Property Below. Please in all applicable fields.</div>
-            @if(empty($propertiesCategories))
-                <div class="alert alert-danger">No Property Categoies. Please <a href="{{ route('admin.properties.categories') }}">Click Here</a> to Add a Category</div>
-            @else
+            <div class="">
                 <div class="row">
-                    <div class="col-12 mb-4">
-                        <form method="post" action="javascript:;" class="add-property-form p-4 border" data-action="{{ route('admin.property.add') }}" autocomplete="off">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Country location</label>
-                                    <select class="form-control custom-select country" name="country">
-                                        <option value="">-- Select Country --</option>
-                                        @if(empty($allCountries))
-                                            <option>No Countries Listed</option>
-                                        @else: ?>
-                                            @foreach ($allCountries as $country)
-                                                <option value="{{ $country->id }}">
-                                                    {{ ucwords($country->name ?? 0) }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                    <div class="col-12 col-md-8 col-lg-7 mb-4">
+                        <div class="alert alert-info mb-4">Add Property Below</div>
+                        <div class="p-4 bg-white shadow-sm card-raduis">
+                            <form method="post" action="javascript:;" class="add-property-form" data-action="{{ route('admin.property.add') }}" autocomplete="off">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Country located</label>
+                                        <select class="form-control custom-select country" name="country" id="countries">
+                                            <option value="">-- Select country --</option>
+                                            @set('countries', \App\Models\Country::all())
+                                            @if(empty($countries->count()))
+                                                <option value="">No countries listed</option>
+                                            @else: ?>
+                                                <?php $geoip = geoip()->getLocation(request()->ip());  ?>
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}" {{ strtolower($geoip->iso_code) == strtolower($country->iso2) ? 'selected' : '' }} id="{{ $country->state_id }}">
+                                                        {{ ucwords($country->name ?? '') }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        <small class="invalid-feedback country-error"></small>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">State, county or division</label>
+                                        <input type="text" class="form-control state" name="state" placeholder="e.g., Texas">
+                                        <small class="invalid-feedback state-error"></small>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">State, County or Divison</label>
-                                    <input type="text" class="form-control state" name="state" placeholder="e.g., Hampshire">
-                                    <small class="invalid-feedback state-error"></small>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">City, area or town</label>
+                                        <input type="text" class="form-control city" name="city" placeholder="e.g., Plano">
+                                        <small class="invalid-feedback city-error"></small>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Category</label>
+                                        <select class="form-control custom-select category" name="category">
+                                            <option value="">-- Select category --</option>
+                                            @set('categories', \App\Models\Property::$categories)
+                                            @if(empty($categories))
+                                                <option>No Categories Listed</option>
+                                            @else: ?>
+                                                @foreach ($categories as $category => $values)
+                                                    <option value="{{ $category }}">
+                                                        {{ ucwords($values['name'] ?? null) }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        <small class="invalid-feedback category-error"></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">City</label>
-                                    <input type="text" class="form-control city" name="city" placeholder="e.g., Plano">
-                                    <small class="invalid-feedback city-error"></small>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label class="text-muted">Address</label>
+                                        <textarea class="form-control address" name="address" placeholder="e.g., No 405 Trenth Avenue" rows="2"></textarea>
+                                        <small class="invalid-feedback address-error"></small>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Full Address</label>
-                                    <input type="text" class="form-control address" name="address" placeholder="e.g., No 405 Trenth Avenue LA">
-                                    <small class="invalid-feedback address-error"></small>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Currency</label>
+                                        <select class="form-control custom-select currency" name="currency">
+                                            <option value="">-- Select currency --</option>
+                                            <?php $currencies = currency()->getCurrencies(); ?>
+                                            @if(empty($currencies))
+                                                <option>No currencies listed</option>
+                                            @else: ?>
+                                                @foreach ($currencies as $currency)
+                                                    <?php $code = $currency['code']; ?>
+                                                    <option value="{{ $currency['id'] }}" {{ strtolower($code) === strtolower(currency()->getUserCurrency()) ? 'selected' : '' }}>
+                                                        {{ ucwords($currency['name']) }}({{ strtoupper($code) }})
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        <small class="invalid-feedback currency-error"></small>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Price</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control price" name="price" placeholder="e.g., 20000000">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">.00</span>
+                                            </div>
+                                            <small class="invalid-feedback price-error"></small>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Category</label>
-                                    <select class="form-control custom-select category" name="category">
-                                        <option value="">-- Select Category --</option>
-                                        @if(empty($propertiesCategories))
-                                            <option>No Categories Listed</option>
-                                        @else: ?>
-                                            @foreach ($propertiesCategories as $category)
-                                                <option value="{{ $category->id }}">
-                                                    {{ ucwords($category->name ?? 0) }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Property action</label>
+                                        <select class="form-control custom-select action" name="action">
+                                            <option value="">-- Select action --</option>
+                                            <?php $actions = \App\Models\Property::$actions; ?>
+                                            @if(empty($actions))
+                                                <option>No Actions Listed</option>
+                                            @else: ?>
+                                                @foreach ($actions as $key => $value)
+                                                    @if($key !== 'sold')
+                                                        <option value="{{ $key }}">
+                                                            {{ ucwords($value ?? 'any') }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        <small class="invalid-feedback action-error"></small>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="text-muted">Property measurement</label>
+                                        <input type="text" class="form-control measurement" name="measurement" placeholder="e.g., 500Sqft">
+                                        <small class="invalid-feedback measurement-error"></small>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Subcategory</label>
-                                    <select class="form-control custom-select subcategory" name="subcategory">
-                                        <option value="">-- Select Subcategory --</option>
-                                        @if(empty($propertiesCategories))
-                                            <option>No Categories Listed</option>
-                                        @else: ?>
-                                            @foreach ($propertiesCategories as $category)
-                                                <option value="{{ $category->id }}">
-                                                    {{ ucwords($category->name ?? 0) }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                                <div class="mb-4">
+                                    <label class="text-muted">Additional details</label>
+                                    <textarea class="form-control additional" name="additional" placeholder="Enter any further details here" rows="4"></textarea>
+                                    <small class="invalid-feedback additional-error"></small>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Property Dimension</label>
-                                    <input type="text" class="form-control dimension" name="dimension" placeholder="e.g., 500Sqft">
-                                    <small class="invalid-feedback dimension-error"></small>
+                                <div class="alert mb-3 add-property-message d-none"></div>
+                                <div class="d-flex justify-content-right mb-3 mt-1">
+                                    <button type="submit" class="btn btn-info btn-lg px-4 text-white add-property-button">
+                                        <img src="/images/spinner.svg" class="mr-2 d-none add-property-spinner mb-1">
+                                        Add
+                                    </button>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Property Action</label>
-                                    <select class="form-control custom-select action" name="action">
-                                        <option value="">-- Select Action --</option>
-                                        <?php $propertyActions = \App\Models\Property::$actions; ?>
-                                        @if(empty($propertyActions))
-                                            <option>No Actions Listed</option>
-                                        @else: ?>
-                                            @foreach ($propertyActions as $action)
-                                                <option value="{{ $action }}">
-                                                    {{ ucwords($action ?? 0) }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Property Dimension</label>
-                                    <input type="text" class="form-control dimension" name="dimension" placeholder="e.g., 500Sqft">
-                                    <small class="invalid-feedback dimension-error"></small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class="text-muted">Property Condition</label>
-                                    <select class="form-control custom-select condition" name="condition">
-                                        <option value="">-- Select Condition --</option>
-                                        <?php $propertyConditions = \App\Models\Property::$conditions; ?>
-                                        @if(empty($propertyConditions))
-                                            <option>No Actions Listed</option>
-                                        @else: ?>
-                                            @foreach ($propertyConditions as $condition)
-                                                <option value="{{ $condition }}">
-                                                    {{ ucwords($condition ?? 'Nill') }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="text-muted">Additional Details</label>
-                                <textarea class="form-control additional" name="additional" placeholder="Enter any further details here" rows="8"></textarea>
-                                <small class="invalid-feedback additional-error"></small>
-                            </div>
-                            <div class="alert mb-3 add-property-message d-none"></div>
-                            <div class="d-flex justify-content-right mb-3 mt-1">
-                                <button type="submit" class="btn btn-info btn-block btn-lg text-white add-property-button font-weight-bold">
-                                    <img src="/images/spinner.svg" class="mr-2 d-none add-property-spinner mb-1">
-                                    Add
-                                </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-5 mb-4">
+                        <div class="alert alert-info d-flex justify-content-between align-items-center mb-4">
+                            <span>Latest Properties</span>
+                            <small class="px-3 rounded-pill bg-danger">
+                                <small class="text-white tiny-font">{{ '+0' }}</small>
+                            </small>
+                        </div>
+                        @if(empty($properties->count()))
+                            <div class="alert alert-danger mb-4">No Recent Properties</div>
+                        @else
+                            <div class="row">
+                                @foreach($properties as $property)
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        @include('admin.properties.partials.card')
+                                    </div>
+                                @endforeach
+                            </div>   
+                        @endif
                     </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
 </div>

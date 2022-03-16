@@ -115,15 +115,15 @@
 					{{ ucwords($actions[$action] ?? 'nill') }} <i class="icofont icofont-caret-down position-relative" style="top: 1px;"></i>
 				</small>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="change-action-{{ $property->id }}">
-                	<form method="post" class="p-4 w-100 change-property-action-form" action="javascript:;" style="width: 210px !important;" data-action="{{ route('api.property.action.change', ['id' => $property->id]) }}">
+                	<form method="post" class="p-4 w-100 change-property-action-form" action="javascript:;" style="width: 210px !important;" data-action="{{ route('user.property.action.change', ['id' => $property->id]) }}">
 					    <div class="form-group">
-					      	<label class="text-muted">Change status</label>
+					      	<label class="text-muted">Change action</label>
 					      	<select class="custom-select action" name="action">
 					      		@if(empty($actions))
-					      			<option>No status listed</option>
+					      			<option value="">No action listed</option>
 					      		@else
 					      			<?php unset($actions[$action]); ?>
-					      			<option>Select status</option>
+					      			<option value="">Select action</option>
 					      			@foreach($actions as $key => $value)
 					      				<option value="{{ $key }}">
 					      					{{ ucwords($value) }}

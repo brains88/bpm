@@ -5,12 +5,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="alert alert-info d-flex align-items-center mb-4">
-                        <div class="mr-2">All properties ({{ \App\Models\Property::count() }})</div>
-                        <a href="javascript:;" class="text-decoration-none" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                    <div class="alert alert-info justify-content-between d-flex align-items-center mb-4">
+                        <div class="mr-2">All Properties ({{ \App\Models\Property::count() }})</div>
+                        <a href="{{ route('admin.property.add') }}" class="text-decoration-none">
                             <i class="icofont-plus"></i>
                         </a>
-                        @include('admin.properties.forms.add')
                     </div>
                 </div>
                 <div class="col-12 col-md-6">

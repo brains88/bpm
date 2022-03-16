@@ -14,7 +14,7 @@ class CountriesController extends Controller
     {
         $countries = Country::with('properties')->get()->SortByDesc(function($country){
             return $country->properties->count();
-        })->paginate(16);
+        })->paginate(24);
 
         return view('admin.countries.index')->with(['countries' => $countries]);
     }

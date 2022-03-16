@@ -18,9 +18,12 @@ class CreateMembershipsTable extends Migration
             $table->bigInteger('price');
             $table->foreignId('currency_id')->nullable();
             $table->string('name');
-            $table->bigInteger('maxlisting'); // Max listing for a perticular plan
+            $table->bigInteger('paidlisting')->nullable();
+            $table->bigInteger('freelisting')->nullable();
             $table->text('details')->nullable();
+            $table->bigInteger('freeboost')->nullable();
             $table->text('duration');
+            $table->text('status')->default('active');
             $table->timestamps();
         });
     }

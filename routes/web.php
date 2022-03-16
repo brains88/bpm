@@ -119,7 +119,6 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 
     Route::get('/adverts', [\App\Http\Controllers\Admin\SubscriptionsController::class, 'index'])->name('admin.adverts');
 
-    Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
     Route::prefix('plan')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\PlansController::class, 'add'])->name('admin.plan.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
@@ -134,12 +133,6 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     Route::prefix('payments')->group(function () {
         Route::get('/search/{query?}', [\App\Http\Controllers\Admin\PaymentsController::class, 'search'])->name('admin.payments.search');
         Route::get('/{type?}', [\App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.payments');
-    });
-
-    Route::get('/plans', [\App\Http\Controllers\Admin\PlansController::class, 'index'])->name('admin.plans');
-    Route::prefix('plan')->group(function () {
-        Route::post('/add', [\App\Http\Controllers\Admin\PlansController::class, 'add'])->name('admin.plan.add');
-        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
     });
 
     Route::post('visitors/chart/timezone', [\App\Http\Controllers\Admin\Charts\VisitorsController::class, 'chart'])->name('admin.visitors.chart.timezones');
@@ -159,17 +152,26 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
         Route::get('/edit/{id}', [\App\Http\Controllers\Admin\PropertiesController::class, 'edit'])->name('admin.property.edit');
 
         Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('admin.property.add');
-        Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('admin.property.edit');
+        Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('admin.property.update');
 
         Route::get('/category/{categoryname}', [\App\Http\Controllers\Admin\PropertiesController::class, 'category'])->name('admin.properties.category');
 
         Route::get('/action/{action}', [\App\Http\Controllers\Admin\PropertiesController::class, 'action'])->name('admin.properties.action');
+        Route::post('/action/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('admin.property.action.change');
+
+        Route::post('/specifics/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'specifics'])->name('admin.property.specifics.update');
     });
 
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
     Route::prefix('category')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\CategoriesController::class, 'add'])->name('admin.category.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.category.edit');
+    });
+
+    Route::prefix('memberships')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\MembershipsController::class, 'index'])->name('admin.memberships');
+        Route::post('/add', [\App\Http\Controllers\Api\MembershipsController::class, 'add'])->name('admin.membership.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\MembershipsController::class, 'edit'])->name('admin.membership.edit');
     });
 
     Route::prefix('users')->group(function () {
@@ -182,13 +184,17 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\BlogsController::class, 'index'])->name('admin.blogs');
-        Route::post('/image/upload/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'image'])->name('blog.image.upload');
-        Route::post('/store', [\App\Http\Controllers\Admin\BlogsController::class, 'store'])->name('admin.blog.store');
 
-        Route::post('/status/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'status'])->name('blog.status');
-        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'delete'])->name('blog.delete');
+        Route::post('/image/upload/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'image'])->name('blog.image.upload');
+        Route::post('/store', [\App\Http\Controllers\Api\BlogsController::class, 'store'])->name('admin.blog.store');
+        Route::post('/status/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'status'])->name('blog.status');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'delete'])->name('blog.delete');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'edit'])->name('blog.edit');
 
-        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'edit'])->name('admin.blog.edit');
+        Route::get('/add', [\App\Http\Controllers\Admin\BlogsController::class, 'add'])->name('admin.blog.add');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\BlogsController::class, 'edit'])->name('admin.blog.edit');
+        Route::get('/category/{categoryid}', [\App\Http\Controllers\Admin\BlogsController::class, 'category'])->name('admin.blogs.category');
+        
     });
 
 });

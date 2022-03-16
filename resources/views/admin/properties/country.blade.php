@@ -6,11 +6,10 @@
             <div class="row">
                 <div class="col-12 col-md-6 mb-4">
                     <div class="alert alert-info m-0 d-flex align-items-center justify-content-between">
-                        <div class="mr-2">({{ $properties->total() }}) {{ ucwords($properties[0]->country->name) }} Property</div>
-                        <a href="javascript:;" class="text-decoration-none" data-url="{{ route('admin.property.add') }}" data-target="#add-property" data-toggle="modal">
+                        <div class="mr-2">({{ $properties->total() }}) {{ ucwords($properties[0]->country->name ?? '') }} Properties</div>
+                        <a href="{{ route('admin.property.add') }}" class="text-decoration-none">
                             <i class="icofont-plus"></i>
                         </a>
-                        @include('admin.properties.forms.add')
                     </div>
                 </div>
                 <div class="col-12 col-md-6 mb-4">

@@ -135,6 +135,7 @@
                                         <label class="text-muted">Country located</label>
                                         <select class="form-control custom-select country" name="country" id="countries">
                                             <option value="">-- Select country --</option>
+                                            @set('countries', \App\Models\Country::all())
                                             @if(empty($countries))
                                                 <option value="">No countries listed</option>
                                             @else: ?>

@@ -1,12 +1,12 @@
 @include('layouts.header')
-<div class="min-vh-100">
+<div class="min-vh-100 bg-main-ash">
     @include('admin.layouts.navbar')
     <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex align-items-center">
-                        <small class="mr-2">All countries ({{ \App\Models\Country::count() }})</small>
+                        <span class="mr-2">All Countries ({{ \App\Models\Country::count() }})</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
@@ -14,11 +14,6 @@
                         <a class="" href="javascript:;">
                             <small class="mr-2 font-weight-bold">
                                 <i class="icofont-search"></i>
-                            </small>
-                        </a>
-                        <a class="text-underline" href="javascript:;">
-                            <small class="">
-                                Filter countries
                             </small>
                         </a>
                     </div>
@@ -30,7 +25,7 @@
                 @else
                     <div class="row">
                         @foreach($countries as $country)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-4 col-lg-2 mb-4">
                                 @include('admin.countries.partials.card')
                             </div>
                         @endforeach

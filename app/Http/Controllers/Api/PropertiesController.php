@@ -22,7 +22,7 @@ class PropertiesController extends Controller
             'category' => ['required', 'string'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            'currency' => ['required', 'integer'],
+            'currency' => ['nullable', 'integer'],
             'action' => ['required', 'string'],
             'measurement' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
@@ -55,8 +55,8 @@ class PropertiesController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'redirect' => route(request()->subdomain().'.property.edit', [
-                'category' => strtolower($property->category),
                 'id' => $property->id,
+                'category' => strtolower($property->category),
             ]),
         ]); 
 
@@ -74,7 +74,7 @@ class PropertiesController extends Controller
             'category' => ['required', 'string'],
             'address' => ['required', 'string'],
             'city' => ['required', 'string'],
-            'currency' => ['required', 'integer'],
+            'currency' => ['nullable', 'integer'],
             'action' => ['required', 'string'],
             'measurement' => ['required', 'string'],
             'additional' => ['required', 'string', 'max:500'],
@@ -274,7 +274,7 @@ class PropertiesController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'redirect' => route('user.properties'),
+            'redirect' => route(request()->subdomain().'.properties'),
         ]);
     }
 

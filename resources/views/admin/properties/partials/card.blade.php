@@ -11,7 +11,6 @@
 				</small>
 			</a>
 			<a href="{{ route('admin.properties.country', ['countryid' => $property->country->id ?? 0]) }}" class="text-underline text-white">
-				{{-- <?php $countryname = empty($property->country->name) ? 'Nill' : ucwords($property->country->name); ?> --}}
 				<small class="text-white">
 					{{ \Str::limit($property->country->name ?? '', 6) }}
 				</small>
@@ -25,10 +24,11 @@
 					{{ ucfirst($categoryname) }}
 				</small>
 			</a>
-			<?php $action = strtolower($property->action ?? 'nill'); ?>
+			@set('actions', \App\Models\Property::$actions)
+			@set('action', strtolower($property->action ?? 'nill'))
 			<small class="">
 				<a href="{{ route('admin.properties.action', ['action' => $action]) }}" class="text-underline text-{{ $action === 'sold' ? 'danger' : 'info' }}">
-					{{ ucwords($action) }}
+					{{ ucfirst($action) }}
 				</a>
 			</small>
 		</div>
@@ -45,26 +45,32 @@
                     </small>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $property->id }}">
-                	<form class="p-4 w-100" action="javascript:;" data-action="{{ '' }}" style="width: 210px !important;">
+                	<form method="post" class="p-4 w-100 change-property-action-form" action="javascript:;" style="width: 210px !important;" data-action="{{ route('admin.property.action.change', ['id' => $property->id]) }}">
 					    <div class="form-group">
-					      	<label for="status">Change status</label>
-					      	@set('status', \App\Models\Property::$status)
-					      	<select class="custom-select change-status">
-					      		<option value="">Change status</option>
-					      		@if(empty($status))
-					      			<option value="">No status listed</option>
+					      	<label class="text-muted">Change action</label>
+					      	<select class="custom-select action" name="action">
+					      		@if(empty($actions))
+					      			<option value="">No action listed</option>
 					      		@else
-					      			@foreach($status as $stat)
-					      				@if($stat !== $property->status)
-						      				<option value="{{ $stat }}">
-						      					{{ ucfirst($stat) }}
+					      			<option value="">Select action</option>
+					      			@foreach($actions as $key => $value)
+					      				@if($key !== $action)
+						      				<option value="{{ $key }}" {{ $action == $key ? 'selected' : '' }}>
+						      					{{ ucwords($value) }}
 						      				</option>
 					      				@endif
 					      			@endforeach
 					      		@endif
 					      	</select>
+					      	<span class="invalid-feedback action-error"></span>
 					    </div>
-					    <button type="submit" class="btn btn-lg text-white btn-block bg-main-dark">Change status</button>
+					    <div class="alert mb-3 tiny-font change-property-action-message d-none"></div>
+	                    <div class="d-flex justify-content-right mb-3 mt-1">
+	                        <button type="submit" class="btn btn-info btn-lg btn-block change-property-action-button">
+	                            <img src="/images/spinner.svg" class="mr-2 d-none change-property-action-spinner mb-1">
+	                            Save
+	                        </button>
+	                    </div>
 					</form>
                 </div>
             </div>

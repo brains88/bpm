@@ -3,12 +3,12 @@
         @set('users', \App\Models\User::where(['role' => 'user'])->get())
         <div class="card-header pt-5 bg-blue" style="padding-bottom: 90px !important;">
             <h4 class="text-white">
-                <a href="{{ route('admin.users') }}" class="text-decoration-none text-white">All Users</a>
+                <a href="{{ route('admin.users') }}" class="text-decoration-none text-white">Users</a>
             </h4>
             <div class="d-flex justify-content-between">
-                <h5 class="m-0">
+                <div class="">
                     {{ number_format($users->count()) }}
-                </h5>
+                </div>
                 <small class="tiny-font px-3 py-1 bg-pink rounded-pill">
                     <a href="{{ route('admin.users') }}" class="text-white text-decoration-none">+1.5%</a>
                 </small>
@@ -60,12 +60,12 @@
     <div class="card position-relative card-raduis border-0" >
         <div class="card-header pt-5 bg-pink" style="padding-bottom: 90px !important;">
             <h4 class="text-white">
-                <a href="{{ route('admin.payments') }}" class="text-decoration-none text-white">All Payments</a>
+                <a href="{{ route('admin.payments') }}" class="text-decoration-none text-white">Payments</a>
             </h4>
             <div class="d-flex justify-content-between">
-                <h5 class="m-0">
+                <div class="">
                     ${{ number_format(\App\Models\Payment::where(['status' => 'paid'])->get()->sum('amount')) }}
-                </h5>
+                </div>
                 <small class="tiny-font px-3 py-1 bg-blue rounded-pill">+1.5%</small>
             </div>
         </div>
@@ -120,11 +120,11 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     <span class="">
                         {{ number_format(\App\Models\Property::count()) }}
                     </span>
-                </h5>
+                </div>
                 <a href="{{ route('admin.properties') }}" class="text-main-dark text-decoration-none">All Properties
                 </a>
             </div>
@@ -140,12 +140,12 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     <span>{{ number_format(\App\Models\User::count()) }}</span>
                     <small class="text-success">
                         <i class="icofont-long-arrow-up"></i>
                     </small>
-                </h5>
+                </div>
                 <a href="{{ route('admin.plans') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
                     <small>Plans</small>
                     <span class="">
@@ -165,12 +165,12 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     <span>{{ number_format(\App\Models\Skill::count()) }}</span>
                     <small class="text-success">
                         <i class="icofont-long-arrow-up"></i>
                     </small>
-                </h5>
+                </div>
                 <a href="{{ route('admin.skills') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">
                     <small>Skills</small>
                     <span class="">
@@ -190,10 +190,10 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     {{ number_format(\App\Models\Country::count()) }}
-                </h5>
-                <a href="{{ route('admin.countries') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">All Countries</a>
+                </div>
+                <a href="{{ route('admin.countries') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Countries</a>
             </div>
         </div>
     </div>
@@ -207,15 +207,15 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     <span>
                         {{ number_format(\App\Models\Blog::count()) }}
                     </span>
                     <small class="text-danger">
                         <i class="icofont-long-arrow-down"></i>
                     </small>
-                </h5>
-                <a href="{{ route('admin.blogs') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">All Blogs</a>
+                </div>
+                <a href="{{ route('admin.blogs') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Blogs</a>
             </div>
         </div>
     </div>
@@ -229,15 +229,15 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     <span>
                         {{ number_format(\App\Models\News::count()) }}
                     </span>
                     <small class="text-success">
                         <i class="icofont-long-arrow-up"></i>
                     </small>
-                </h5>
-                <a href="{{ route('admin.blogs') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">All News</a>
+                </div>
+                <a href="{{ route('admin.blogs') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">News</a>
             </div>
         </div>
     </div>
@@ -251,10 +251,10 @@
                 </small>
             </div>
             <div class="">
-                <h5 class="text-main-dark">
+                <div class="text-main-dark">
                     {{ number_format(\App\Models\Country::count()) }}
-                </h5>
-                <a href="{{ route('admin.countries') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Our Memberships</a>
+                </div>
+                <a href="{{ route('admin.memberships') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Memberships</a>
             </div>
         </div>
     </div>

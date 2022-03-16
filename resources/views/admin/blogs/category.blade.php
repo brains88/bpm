@@ -7,7 +7,7 @@
                     <div class="col-12 col-lg-7">
                         <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
                         <span class="">
-                            ({{ \App\Models\Blog::count() }}) Blogs
+                            ({{ $blogs->total() }}) Blogs
                         </span>
                         <a href="{{ route('admin.blog.add') }}" class="text-decoration-none">
                             <i class="icofont-plus"></i>

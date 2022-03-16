@@ -26,15 +26,14 @@ class Category extends Model
      */
     public static $types = [
         'news',
-        'property',
         'blog',
     ];
 
     /**
-     * A property category may have many properties
+     * A category may have many blogs
      */
-    public function properties()
+    public function blogs()
     {
-        return $this->hasMany(Property::class, 'category_id');
+        return $this->hasMany(Blog::class);
     }
 }

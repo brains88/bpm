@@ -23,28 +23,28 @@
     </div>
     <div class="card-body">
         <div class="pb-3 mb-3 border-bottom d-flex justify-content-between align-items-center">
-            <a href="javascript:;" class="text-underline" data-toggle="modal" data-target="#edit-blog-{{ $blog->id }}">
-                <small class="text-muted">
-                    {{ \Str::limit(strip_tags($blog->title), 16) }}
-                </small>
+            <a href="{{ route('admin.blog.edit', ['id' => $blog->id]) }}" class="text-underline">
+                {{ \Str::limit(strip_tags($blog->title), 10) }}
             </a>
-            {{-- <div class="custom-control custom-switch">
-                <input class="custom-control-input blog-status" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
+            <div class="custom-control custom-switch p-0">
+                <input class="custom-control-input blog-status m-0" type="checkbox" data-url='{{ route('blog.status', ['id' => $blog->id]) }}' id="status-{{ $blog->id }}" {{ $blog->published ? 'checked' : '' }} data-status="{{ $blog->published }}">
                 <label class="custom-control-label" for="status-{{ $blog->id }}"></label>
-            </div> --}}
+            </div>
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <small class="bg-info px-2 rounded-pill">
-                <small class="text-white">{{ number_format($blog->views ?? 0) }} views</small>
+            <small class="bg-info px-3 rounded-pill">
+                <small class="text-white tiny-font">
+                    {{ number_format($blog->views ?? 0) }} views
+                </small>
             </small>
-            <small class="text-muted">
-                {{ ucwords($blog->category->name ?? 'Nill') }}
-            </small>
+            <a href="{{ route('admin.blogs.category', ['categoryid' => $blog->category->id]) }}" class="text-main-dark text-underline">
+                {{ ucwords(\Str::limit($blog->category->name, 5) ?? 'Nill') }}
+            </a>
         </div>
     </div>
     <div class="card-footer bg-main-dark d-flex justify-content-between">
         <small class="text-white">
-            {{ date('jS F Y', strtotime($blog->created_at)) }}
+            {{ $blog->created_at->diffForHumans() }}
         </small>
         <div class="d-flex">
             <small class="mr-2">

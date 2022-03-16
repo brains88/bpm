@@ -73,9 +73,11 @@
                         @endif
                     </div> 
                     <div class="">
-                        <small class="text-main-dark d-block">
-                            {{ \Str::limit($user->name, 12) }}
-                        </small>
+                        <a href="{{ route('admin.user.profile', ['id' => $user->id]) }}">
+                            <small class="text-main-dark d-block">
+                                {{ \Str::limit($user->name, 12) }}
+                            </small>
+                        </a> 
                         <small class="text-muted tiny-font">
                             {{ ucwords($user->created_at->diffForHumans()) }}
                         </small>
