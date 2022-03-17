@@ -11,7 +11,7 @@
                     </div>
                     <?php $credits = auth()->user()->credits()->where(['status' => 'paused'])->get(); ?>
                     @if(empty($credits->count()))
-                        <div class="alert alert-danger">You have no credits. <a href="{{ route('user') }}">Click here</a> to buy.</div>
+                        <div class="alert alert-danger">You have no credits. <a href="{{ route('user.dashboard') }}">Click here</a> to buy.</div>
                     @endif
                     <div class="form-row">
                         <div class="form-group col-12">

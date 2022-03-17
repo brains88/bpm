@@ -26,7 +26,7 @@
 										</h6>
 										<div class="mb-2">
 											@if(auth()->check())
-				                            	<a href="{{ route('user') }}" class="btn btn-info rounded-0 px-4">To dashboard</a>
+				                            	<a href="{{ route('user.dashboard') }}" class="btn btn-info rounded-0 px-4">To dashboard</a>
 											@else
 												<a href="{{ route('signup') }}" class="btn btn-info rounded-0 px-4">Get started</a>
 											@endif
