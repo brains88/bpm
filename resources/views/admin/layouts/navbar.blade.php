@@ -24,10 +24,9 @@
 							<i class="icofont-notification"></i>
 						</div>
 					</div>
-					
-				    <div data-url="{{ route('logout'); }}" class="cursor-pointer text-center mr-3">
+				    <a href="{{ route('logout'); }}" class="text-decoration-none text-center mr-3">
 				    	<i class="icofont-power text-danger"></i>
-				    </div>
+				    </a>
 					<div class="cursor-pointer backend-navigation-menu-icon text-center">
 				    	<i class="icofont-navigation-menu text-dark"></i>
 				    </div>

@@ -38,7 +38,7 @@
 	            	<form method="post" action="javascript:;" class="promote-property-form p-3 w-100" data-action="{{ route('user.property.promote', ['id' => $property->id]) }}" autocomplete="off">
 	            		<?php $credits = auth()->user()->credits()->where(['status' => 'paused'])->get(); ?>
 	                    @if(empty($credits->count()))
-	                        <div class="alert alert-danger">You have no available credits. <a href="{{ route('user') }}">Click here</a> to buy.</div>
+	                        <div class="alert alert-danger">You have no available credits. <a href="{{ route('user.dashboard') }}">Click here</a> to buy.</div>
 	                    @else
 						    <div class="form-row">
 		                        <div class="form-group col-12">
