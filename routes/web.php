@@ -256,6 +256,8 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
 
+        user.property.action.change
+
         Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
 
@@ -263,6 +265,8 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
         Route::post('/specifics/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'specifics'])->name('user.property.specifics.update');
         Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('user.property.update');
         Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('user.property.add');
+
+        Route::post('/action/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('user.property.action.change');
     });
 
     Route::prefix('materials')->group(function () {
