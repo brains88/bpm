@@ -256,8 +256,6 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
 
-        user.property.action.change
-
         Route::get('/edit/{category}/{id}', [\App\Http\Controllers\User\PropertiesController::class, 'edit'])->name('user.property.edit');
         Route::get('/add', [\App\Http\Controllers\User\PropertiesController::class, 'add'])->name('user.property.add');
 
