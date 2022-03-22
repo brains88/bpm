@@ -34,6 +34,10 @@
                             <a class="dropdown-item" href="{{ route('agents') }}">
                                 <small class="text-dark">Agents</small>
                             </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('dealers') }}">
+                                <small class="text-dark">Dealers</small>
+                            </a>
                         </div>
                     </li>
                     <li class="dropdown mr-3">

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AboutController, LoginController, SignupController, ServicesController, VerifyController, ContactController, PropertiesController, AgentsController, NewsController, ArtisansController, AdminController, UserController, PasswordController, CountriesController};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +16,8 @@ use App\Http\Controllers\{HomeController, AboutController, LoginController, Sign
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/translate', [\App\Http\Controllers\TranslationController::class, 'index'])->name('translate');
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
     Route::get('/membership', [\App\Http\Controllers\MembershipController::class, 'index'])->name('membership');
 
@@ -36,35 +35,35 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 
     Route::group(['prefix' => 'verify'], function () {
-        Route::get('/phone/{reference}', [VerifyController::class, 'phone'])->name('phone.verify');
-        Route::post('/otp/{reference}', [VerifyController::class, 'otpverify'])->name('otp.verify');
-        Route::post('/resendotp/{reference}', [VerifyController::class, 'resendotp'])->name('resend.otp');
-        Route::get('/email/{token}', [VerifyController::class, 'email'])->name('verify.email');
-        Route::post('/resendtoken/{token}', [VerifyController::class, 'resendtoken'])->name('token.resend');
-        Route::get('/resent', [VerifyController::class, 'resent'])->name('token.resent');
+        Route::get('/phone/{reference}', [\App\Http\Controllers\VerifyController::class, 'phone'])->name('phone.verify');
+        Route::post('/otp/{reference}', [\App\Http\Controllers\VerifyController::class, 'otpverify'])->name('otp.verify');
+        Route::post('/resendotp/{reference}', [\App\Http\Controllers\VerifyController::class, 'resendotp'])->name('resend.otp');
+        Route::get('/email/{token}', [\App\Http\Controllers\VerifyController::class, 'email'])->name('verify.email');
+        Route::post('/resendtoken/{token}', [\App\Http\Controllers\VerifyController::class, 'resendtoken'])->name('token.resend');
+        Route::get('/resent', [\App\Http\Controllers\VerifyController::class, 'resent'])->name('token.resent');
     });
 
     Route::prefix('contact')->group(function () {
-        Route::get('/', [ContactController::class, 'index'])->name('contact');
-        Route::post('/send', [ContactController::class, 'send'])->name('contact.send');
-        Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
+        Route::get('/', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+        Route::post('/send', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+        Route::get('/thanks', [\App\Http\Controllers\ContactController::class, 'thanks'])->name('contact.thanks');
     });
 
     Route::prefix('properties')->group(function () {
-        Route::get('/', [PropertiesController::class, 'index'])->name('properties');
-        Route::get('/country/{iso2}', [PropertiesController::class, 'country'])->name('properties.country');
-        Route::get('/category/{category}', [PropertiesController::class, 'category'])->name('properties.category');
+        Route::get('/', [\App\Http\Controllers\PropertiesController::class, 'index'])->name('properties');
+        Route::get('/country/{iso2}', [\App\Http\Controllers\PropertiesController::class, 'country'])->name('properties.country');
+        Route::get('/category/{category}', [\App\Http\Controllers\PropertiesController::class, 'category'])->name('properties.category');
 
-        Route::get('/{category}/{id}/{slug}', [PropertiesController::class, 'property'])->name('property.category.id.slug');
-        Route::get('/{country}/{id}/{slug}', [PropertiesController::class, 'country'])->name('property.country.id.slug');
+        Route::get('/{category}/{id}/{slug}', [\App\Http\Controllers\PropertiesController::class, 'property'])->name('property.category.id.slug');
+        Route::get('/{country}/{id}/{slug}', [\App\Http\Controllers\PropertiesController::class, 'country'])->name('property.country.id.slug');
 
         Route::get('/search', [\App\Http\Controllers\PropertiesController::class, 'search'])->name('properties.search');
         Route::get('/action/{action}', [\App\Http\Controllers\PropertiesController::class, 'action'])->name('properties.action');
     });
 
     Route::prefix('news')->group(function () {
-        Route::get('/', [NewsController::class, 'index'])->name('news');
-        Route::get('/{id}/{slug}', [NewsController::class, 'read'])->name('news.read');
+        Route::get('/', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
+        Route::get('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'read'])->name('news.read');
     });
 
     Route::prefix('blog')->group(function () {
@@ -72,22 +71,30 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/{id}/{slug}', [\App\Http\Controllers\BlogController::class, 'read'])->name('blog.read');
     });
 
-    Route::get('/services', [ServicesController::class, 'index'])->name('services');
+    Route::get('/services', [\App\Http\Controllers\ServicesController::class, 'index'])->name('services');
     Route::prefix('artisans')->group(function () {
-        Route::get('/', [ArtisansController::class, 'index'])->name('artisans');
-        Route::get('/profile/{id}/{name}', [ArtisansController::class, 'profile'])->name('artisan.profile');
+        Route::get('/', [\App\Http\Controllers\ArtisansController::class, 'index'])->name('artisans');
+        Route::get('/profile/{id}/{name}', [\App\Http\Controllers\ArtisansController::class, 'profile'])->name('artisan.profile');
     });
 
     Route::prefix('agents')->group(function () {
-        Route::get('/', [AgentsController::class, 'index'])->name('agents');
-        Route::get('/profile/{id}/{name}', [AgentsController::class, 'profile'])->name('agent.profile');
+        Route::get('/', [\App\Http\Controllers\AgentsController::class, 'index'])->name('agents');
+        Route::get('/profile/{id}/{name}', [\App\Http\Controllers\AgentsController::class, 'profile'])->name('agent.profile');
     });
 
+    Route::get('/services', [\App\Http\Controllers\ServicesController::class, 'index'])->name('services');
+
+    Route::prefix('dealers')->group(function () {
+        Route::get('/', [\App\Http\Controllers\DealersController::class, 'index'])->name('dealers');
+        Route::get('/profile/{id}/{name}', [\App\Http\Controllers\DealersController::class, 'profile'])->name('dealer.profile');
+    });
+
+
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {
-        Route::get('/', [PasswordController::class, 'index'])->name('forgot.password');
-        Route::post('/email', [PasswordController::class, 'email'])->name('password.email');
-        Route::get('/reset/{token}', [PasswordController::class, 'verify'])->name('reset.verify');
-        Route::post('/reset', [PasswordController::class, 'reset'])->name('password.reset');
+        Route::get('/', [\App\Http\Controllers\PasswordController::class, 'index'])->name('forgot.password');
+        Route::post('/email', [\App\Http\Controllers\PasswordController::class, 'email'])->name('password.email');
+        Route::get('/reset/{token}', [\App\Http\Controllers\PasswordController::class, 'verify'])->name('reset.verify');
+        Route::post('/reset', [\App\Http\Controllers\PasswordController::class, 'reset'])->name('password.reset');
     });
 
     Route::prefix('materials')->group(function () {

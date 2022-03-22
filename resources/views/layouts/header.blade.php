@@ -63,11 +63,14 @@
         <link rel="stylesheet" type="text/css" href="/css/utility.css">
         <!-- index CSS -->
         <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <!-- dealer CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/dealer.css">
         <!-- ico font css -->
         <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css">
         <!-- fontawesome css -->
         <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
         <!-- summernote CSS -->
         <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
+        <link media="all" type="text/css" rel="stylesheet" href="https://flex-home.botble.com/themes/flex-home/css/style.css?v=2.32.4">
     </head>
     <body>
